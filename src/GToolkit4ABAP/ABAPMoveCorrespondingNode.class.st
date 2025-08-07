@@ -1,0 +1,195 @@
+Class {
+	#name : #ABAPMoveCorrespondingNode,
+	#superclass : #ABAPStatementNode,
+	#instVars : [
+		'keywords',
+		'sources',
+		'typeNames',
+		'leftParens',
+		'rightParens',
+		'fields',
+		'arrows',
+		'attributeNames',
+		'names',
+		'leftBrackets',
+		'rightBrackets',
+		'operators',
+		'parameterNames'
+	],
+	#category : #GToolkit4ABAP
+}
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitMoveCorresponding: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> arrows [
+	^ arrows
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> arrows: anOrderedCollection [
+	arrows := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> attributeNames [
+	^ attributeNames
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> attributeNames: anOrderedCollection [
+	self setParents: self attributeNames to: nil.
+	attributeNames := anOrderedCollection.
+	self setParents: self attributeNames to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> compositeNodeVariables [
+	^ #(#sources #typeNames #fields #attributeNames #names #parameterNames)
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> compositeTokenVariables [
+	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #operators)
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> fields [
+	^ fields
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> fields: anOrderedCollection [
+	self setParents: self fields to: nil.
+	fields := anOrderedCollection.
+	self setParents: self fields to: self
+]
+
+{ #category : #'generated-initialize-release' }
+ABAPMoveCorrespondingNode >> initialize [
+	super initialize.
+	keywords := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> keywords [
+	^ keywords
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> keywords: anOrderedCollection [
+	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> leftBrackets [
+	^ leftBrackets
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> leftBrackets: anOrderedCollection [
+	leftBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> leftParens [
+	^ leftParens
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> leftParens: anOrderedCollection [
+	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> names: anOrderedCollection [
+	self setParents: self names to: nil.
+	names := anOrderedCollection.
+	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> operators [
+	^ operators
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> operators: anOrderedCollection [
+	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> parameterNames [
+	^ parameterNames
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> parameterNames: anOrderedCollection [
+	self setParents: self parameterNames to: nil.
+	parameterNames := anOrderedCollection.
+	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> rightBrackets [
+	^ rightBrackets
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> rightBrackets: anOrderedCollection [
+	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> rightParens [
+	^ rightParens
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> rightParens: anOrderedCollection [
+	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> sources [
+	^ sources
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> sources: anOrderedCollection [
+	self setParents: self sources to: nil.
+	sources := anOrderedCollection.
+	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> typeNames [
+	^ typeNames
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> typeNames: anOrderedCollection [
+	self setParents: self typeNames to: nil.
+	typeNames := anOrderedCollection.
+	self setParents: self typeNames to: self
+]

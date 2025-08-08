@@ -5,11 +5,10 @@ Class {
 		'keywords',
 		'fieldChains',
 		'formName',
-		'leftParens',
-		'values',
-		'keies',
-		'rightParens',
-		'operators'
+		'leftParen',
+		'first',
+		'last',
+		'rightParen'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,7 +25,7 @@ ABAPFieldStatementNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFieldStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #values #keies #rightParens #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -39,6 +38,18 @@ ABAPFieldStatementNode >> fieldChains: anOrderedCollection [
 	self setParents: self fieldChains to: nil.
 	fieldChains := anOrderedCollection.
 	self setParents: self fieldChains to: self
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> first [
+	^ first
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> first: anABAPRootNode [
+	self first notNil ifTrue: [ self first parent: nil ].
+	first := anABAPRootNode.
+	self first notNil ifTrue: [ self first parent: self ]
 ]
 
 { #category : #generated }
@@ -58,21 +69,6 @@ ABAPFieldStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -86,46 +82,43 @@ ABAPFieldStatementNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> leftParens [
-	^ leftParens
+ABAPFieldStatementNode >> last [
+	^ last
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPFieldStatementNode >> last: anABAPRootNode [
+	self last notNil ifTrue: [ self last parent: nil ].
+	last := anABAPRootNode.
+	self last notNil ifTrue: [ self last parent: self ]
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPFieldStatementNode >> nodeVariables [
-	^ #(#formName)
+	^ #(#formName #first #last)
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> operators [
-	^ operators
+ABAPFieldStatementNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPFieldStatementNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPFieldStatementNode >> tokenVariables [
+	^ #(#leftParen #rightParen #period)
 ]

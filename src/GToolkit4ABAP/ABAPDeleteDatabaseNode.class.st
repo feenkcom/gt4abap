@@ -11,6 +11,7 @@ Class {
 		'withNames',
 		'asNames',
 		'fields',
+		'eqs',
 		'fieldChains',
 		'values',
 		'keies',
@@ -70,12 +71,12 @@ ABAPDeleteDatabaseNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #fieldNames #withNames #asNames #fields #fieldChains #sources #lengths #decs #names #attributeNames #functions)
+	^ #(#dynamics #targets #fieldNames #withNames #asNames #fields #fieldChains #sources #lengths #decs #names #functions #attributeNames)
 ]
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #keies #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #leftBrackets #rightBrackets #dashs #arrows)
 ]
 
 { #category : #generated }
@@ -110,6 +111,16 @@ ABAPDeleteDatabaseNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -172,6 +183,7 @@ ABAPDeleteDatabaseNode >> initialize [
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
@@ -182,10 +194,10 @@ ABAPDeleteDatabaseNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -6,6 +6,7 @@ Class {
 		'sources',
 		'leftBrackets',
 		'rightBrackets',
+		'fieldOffsets',
 		'fieldLengths',
 		'names',
 		'arrows',
@@ -14,9 +15,9 @@ Class {
 		'leftParens',
 		'rightParens',
 		'fields',
+		'eqs',
 		'values',
 		'dynamics',
-		'dashs',
 		'parameterNames',
 		'lengths'
 	],
@@ -52,22 +53,12 @@ ABAPReadTextpoolNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeNodeVariables [
-	^ #(#sources #fieldLengths #names #attributeNames #typeNames #fields #dynamics #parameterNames #lengths)
+	^ #(#sources #fieldOffsets #fieldLengths #names #attributeNames #typeNames #fields #dynamics #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #arrows #leftParens #rightParens #values #dashs)
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #leftBrackets #rightBrackets #arrows #leftParens #rightParens #eqs #values)
 ]
 
 { #category : #generated }
@@ -83,6 +74,16 @@ ABAPReadTextpoolNode >> dynamics: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReadTextpoolNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPReadTextpoolNode >> fieldLengths [
 	^ fieldLengths
 ]
@@ -92,6 +93,18 @@ ABAPReadTextpoolNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: nil.
 	fieldLengths := anOrderedCollection.
 	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -113,6 +126,7 @@ ABAPReadTextpoolNode >> initialize [
 	sources := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
@@ -121,9 +135,9 @@ ABAPReadTextpoolNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]

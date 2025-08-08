@@ -3,16 +3,14 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftParen',
-		'key',
-		'rightParen',
-		'operators',
+		'dialog',
 		'fields',
+		'importingTos',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'sources'
+		'exportingFroms'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,12 +22,36 @@ ABAPCallDialogNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCallDialogNode >> compositeNodeVariables [
-	^ #(#fields #lengths #sources)
+	^ #(#fields #importingTos #lengths #exportingFroms)
 ]
 
 { #category : #generated }
 ABAPCallDialogNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators #leftBrackets #rightBrackets)
+	^ #(#keywords #values #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> dialog [
+	^ dialog
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> dialog: anObject [
+	self setParent: self dialog to: nil.
+	dialog := anObject.
+	self setParent: self dialog to: self
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> exportingFroms [
+	^ exportingFroms
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> exportingFroms: anOrderedCollection [
+	self setParents: self exportingFroms to: nil.
+	exportingFroms := anOrderedCollection.
+	self setParents: self exportingFroms to: self
 ]
 
 { #category : #generated }
@@ -44,27 +66,29 @@ ABAPCallDialogNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPCallDialogNode >> importingTos [
+	^ importingTos
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> importingTos: anOrderedCollection [
+	self setParents: self importingTos to: nil.
+	importingTos := anOrderedCollection.
+	self setParents: self importingTos to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPCallDialogNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	importingTos := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> key: aSmaCCToken [
-	key := aSmaCCToken
+	exportingFroms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -88,16 +112,6 @@ ABAPCallDialogNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPCallDialogNode >> lengths [
 	^ lengths
 ]
@@ -110,13 +124,8 @@ ABAPCallDialogNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPCallDialogNode >> otherVariables [
+	^ #(#dialog)
 ]
 
 { #category : #generated }
@@ -127,33 +136,6 @@ ABAPCallDialogNode >> rightBrackets [
 { #category : #generated }
 ABAPCallDialogNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #period)
 ]
 
 { #category : #generated }

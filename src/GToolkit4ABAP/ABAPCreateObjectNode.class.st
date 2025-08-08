@@ -7,6 +7,7 @@ Class {
 		'names',
 		'dynamics',
 		'sources',
+		'eqs',
 		'values',
 		'operators',
 		'arrows',
@@ -51,7 +52,7 @@ ABAPCreateObjectNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCreateObjectNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators #arrows #dashs)
+	^ #(#keywords #eqs #values #operators #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -76,6 +77,16 @@ ABAPCreateObjectNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: self
 ]
 
+{ #category : #generated }
+ABAPCreateObjectNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
 { #category : #'generated-initialize-release' }
 ABAPCreateObjectNode >> initialize [
 	super initialize.
@@ -84,6 +95,7 @@ ABAPCreateObjectNode >> initialize [
 	names := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.

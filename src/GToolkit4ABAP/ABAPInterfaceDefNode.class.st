@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'interfaceName',
 		'attributeNames',
+		'eqs',
 		'sources',
 		'methodNames'
 	],
@@ -35,7 +36,17 @@ ABAPInterfaceDefNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPInterfaceDefNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPInterfaceDefNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPInterfaceDefNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -43,6 +54,7 @@ ABAPInterfaceDefNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 ]

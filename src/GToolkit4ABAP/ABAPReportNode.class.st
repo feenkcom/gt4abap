@@ -8,7 +8,7 @@ Class {
 		'reports',
 		'rightParens',
 		'fields',
-		'values',
+		'messageClasses',
 		'reportName'
 	],
 	#category : #GToolkit4ABAP
@@ -21,12 +21,12 @@ ABAPReportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReportNode >> compositeNodeVariables [
-	^ #(#lineses #reports #fields)
+	^ #(#lineses #reports #fields #messageClasses)
 ]
 
 { #category : #generated }
 ABAPReportNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #values)
+	^ #(#keywords #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -50,7 +50,7 @@ ABAPReportNode >> initialize [
 	reports := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
+	messageClasses := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -83,6 +83,18 @@ ABAPReportNode >> lineses: anOrderedCollection [
 	self setParents: self lineses to: nil.
 	lineses := anOrderedCollection.
 	self setParents: self lineses to: self
+]
+
+{ #category : #generated }
+ABAPReportNode >> messageClasses [
+	^ messageClasses
+]
+
+{ #category : #generated }
+ABAPReportNode >> messageClasses: anOrderedCollection [
+	self setParents: self messageClasses to: nil.
+	messageClasses := anOrderedCollection.
+	self setParents: self messageClasses to: self
 ]
 
 { #category : #generated }
@@ -122,14 +134,4 @@ ABAPReportNode >> rightParens [
 { #category : #generated }
 ABAPReportNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReportNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPReportNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]

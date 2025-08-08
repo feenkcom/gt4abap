@@ -9,7 +9,8 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
-		'fieldChains'
+		'fieldChains',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,7 +39,17 @@ ABAPEditorCallNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPEditorCallNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -63,6 +74,7 @@ ABAPEditorCallNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

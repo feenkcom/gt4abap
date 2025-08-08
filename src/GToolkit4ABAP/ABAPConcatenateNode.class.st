@@ -10,7 +10,8 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
-		'fieldChains'
+		'fieldChains',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -39,7 +40,17 @@ ABAPConcatenateNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPConcatenateNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -64,6 +75,7 @@ ABAPConcatenateNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

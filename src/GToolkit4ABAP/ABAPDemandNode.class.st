@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'fields',
+		'eqs',
 		'targets'
 	],
 	#category : #GToolkit4ABAP
@@ -21,7 +22,17 @@ ABAPDemandNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPDemandNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPDemandNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPDemandNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -41,6 +52,7 @@ ABAPDemandNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 ]
 

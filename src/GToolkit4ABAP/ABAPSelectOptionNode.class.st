@@ -9,18 +9,20 @@ Class {
 		'lengths',
 		'fieldChains',
 		'defaults',
+		'tos',
 		'fields',
 		'sources',
+		'names',
+		'arrows',
+		'attributeNames',
 		'leftParens',
 		'keies',
 		'rightParens',
 		'operators',
-		'names',
-		'arrows',
-		'attributeNames',
-		'typeNames',
 		'dashs',
+		'typeNames',
 		'methodNames',
+		'eqs',
 		'dynamics',
 		'parameterNames',
 		'targets'
@@ -57,12 +59,12 @@ ABAPSelectOptionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeNodeVariables [
-	^ #(#lengths #fieldChains #defaults #fields #sources #names #attributeNames #typeNames #methodNames #dynamics #parameterNames #targets)
+	^ #(#lengths #fieldChains #defaults #tos #fields #sources #names #attributeNames #typeNames #methodNames #dynamics #parameterNames #targets)
 ]
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #keies #rightParens #operators #arrows #dashs)
+	^ #(#keywords #leftBrackets #rightBrackets #arrows #leftParens #keies #rightParens #operators #dashs #eqs)
 ]
 
 { #category : #generated }
@@ -100,6 +102,16 @@ ABAPSelectOptionNode >> dynamics: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPSelectOptionNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPSelectOptionNode >> fieldChains [
 	^ fieldChains
 ]
@@ -133,18 +145,20 @@ ABAPSelectOptionNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
+	tos := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
@@ -295,6 +309,18 @@ ABAPSelectOptionNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> tos [
+	^ tos
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> tos: anOrderedCollection [
+	self setParents: self tos to: nil.
+	tos := anOrderedCollection.
+	self setParents: self tos to: self
 ]
 
 { #category : #generated }

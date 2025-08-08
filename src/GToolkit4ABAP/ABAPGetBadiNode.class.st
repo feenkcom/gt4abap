@@ -6,6 +6,7 @@ Class {
 		'target',
 		'sources',
 		'parameterNames',
+		'eqs',
 		'dynamic'
 	],
 	#category : #GToolkit4ABAP
@@ -23,7 +24,7 @@ ABAPGetBadiNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPGetBadiNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -38,12 +39,23 @@ ABAPGetBadiNode >> dynamic: anABAPDynamicNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
+{ #category : #generated }
+ABAPGetBadiNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPGetBadiNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
 { #category : #'generated-initialize-release' }
 ABAPGetBadiNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

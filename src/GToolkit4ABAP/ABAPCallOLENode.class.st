@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
+		'eqs',
 		'target'
 	],
 	#category : #GToolkit4ABAP
@@ -21,7 +22,17 @@ ABAPCallOLENode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCallOLENode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPCallOLENode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPCallOLENode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -29,6 +40,7 @@ ABAPCallOLENode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

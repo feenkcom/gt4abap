@@ -4,13 +4,15 @@ Class {
 	#instVars : [
 		'keywords',
 		'leftParens',
-		'values',
+		'messageClass',
 		'rightParens',
 		'sources',
 		'targets',
 		'exceptionNames',
+		'values',
 		'keies',
 		'operators',
+		'dashs',
 		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
@@ -28,7 +30,17 @@ ABAPMessageNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPMessageNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #values #rightParens #keies #operators)
+	^ #(#keywords #leftParens #rightParens #values #keies #operators #dashs)
+]
+
+{ #category : #generated }
+ABAPMessageNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPMessageNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -60,13 +72,14 @@ ABAPMessageNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	exceptionNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 ]
 
@@ -98,6 +111,23 @@ ABAPMessageNode >> leftParens [
 { #category : #generated }
 ABAPMessageNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMessageNode >> messageClass [
+	^ messageClass
+]
+
+{ #category : #generated }
+ABAPMessageNode >> messageClass: anABAPNameNode [
+	self messageClass notNil ifTrue: [ self messageClass parent: nil ].
+	messageClass := anABAPNameNode.
+	self messageClass notNil ifTrue: [ self messageClass parent: self ]
+]
+
+{ #category : #generated }
+ABAPMessageNode >> nodeVariables [
+	^ #(#messageClass)
 ]
 
 { #category : #generated }

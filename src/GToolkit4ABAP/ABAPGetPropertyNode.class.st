@@ -7,7 +7,8 @@ Class {
 		'leftBracket',
 		'rightBracket',
 		'length',
-		'sources'
+		'sources',
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,7 +25,17 @@ ABAPGetPropertyNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPGetPropertyNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPGetPropertyNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPGetPropertyNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -33,6 +44,7 @@ ABAPGetPropertyNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

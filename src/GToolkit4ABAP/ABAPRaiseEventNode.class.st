@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'eventName',
 		'parameterNames',
+		'eqs',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -22,7 +23,17 @@ ABAPRaiseEventNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPRaiseEventNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPRaiseEventNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPRaiseEventNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -42,6 +53,7 @@ ABAPRaiseEventNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 

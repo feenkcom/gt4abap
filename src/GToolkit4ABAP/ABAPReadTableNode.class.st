@@ -8,19 +8,20 @@ Class {
 		'key',
 		'rightParens',
 		'operators',
+		'dash',
 		'sources',
+		'eqs',
 		'dynamics',
 		'fieldChain',
 		'fields',
 		'names',
 		'fieldLengths',
+		'fieldOffsets',
 		'targets',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'arrows',
-		'attributeNames',
-		'dashs'
+		'arrows'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -41,35 +42,23 @@ ABAPReadTableNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPReadTableNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #fields #names #fieldLengths #targets #lengths #attributeNames)
+	^ #(#sources #dynamics #fields #names #fieldLengths #fieldOffsets #targets #lengths)
 ]
 
 { #category : #generated }
 ABAPReadTableNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #values #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows)
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> dashs [
-	^ dashs
+ABAPReadTableNode >> dash [
+	^ dash
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+ABAPReadTableNode >> dash: aSmaCCToken [
+	dash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -82,6 +71,16 @@ ABAPReadTableNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -109,6 +108,18 @@ ABAPReadTableNode >> fieldLengths: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReadTableNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
+{ #category : #generated }
 ABAPReadTableNode >> fields [
 	^ fields
 ]
@@ -129,17 +140,17 @@ ABAPReadTableNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -267,7 +278,7 @@ ABAPReadTableNode >> targets: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadTableNode >> tokenVariables [
-	^ #(#key #period)
+	^ #(#key #dash #period)
 ]
 
 { #category : #generated }

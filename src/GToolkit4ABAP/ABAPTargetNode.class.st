@@ -11,12 +11,13 @@ Class {
 		'rightBrackets',
 		'typeNames',
 		'sources',
+		'eqs',
 		'arrows',
 		'attributeNames',
 		'names',
 		'fieldLengths',
+		'fieldOffsets',
 		'dynamics',
-		'dashs',
 		'parameterNames',
 		'lengths'
 	],
@@ -52,22 +53,12 @@ ABAPTargetNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPTargetNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #fieldLengths #dynamics #parameterNames #lengths)
+	^ #(#fields #typeNames #sources #attributeNames #names #fieldLengths #fieldOffsets #dynamics #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPTargetNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #values #leftBrackets #rightBrackets #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPTargetNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPTargetNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #leftParens #rightParens #values #leftBrackets #rightBrackets #eqs #arrows)
 ]
 
 { #category : #generated }
@@ -83,6 +74,16 @@ ABAPTargetNode >> dynamics: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPTargetNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPTargetNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPTargetNode >> fieldLengths [
 	^ fieldLengths
 ]
@@ -92,6 +93,18 @@ ABAPTargetNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: nil.
 	fieldLengths := anOrderedCollection.
 	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
+ABAPTargetNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPTargetNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -118,12 +131,13 @@ ABAPTargetNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]

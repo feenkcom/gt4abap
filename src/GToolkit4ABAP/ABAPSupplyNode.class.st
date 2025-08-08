@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'fields',
+		'eqs',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -21,7 +22,17 @@ ABAPSupplyNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSupplyNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPSupplyNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPSupplyNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -41,6 +52,7 @@ ABAPSupplyNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 

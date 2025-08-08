@@ -7,13 +7,13 @@ Class {
 		'dynamics',
 		'names',
 		'fieldLengths',
+		'fieldOffsets',
 		'leftBrackets',
 		'rightBrackets',
 		'values',
 		'arrows',
 		'sources',
-		'attributeNames',
-		'dashs'
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -34,35 +34,13 @@ ABAPSortNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSortNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSortNode >> compositeNodeVariables [
-	^ #(#dynamics #names #fieldLengths #sources #attributeNames)
+	^ #(#dynamics #names #fieldLengths #fieldOffsets #sources)
 ]
 
 { #category : #generated }
 ABAPSortNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #values #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPSortNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPSortNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #leftBrackets #rightBrackets #values #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -78,6 +56,16 @@ ABAPSortNode >> dynamics: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPSortNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPSortNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPSortNode >> fieldLengths [
 	^ fieldLengths
 ]
@@ -89,6 +77,18 @@ ABAPSortNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPSortNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPSortNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPSortNode >> initialize [
 	super initialize.
@@ -96,13 +96,13 @@ ABAPSortNode >> initialize [
 	dynamics := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

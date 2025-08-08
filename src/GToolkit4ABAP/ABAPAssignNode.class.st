@@ -11,6 +11,7 @@ Class {
 		'key',
 		'rightParens',
 		'operators',
+		'dash',
 		'fieldChain',
 		'field',
 		'leftBracket',
@@ -44,6 +45,16 @@ ABAPAssignNode >> compositeNodeVariables [
 { #category : #generated }
 ABAPAssignNode >> compositeTokenVariables [
 	^ #(#keywords #values #leftParens #rightParens #operators)
+]
+
+{ #category : #generated }
+ABAPAssignNode >> dash [
+	^ dash
+]
+
+{ #category : #generated }
+ABAPAssignNode >> dash: aSmaCCToken [
+	dash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -196,7 +207,7 @@ ABAPAssignNode >> target: anABAPTargetNode [
 
 { #category : #generated }
 ABAPAssignNode >> tokenVariables [
-	^ #(#arrow #key #leftBracket #rightBracket #period)
+	^ #(#arrow #key #dash #leftBracket #rightBracket #period)
 ]
 
 { #category : #generated }

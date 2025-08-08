@@ -12,6 +12,7 @@ Class {
 		'fieldChains',
 		'sources',
 		'fieldNames',
+		'eqs',
 		'targets',
 		'withNames',
 		'asNames',
@@ -70,12 +71,12 @@ ABAPUpdateDatabaseNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #attributeNames #functions)
+	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #functions #attributeNames)
 ]
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #leftBrackets #rightBrackets #arrows)
 ]
 
 { #category : #generated }
@@ -110,6 +111,16 @@ ABAPUpdateDatabaseNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -170,9 +181,11 @@ ABAPUpdateDatabaseNode >> initialize [
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
@@ -182,10 +195,9 @@ ABAPUpdateDatabaseNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -13,7 +13,9 @@ Class {
 		'operators',
 		'fieldChains',
 		'fields',
-		'sources'
+		'eqs',
+		'sources',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -30,7 +32,17 @@ ABAPCallTransformationNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCallTransformationNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #dashs)
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -43,6 +55,16 @@ ABAPCallTransformationNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -82,7 +104,9 @@ ABAPCallTransformationNode >> initialize [
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -3,13 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftParen',
-		'key',
-		'rightParen',
-		'operators',
-		'sources',
-		'field'
+		'call',
+		'ids',
+		'fields'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -20,44 +16,57 @@ ABAPCallKernelNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPCallKernelNode >> call [
+	^ call
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> call: anABAPRootNode [
+	self call notNil ifTrue: [ self call parent: nil ].
+	call := anABAPRootNode.
+	self call notNil ifTrue: [ self call parent: self ]
+]
+
+{ #category : #generated }
 ABAPCallKernelNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#ids #fields)
 ]
 
 { #category : #generated }
 ABAPCallKernelNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> field [
-	^ field
+ABAPCallKernelNode >> fields [
+	^ fields
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
+ABAPCallKernelNode >> fields: anOrderedCollection [
+	self setParents: self fields to: nil.
+	fields := anOrderedCollection.
+	self setParents: self fields to: self
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> ids [
+	^ ids
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> ids: anOrderedCollection [
+	self setParents: self ids to: nil.
+	ids := anOrderedCollection.
+	self setParents: self ids to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPCallKernelNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> key: aSmaCCToken [
-	key := aSmaCCToken
+	ids := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,63 +80,6 @@ ABAPCallKernelNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPCallKernelNode >> nodeVariables [
-	^ #(#field)
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #period)
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	^ #(#call)
 ]

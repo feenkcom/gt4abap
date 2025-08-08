@@ -10,7 +10,8 @@ Class {
 		'values',
 		'keies',
 		'operators',
-		'fieldChains'
+		'fieldChains',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,7 +28,17 @@ ABAPModifyDatabaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #values #keies #operators)
+	^ #(#keywords #leftParens #rightParens #values #keies #operators #dashs)
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -66,6 +77,7 @@ ABAPModifyDatabaseNode >> initialize [
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

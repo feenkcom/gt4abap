@@ -11,19 +11,20 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
+		'dashs',
 		'leftBrackets',
 		'rightParens',
+		'operators',
 		'sources',
 		'values',
 		'keies',
-		'operators',
 		'fieldChains',
 		'rightBrackets',
-		'lengths',
 		'fields',
+		'eqs',
 		'targets',
+		'lengths',
 		'decs',
-		'dashs',
 		'functions',
 		'body'
 	],
@@ -83,12 +84,12 @@ ABAPWithNode >> body: anABAPBodyNode [
 
 { #category : #generated }
 ABAPWithNode >> compositeNodeVariables [
-	^ #(#withNames #dynamics #fieldNames #asNames #names #attributeNames #sources #fieldChains #lengths #fields #targets #decs #functions)
+	^ #(#withNames #dynamics #fieldNames #asNames #names #attributeNames #sources #fieldChains #fields #targets #lengths #decs #functions)
 ]
 
 { #category : #generated }
 ABAPWithNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightParens #keies #operators #rightBrackets #dashs)
+	^ #(#keywords #leftParens #arrows #dashs #leftBrackets #rightParens #operators #keies #rightBrackets #eqs)
 ]
 
 { #category : #generated }
@@ -123,6 +124,16 @@ ABAPWithNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPWithNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPWithNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -185,19 +196,20 @@ ABAPWithNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
 ]
 

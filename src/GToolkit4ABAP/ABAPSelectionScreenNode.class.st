@@ -3,17 +3,18 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
+		'leftParen',
 		'values',
-		'rightParens',
+		'rightParen',
 		'fields',
+		'dashs',
+		'keies',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'key',
 		'skip',
 		'name',
-		'operators',
+		'userCommand',
 		'tab',
 		'screen',
 		'lines',
@@ -34,7 +35,17 @@ ABAPSelectionScreenNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #dashs #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -53,27 +64,26 @@ ABAPSelectionScreenNode >> fields: anOrderedCollection [
 ABAPSelectionScreenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> key [
-	^ key
+ABAPSelectionScreenNode >> keies [
+	^ keies
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> key: anObject [
-	self setParent: self key to: nil.
-	key := anObject.
-	self setParent: self key to: self
+ABAPSelectionScreenNode >> keies: anOrderedCollection [
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -97,13 +107,13 @@ ABAPSelectionScreenNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> leftParens [
-	^ leftParens
+ABAPSelectionScreenNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPSelectionScreenNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -144,22 +154,12 @@ ABAPSelectionScreenNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> nodeVariables [
-	^ #(#skip #name #tab #screen #lines)
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+	^ #(#skip #name #userCommand #tab #screen #lines)
 ]
 
 { #category : #generated }
 ABAPSelectionScreenNode >> otherVariables [
-	^ #(#values #key)
+	^ #(#values #keies)
 ]
 
 { #category : #generated }
@@ -173,13 +173,13 @@ ABAPSelectionScreenNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> rightParens [
-	^ rightParens
+ABAPSelectionScreenNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPSelectionScreenNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -228,6 +228,23 @@ ABAPSelectionScreenNode >> tab: anABAPIntegerNode [
 	self tab notNil ifTrue: [ self tab parent: nil ].
 	tab := anABAPIntegerNode.
 	self tab notNil ifTrue: [ self tab parent: self ]
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> tokenVariables [
+	^ #(#leftParen #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> userCommand [
+	^ userCommand
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> userCommand: anABAPRootNode [
+	self userCommand notNil ifTrue: [ self userCommand parent: nil ].
+	userCommand := anABAPRootNode.
+	self userCommand notNil ifTrue: [ self userCommand parent: self ]
 ]
 
 { #category : #generated }

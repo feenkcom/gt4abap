@@ -8,6 +8,7 @@ Class {
 		'key',
 		'rightParen',
 		'operators',
+		'dash',
 		'fieldChain',
 		'_source'
 	],
@@ -34,6 +35,16 @@ ABAPCloseCursorNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPCloseCursorNode >> compositeTokenVariables [
 	^ #(#keywords #values #operators)
+]
+
+{ #category : #generated }
+ABAPCloseCursorNode >> dash [
+	^ dash
+]
+
+{ #category : #generated }
+ABAPCloseCursorNode >> dash: aSmaCCToken [
+	dash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -113,7 +124,7 @@ ABAPCloseCursorNode >> rightParen: aSmaCCToken [
 
 { #category : #generated }
 ABAPCloseCursorNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #period)
+	^ #(#leftParen #key #rightParen #dash #period)
 ]
 
 { #category : #generated }

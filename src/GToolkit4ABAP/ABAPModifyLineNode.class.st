@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources'
+		'sources',
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -20,7 +21,17 @@ ABAPModifyLineNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPModifyLineNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPModifyLineNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPModifyLineNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -28,6 +39,7 @@ ABAPModifyLineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

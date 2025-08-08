@@ -18,6 +18,7 @@ Class {
 		'operators',
 		'sizes',
 		'fields',
+		'eqs',
 		'defaults',
 		'leftBrackets',
 		'rightBrackets'
@@ -37,7 +38,7 @@ ABAPTypeMeshNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPTypeMeshNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -62,6 +63,16 @@ ABAPTypeMeshNode >> defaults: anOrderedCollection [
 	self setParents: self defaults to: nil.
 	defaults := anOrderedCollection.
 	self setParents: self defaults to: self
+]
+
+{ #category : #generated }
+ABAPTypeMeshNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPTypeMeshNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -119,6 +130,7 @@ ABAPTypeMeshNode >> initialize [
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.

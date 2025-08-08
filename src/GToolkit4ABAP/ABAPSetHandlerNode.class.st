@@ -13,6 +13,7 @@ Class {
 		'rightParens',
 		'values',
 		'parameterNames',
+		'eqs',
 		'targets',
 		'operators',
 		'dashs',
@@ -55,7 +56,7 @@ ABAPSetHandlerNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSetHandlerNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #operators #dashs)
+	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs)
 ]
 
 { #category : #generated }
@@ -78,6 +79,16 @@ ABAPSetHandlerNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -106,6 +117,7 @@ ABAPSetHandlerNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.

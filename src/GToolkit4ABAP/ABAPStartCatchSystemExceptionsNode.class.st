@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'fields',
+		'eqs',
 		'sources',
 		'period'
 	],
@@ -22,7 +23,17 @@ ABAPStartCatchSystemExceptionsNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPStartCatchSystemExceptionsNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPStartCatchSystemExceptionsNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPStartCatchSystemExceptionsNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -42,6 +53,7 @@ ABAPStartCatchSystemExceptionsNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 

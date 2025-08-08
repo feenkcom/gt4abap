@@ -5,13 +5,15 @@ Class {
 		'keywords',
 		'names',
 		'leftParens',
-		'values',
+		'messageClass',
 		'rightParens',
 		'sources',
+		'values',
 		'keies',
 		'operators',
 		'methodNames',
 		'parameterNames',
+		'eqs',
 		'targets',
 		'arrows',
 		'attributeNames',
@@ -62,7 +64,7 @@ ABAPRaiseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPRaiseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #keies #operators #arrows #dashs #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #rightParens #keies #operators #dashs #eqs #arrows #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -85,6 +87,16 @@ ABAPRaiseNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPRaiseNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPRaiseNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -129,17 +141,18 @@ ABAPRaiseNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
@@ -202,6 +215,18 @@ ABAPRaiseNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPRaiseNode >> messageClass [
+	^ messageClass
+]
+
+{ #category : #generated }
+ABAPRaiseNode >> messageClass: anABAPNameNode [
+	self messageClass notNil ifTrue: [ self messageClass parent: nil ].
+	messageClass := anABAPNameNode.
+	self messageClass notNil ifTrue: [ self messageClass parent: self ]
+]
+
+{ #category : #generated }
 ABAPRaiseNode >> methodNames [
 	^ methodNames
 ]
@@ -227,7 +252,7 @@ ABAPRaiseNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPRaiseNode >> nodeVariables [
-	^ #(#exceptionName)
+	^ #(#messageClass #exceptionName)
 ]
 
 { #category : #generated }

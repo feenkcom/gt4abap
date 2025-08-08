@@ -4,12 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'values',
-		'leftParen',
-		'key',
-		'rightParen',
-		'operators',
-		'field'
+		'name',
+		'eqs',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,19 +23,17 @@ ABAPSetPropertyNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSetPropertyNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators)
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> field [
-	^ field
+ABAPSetPropertyNode >> eqs [
+	^ eqs
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
+ABAPSetPropertyNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -46,18 +41,7 @@ ABAPSetPropertyNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> key: aSmaCCToken [
-	key := aSmaCCToken
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,38 +55,20 @@ ABAPSetPropertyNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> leftParen [
-	^ leftParen
+ABAPSetPropertyNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
+ABAPSetPropertyNode >> name: anABAPRootNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPRootNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 ABAPSetPropertyNode >> nodeVariables [
-	^ #(#field)
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
+	^ #(#name #value)
 ]
 
 { #category : #generated }
@@ -118,16 +84,13 @@ ABAPSetPropertyNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #period)
+ABAPSetPropertyNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPSetPropertyNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPSetPropertyNode >> value: anABAPSourceNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPSourceNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

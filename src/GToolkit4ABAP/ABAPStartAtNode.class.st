@@ -7,10 +7,7 @@ Class {
 		'leftBracket',
 		'rightBracket',
 		'length',
-		'names',
-		'arrows',
-		'attributeNames',
-		'dashs',
+		'fieldOffset',
 		'fieldLength',
 		'period',
 		'dynamic'
@@ -24,45 +21,8 @@ ABAPStartAtNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> compositeNodeVariables [
-	^ #(#names #attributeNames)
-]
-
-{ #category : #generated }
 ABAPStartAtNode >> compositeTokenVariables [
-	^ #(#keywords #values #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #values)
 ]
 
 { #category : #generated }
@@ -89,15 +49,23 @@ ABAPStartAtNode >> fieldLength: anABAPFieldLengthNode [
 	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
+{ #category : #generated }
+ABAPStartAtNode >> fieldOffset [
+	^ fieldOffset
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPStartAtNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -133,20 +101,8 @@ ABAPStartAtNode >> length: anABAPFieldLengthNode [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPStartAtNode >> nodeVariables [
-	^ #(#length #fieldLength #dynamic)
+	^ #(#length #fieldOffset #fieldLength #dynamic)
 ]
 
 { #category : #generated }

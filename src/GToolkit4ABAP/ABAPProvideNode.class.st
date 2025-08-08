@@ -20,6 +20,7 @@ Class {
 		'arrows',
 		'typeNames',
 		'methodNames',
+		'eqs',
 		'attributeNames',
 		'parameterNames',
 		'dashs',
@@ -74,7 +75,7 @@ ABAPProvideNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPProvideNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -85,6 +86,16 @@ ABAPProvideNode >> dashs [
 { #category : #generated }
 ABAPProvideNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPProvideNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPProvideNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -141,12 +152,13 @@ ABAPProvideNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'dynamics',
 		'parameterNames',
+		'eqs',
 		'targets',
 		'sources'
 	],
@@ -23,7 +24,7 @@ ABAPCallDatabaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCallDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -38,12 +39,23 @@ ABAPCallDatabaseNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: self
 ]
 
+{ #category : #generated }
+ABAPCallDatabaseNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
 { #category : #'generated-initialize-release' }
 ABAPCallDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]

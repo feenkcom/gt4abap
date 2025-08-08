@@ -9,20 +9,24 @@ Class {
 		'lengths',
 		'typeNames',
 		'fieldLengths',
+		'fieldOffsets',
 		'dynamics',
-		'fieldChains',
+		'defaults',
 		'fields',
-		'sources',
+		'decimalses',
 		'groupNames',
+		'fieldChains',
 		'leftParens',
 		'keies',
 		'rightParens',
 		'operators',
-		'names',
-		'arrows',
-		'attributeNames',
 		'dashs',
+		'arrows',
+		'names',
+		'sources',
 		'methodNames',
+		'eqs',
+		'attributeNames',
 		'parameterNames',
 		'targets'
 	],
@@ -58,12 +62,12 @@ ABAPParameterNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#lengths #typeNames #fieldLengths #dynamics #fieldChains #fields #sources #groupNames #names #attributeNames #methodNames #parameterNames #targets)
+	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #sources #methodNames #attributeNames #parameterNames #targets)
 ]
 
 { #category : #generated }
 ABAPParameterNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #keies #rightParens #operators #arrows #dashs)
+	^ #(#keywords #leftBrackets #rightBrackets #leftParens #keies #rightParens #operators #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -77,6 +81,30 @@ ABAPParameterNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPParameterNode >> decimalses [
+	^ decimalses
+]
+
+{ #category : #generated }
+ABAPParameterNode >> decimalses: anOrderedCollection [
+	self setParents: self decimalses to: nil.
+	decimalses := anOrderedCollection.
+	self setParents: self decimalses to: self
+]
+
+{ #category : #generated }
+ABAPParameterNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPParameterNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
+]
+
+{ #category : #generated }
 ABAPParameterNode >> dynamics [
 	^ dynamics
 ]
@@ -86,6 +114,16 @@ ABAPParameterNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPParameterNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPParameterNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -110,6 +148,18 @@ ABAPParameterNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: nil.
 	fieldLengths := anOrderedCollection.
 	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
+ABAPParameterNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPParameterNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -146,20 +196,24 @@ ABAPParameterNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	decimalses := OrderedCollection new: 2.
 	groupNames := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 ]

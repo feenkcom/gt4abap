@@ -15,6 +15,7 @@ Class {
 		'names',
 		'methodNames',
 		'parameterNames',
+		'eqs',
 		'targets',
 		'arrows',
 		'attributeNames',
@@ -61,7 +62,7 @@ ABAPStartIfNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPStartIfNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
+	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #keies #rightParens #eqs #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -72,6 +73,16 @@ ABAPStartIfNode >> dashs [
 { #category : #generated }
 ABAPStartIfNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStartIfNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPStartIfNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -114,6 +125,7 @@ ABAPStartIfNode >> initialize [
 	names := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.

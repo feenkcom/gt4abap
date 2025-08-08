@@ -11,6 +11,7 @@ Class {
 		'withNames',
 		'asNames',
 		'fields',
+		'eqs',
 		'fieldChains',
 		'values',
 		'keies',
@@ -21,9 +22,9 @@ Class {
 		'lengths',
 		'decs',
 		'names',
-		'functions',
 		'arrows',
 		'attributeNames',
+		'functions',
 		'dashs'
 	],
 	#category : #GToolkit4ABAP
@@ -75,7 +76,7 @@ ABAPOpenCursorNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #keies #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #leftBrackets #rightBrackets #dashs #arrows)
 ]
 
 { #category : #generated }
@@ -110,6 +111,16 @@ ABAPOpenCursorNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -172,6 +183,7 @@ ABAPOpenCursorNode >> initialize [
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
@@ -182,10 +194,10 @@ ABAPOpenCursorNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

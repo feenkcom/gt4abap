@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'includeName',
-		'lineses',
-		'values'
+		'messageClasses',
+		'lineses'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,12 +17,12 @@ ABAPFunctionPoolNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFunctionPoolNode >> compositeNodeVariables [
-	^ #(#lineses)
+	^ #(#messageClasses #lineses)
 ]
 
 { #category : #generated }
 ABAPFunctionPoolNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -41,8 +41,8 @@ ABAPFunctionPoolNode >> includeName: anABAPNameNode [
 ABAPFunctionPoolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	messageClasses := OrderedCollection new: 2.
 	lineses := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -68,16 +68,18 @@ ABAPFunctionPoolNode >> lineses: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPFunctionPoolNode >> messageClasses [
+	^ messageClasses
+]
+
+{ #category : #generated }
+ABAPFunctionPoolNode >> messageClasses: anOrderedCollection [
+	self setParents: self messageClasses to: nil.
+	messageClasses := anOrderedCollection.
+	self setParents: self messageClasses to: self
+]
+
+{ #category : #generated }
 ABAPFunctionPoolNode >> nodeVariables [
 	^ #(#includeName)
-]
-
-{ #category : #generated }
-ABAPFunctionPoolNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPFunctionPoolNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]

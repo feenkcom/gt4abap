@@ -6,6 +6,7 @@ Class {
 		'target',
 		'names',
 		'fieldLengths',
+		'fieldOffsets',
 		'operators',
 		'sources',
 		'leftParens',
@@ -16,8 +17,6 @@ Class {
 		'keies',
 		'rightParens',
 		'arrows',
-		'attributeNames',
-		'dashs',
 		'dynamics'
 	],
 	#category : #GToolkit4ABAP
@@ -39,35 +38,13 @@ ABAPModifyInternalNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#names #fieldLengths #sources #lengths #attributeNames #dynamics)
+	^ #(#names #fieldLengths #fieldOffsets #sources #lengths #dynamics)
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows)
 ]
 
 { #category : #generated }
@@ -94,12 +71,25 @@ ABAPModifyInternalNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPModifyInternalNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPModifyInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
@@ -110,8 +100,6 @@ ABAPModifyInternalNode >> initialize [
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 ]
 

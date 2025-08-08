@@ -10,8 +10,9 @@ Class {
 		'rightBrackets',
 		'keywords',
 		'fieldLengths',
+		'fieldOffsets',
+		'eqs',
 		'dynamics',
-		'dashs',
 		'field',
 		'value'
 	],
@@ -47,22 +48,12 @@ ABAPFieldChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fieldLengths #dynamics)
+	^ #(#names #attributeNames #sources #fieldLengths #fieldOffsets #dynamics)
 ]
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeTokenVariables [
-	^ #(#arrows #leftBrackets #rightBrackets #keywords #dashs)
-]
-
-{ #category : #generated }
-ABAPFieldChainNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPFieldChainNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#arrows #leftBrackets #rightBrackets #keywords #eqs)
 ]
 
 { #category : #generated }
@@ -75,6 +66,16 @@ ABAPFieldChainNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -101,6 +102,18 @@ ABAPFieldChainNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPFieldChainNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPFieldChainNode >> initialize [
 	super initialize.
@@ -112,8 +125,9 @@ ABAPFieldChainNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

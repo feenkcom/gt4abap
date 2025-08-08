@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'includeName',
 		'sources',
+		'eqs',
 		'values',
 		'leftBrackets',
 		'rightBrackets',
@@ -26,7 +27,7 @@ ABAPSubmitNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSubmitNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftBrackets #rightBrackets)
+	^ #(#keywords #eqs #values #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -39,6 +40,16 @@ ABAPSubmitNode >> dynamic: anABAPDynamicNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
 	dynamic := anABAPDynamicNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -58,6 +69,7 @@ ABAPSubmitNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.

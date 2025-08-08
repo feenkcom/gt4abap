@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'sources',
 		'targets',
+		'eqs',
 		'values',
 		'leftBrackets',
 		'rightBrackets',
@@ -54,7 +55,7 @@ ABAPWriteNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPWriteNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -79,12 +80,23 @@ ABAPWriteNode >> dynamic: anABAPDynamicNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
+{ #category : #generated }
+ABAPWriteNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPWriteNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
 { #category : #'generated-initialize-release' }
 ABAPWriteNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.

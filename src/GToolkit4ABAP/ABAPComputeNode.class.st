@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
+		'eq',
 		'_source'
 	],
 	#category : #GToolkit4ABAP
@@ -29,6 +30,16 @@ ABAPComputeNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPComputeNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPComputeNode >> eq [
+	^ eq
+]
+
+{ #category : #generated }
+ABAPComputeNode >> eq: aSmaCCToken [
+	eq := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -62,4 +73,9 @@ ABAPComputeNode >> target: anABAPTargetNode [
 	self target notNil ifTrue: [ self target parent: nil ].
 	target := anABAPTargetNode.
 	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPComputeNode >> tokenVariables [
+	^ #(#eq #period)
 ]

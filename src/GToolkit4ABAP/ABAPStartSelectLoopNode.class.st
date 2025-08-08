@@ -20,11 +20,12 @@ Class {
 		'rightBrackets',
 		'arrows',
 		'attributeNames',
+		'functions',
 		'dashs',
 		'withNames',
+		'eqs',
 		'targets',
 		'lengths',
-		'functions',
 		'period'
 	],
 	#category : #GToolkit4ABAP
@@ -71,12 +72,12 @@ ABAPStartSelectLoopNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldNames #fields #asNames #sources #decs #names #fieldChains #attributeNames #withNames #targets #lengths #functions)
+	^ #(#dynamics #fieldNames #fields #asNames #sources #decs #names #fieldChains #attributeNames #withNames #targets #functions #lengths)
 ]
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #keies #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #operators #keies #leftBrackets #rightBrackets #arrows #dashs #eqs)
 ]
 
 { #category : #generated }
@@ -111,6 +112,16 @@ ABAPStartSelectLoopNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -184,9 +195,10 @@ ABAPStartSelectLoopNode >> initialize [
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

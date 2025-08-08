@@ -6,10 +6,10 @@ Class {
 		'names',
 		'arrows',
 		'fieldLengths',
-		'attributeNames',
+		'fieldOffsets',
+		'eqs',
 		'targets',
 		'values',
-		'dashs',
 		'sources',
 		'leftParen',
 		'rightParen',
@@ -34,35 +34,13 @@ ABAPImportNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPImportNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPImportNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPImportNode >> compositeNodeVariables [
-	^ #(#names #fieldLengths #attributeNames #targets #sources)
+	^ #(#names #fieldLengths #fieldOffsets #targets #sources)
 ]
 
 { #category : #generated }
 ABAPImportNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #values #dashs)
-]
-
-{ #category : #generated }
-ABAPImportNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPImportNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #arrows #eqs #values)
 ]
 
 { #category : #generated }
@@ -78,6 +56,16 @@ ABAPImportNode >> dynamic: anABAPDynamicNode [
 ]
 
 { #category : #generated }
+ABAPImportNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPImportNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPImportNode >> fieldLengths [
 	^ fieldLengths
 ]
@@ -89,6 +77,18 @@ ABAPImportNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPImportNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPImportNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPImportNode >> initialize [
 	super initialize.
@@ -96,10 +96,10 @@ ABAPImportNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 

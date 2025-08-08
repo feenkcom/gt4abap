@@ -8,6 +8,7 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
+		'dashs',
 		'fieldChains',
 		'sources',
 		'targets'
@@ -27,7 +28,17 @@ ABAPFetchNextCursorNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -51,6 +62,7 @@ ABAPFetchNextCursorNode >> initialize [
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.

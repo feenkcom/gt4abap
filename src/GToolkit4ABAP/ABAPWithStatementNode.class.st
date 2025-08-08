@@ -11,20 +11,21 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
-		'dashs',
 		'leftBrackets',
 		'rightParens',
+		'operators',
 		'sources',
 		'values',
 		'keies',
-		'operators',
 		'fieldChains',
 		'rightBrackets',
-		'fields',
-		'targets',
 		'lengths',
+		'fields',
+		'eqs',
+		'targets',
 		'decs',
-		'functions'
+		'functions',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -75,7 +76,7 @@ ABAPWithStatementNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #dashs #leftBrackets #rightParens #keies #operators #rightBrackets)
+	^ #(#keywords #leftParens #arrows #dashs #leftBrackets #rightParens #operators #keies #rightBrackets #eqs)
 ]
 
 { #category : #generated }
@@ -110,6 +111,16 @@ ABAPWithStatementNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -175,13 +186,14 @@ ABAPWithStatementNode >> initialize [
 	dashs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.

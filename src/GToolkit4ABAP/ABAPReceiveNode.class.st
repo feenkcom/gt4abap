@@ -4,14 +4,15 @@ Class {
 	#instVars : [
 		'keywords',
 		'functionName',
+		'eqs',
 		'values',
 		'operators',
 		'targets',
 		'names',
 		'arrows',
 		'attributeNames',
-		'parameterNames',
 		'dashs',
+		'parameterNames',
 		'field'
 	],
 	#category : #GToolkit4ABAP
@@ -51,7 +52,7 @@ ABAPReceiveNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPReceiveNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators #arrows #dashs)
+	^ #(#keywords #eqs #values #operators #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -62,6 +63,16 @@ ABAPReceiveNode >> dashs [
 { #category : #generated }
 ABAPReceiveNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -92,6 +103,7 @@ ABAPReceiveNode >> functionName: anABAPRootNode [
 ABAPReceiveNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.

@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'targets'
+		'targets',
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -21,7 +22,17 @@ ABAPMoveNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPMoveNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPMoveNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPMoveNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -30,6 +41,7 @@ ABAPMoveNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

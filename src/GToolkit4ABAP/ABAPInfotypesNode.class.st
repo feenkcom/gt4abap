@@ -3,11 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'occurs',
 		'values',
-		'leftParen',
-		'key',
-		'rightParen',
-		'operators',
 		'leftBracket',
 		'rightBracket',
 		'length',
@@ -28,7 +25,7 @@ ABAPInfotypesNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPInfotypesNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators)
+	^ #(#keywords #values)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -36,18 +33,7 @@ ABAPInfotypesNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> key: aSmaCCToken [
-	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -71,16 +57,6 @@ ABAPInfotypesNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPInfotypesNode >> length [
 	^ length
 ]
@@ -94,17 +70,19 @@ ABAPInfotypesNode >> length: anABAPFieldLengthNode [
 
 { #category : #generated }
 ABAPInfotypesNode >> nodeVariables [
-	^ #(#length)
+	^ #(#occurs #length)
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> operators [
-	^ operators
+ABAPInfotypesNode >> occurs [
+	^ occurs
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPInfotypesNode >> occurs: anABAPRootNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPRootNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 
 { #category : #generated }
@@ -115,16 +93,6 @@ ABAPInfotypesNode >> rightBracket [
 { #category : #generated }
 ABAPInfotypesNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -141,7 +109,7 @@ ABAPInfotypesNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPInfotypesNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #leftBracket #rightBracket #period)
+	^ #(#leftBracket #rightBracket #period)
 ]
 
 { #category : #generated }

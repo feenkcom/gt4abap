@@ -9,8 +9,7 @@ Class {
 		'dynamics',
 		'arrows',
 		'fieldLengths',
-		'attributeNames',
-		'dashs',
+		'fieldOffsets',
 		'operators',
 		'leftParens',
 		'values',
@@ -18,7 +17,9 @@ Class {
 		'rightBrackets',
 		'lengths',
 		'keies',
-		'rightParens'
+		'rightParens',
+		'attributeNames',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -52,12 +53,12 @@ ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #dynamics #fieldLengths #attributeNames #lengths)
+	^ #(#sources #names #dynamics #fieldLengths #fieldOffsets #lengths #attributeNames)
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #dashs #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens)
+	^ #(#keywords #arrows #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #dashs)
 ]
 
 { #category : #generated }
@@ -94,6 +95,18 @@ ABAPDeleteInternalNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPDeleteInternalNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPDeleteInternalNode >> initialize [
 	super initialize.
@@ -103,8 +116,7 @@ ABAPDeleteInternalNode >> initialize [
 	dynamics := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
@@ -113,6 +125,8 @@ ABAPDeleteInternalNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

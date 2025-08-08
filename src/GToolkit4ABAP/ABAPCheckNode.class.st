@@ -15,6 +15,7 @@ Class {
 		'names',
 		'methodNames',
 		'parameterNames',
+		'eqs',
 		'targets',
 		'arrows',
 		'attributeNames',
@@ -60,7 +61,7 @@ ABAPCheckNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCheckNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
+	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #keies #rightParens #eqs #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -71,6 +72,16 @@ ABAPCheckNode >> dashs [
 { #category : #generated }
 ABAPCheckNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCheckNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPCheckNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -113,6 +124,7 @@ ABAPCheckNode >> initialize [
 	names := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.

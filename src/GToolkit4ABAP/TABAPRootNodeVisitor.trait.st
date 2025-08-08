@@ -531,6 +531,11 @@ TABAPRootNodeVisitor >> visitFieldLength: aFieldLength [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitFieldOffset: aFieldOffset [
+	^ self visitRoot: aFieldOffset
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitFieldStatement: aFieldStatement [
 	^ self visitStatement: aFieldStatement
 ]
@@ -763,6 +768,11 @@ TABAPRootNodeVisitor >> visitInterfaceDeferred: anInterfaceDeferred [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitInterfaceLoad: anInterfaceLoad [
 	^ self visitStatement: anInterfaceLoad
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitKernelId: aKernelId [
+	^ self visitRoot: aKernelId
 ]
 
 { #category : #generated }
@@ -1291,6 +1301,11 @@ TABAPRootNodeVisitor >> visitStartDo: aStartDo [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitStartForm: aStartForm [
+	^ self visitRoot: aStartForm
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitStartFunctionModule: aStartFunctionModule [
 	^ self visitRoot: aStartFunctionModule
 ]
@@ -1428,6 +1443,11 @@ TABAPRootNodeVisitor >> visitTestInjection: aTestInjection [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitTestSeam: aTestSeam [
 	^ self visitStatement: aTestSeam
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitTextElement: aTextElement [
+	^ self visitRoot: aTextElement
 ]
 
 { #category : #generated }

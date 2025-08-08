@@ -9,18 +9,19 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
+		'dash',
 		'sources',
+		'eqs',
 		'dynamics',
 		'fieldChain',
 		'names',
 		'targets',
 		'fieldLengths',
+		'fieldOffsets',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'arrows',
-		'attributeNames',
-		'dashs'
+		'arrows'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -41,35 +42,23 @@ ABAPStartLoopNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPStartLoopNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #names #targets #fieldLengths #lengths #attributeNames)
+	^ #(#sources #dynamics #names #targets #fieldLengths #fieldOffsets #lengths)
 ]
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows)
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> dashs [
-	^ dashs
+ABAPStartLoopNode >> dash [
+	^ dash
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+ABAPStartLoopNode >> dash: aSmaCCToken [
+	dash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -82,6 +71,16 @@ ABAPStartLoopNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -108,6 +107,18 @@ ABAPStartLoopNode >> fieldLengths: anOrderedCollection [
 	self setParents: self fieldLengths to: self
 ]
 
+{ #category : #generated }
+ABAPStartLoopNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPStartLoopNode >> initialize [
 	super initialize.
@@ -118,16 +129,16 @@ ABAPStartLoopNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -265,7 +276,7 @@ ABAPStartLoopNode >> targets: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> tokenVariables [
-	^ #(#period)
+	^ #(#period #dash)
 ]
 
 { #category : #generated }

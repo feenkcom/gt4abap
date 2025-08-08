@@ -16,14 +16,15 @@ Class {
 		'withNames',
 		'asNames',
 		'fields',
+		'eqs',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
 		'decs',
 		'names',
-		'functions',
 		'arrows',
 		'attributeNames',
+		'functions',
 		'dashs'
 	],
 	#category : #GToolkit4ABAP
@@ -75,7 +76,7 @@ ABAPInsertDatabaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #leftBrackets #rightBrackets #arrows)
 ]
 
 { #category : #generated }
@@ -110,6 +111,16 @@ ABAPInsertDatabaseNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -170,6 +181,7 @@ ABAPInsertDatabaseNode >> initialize [
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
@@ -177,6 +189,7 @@ ABAPInsertDatabaseNode >> initialize [
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
@@ -185,7 +198,6 @@ ABAPInsertDatabaseNode >> initialize [
 	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

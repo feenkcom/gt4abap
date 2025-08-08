@@ -12,6 +12,7 @@ Class {
 		'operators',
 		'methodNames',
 		'parameterNames',
+		'eqs',
 		'names',
 		'arrows',
 		'attributeNames',
@@ -56,12 +57,12 @@ ABAPInsertFieldGroupNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #targets #methodNames #parameterNames #names #attributeNames #fieldChains #typeNames #lengths #fields #dynamics)
+	^ #(#sources #targets #methodNames #attributeNames #names #fieldChains #typeNames #fields #dynamics #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #arrows #dashs #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #arrows #eqs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -84,6 +85,16 @@ ABAPInsertFieldGroupNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -121,19 +132,20 @@ ABAPInsertFieldGroupNode >> initialize [
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

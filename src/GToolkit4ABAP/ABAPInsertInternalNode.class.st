@@ -10,19 +10,22 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'rightParens',
-		'dynamic',
+		'dynamics',
 		'key',
 		'operators',
-		'fieldChain',
-		'methodNames',
-		'parameterNames',
+		'dashs',
 		'names',
 		'arrows',
 		'attributeNames',
-		'dashs',
+		'fieldLengths',
+		'fieldOffsets',
+		'eqs',
+		'fields',
+		'methodNames',
+		'parameterNames',
+		'fieldChain',
 		'typeNames',
-		'lengths',
-		'fields'
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -56,12 +59,12 @@ ABAPInsertInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertInternalNode >> compositeNodeVariables [
-	^ #(#sources #targets #methodNames #parameterNames #names #attributeNames #typeNames #lengths #fields)
+	^ #(#sources #targets #dynamics #names #attributeNames #fieldLengths #fieldOffsets #fields #methodNames #parameterNames #typeNames #lengths)
 ]
 
 { #category : #generated }
 ABAPInsertInternalNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #operators #arrows #dashs)
+	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #operators #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -75,15 +78,25 @@ ABAPInsertInternalNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> dynamic [
-	^ dynamic
+ABAPInsertInternalNode >> dynamics [
+	^ dynamics
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> dynamic: anABAPDynamicNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+ABAPInsertInternalNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -96,6 +109,30 @@ ABAPInsertInternalNode >> fieldChain: anABAPFieldChainNode [
 	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
 	fieldChain := anABAPFieldChainNode.
 	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPInsertInternalNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -121,16 +158,20 @@ ABAPInsertInternalNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	methodNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	methodNames := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -211,7 +252,7 @@ ABAPInsertInternalNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertInternalNode >> nodeVariables [
-	^ #(#dynamic #fieldChain)
+	^ #(#fieldChain)
 ]
 
 { #category : #generated }

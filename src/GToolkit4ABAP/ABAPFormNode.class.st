@@ -47,9 +47,9 @@ ABAPFormNode >> start [
 ]
 
 { #category : #generated }
-ABAPFormNode >> start: anABAPNameNode [
+ABAPFormNode >> start: anABAPStartFormNode [
 	self start notNil ifTrue: [ self start parent: nil ].
-	start := anABAPNameNode.
+	start := anABAPStartFormNode.
 	self start notNil ifTrue: [ self start parent: self ]
 ]
 

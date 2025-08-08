@@ -6,9 +6,8 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
-		'fields',
-		'leftParen',
-		'rightParen',
+		'dashs',
+		'fieldLength',
 		'_source'
 	],
 	#category : #GToolkit4ABAP
@@ -55,24 +54,34 @@ ABAPRangesNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPRangesNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields)
+	^ #(#names #attributeNames)
 ]
 
 { #category : #generated }
 ABAPRangesNode >> compositeTokenVariables [
-	^ #(#keywords #arrows)
+	^ #(#keywords #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPRangesNode >> fields [
-	^ fields
+ABAPRangesNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPRangesNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPRangesNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPRangesNode >> fieldLength [
+	^ fieldLength
+]
+
+{ #category : #generated }
+ABAPRangesNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -82,7 +91,7 @@ ABAPRangesNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -93,16 +102,6 @@ ABAPRangesNode >> keywords [
 { #category : #generated }
 ABAPRangesNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPRangesNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPRangesNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -119,20 +118,5 @@ ABAPRangesNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPRangesNode >> nodeVariables [
-	^ #(#_source)
-]
-
-{ #category : #generated }
-ABAPRangesNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPRangesNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPRangesNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#fieldLength #_source)
 ]

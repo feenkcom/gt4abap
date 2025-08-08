@@ -6,16 +6,22 @@ Class {
 		'sources',
 		'operators',
 		'leftParens',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
+		'lengths',
+		'keies',
 		'rightParens',
 		'names',
+		'methodNames',
+		'parameterNames',
+		'targets',
 		'arrows',
 		'attributeNames',
-		'fields',
-		'methodNames',
+		'dashs',
+		'fieldChains',
 		'typeNames',
-		'parameterNames'
+		'fields'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -49,12 +55,34 @@ ABAPAssertNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPAssertNode >> compositeNodeVariables [
-	^ #(#sources #names #attributeNames #fields #methodNames #typeNames #parameterNames)
+	^ #(#sources #lengths #names #methodNames #parameterNames #targets #attributeNames #fieldChains #typeNames #fields)
 ]
 
 { #category : #generated }
 ABAPAssertNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #rightParens #arrows)
+	^ #(#keywords #operators #leftParens #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
+]
+
+{ #category : #generated }
+ABAPAssertNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPAssertNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAssertNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPAssertNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -76,16 +104,32 @@ ABAPAssertNode >> initialize [
 	sources := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	methodNames := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	methodNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPAssertNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPAssertNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -116,6 +160,18 @@ ABAPAssertNode >> leftParens [
 { #category : #generated }
 ABAPAssertNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAssertNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPAssertNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -150,6 +206,11 @@ ABAPAssertNode >> operators [
 { #category : #generated }
 ABAPAssertNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAssertNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -197,6 +258,18 @@ ABAPAssertNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAssertNode >> targets [
+	^ targets
+]
+
+{ #category : #generated }
+ABAPAssertNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
 ABAPAssertNode >> typeNames [
 	^ typeNames
 ]
@@ -206,4 +279,16 @@ ABAPAssertNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPAssertNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPAssertNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

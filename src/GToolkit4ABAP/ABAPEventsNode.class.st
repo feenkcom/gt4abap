@@ -8,14 +8,8 @@ Class {
 		'parameterNames',
 		'rightParens',
 		'typeNames',
-		'operators',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
-		'fields'
+		'defaults',
+		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,35 +20,25 @@ ABAPEventsNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPEventsNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPEventsNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPEventsNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPEventsNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPEventsNode >> compositeNodeVariables [
-	^ #(#parameterNames #typeNames #names #attributeNames #sources #fields)
+	^ #(#parameterNames #typeNames #defaults #fieldChains)
 ]
 
 { #category : #generated }
 ABAPEventsNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #arrows #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPEventsNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPEventsNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
 ]
 
 { #category : #generated }
@@ -70,15 +54,15 @@ ABAPEventsNode >> eventName: anABAPNameNode [
 ]
 
 { #category : #generated }
-ABAPEventsNode >> fields [
-	^ fields
+ABAPEventsNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPEventsNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPEventsNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -89,14 +73,8 @@ ABAPEventsNode >> initialize [
 	parameterNames := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -110,16 +88,6 @@ ABAPEventsNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEventsNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPEventsNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPEventsNode >> leftParens [
 	^ leftParens
 ]
@@ -130,30 +98,8 @@ ABAPEventsNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEventsNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPEventsNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPEventsNode >> nodeVariables [
 	^ #(#eventName)
-]
-
-{ #category : #generated }
-ABAPEventsNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPEventsNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -169,16 +115,6 @@ ABAPEventsNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEventsNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPEventsNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPEventsNode >> rightParens [
 	^ rightParens
 ]
@@ -186,18 +122,6 @@ ABAPEventsNode >> rightParens [
 { #category : #generated }
 ABAPEventsNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPEventsNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPEventsNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
 ]
 
 { #category : #generated }

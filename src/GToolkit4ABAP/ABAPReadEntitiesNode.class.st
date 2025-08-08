@@ -7,14 +7,7 @@ Class {
 		'leftParens',
 		'rightParens',
 		'sources',
-		'fields',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'arrows',
-		'attributeNames',
-		'operators',
-		'parameterNames'
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,47 +18,13 @@ ABAPReadEntitiesNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPReadEntitiesNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPReadEntitiesNode >> compositeNodeVariables [
-	^ #(#names #sources #fields #typeNames #attributeNames #parameterNames)
+	^ #(#names #sources #targets)
 ]
 
 { #category : #generated }
 ABAPReadEntitiesNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+	^ #(#keywords #leftParens #rightParens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -76,14 +35,7 @@ ABAPReadEntitiesNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -94,16 +46,6 @@ ABAPReadEntitiesNode >> keywords [
 { #category : #generated }
 ABAPReadEntitiesNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -129,38 +71,6 @@ ABAPReadEntitiesNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadEntitiesNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPReadEntitiesNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPReadEntitiesNode >> rightParens [
 	^ rightParens
 ]
@@ -183,13 +93,13 @@ ABAPReadEntitiesNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadEntitiesNode >> typeNames [
-	^ typeNames
+ABAPReadEntitiesNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPReadEntitiesNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPReadEntitiesNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
 ]

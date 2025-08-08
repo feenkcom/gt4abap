@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'includeName',
+		'lineses',
 		'values'
 	],
 	#category : #GToolkit4ABAP
@@ -12,6 +13,11 @@ Class {
 { #category : #generated }
 ABAPFunctionPoolNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFunctionPool: self
+]
+
+{ #category : #generated }
+ABAPFunctionPoolNode >> compositeNodeVariables [
+	^ #(#lineses)
 ]
 
 { #category : #generated }
@@ -35,6 +41,7 @@ ABAPFunctionPoolNode >> includeName: anABAPNameNode [
 ABAPFunctionPoolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	lineses := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 ]
 
@@ -46,6 +53,18 @@ ABAPFunctionPoolNode >> keywords [
 { #category : #generated }
 ABAPFunctionPoolNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPFunctionPoolNode >> lineses [
+	^ lineses
+]
+
+{ #category : #generated }
+ABAPFunctionPoolNode >> lineses: anOrderedCollection [
+	self setParents: self lineses to: nil.
+	lineses := anOrderedCollection.
+	self setParents: self lineses to: self
 ]
 
 { #category : #generated }

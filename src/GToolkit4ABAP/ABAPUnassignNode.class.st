@@ -3,6 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keyword',
+		'value',
 		'leftBracket',
 		'rightBracket'
 	],
@@ -46,5 +47,15 @@ ABAPUnassignNode >> rightBracket: aSmaCCToken [
 
 { #category : #generated }
 ABAPUnassignNode >> tokenVariables [
-	^ #(#keyword #leftBracket #rightBracket #period)
+	^ #(#keyword #value #leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
+ABAPUnassignNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPUnassignNode >> value: aSmaCCToken [
+	value := aSmaCCToken
 ]

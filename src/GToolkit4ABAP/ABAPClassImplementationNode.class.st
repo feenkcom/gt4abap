@@ -3,12 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'start',
-		'methodImplementations',
-		'ends',
-		'bodies',
-		'keywords',
-		'includeNames',
-		'macroNames'
+		'defines',
+		'includes',
+		'methods',
+		'keyword'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,94 +17,62 @@ ABAPClassImplementationNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> bodies [
-	^ bodies
-]
-
-{ #category : #generated }
-ABAPClassImplementationNode >> bodies: anOrderedCollection [
-	self setParents: self bodies to: nil.
-	bodies := anOrderedCollection.
-	self setParents: self bodies to: self
-]
-
-{ #category : #generated }
 ABAPClassImplementationNode >> compositeNodeVariables [
-	^ #(#methodImplementations #ends #bodies #includeNames #macroNames)
+	^ #(#defines #includes #methods)
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> compositeTokenVariables [
-	^ #(#keywords)
+ABAPClassImplementationNode >> defines [
+	^ defines
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> ends [
-	^ ends
+ABAPClassImplementationNode >> defines: anOrderedCollection [
+	self setParents: self defines to: nil.
+	defines := anOrderedCollection.
+	self setParents: self defines to: self
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> ends: anOrderedCollection [
-	self setParents: self ends to: nil.
-	ends := anOrderedCollection.
-	self setParents: self ends to: self
+ABAPClassImplementationNode >> includes [
+	^ includes
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> includeNames [
-	^ includeNames
-]
-
-{ #category : #generated }
-ABAPClassImplementationNode >> includeNames: anOrderedCollection [
-	self setParents: self includeNames to: nil.
-	includeNames := anOrderedCollection.
-	self setParents: self includeNames to: self
+ABAPClassImplementationNode >> includes: anOrderedCollection [
+	self setParents: self includes to: nil.
+	includes := anOrderedCollection.
+	self setParents: self includes to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPClassImplementationNode >> initialize [
 	super initialize.
-	methodImplementations := OrderedCollection new: 2.
-	ends := OrderedCollection new: 2.
-	bodies := OrderedCollection new: 2.
-	keywords := OrderedCollection new: 2.
-	includeNames := OrderedCollection new: 2.
-	macroNames := OrderedCollection new: 2.
+	defines := OrderedCollection new: 2.
+	includes := OrderedCollection new: 2.
+	methods := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> keywords [
-	^ keywords
+ABAPClassImplementationNode >> keyword [
+	^ keyword
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> keywords: anOrderedCollection [
-	keywords := anOrderedCollection
+ABAPClassImplementationNode >> keyword: aSmaCCToken [
+	keyword := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> macroNames [
-	^ macroNames
+ABAPClassImplementationNode >> methods [
+	^ methods
 ]
 
 { #category : #generated }
-ABAPClassImplementationNode >> macroNames: anOrderedCollection [
-	self setParents: self macroNames to: nil.
-	macroNames := anOrderedCollection.
-	self setParents: self macroNames to: self
-]
-
-{ #category : #generated }
-ABAPClassImplementationNode >> methodImplementations [
-	^ methodImplementations
-]
-
-{ #category : #generated }
-ABAPClassImplementationNode >> methodImplementations: anOrderedCollection [
-	self setParents: self methodImplementations to: nil.
-	methodImplementations := anOrderedCollection.
-	self setParents: self methodImplementations to: self
+ABAPClassImplementationNode >> methods: anOrderedCollection [
+	self setParents: self methods to: nil.
+	methods := anOrderedCollection.
+	self setParents: self methods to: self
 ]
 
 { #category : #generated }
@@ -124,4 +90,9 @@ ABAPClassImplementationNode >> start: anABAPStartClassImplementationNode [
 	self start notNil ifTrue: [ self start parent: nil ].
 	start := anABAPStartClassImplementationNode.
 	self start notNil ifTrue: [ self start parent: self ]
+]
+
+{ #category : #generated }
+ABAPClassImplementationNode >> tokenVariables [
+	^ #(#keyword #period)
 ]

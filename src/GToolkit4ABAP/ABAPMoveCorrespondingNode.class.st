@@ -13,8 +13,12 @@ Class {
 		'names',
 		'leftBrackets',
 		'rightBrackets',
-		'operators',
-		'parameterNames'
+		'fieldLengths',
+		'dynamics',
+		'dashs',
+		'parameterNames',
+		'values',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,12 +52,46 @@ ABAPMoveCorrespondingNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> compositeNodeVariables [
-	^ #(#sources #typeNames #fields #attributeNames #names #parameterNames)
+	^ #(#sources #typeNames #fields #attributeNames #names #fieldLengths #dynamics #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #dashs #values)
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
 ]
 
 { #category : #generated }
@@ -82,8 +120,12 @@ ABAPMoveCorrespondingNode >> initialize [
 	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -117,6 +159,18 @@ ABAPMoveCorrespondingNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPMoveCorrespondingNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPMoveCorrespondingNode >> names [
 	^ names
 ]
@@ -126,16 +180,6 @@ ABAPMoveCorrespondingNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -192,4 +236,14 @@ ABAPMoveCorrespondingNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

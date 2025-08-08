@@ -3,21 +3,29 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
+		'_source',
+		'target',
+		'values',
 		'leftParens',
-		'fields',
+		'keies',
 		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'arrows',
-		'attributeNames',
-		'names',
-		'parameterNames',
-		'operators'
+		'operators',
+		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPConcatenateNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> _source: anABAPSourceNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPSourceNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPConcatenateNode >> acceptVisitor: aRootVisitor [
@@ -25,65 +33,47 @@ ABAPConcatenateNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPConcatenateNode >> compositeNodeVariables [
-	^ #(#sources #fields #typeNames #attributeNames #names #parameterNames)
+	^ #(#fieldChains)
 ]
 
 { #category : #generated }
 ABAPConcatenateNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators)
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> fields [
-	^ fields
+ABAPConcatenateNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPConcatenateNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPConcatenateNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -97,16 +87,6 @@ ABAPConcatenateNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPConcatenateNode >> leftParens [
 	^ leftParens
 ]
@@ -117,15 +97,8 @@ ABAPConcatenateNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPConcatenateNode >> nodeVariables [
+	^ #(#_source #target)
 ]
 
 { #category : #generated }
@@ -139,28 +112,6 @@ ABAPConcatenateNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPConcatenateNode >> rightParens [
 	^ rightParens
 ]
@@ -171,25 +122,23 @@ ABAPConcatenateNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> sources [
-	^ sources
+ABAPConcatenateNode >> target [
+	^ target
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPConcatenateNode >> target: anABAPTargetNode [
+	self target notNil ifTrue: [ self target parent: nil ].
+	target := anABAPTargetNode.
+	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> typeNames [
-	^ typeNames
+ABAPConcatenateNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPConcatenateNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

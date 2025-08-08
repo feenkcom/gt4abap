@@ -6,16 +6,22 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
+		'dynamics',
 		'methodNames',
 		'leftParens',
+		'sources',
+		'rightParens',
+		'values',
+		'parameterNames',
+		'targets',
+		'operators',
+		'fields',
+		'dashs',
+		'fieldChain',
+		'typeNames',
 		'leftBrackets',
 		'rightBrackets',
-		'fields',
-		'rightParens',
-		'sources',
-		'parameterNames',
-		'typeNames',
-		'operators'
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -49,12 +55,46 @@ ABAPCallNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #methodNames #fields #sources #parameterNames #typeNames)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields #typeNames #lengths)
 ]
 
 { #category : #generated }
 ABAPCallNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #arrows #leftParens #rightParens #operators #dashs #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPCallNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPCallNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPCallNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPCallNode >> fieldChain [
+	^ fieldChain
+]
+
+{ #category : #generated }
+ABAPCallNode >> fieldChain: anABAPFieldChainNode [
+	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
+	fieldChain := anABAPFieldChainNode.
+	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 
 { #category : #generated }
@@ -76,16 +116,21 @@ ABAPCallNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -119,6 +164,18 @@ ABAPCallNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPCallNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPCallNode >> methodNames [
 	^ methodNames
 ]
@@ -143,6 +200,11 @@ ABAPCallNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallNode >> nodeVariables [
+	^ #(#fieldChain)
+]
+
+{ #category : #generated }
 ABAPCallNode >> operators [
 	^ operators
 ]
@@ -150,6 +212,11 @@ ABAPCallNode >> operators [
 { #category : #generated }
 ABAPCallNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -197,6 +264,18 @@ ABAPCallNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallNode >> targets [
+	^ targets
+]
+
+{ #category : #generated }
+ABAPCallNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
 ABAPCallNode >> typeNames [
 	^ typeNames
 ]
@@ -206,4 +285,16 @@ ABAPCallNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPCallNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCallNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

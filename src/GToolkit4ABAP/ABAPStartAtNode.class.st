@@ -3,17 +3,17 @@ Class {
 	#superclass : #ABAPRootNode,
 	#instVars : [
 		'keywords',
-		'leftBrackets',
-		'rightBrackets',
-		'leftParens',
-		'rightParens',
+		'values',
+		'leftBracket',
+		'rightBracket',
+		'length',
 		'names',
 		'arrows',
 		'attributeNames',
-		'fields',
+		'dashs',
+		'fieldLength',
 		'period',
-		'sources',
-		'operators'
+		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -47,40 +47,57 @@ ABAPStartAtNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartAtNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #sources)
+	^ #(#names #attributeNames)
 ]
 
 { #category : #generated }
 ABAPStartAtNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #rightParens #arrows #operators)
+	^ #(#keywords #values #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> fields [
-	^ fields
+ABAPStartAtNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPStartAtNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> dynamic [
+	^ dynamic
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> fieldLength [
+	^ fieldLength
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPStartAtNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -94,23 +111,25 @@ ABAPStartAtNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> leftBrackets [
-	^ leftBrackets
+ABAPStartAtNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPStartAtNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> leftParens [
-	^ leftParens
+ABAPStartAtNode >> length [
+	^ length
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPStartAtNode >> length: anABAPFieldLengthNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPFieldLengthNode.
+	self length notNil ifTrue: [ self length parent: self ]
 ]
 
 { #category : #generated }
@@ -126,13 +145,8 @@ ABAPStartAtNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPStartAtNode >> nodeVariables [
+	^ #(#length #fieldLength #dynamic)
 ]
 
 { #category : #generated }
@@ -146,38 +160,26 @@ ABAPStartAtNode >> period: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> rightBrackets [
-	^ rightBrackets
+ABAPStartAtNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPStartAtNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPStartAtNode >> tokenVariables [
-	^ #(#period)
+	^ #(#leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

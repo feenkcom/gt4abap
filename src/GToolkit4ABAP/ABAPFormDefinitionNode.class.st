@@ -9,13 +9,13 @@ Class {
 		'rightParens',
 		'parameterNames',
 		'typeNames',
+		'values',
+		'keies',
 		'operators',
+		'fieldChains',
 		'arrows',
 		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
-		'fields'
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -49,24 +49,34 @@ ABAPFormDefinitionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPFormDefinitionNode >> compositeNodeVariables [
-	^ #(#names #parameterNames #typeNames #attributeNames #sources #fields)
+	^ #(#names #parameterNames #typeNames #fieldChains #attributeNames)
 ]
 
 { #category : #generated }
 ABAPFormDefinitionNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #leftParens #rightParens #values #keies #operators #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> fields [
-	^ fields
+ABAPFormDefinitionNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPFormDefinitionNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -90,13 +100,23 @@ ABAPFormDefinitionNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -107,16 +127,6 @@ ABAPFormDefinitionNode >> keywords [
 { #category : #generated }
 ABAPFormDefinitionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -169,16 +179,6 @@ ABAPFormDefinitionNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPFormDefinitionNode >> rightParens [
 	^ rightParens
 ]
@@ -186,18 +186,6 @@ ABAPFormDefinitionNode >> rightParens [
 { #category : #generated }
 ABAPFormDefinitionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
 ]
 
 { #category : #generated }
@@ -210,4 +198,14 @@ ABAPFormDefinitionNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPFormDefinitionNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

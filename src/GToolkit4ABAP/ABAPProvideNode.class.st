@@ -5,18 +5,24 @@ Class {
 		'keywords',
 		'fieldNames',
 		'sources',
-		'leftParens',
+		'targets',
 		'fields',
+		'values',
+		'leftParens',
+		'keies',
 		'rightParens',
+		'operators',
+		'fieldChains',
 		'leftBrackets',
 		'rightBrackets',
-		'typeNames',
-		'arrows',
-		'attributeNames',
+		'lengths',
 		'names',
-		'parameterNames',
-		'operators',
+		'arrows',
+		'typeNames',
 		'methodNames',
+		'attributeNames',
+		'parameterNames',
+		'dashs',
 		'body'
 	],
 	#category : #GToolkit4ABAP
@@ -63,12 +69,34 @@ ABAPProvideNode >> body: anABAPBodyNode [
 
 { #category : #generated }
 ABAPProvideNode >> compositeNodeVariables [
-	^ #(#fieldNames #sources #fields #typeNames #attributeNames #names #parameterNames #methodNames)
+	^ #(#fieldNames #sources #targets #fields #fieldChains #lengths #names #typeNames #methodNames #attributeNames #parameterNames)
 ]
 
 { #category : #generated }
 ABAPProvideNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+]
+
+{ #category : #generated }
+ABAPProvideNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPProvideNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPProvideNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPProvideNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -101,18 +129,34 @@ ABAPProvideNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPProvideNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPProvideNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -143,6 +187,18 @@ ABAPProvideNode >> leftParens [
 { #category : #generated }
 ABAPProvideNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPProvideNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPProvideNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -182,6 +238,11 @@ ABAPProvideNode >> operators [
 { #category : #generated }
 ABAPProvideNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPProvideNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -229,6 +290,18 @@ ABAPProvideNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPProvideNode >> targets [
+	^ targets
+]
+
+{ #category : #generated }
+ABAPProvideNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
 ABAPProvideNode >> typeNames [
 	^ typeNames
 ]
@@ -238,4 +311,16 @@ ABAPProvideNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPProvideNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPProvideNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

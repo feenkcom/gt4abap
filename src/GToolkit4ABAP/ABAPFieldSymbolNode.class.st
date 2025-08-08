@@ -3,17 +3,20 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
-		'leftParens',
-		'rightParens',
+		'values',
+		'fieldChain',
+		'typeName',
+		'default',
 		'fields',
+		'occurs',
+		'leftParens',
+		'keies',
+		'rightParens',
 		'operators',
-		'typeName'
+		'sizes',
+		'leftBrackets',
+		'rightBrackets',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,35 +27,37 @@ ABAPFieldSymbolNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPFieldSymbolNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields)
+	^ #(#fields #sizes #lengths)
 ]
 
 { #category : #generated }
 ABAPFieldSymbolNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftBrackets #rightBrackets #leftParens #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> default [
+	^ default
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> default: anABAPRootNode [
+	self default notNil ifTrue: [ self default parent: nil ].
+	default := anABAPRootNode.
+	self default notNil ifTrue: [ self default parent: self ]
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> fieldChain [
+	^ fieldChain
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> fieldChain: anABAPFieldChainNode [
+	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
+	fieldChain := anABAPFieldChainNode.
+	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 
 { #category : #generated }
@@ -71,16 +76,26 @@ ABAPFieldSymbolNode >> fields: anOrderedCollection [
 ABAPFieldSymbolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	sizes := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -114,20 +129,32 @@ ABAPFieldSymbolNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> names [
-	^ names
+ABAPFieldSymbolNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPFieldSymbolNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
 ABAPFieldSymbolNode >> nodeVariables [
-	^ #(#typeName)
+	^ #(#fieldChain #typeName #default #occurs)
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> occurs [
+	^ occurs
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> occurs: anABAPRootNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPRootNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 
 { #category : #generated }
@@ -161,15 +188,15 @@ ABAPFieldSymbolNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> sources [
-	^ sources
+ABAPFieldSymbolNode >> sizes [
+	^ sizes
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPFieldSymbolNode >> sizes: anOrderedCollection [
+	self setParents: self sizes to: nil.
+	sizes := anOrderedCollection.
+	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
@@ -182,4 +209,14 @@ ABAPFieldSymbolNode >> typeName: anABAPTypeNameNode [
 	self typeName notNil ifTrue: [ self typeName parent: nil ].
 	typeName := anABAPTypeNameNode.
 	self typeName notNil ifTrue: [ self typeName parent: self ]
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

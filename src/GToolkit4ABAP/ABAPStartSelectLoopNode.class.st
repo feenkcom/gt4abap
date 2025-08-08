@@ -3,21 +3,28 @@ Class {
 	#superclass : #ABAPRootNode,
 	#instVars : [
 		'keywords',
+		'dynamics',
+		'fieldNames',
 		'leftParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
 		'rightParens',
 		'fields',
-		'operators',
-		'fieldNames',
 		'asNames',
+		'operators',
+		'values',
+		'keies',
+		'sources',
+		'decs',
+		'names',
+		'leftBrackets',
+		'fieldChains',
+		'rightBrackets',
+		'arrows',
+		'attributeNames',
+		'dashs',
 		'withNames',
-		'typeNames',
-		'parameterNames',
+		'targets',
+		'lengths',
+		'functions',
 		'period'
 	],
 	#category : #GToolkit4ABAP
@@ -64,12 +71,58 @@ ABAPStartSelectLoopNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields #fieldNames #asNames #withNames #typeNames #parameterNames)
+	^ #(#dynamics #fieldNames #fields #asNames #sources #decs #names #fieldChains #attributeNames #withNames #targets #lengths #functions)
 ]
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #leftParens #rightParens #operators #keies #leftBrackets #rightBrackets #arrows #dashs)
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> decs [
+	^ decs
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> decs: anOrderedCollection [
+	self setParents: self decs to: nil.
+	decs := anOrderedCollection.
+	self setParents: self decs to: self
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -96,25 +149,54 @@ ABAPStartSelectLoopNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPStartSelectLoopNode >> functions [
+	^ functions
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> functions: anOrderedCollection [
+	self setParents: self functions to: nil.
+	functions := anOrderedCollection.
+	self setParents: self functions to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPStartSelectLoopNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	decs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -148,6 +230,18 @@ ABAPStartSelectLoopNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPStartSelectLoopNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPStartSelectLoopNode >> names [
 	^ names
 ]
@@ -170,15 +264,8 @@ ABAPStartSelectLoopNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartSelectLoopNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPStartSelectLoopNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -224,20 +311,32 @@ ABAPStartSelectLoopNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPStartSelectLoopNode >> targets [
+	^ targets
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
 ABAPStartSelectLoopNode >> tokenVariables [
 	^ #(#period)
 ]
 
 { #category : #generated }
-ABAPStartSelectLoopNode >> typeNames [
-	^ typeNames
+ABAPStartSelectLoopNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPStartSelectLoopNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPStartSelectLoopNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]
 
 { #category : #generated }

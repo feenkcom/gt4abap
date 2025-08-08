@@ -3,14 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftBracket',
 		'rightBracket',
-		'leftParen',
-		'rightParen',
-		'names',
-		'arrows',
-		'attributeNames',
-		'field',
+		'length',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -22,56 +18,20 @@ ABAPGetPropertyNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPGetPropertyNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources)
+	^ #(#sources)
 ]
 
 { #category : #generated }
 ABAPGetPropertyNode >> compositeTokenVariables [
-	^ #(#keywords #arrows)
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> field [
-	^ field
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPGetPropertyNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -96,30 +56,25 @@ ABAPGetPropertyNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> leftParen [
-	^ leftParen
+ABAPGetPropertyNode >> length [
+	^ length
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPGetPropertyNode >> length: anABAPFieldLengthNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPFieldLengthNode.
+	self length notNil ifTrue: [ self length parent: self ]
 ]
 
 { #category : #generated }
 ABAPGetPropertyNode >> nodeVariables [
-	^ #(#field)
+	^ #(#length)
+]
+
+{ #category : #generated }
+ABAPGetPropertyNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -130,16 +85,6 @@ ABAPGetPropertyNode >> rightBracket [
 { #category : #generated }
 ABAPGetPropertyNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -156,5 +101,17 @@ ABAPGetPropertyNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPGetPropertyNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #leftParen #rightParen #period)
+	^ #(#leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
+ABAPGetPropertyNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPGetPropertyNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

@@ -3,17 +3,23 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'fields',
+		'name',
+		'fieldChains',
 		'typeNames',
+		'values',
+		'chains',
+		'lengths',
+		'decimalses',
+		'defaults',
+		'fields',
+		'occurs',
 		'leftParens',
+		'keies',
 		'rightParens',
-		'sources',
-		'operators'
+		'operators',
+		'sizes',
+		'leftBrackets',
+		'rightBrackets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,35 +30,61 @@ ABAPStaticNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPStaticNode >> arrows [
-	^ arrows
+ABAPStaticNode >> chains [
+	^ chains
 ]
 
 { #category : #generated }
-ABAPStaticNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStaticNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPStaticNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPStaticNode >> chains: anOrderedCollection [
+	self setParents: self chains to: nil.
+	chains := anOrderedCollection.
+	self setParents: self chains to: self
 ]
 
 { #category : #generated }
 ABAPStaticNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #typeNames #sources)
+	^ #(#fieldChains #typeNames #chains #lengths #decimalses #defaults #fields #sizes)
 ]
 
 { #category : #generated }
 ABAPStaticNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftBrackets #rightBrackets #leftParens #rightParens #operators)
+	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPStaticNode >> decimalses [
+	^ decimalses
+]
+
+{ #category : #generated }
+ABAPStaticNode >> decimalses: anOrderedCollection [
+	self setParents: self decimalses to: nil.
+	decimalses := anOrderedCollection.
+	self setParents: self decimalses to: self
+]
+
+{ #category : #generated }
+ABAPStaticNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPStaticNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
+]
+
+{ #category : #generated }
+ABAPStaticNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPStaticNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -71,17 +103,31 @@ ABAPStaticNode >> fields: anOrderedCollection [
 ABAPStaticNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	chains := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	decimalses := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	sizes := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPStaticNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPStaticNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -115,15 +161,44 @@ ABAPStaticNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStaticNode >> names [
-	^ names
+ABAPStaticNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPStaticNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPStaticNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
+ABAPStaticNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPStaticNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+ABAPStaticNode >> nodeVariables [
+	^ #(#name #occurs)
+]
+
+{ #category : #generated }
+ABAPStaticNode >> occurs [
+	^ occurs
+]
+
+{ #category : #generated }
+ABAPStaticNode >> occurs: anABAPRootNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPRootNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 
 { #category : #generated }
@@ -134,6 +209,11 @@ ABAPStaticNode >> operators [
 { #category : #generated }
 ABAPStaticNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStaticNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -157,15 +237,15 @@ ABAPStaticNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStaticNode >> sources [
-	^ sources
+ABAPStaticNode >> sizes [
+	^ sizes
 ]
 
 { #category : #generated }
-ABAPStaticNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPStaticNode >> sizes: anOrderedCollection [
+	self setParents: self sizes to: nil.
+	sizes := anOrderedCollection.
+	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
@@ -178,4 +258,16 @@ ABAPStaticNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPStaticNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPStaticNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

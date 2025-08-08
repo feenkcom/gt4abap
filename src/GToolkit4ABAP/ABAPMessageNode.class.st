@@ -7,16 +7,11 @@ Class {
 		'values',
 		'rightParens',
 		'sources',
+		'targets',
 		'exceptionNames',
-		'arrows',
-		'attributeNames',
-		'names',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'fields',
-		'parameterNames',
-		'operators'
+		'keies',
+		'operators',
+		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,35 +22,13 @@ ABAPMessageNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPMessageNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMessageNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPMessageNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPMessageNode >> compositeNodeVariables [
-	^ #(#sources #exceptionNames #attributeNames #names #typeNames #fields #parameterNames)
+	^ #(#sources #targets #exceptionNames #fieldChains)
 ]
 
 { #category : #generated }
 ABAPMessageNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #values #rightParens #arrows #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #leftParens #values #rightParens #keies #operators)
 ]
 
 { #category : #generated }
@@ -71,15 +44,15 @@ ABAPMessageNode >> exceptionNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> fields [
-	^ fields
+ABAPMessageNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPMessageNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPMessageNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -90,16 +63,21 @@ ABAPMessageNode >> initialize [
 	values := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	exceptionNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPMessageNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPMessageNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -113,16 +91,6 @@ ABAPMessageNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPMessageNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPMessageNode >> leftParens [
 	^ leftParens
 ]
@@ -133,18 +101,6 @@ ABAPMessageNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPMessageNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPMessageNode >> operators [
 	^ operators
 ]
@@ -152,28 +108,6 @@ ABAPMessageNode >> operators [
 { #category : #generated }
 ABAPMessageNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMessageNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPMessageNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPMessageNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPMessageNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -199,15 +133,15 @@ ABAPMessageNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> typeNames [
-	^ typeNames
+ABAPMessageNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPMessageNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPMessageNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
 ]
 
 { #category : #generated }

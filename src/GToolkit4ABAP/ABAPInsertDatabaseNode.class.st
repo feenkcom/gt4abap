@@ -3,21 +3,28 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'dynamics',
+		'values',
 		'leftParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
+		'keies',
 		'rightParens',
-		'fields',
 		'operators',
+		'fieldChains',
+		'sources',
+		'targets',
 		'fieldNames',
 		'withNames',
 		'asNames',
-		'typeNames',
-		'parameterNames'
+		'fields',
+		'leftBrackets',
+		'rightBrackets',
+		'lengths',
+		'decs',
+		'names',
+		'functions',
+		'arrows',
+		'attributeNames',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -63,12 +70,58 @@ ABAPInsertDatabaseNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields #fieldNames #withNames #asNames #typeNames #parameterNames)
+	^ #(#dynamics #fieldChains #sources #targets #fieldNames #withNames #asNames #fields #lengths #decs #names #functions #attributeNames)
 ]
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets #arrows #dashs)
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> decs [
+	^ decs
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> decs: anOrderedCollection [
+	self setParents: self decs to: nil.
+	decs := anOrderedCollection.
+	self setParents: self decs to: self
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -95,25 +148,54 @@ ABAPInsertDatabaseNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPInsertDatabaseNode >> functions [
+	^ functions
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> functions: anOrderedCollection [
+	self setParents: self functions to: nil.
+	functions := anOrderedCollection.
+	self setParents: self functions to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPInsertDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	decs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -147,6 +229,18 @@ ABAPInsertDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPInsertDatabaseNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPInsertDatabaseNode >> names [
 	^ names
 ]
@@ -169,15 +263,8 @@ ABAPInsertDatabaseNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPInsertDatabaseNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPInsertDatabaseNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -213,15 +300,27 @@ ABAPInsertDatabaseNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> typeNames [
-	^ typeNames
+ABAPInsertDatabaseNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPInsertDatabaseNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]
 
 { #category : #generated }

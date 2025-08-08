@@ -3,18 +3,16 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
-		'fields',
-		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
+		'targets',
+		'names',
+		'dynamics',
 		'sources',
+		'values',
+		'operators',
 		'arrows',
 		'attributeNames',
-		'names',
-		'parameterNames',
-		'operators'
+		'dashs',
+		'parameterNames'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,42 +46,50 @@ ABAPCreateObjectNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCreateObjectNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames)
+	^ #(#targets #names #dynamics #sources #attributeNames #parameterNames)
 ]
 
 { #category : #generated }
 ABAPCreateObjectNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #values #operators #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> fields [
-	^ fields
+ABAPCreateObjectNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPCreateObjectNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPCreateObjectNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -94,26 +100,6 @@ ABAPCreateObjectNode >> keywords [
 { #category : #generated }
 ABAPCreateObjectNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -151,26 +137,6 @@ ABAPCreateObjectNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPCreateObjectNode >> sources [
 	^ sources
 ]
@@ -183,13 +149,23 @@ ABAPCreateObjectNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> typeNames [
-	^ typeNames
+ABAPCreateObjectNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPCreateObjectNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

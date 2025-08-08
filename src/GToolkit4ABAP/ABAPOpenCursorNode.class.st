@@ -3,21 +3,28 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'targets',
 		'leftParens',
-		'fields',
 		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'sources',
-		'arrows',
-		'attributeNames',
-		'names',
-		'parameterNames',
 		'fieldNames',
+		'dynamics',
 		'withNames',
 		'asNames',
-		'operators'
+		'fields',
+		'fieldChains',
+		'values',
+		'keies',
+		'operators',
+		'sources',
+		'leftBrackets',
+		'rightBrackets',
+		'lengths',
+		'decs',
+		'names',
+		'functions',
+		'arrows',
+		'attributeNames',
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -63,12 +70,58 @@ ABAPOpenCursorNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames #fieldNames #withNames #asNames)
+	^ #(#targets #fieldNames #dynamics #withNames #asNames #fields #fieldChains #sources #lengths #decs #names #functions #attributeNames)
 ]
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #leftParens #rightParens #keies #operators #leftBrackets #rightBrackets #arrows #dashs)
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> decs [
+	^ decs
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> decs: anOrderedCollection [
+	self setParents: self decs to: nil.
+	decs := anOrderedCollection.
+	self setParents: self decs to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -95,25 +148,54 @@ ABAPOpenCursorNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPOpenCursorNode >> functions [
+	^ functions
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> functions: anOrderedCollection [
+	self setParents: self functions to: nil.
+	functions := anOrderedCollection.
+	self setParents: self functions to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPOpenCursorNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	decs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -147,6 +229,18 @@ ABAPOpenCursorNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPOpenCursorNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPOpenCursorNode >> names [
 	^ names
 ]
@@ -169,15 +263,8 @@ ABAPOpenCursorNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPOpenCursorNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPOpenCursorNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPOpenCursorNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -213,15 +300,27 @@ ABAPOpenCursorNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPOpenCursorNode >> typeNames [
-	^ typeNames
+ABAPOpenCursorNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPOpenCursorNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPOpenCursorNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]
 
 { #category : #generated }

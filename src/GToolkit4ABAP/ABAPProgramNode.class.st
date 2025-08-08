@@ -5,12 +5,7 @@ Class {
 		'keywords',
 		'messageClasses',
 		'sources',
-		'leftParens',
-		'rightParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'fields',
+		'fieldLengths',
 		'reportName'
 	],
 	#category : #GToolkit4ABAP
@@ -22,47 +17,25 @@ ABAPProgramNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPProgramNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPProgramNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPProgramNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPProgramNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPProgramNode >> compositeNodeVariables [
-	^ #(#messageClasses #sources #names #attributeNames #fields)
+	^ #(#messageClasses #sources #fieldLengths)
 ]
 
 { #category : #generated }
 ABAPProgramNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #arrows)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPProgramNode >> fields [
-	^ fields
+ABAPProgramNode >> fieldLengths [
+	^ fieldLengths
 ]
 
 { #category : #generated }
-ABAPProgramNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPProgramNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -71,12 +44,7 @@ ABAPProgramNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	messageClasses := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -90,16 +58,6 @@ ABAPProgramNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPProgramNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPProgramNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPProgramNode >> messageClasses [
 	^ messageClasses
 ]
@@ -109,18 +67,6 @@ ABAPProgramNode >> messageClasses: anOrderedCollection [
 	self setParents: self messageClasses to: nil.
 	messageClasses := anOrderedCollection.
 	self setParents: self messageClasses to: self
-]
-
-{ #category : #generated }
-ABAPProgramNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPProgramNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -138,16 +84,6 @@ ABAPProgramNode >> reportName: anABAPNameNode [
 	self reportName notNil ifTrue: [ self reportName parent: nil ].
 	reportName := anABAPNameNode.
 	self reportName notNil ifTrue: [ self reportName parent: self ]
-]
-
-{ #category : #generated }
-ABAPProgramNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPProgramNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }

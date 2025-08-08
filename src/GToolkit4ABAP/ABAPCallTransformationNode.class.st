@@ -3,18 +3,17 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'fields',
-		'sources',
+		'name',
+		'targets',
+		'dynamics',
+		'values',
 		'leftParens',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
+		'keies',
 		'rightParens',
-		'typeNames',
 		'operators',
-		'parameterNames'
+		'fieldChains',
+		'fields',
+		'sources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,35 +24,37 @@ ABAPCallTransformationNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPCallTransformationNode >> compositeNodeVariables [
-	^ #(#names #fields #sources #attributeNames #typeNames #parameterNames)
+	^ #(#targets #dynamics #fieldChains #fields #sources)
 ]
 
 { #category : #generated }
 ABAPCallTransformationNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -72,18 +73,26 @@ ABAPCallTransformationNode >> fields: anOrderedCollection [
 ABAPCallTransformationNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -97,16 +106,6 @@ ABAPCallTransformationNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPCallTransformationNode >> leftParens [
 	^ leftParens
 ]
@@ -117,15 +116,20 @@ ABAPCallTransformationNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> names [
-	^ names
+ABAPCallTransformationNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPCallTransformationNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> nodeVariables [
+	^ #(#name)
 ]
 
 { #category : #generated }
@@ -136,28 +140,6 @@ ABAPCallTransformationNode >> operators [
 { #category : #generated }
 ABAPCallTransformationNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -183,13 +165,23 @@ ABAPCallTransformationNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> typeNames [
-	^ typeNames
+ABAPCallTransformationNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPCallTransformationNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

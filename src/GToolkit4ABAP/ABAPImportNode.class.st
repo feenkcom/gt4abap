@@ -5,16 +5,15 @@ Class {
 		'keywords',
 		'names',
 		'arrows',
-		'leftParens',
-		'rightParens',
+		'fieldLengths',
 		'attributeNames',
-		'fields',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
+		'targets',
+		'values',
+		'dashs',
 		'sources',
-		'operators',
-		'parameterNames'
+		'leftParen',
+		'rightParen',
+		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,24 +47,46 @@ ABAPImportNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPImportNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #typeNames #sources #parameterNames)
+	^ #(#names #fieldLengths #attributeNames #targets #sources)
 ]
 
 { #category : #generated }
 ABAPImportNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #arrows #values #dashs)
 ]
 
 { #category : #generated }
-ABAPImportNode >> fields [
-	^ fields
+ABAPImportNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPImportNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPImportNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPImportNode >> dynamic [
+	^ dynamic
+]
+
+{ #category : #generated }
+ABAPImportNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+]
+
+{ #category : #generated }
+ABAPImportNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPImportNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -74,16 +95,12 @@ ABAPImportNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -97,23 +114,13 @@ ABAPImportNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPImportNode >> leftBrackets [
-	^ leftBrackets
+ABAPImportNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPImportNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPImportNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPImportNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPImportNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -129,45 +136,18 @@ ABAPImportNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPImportNode >> operators [
-	^ operators
+ABAPImportNode >> nodeVariables [
+	^ #(#dynamic)
 ]
 
 { #category : #generated }
-ABAPImportNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPImportNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPImportNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPImportNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPImportNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPImportNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPImportNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPImportNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPImportNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -183,13 +163,28 @@ ABAPImportNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPImportNode >> typeNames [
-	^ typeNames
+ABAPImportNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPImportNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPImportNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPImportNode >> tokenVariables [
+	^ #(#leftParen #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPImportNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPImportNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

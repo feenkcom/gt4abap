@@ -3,16 +3,11 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
-		'leftParens',
-		'rightParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'fields',
-		'sources',
-		'operators'
+		'lengths',
+		'dynamics'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,63 +18,36 @@ ABAPSortDatasetNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSortDatasetNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #sources)
+	^ #(#lengths #dynamics)
 ]
 
 { #category : #generated }
 ABAPSortDatasetNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #rightParens #arrows #operators)
+	^ #(#keywords #values #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> fields [
-	^ fields
+ABAPSortDatasetNode >> dynamics [
+	^ dynamics
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPSortDatasetNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPSortDatasetNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -103,35 +71,15 @@ ABAPSortDatasetNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> leftParens [
-	^ leftParens
+ABAPSortDatasetNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPSortDatasetNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -145,23 +93,11 @@ ABAPSortDatasetNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> rightParens [
-	^ rightParens
+ABAPSortDatasetNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPSortDatasetNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPSortDatasetNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPSortDatasetNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

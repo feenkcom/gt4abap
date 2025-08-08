@@ -4,14 +4,19 @@ Class {
 	#instVars : [
 		'keywords',
 		'leftParens',
+		'values',
 		'rightParens',
 		'fields',
 		'leftBrackets',
 		'rightBrackets',
-		'names',
-		'arrows',
-		'attributeNames',
+		'lengths',
+		'key',
+		'skip',
+		'name',
 		'operators',
+		'tab',
+		'screen',
+		'lines',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -23,35 +28,13 @@ ABAPSelectionScreenNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSelectionScreenNode >> compositeNodeVariables [
-	^ #(#fields #names #attributeNames #sources)
+	^ #(#fields #lengths #sources)
 ]
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #operators)
 ]
 
 { #category : #generated }
@@ -71,15 +54,26 @@ ABAPSelectionScreenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> key: anObject [
+	self setParent: self key to: nil.
+	key := anObject.
+	self setParent: self key to: self
 ]
 
 { #category : #generated }
@@ -113,15 +107,44 @@ ABAPSelectionScreenNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> names [
-	^ names
+ABAPSelectionScreenNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPSelectionScreenNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> lines [
+	^ lines
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> lines: anABAPIntegerNode [
+	self lines notNil ifTrue: [ self lines parent: nil ].
+	lines := anABAPIntegerNode.
+	self lines notNil ifTrue: [ self lines parent: self ]
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> nodeVariables [
+	^ #(#skip #name #tab #screen #lines)
 ]
 
 { #category : #generated }
@@ -132,6 +155,11 @@ ABAPSelectionScreenNode >> operators [
 { #category : #generated }
 ABAPSelectionScreenNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> otherVariables [
+	^ #(#values #key)
 ]
 
 { #category : #generated }
@@ -155,6 +183,30 @@ ABAPSelectionScreenNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPSelectionScreenNode >> screen [
+	^ screen
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> screen: anABAPIntegerNode [
+	self screen notNil ifTrue: [ self screen parent: nil ].
+	screen := anABAPIntegerNode.
+	self screen notNil ifTrue: [ self screen parent: self ]
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> skip [
+	^ skip
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> skip: anABAPIntegerNode [
+	self skip notNil ifTrue: [ self skip parent: nil ].
+	skip := anABAPIntegerNode.
+	self skip notNil ifTrue: [ self skip parent: self ]
+]
+
+{ #category : #generated }
 ABAPSelectionScreenNode >> sources [
 	^ sources
 ]
@@ -164,4 +216,28 @@ ABAPSelectionScreenNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> tab [
+	^ tab
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> tab: anABAPIntegerNode [
+	self tab notNil ifTrue: [ self tab parent: nil ].
+	tab := anABAPIntegerNode.
+	self tab notNil ifTrue: [ self tab parent: self ]
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

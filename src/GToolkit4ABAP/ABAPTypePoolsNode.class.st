@@ -2,7 +2,8 @@ Class {
 	#name : #ABAPTypePoolsNode,
 	#superclass : #ABAPStatementNode,
 	#instVars : [
-		'keyword'
+		'keyword',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,5 +25,15 @@ ABAPTypePoolsNode >> keyword: aSmaCCToken [
 
 { #category : #generated }
 ABAPTypePoolsNode >> tokenVariables [
-	^ #(#keyword #period)
+	^ #(#keyword #value #period)
+]
+
+{ #category : #generated }
+ABAPTypePoolsNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPTypePoolsNode >> value: aSmaCCToken [
+	value := aSmaCCToken
 ]

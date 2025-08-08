@@ -10,13 +10,8 @@ Class {
 		'leftParens',
 		'rightParens',
 		'typeNames',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'fields',
-		'sources',
-		'operators'
+		'defaults',
+		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,35 +22,25 @@ ABAPMethodDefNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPMethodDefNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPMethodDefNode >> compositeNodeVariables [
-	^ #(#names #parameterNames #typeNames #attributeNames #fields #sources)
+	^ #(#names #parameterNames #typeNames #defaults #fieldChains)
 ]
 
 { #category : #generated }
 ABAPMethodDefNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
 ]
 
 { #category : #generated }
@@ -71,15 +56,15 @@ ABAPMethodDefNode >> eventName: anABAPNameNode [
 ]
 
 { #category : #generated }
-ABAPMethodDefNode >> fields [
-	^ fields
+ABAPMethodDefNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPMethodDefNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPMethodDefNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -91,13 +76,8 @@ ABAPMethodDefNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -108,16 +88,6 @@ ABAPMethodDefNode >> keywords [
 { #category : #generated }
 ABAPMethodDefNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -160,16 +130,6 @@ ABAPMethodDefNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPMethodDefNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPMethodDefNode >> parameterNames [
 	^ parameterNames
 ]
@@ -182,16 +142,6 @@ ABAPMethodDefNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMethodDefNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPMethodDefNode >> rightParens [
 	^ rightParens
 ]
@@ -199,18 +149,6 @@ ABAPMethodDefNode >> rightParens [
 { #category : #generated }
 ABAPMethodDefNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPMethodDefNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
 ]
 
 { #category : #generated }

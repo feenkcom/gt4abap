@@ -3,18 +3,17 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
-		'fields',
-		'rightParens',
+		'target',
+		'dynamics',
+		'names',
+		'fieldLengths',
 		'leftBrackets',
 		'rightBrackets',
-		'typeNames',
-		'sources',
+		'values',
 		'arrows',
+		'sources',
 		'attributeNames',
-		'names',
-		'operators',
-		'parameterNames'
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,42 +47,62 @@ ABAPSortNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSortNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames)
+	^ #(#dynamics #names #fieldLengths #sources #attributeNames)
 ]
 
 { #category : #generated }
 ABAPSortNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #leftBrackets #rightBrackets #values #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPSortNode >> fields [
-	^ fields
+ABAPSortNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPSortNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPSortNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSortNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPSortNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPSortNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPSortNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPSortNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -107,16 +126,6 @@ ABAPSortNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPSortNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPSortNode >> names [
 	^ names
 ]
@@ -129,25 +138,8 @@ ABAPSortNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPSortNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPSortNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPSortNode >> nodeVariables [
+	^ #(#target)
 ]
 
 { #category : #generated }
@@ -158,16 +150,6 @@ ABAPSortNode >> rightBrackets [
 { #category : #generated }
 ABAPSortNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPSortNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -183,13 +165,23 @@ ABAPSortNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortNode >> typeNames [
-	^ typeNames
+ABAPSortNode >> target [
+	^ target
 ]
 
 { #category : #generated }
-ABAPSortNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPSortNode >> target: anABAPTargetNode [
+	self target notNil ifTrue: [ self target parent: nil ].
+	target := anABAPTargetNode.
+	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPSortNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPSortNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

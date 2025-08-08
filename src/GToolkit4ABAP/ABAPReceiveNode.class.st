@@ -4,18 +4,15 @@ Class {
 	#instVars : [
 		'keywords',
 		'functionName',
-		'leftParens',
-		'fields',
-		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'sources',
+		'values',
+		'operators',
+		'targets',
+		'names',
 		'arrows',
 		'attributeNames',
-		'names',
-		'operators',
-		'parameterNames'
+		'parameterNames',
+		'dashs',
+		'field'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -49,24 +46,34 @@ ABAPReceiveNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPReceiveNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames)
+	^ #(#targets #names #attributeNames #parameterNames)
 ]
 
 { #category : #generated }
 ABAPReceiveNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #values #operators #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> fields [
-	^ fields
+ABAPReceiveNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPReceiveNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> field [
+	^ field
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> field: anABAPNameNode [
+	self field notNil ifTrue: [ self field parent: nil ].
+	field := anABAPNameNode.
+	self field notNil ifTrue: [ self field parent: self ]
 ]
 
 { #category : #generated }
@@ -75,27 +82,23 @@ ABAPReceiveNode >> functionName [
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> functionName: anOrderedCollection [
-	self setParent: self functionName to: nil.
-	functionName := anOrderedCollection.
-	self setParent: self functionName to: self
+ABAPReceiveNode >> functionName: anABAPRootNode [
+	self functionName notNil ifTrue: [ self functionName parent: nil ].
+	functionName := anABAPRootNode.
+	self functionName notNil ifTrue: [ self functionName parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPReceiveNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 ]
 
@@ -107,26 +110,6 @@ ABAPReceiveNode >> keywords [
 { #category : #generated }
 ABAPReceiveNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -142,6 +125,11 @@ ABAPReceiveNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReceiveNode >> nodeVariables [
+	^ #(#functionName #field)
+]
+
+{ #category : #generated }
 ABAPReceiveNode >> operators [
 	^ operators
 ]
@@ -149,11 +137,6 @@ ABAPReceiveNode >> operators [
 { #category : #generated }
 ABAPReceiveNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> otherVariables [
-	^ #(#functionName)
 ]
 
 { #category : #generated }
@@ -169,45 +152,23 @@ ABAPReceiveNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> rightBrackets [
-	^ rightBrackets
+ABAPReceiveNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPReceiveNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> rightParens [
-	^ rightParens
+ABAPReceiveNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> typeNames [
-	^ typeNames
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPReceiveNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

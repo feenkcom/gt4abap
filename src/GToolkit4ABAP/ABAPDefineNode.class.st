@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'macroName'
+		'macroName',
+		'contents'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -18,10 +19,23 @@ ABAPDefineNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
+{ #category : #generated }
+ABAPDefineNode >> contents [
+	^ contents
+]
+
+{ #category : #generated }
+ABAPDefineNode >> contents: anOrderedCollection [
+	self setParent: self contents to: nil.
+	contents := anOrderedCollection.
+	self setParent: self contents to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPDefineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	contents := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -49,4 +63,9 @@ ABAPDefineNode >> macroName: anABAPNameNode [
 { #category : #generated }
 ABAPDefineNode >> nodeVariables [
 	^ #(#macroName)
+]
+
+{ #category : #generated }
+ABAPDefineNode >> otherVariables [
+	^ #(#contents)
 ]

@@ -5,19 +5,26 @@ Class {
 		'keywords',
 		'withNames',
 		'leftParens',
+		'dynamics',
+		'fieldNames',
+		'asNames',
 		'names',
 		'arrows',
 		'attributeNames',
+		'dashs',
 		'leftBrackets',
-		'sources',
-		'rightBrackets',
 		'rightParens',
-		'fields',
+		'sources',
+		'values',
+		'keies',
 		'operators',
-		'fieldNames',
-		'asNames',
-		'typeNames',
-		'parameterNames'
+		'fieldChains',
+		'rightBrackets',
+		'fields',
+		'targets',
+		'lengths',
+		'decs',
+		'functions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -63,12 +70,58 @@ ABAPWithStatementNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #names #attributeNames #sources #fields #fieldNames #asNames #typeNames #parameterNames)
+	^ #(#withNames #dynamics #fieldNames #asNames #names #attributeNames #sources #fieldChains #fields #targets #lengths #decs #functions)
 ]
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #leftParens #arrows #dashs #leftBrackets #rightParens #keies #operators #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> decs [
+	^ decs
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> decs: anOrderedCollection [
+	self setParents: self decs to: nil.
+	decs := anOrderedCollection.
+	self setParents: self decs to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -95,25 +148,54 @@ ABAPWithStatementNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPWithStatementNode >> functions [
+	^ functions
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> functions: anOrderedCollection [
+	self setParents: self functions to: nil.
+	functions := anOrderedCollection.
+	self setParents: self functions to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPWithStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
+	asNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
-	asNames := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	decs := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -147,6 +229,18 @@ ABAPWithStatementNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPWithStatementNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPWithStatementNode >> names [
 	^ names
 ]
@@ -169,15 +263,8 @@ ABAPWithStatementNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPWithStatementNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -213,15 +300,27 @@ ABAPWithStatementNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> typeNames [
-	^ typeNames
+ABAPWithStatementNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPWithStatementNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]
 
 { #category : #generated }

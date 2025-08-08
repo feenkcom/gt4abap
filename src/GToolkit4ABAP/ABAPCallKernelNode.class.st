@@ -3,7 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftParen',
+		'key',
 		'rightParen',
 		'operators',
 		'sources',
@@ -24,7 +26,7 @@ ABAPCallKernelNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCallKernelNode >> compositeTokenVariables [
-	^ #(#keywords #operators)
+	^ #(#keywords #values #operators)
 ]
 
 { #category : #generated }
@@ -43,8 +45,19 @@ ABAPCallKernelNode >> field: anABAPNameNode [
 ABAPCallKernelNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -106,5 +119,15 @@ ABAPCallKernelNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallKernelNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #key #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

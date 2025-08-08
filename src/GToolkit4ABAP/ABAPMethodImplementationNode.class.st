@@ -8,7 +8,7 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
-		'fields'
+		'dashs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -42,24 +42,22 @@ ABAPMethodImplementationNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMethodImplementationNode >> compositeNodeVariables [
-	^ #(#attributeNames #fields)
+	^ #(#attributeNames)
 ]
 
 { #category : #generated }
 ABAPMethodImplementationNode >> compositeTokenVariables [
-	^ #(#keywords #arrows)
+	^ #(#keywords #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPMethodImplementationNode >> fields [
-	^ fields
+ABAPMethodImplementationNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPMethodImplementationNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPMethodImplementationNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -69,7 +67,7 @@ ABAPMethodImplementationNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -4,17 +4,19 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'arrows',
+		'arrow',
+		'dynamics',
+		'values',
 		'leftParens',
-		'names',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
+		'key',
 		'rightParens',
-		'fields',
 		'operators',
+		'fieldChain',
+		'field',
+		'leftBracket',
+		'rightBracket',
 		'typeNames',
-		'parameterNames'
+		'target'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,47 +27,59 @@ ABAPAssignNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPAssignNode >> arrows [
-	^ arrows
+ABAPAssignNode >> arrow [
+	^ arrow
 ]
 
 { #category : #generated }
-ABAPAssignNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPAssignNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPAssignNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPAssignNode >> arrow: aSmaCCToken [
+	arrow := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPAssignNode >> compositeNodeVariables [
-	^ #(#sources #names #attributeNames #fields #typeNames #parameterNames)
+	^ #(#sources #dynamics #typeNames)
 ]
 
 { #category : #generated }
 ABAPAssignNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #values #leftParens #rightParens #operators)
 ]
 
 { #category : #generated }
-ABAPAssignNode >> fields [
-	^ fields
+ABAPAssignNode >> dynamics [
+	^ dynamics
 ]
 
 { #category : #generated }
-ABAPAssignNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPAssignNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPAssignNode >> field [
+	^ field
+]
+
+{ #category : #generated }
+ABAPAssignNode >> field: anABAPNameNode [
+	self field notNil ifTrue: [ self field parent: nil ].
+	field := anABAPNameNode.
+	self field notNil ifTrue: [ self field parent: self ]
+]
+
+{ #category : #generated }
+ABAPAssignNode >> fieldChain [
+	^ fieldChain
+]
+
+{ #category : #generated }
+ABAPAssignNode >> fieldChain: anABAPFieldChainNode [
+	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
+	fieldChain := anABAPFieldChainNode.
+	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -73,17 +87,22 @@ ABAPAssignNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPAssignNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPAssignNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -97,13 +116,13 @@ ABAPAssignNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAssignNode >> leftBrackets [
-	^ leftBrackets
+ABAPAssignNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-ABAPAssignNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPAssignNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -117,15 +136,8 @@ ABAPAssignNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAssignNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPAssignNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPAssignNode >> nodeVariables [
+	^ #(#fieldChain #field #target)
 ]
 
 { #category : #generated }
@@ -139,25 +151,13 @@ ABAPAssignNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAssignNode >> parameterNames [
-	^ parameterNames
+ABAPAssignNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-ABAPAssignNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPAssignNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPAssignNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPAssignNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -183,6 +183,23 @@ ABAPAssignNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAssignNode >> target [
+	^ target
+]
+
+{ #category : #generated }
+ABAPAssignNode >> target: anABAPTargetNode [
+	self target notNil ifTrue: [ self target parent: nil ].
+	target := anABAPTargetNode.
+	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPAssignNode >> tokenVariables [
+	^ #(#arrow #key #leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
 ABAPAssignNode >> typeNames [
 	^ typeNames
 ]
@@ -192,4 +209,14 @@ ABAPAssignNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPAssignNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPAssignNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'name'
+		'name',
+		'sqls'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -22,6 +23,7 @@ ABAPExecSQLNode >> compositeTokenVariables [
 ABAPExecSQLNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	sqls := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -49,4 +51,21 @@ ABAPExecSQLNode >> name: anABAPNameNode [
 { #category : #generated }
 ABAPExecSQLNode >> nodeVariables [
 	^ #(#name)
+]
+
+{ #category : #generated }
+ABAPExecSQLNode >> otherVariables [
+	^ #(#sqls)
+]
+
+{ #category : #generated }
+ABAPExecSQLNode >> sqls [
+	^ sqls
+]
+
+{ #category : #generated }
+ABAPExecSQLNode >> sqls: anOrderedCollection [
+	self setParent: self sqls to: nil.
+	sqls := anOrderedCollection.
+	self setParent: self sqls to: self
 ]

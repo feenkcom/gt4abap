@@ -3,17 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'sources',
-		'rightBrackets',
+		'fieldChains',
+		'formName',
 		'leftParens',
+		'values',
+		'keies',
 		'rightParens',
-		'fields',
-		'operators',
-		'formName'
+		'operators'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,47 +20,25 @@ ABAPFieldStatementNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPFieldStatementNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields)
+	^ #(#fieldChains)
 ]
 
 { #category : #generated }
 ABAPFieldStatementNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftBrackets #rightBrackets #leftParens #rightParens #operators)
+	^ #(#keywords #leftParens #values #keies #rightParens #operators)
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> fields [
-	^ fields
+ABAPFieldStatementNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPFieldStatementNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -83,16 +57,22 @@ ABAPFieldStatementNode >> formName: anABAPNameNode [
 ABAPFieldStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPFieldStatementNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -106,16 +86,6 @@ ABAPFieldStatementNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPFieldStatementNode >> leftParens [
 	^ leftParens
 ]
@@ -123,18 +93,6 @@ ABAPFieldStatementNode >> leftParens [
 { #category : #generated }
 ABAPFieldStatementNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -153,16 +111,6 @@ ABAPFieldStatementNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPFieldStatementNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPFieldStatementNode >> rightParens [
 	^ rightParens
 ]
@@ -173,13 +121,11 @@ ABAPFieldStatementNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> sources [
-	^ sources
+ABAPFieldStatementNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPFieldStatementNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

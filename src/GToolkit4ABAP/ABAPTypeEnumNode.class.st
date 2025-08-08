@@ -4,17 +4,24 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
-		'leftParens',
-		'rightParens',
-		'arrows',
-		'attributeNames',
-		'fields',
-		'leftBrackets',
-		'rightBrackets',
+		'lengths',
+		'values',
+		'chains',
+		'occurses',
+		'fieldChains',
 		'typeNames',
 		'eventNames',
 		'sources',
-		'operators'
+		'decimalses',
+		'leftParens',
+		'keies',
+		'rightParens',
+		'operators',
+		'sizes',
+		'fields',
+		'defaults',
+		'leftBrackets',
+		'rightBrackets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,35 +32,49 @@ ABAPTypeEnumNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPTypeEnumNode >> arrows [
-	^ arrows
+ABAPTypeEnumNode >> chains [
+	^ chains
 ]
 
 { #category : #generated }
-ABAPTypeEnumNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPTypeEnumNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPTypeEnumNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPTypeEnumNode >> chains: anOrderedCollection [
+	self setParents: self chains to: nil.
+	chains := anOrderedCollection.
+	self setParents: self chains to: self
 ]
 
 { #category : #generated }
 ABAPTypeEnumNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #typeNames #eventNames #sources)
+	^ #(#names #lengths #chains #occurses #fieldChains #typeNames #eventNames #sources #decimalses #sizes #fields #defaults)
 ]
 
 { #category : #generated }
 ABAPTypeEnumNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #arrows #leftBrackets #rightBrackets #operators)
+	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> decimalses [
+	^ decimalses
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> decimalses: anOrderedCollection [
+	self setParents: self decimalses to: nil.
+	decimalses := anOrderedCollection.
+	self setParents: self decimalses to: self
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
 ]
 
 { #category : #generated }
@@ -66,6 +87,18 @@ ABAPTypeEnumNode >> eventNames: anOrderedCollection [
 	self setParents: self eventNames to: nil.
 	eventNames := anOrderedCollection.
 	self setParents: self eventNames to: self
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -85,17 +118,34 @@ ABAPTypeEnumNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	chains := OrderedCollection new: 2.
+	occurses := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	eventNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	decimalses := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	sizes := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -129,6 +179,18 @@ ABAPTypeEnumNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPTypeEnumNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPTypeEnumNode >> names [
 	^ names
 ]
@@ -141,6 +203,18 @@ ABAPTypeEnumNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPTypeEnumNode >> occurses [
+	^ occurses
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> occurses: anOrderedCollection [
+	self setParents: self occurses to: nil.
+	occurses := anOrderedCollection.
+	self setParents: self occurses to: self
+]
+
+{ #category : #generated }
 ABAPTypeEnumNode >> operators [
 	^ operators
 ]
@@ -148,6 +222,11 @@ ABAPTypeEnumNode >> operators [
 { #category : #generated }
 ABAPTypeEnumNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -168,6 +247,18 @@ ABAPTypeEnumNode >> rightParens [
 { #category : #generated }
 ABAPTypeEnumNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> sizes [
+	^ sizes
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> sizes: anOrderedCollection [
+	self setParents: self sizes to: nil.
+	sizes := anOrderedCollection.
+	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
@@ -192,4 +283,16 @@ ABAPTypeEnumNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPTypeEnumNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

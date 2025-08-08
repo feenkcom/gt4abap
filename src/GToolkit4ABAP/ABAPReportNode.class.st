@@ -3,7 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'lineses',
 		'leftParens',
+		'reports',
 		'rightParens',
 		'fields',
 		'values',
@@ -19,7 +21,7 @@ ABAPReportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReportNode >> compositeNodeVariables [
-	^ #(#fields)
+	^ #(#lineses #reports #fields)
 ]
 
 { #category : #generated }
@@ -43,7 +45,9 @@ ABAPReportNode >> fields: anOrderedCollection [
 ABAPReportNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	lineses := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	reports := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
@@ -70,6 +74,18 @@ ABAPReportNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReportNode >> lineses [
+	^ lineses
+]
+
+{ #category : #generated }
+ABAPReportNode >> lineses: anOrderedCollection [
+	self setParents: self lineses to: nil.
+	lineses := anOrderedCollection.
+	self setParents: self lineses to: self
+]
+
+{ #category : #generated }
 ABAPReportNode >> nodeVariables [
 	^ #(#reportName)
 ]
@@ -84,6 +100,18 @@ ABAPReportNode >> reportName: anABAPNameNode [
 	self reportName notNil ifTrue: [ self reportName parent: nil ].
 	reportName := anABAPNameNode.
 	self reportName notNil ifTrue: [ self reportName parent: self ]
+]
+
+{ #category : #generated }
+ABAPReportNode >> reports [
+	^ reports
+]
+
+{ #category : #generated }
+ABAPReportNode >> reports: anOrderedCollection [
+	self setParents: self reports to: nil.
+	reports := anOrderedCollection.
+	self setParents: self reports to: self
 ]
 
 { #category : #generated }

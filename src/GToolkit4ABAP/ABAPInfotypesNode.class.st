@@ -3,15 +3,14 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
-		'rightParens',
+		'values',
+		'leftParen',
+		'key',
+		'rightParen',
 		'operators',
 		'leftBracket',
 		'rightBracket',
-		'names',
-		'arrows',
-		'attributeNames',
-		'field',
+		'length',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -23,60 +22,32 @@ ABAPInfotypesNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPInfotypesNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources)
+	^ #(#sources)
 ]
 
 { #category : #generated }
 ABAPInfotypesNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #arrows)
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> field [
-	^ field
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
+	^ #(#keywords #values #operators)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPInfotypesNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -100,30 +71,30 @@ ABAPInfotypesNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> leftParens [
-	^ leftParens
+ABAPInfotypesNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPInfotypesNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> names [
-	^ names
+ABAPInfotypesNode >> length [
+	^ length
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPInfotypesNode >> length: anABAPFieldLengthNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPFieldLengthNode.
+	self length notNil ifTrue: [ self length parent: self ]
 ]
 
 { #category : #generated }
 ABAPInfotypesNode >> nodeVariables [
-	^ #(#field)
+	^ #(#length)
 ]
 
 { #category : #generated }
@@ -147,13 +118,13 @@ ABAPInfotypesNode >> rightBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> rightParens [
-	^ rightParens
+ABAPInfotypesNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPInfotypesNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -170,5 +141,15 @@ ABAPInfotypesNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPInfotypesNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
+	^ #(#leftParen #key #rightParen #leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

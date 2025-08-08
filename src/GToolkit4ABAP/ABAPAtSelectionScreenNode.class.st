@@ -3,13 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftBracket',
 		'rightBracket',
-		'leftParen',
-		'rightParen',
-		'names',
-		'arrows',
-		'attributeNames',
+		'length',
 		'field'
 	],
 	#category : #GToolkit4ABAP
@@ -21,35 +18,8 @@ ABAPAtSelectionScreenNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> compositeNodeVariables [
-	^ #(#names #attributeNames)
-]
-
-{ #category : #generated }
 ABAPAtSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #arrows)
+	^ #(#keywords #values)
 ]
 
 { #category : #generated }
@@ -68,9 +38,7 @@ ABAPAtSelectionScreenNode >> field: anABAPNameNode [
 ABAPAtSelectionScreenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -94,30 +62,20 @@ ABAPAtSelectionScreenNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> leftParen [
-	^ leftParen
+ABAPAtSelectionScreenNode >> length [
+	^ length
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPAtSelectionScreenNode >> length: anABAPFieldLengthNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPFieldLengthNode.
+	self length notNil ifTrue: [ self length parent: self ]
 ]
 
 { #category : #generated }
 ABAPAtSelectionScreenNode >> nodeVariables [
-	^ #(#field)
+	^ #(#length #field)
 ]
 
 { #category : #generated }
@@ -131,16 +89,16 @@ ABAPAtSelectionScreenNode >> rightBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPAtSelectionScreenNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #leftParen #rightParen #period)
+	^ #(#leftBracket #rightBracket #period)
+]
+
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

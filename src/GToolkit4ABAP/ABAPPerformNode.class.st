@@ -4,19 +4,12 @@ Class {
 	#instVars : [
 		'keywords',
 		'formName',
-		'leftParens',
+		'leftParen',
 		'includeName',
-		'rightParens',
+		'rightParen',
 		'sources',
-		'fields',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'arrows',
-		'attributeNames',
-		'names',
-		'operators',
-		'parameterNames'
+		'targets',
+		'dynamics'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,47 +20,25 @@ ABAPPerformNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPPerformNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPPerformNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPPerformNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPPerformNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPPerformNode >> compositeNodeVariables [
-	^ #(#sources #fields #typeNames #attributeNames #names #parameterNames)
+	^ #(#sources #targets #dynamics)
 ]
 
 { #category : #generated }
 ABAPPerformNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPPerformNode >> fields [
-	^ fields
+ABAPPerformNode >> dynamics [
+	^ dynamics
 ]
 
 { #category : #generated }
-ABAPPerformNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPPerformNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -98,18 +69,9 @@ ABAPPerformNode >> includeName: anABAPNameNode [
 ABAPPerformNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -123,35 +85,13 @@ ABAPPerformNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPPerformNode >> leftBrackets [
-	^ leftBrackets
+ABAPPerformNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPPerformNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPPerformNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPPerformNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPPerformNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPPerformNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPPerformNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -160,45 +100,13 @@ ABAPPerformNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPPerformNode >> operators [
-	^ operators
+ABAPPerformNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPPerformNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPPerformNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPPerformNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPPerformNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPPerformNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPPerformNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPPerformNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPPerformNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -214,13 +122,18 @@ ABAPPerformNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPPerformNode >> typeNames [
-	^ typeNames
+ABAPPerformNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPPerformNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPPerformNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPPerformNode >> tokenVariables [
+	^ #(#leftParen #rightParen #period)
 ]

@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'name'
+		'name',
+		'occurs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,5 +49,17 @@ ABAPDataBeginNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPDataBeginNode >> nodeVariables [
-	^ #(#name)
+	^ #(#name #occurs)
+]
+
+{ #category : #generated }
+ABAPDataBeginNode >> occurs [
+	^ occurs
+]
+
+{ #category : #generated }
+ABAPDataBeginNode >> occurs: anABAPIntegerNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPIntegerNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]

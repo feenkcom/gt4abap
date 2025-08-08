@@ -3,18 +3,22 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'target',
+		'names',
+		'fieldLengths',
+		'operators',
+		'sources',
 		'leftParens',
-		'fields',
-		'rightParens',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
-		'typeNames',
-		'sources',
+		'lengths',
+		'keies',
+		'rightParens',
 		'arrows',
 		'attributeNames',
-		'names',
-		'parameterNames',
-		'operators'
+		'dashs',
+		'dynamics'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,42 +52,77 @@ ABAPModifyInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames)
+	^ #(#names #fieldLengths #sources #lengths #attributeNames #dynamics)
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
+	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> fields [
-	^ fields
+ABAPModifyInternalNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPModifyInternalNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> dynamics [
+	^ dynamics
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPModifyInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -117,6 +156,18 @@ ABAPModifyInternalNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPModifyInternalNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
 ABAPModifyInternalNode >> names [
 	^ names
 ]
@@ -129,6 +180,11 @@ ABAPModifyInternalNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPModifyInternalNode >> nodeVariables [
+	^ #(#target)
+]
+
+{ #category : #generated }
 ABAPModifyInternalNode >> operators [
 	^ operators
 ]
@@ -136,18 +192,6 @@ ABAPModifyInternalNode >> operators [
 { #category : #generated }
 ABAPModifyInternalNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
 ]
 
 { #category : #generated }
@@ -183,13 +227,23 @@ ABAPModifyInternalNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> typeNames [
-	^ typeNames
+ABAPModifyInternalNode >> target [
+	^ target
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPModifyInternalNode >> target: anABAPTargetNode [
+	self target notNil ifTrue: [ self target parent: nil ].
+	target := anABAPTargetNode.
+	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

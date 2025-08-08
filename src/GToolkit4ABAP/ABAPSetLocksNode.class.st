@@ -4,20 +4,23 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
-		'sources',
-		'leftParens',
-		'fields',
-		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
-		'typeNames',
-		'arrows',
-		'attributeNames',
-		'operators',
-		'parameterNames'
+		'_source',
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPSetLocksNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPSetLocksNode >> _source: anABAPSourceNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPSourceNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPSetLocksNode >> acceptVisitor: aRootVisitor [
@@ -25,47 +28,13 @@ ABAPSetLocksNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSetLocksNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSetLocksNode >> compositeNodeVariables [
-	^ #(#names #sources #fields #typeNames #attributeNames #parameterNames)
+	^ #(#names #targets)
 ]
 
 { #category : #generated }
 ABAPSetLocksNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #leftBrackets #rightBrackets #arrows #operators)
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -73,17 +42,7 @@ ABAPSetLocksNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -94,26 +53,6 @@ ABAPSetLocksNode >> keywords [
 { #category : #generated }
 ABAPSetLocksNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -129,67 +68,18 @@ ABAPSetLocksNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSetLocksNode >> operators [
-	^ operators
+ABAPSetLocksNode >> nodeVariables [
+	^ #(#_source)
 ]
 
 { #category : #generated }
-ABAPSetLocksNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPSetLocksNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPSetLocksNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> typeNames [
-	^ typeNames
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPSetLocksNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
 ]

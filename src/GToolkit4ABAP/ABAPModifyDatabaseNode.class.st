@@ -3,16 +3,14 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'dynamics',
 		'leftParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
 		'sources',
-		'rightBrackets',
 		'rightParens',
-		'fields',
-		'operators'
+		'values',
+		'keies',
+		'operators',
+		'fieldChains'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,63 +21,61 @@ ABAPModifyDatabaseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPModifyDatabaseNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields)
+	^ #(#dynamics #sources #fieldChains)
 ]
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightBrackets #rightParens #operators)
+	^ #(#keywords #leftParens #rightParens #values #keies #operators)
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> fields [
-	^ fields
+ABAPModifyDatabaseNode >> dynamics [
+	^ dynamics
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPModifyDatabaseNode >> dynamics: anOrderedCollection [
+	self setParents: self dynamics to: nil.
+	dynamics := anOrderedCollection.
+	self setParents: self dynamics to: self
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPModifyDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -93,16 +89,6 @@ ABAPModifyDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPModifyDatabaseNode >> leftParens [
 	^ leftParens
 ]
@@ -113,18 +99,6 @@ ABAPModifyDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPModifyDatabaseNode >> operators [
 	^ operators
 ]
@@ -132,16 +106,6 @@ ABAPModifyDatabaseNode >> operators [
 { #category : #generated }
 ABAPModifyDatabaseNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -164,4 +128,14 @@ ABAPModifyDatabaseNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

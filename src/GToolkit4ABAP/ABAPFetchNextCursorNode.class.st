@@ -3,18 +3,14 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftParens',
+		'keies',
 		'rightParens',
 		'operators',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
+		'fieldChains',
 		'sources',
-		'rightBrackets',
-		'fields',
-		'typeNames',
-		'parameterNames'
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,65 +21,49 @@ ABAPFetchNextCursorNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPFetchNextCursorNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fields #typeNames #parameterNames)
+	^ #(#fieldChains #sources #targets)
 ]
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #arrows #leftBrackets #rightBrackets)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators)
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> fields [
-	^ fields
+ABAPFetchNextCursorNode >> fieldChains [
+	^ fieldChains
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPFetchNextCursorNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPFetchNextCursorNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> keies: anOrderedCollection [
+	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -97,16 +77,6 @@ ABAPFetchNextCursorNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPFetchNextCursorNode >> leftParens [
 	^ leftParens
 ]
@@ -117,18 +87,6 @@ ABAPFetchNextCursorNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPFetchNextCursorNode >> operators [
 	^ operators
 ]
@@ -136,28 +94,6 @@ ABAPFetchNextCursorNode >> operators [
 { #category : #generated }
 ABAPFetchNextCursorNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -183,13 +119,23 @@ ABAPFetchNextCursorNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> typeNames [
-	^ typeNames
+ABAPFetchNextCursorNode >> targets [
+	^ targets
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPFetchNextCursorNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

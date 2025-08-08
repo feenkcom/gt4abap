@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
+		'occurs',
 		'statements'
 	],
 	#category : #GToolkit4ABAP
@@ -52,6 +53,23 @@ ABAPStaticsNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPStaticsNode >> nodeVariables [
+	^ #(#occurs)
+]
+
+{ #category : #generated }
+ABAPStaticsNode >> occurs [
+	^ occurs
+]
+
+{ #category : #generated }
+ABAPStaticsNode >> occurs: anABAPIntegerNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPIntegerNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 
 { #category : #generated }

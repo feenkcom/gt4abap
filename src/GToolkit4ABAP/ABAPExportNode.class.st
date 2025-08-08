@@ -3,18 +3,18 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
+		'lengths',
+		'sources',
+		'target',
+		'name',
 		'leftParens',
 		'rightParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'fields',
-		'sources',
-		'typeNames',
-		'operators',
-		'parameterNames'
+		'dynamic',
+		'key',
+		'operators'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,65 +25,49 @@ ABAPExportNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPExportNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPExportNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPExportNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPExportNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPExportNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #sources #typeNames #parameterNames)
+	^ #(#lengths #sources)
 ]
 
 { #category : #generated }
 ABAPExportNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #rightParens #arrows #operators)
+	^ #(#keywords #values #leftBrackets #rightBrackets #leftParens #rightParens #operators)
 ]
 
 { #category : #generated }
-ABAPExportNode >> fields [
-	^ fields
+ABAPExportNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPExportNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPExportNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPExportNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPExportNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPExportNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -117,15 +101,32 @@ ABAPExportNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPExportNode >> names [
-	^ names
+ABAPExportNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPExportNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPExportNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
+ABAPExportNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPExportNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+ABAPExportNode >> nodeVariables [
+	^ #(#target #name #dynamic)
 ]
 
 { #category : #generated }
@@ -136,18 +137,6 @@ ABAPExportNode >> operators [
 { #category : #generated }
 ABAPExportNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPExportNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPExportNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
 ]
 
 { #category : #generated }
@@ -183,13 +172,28 @@ ABAPExportNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPExportNode >> typeNames [
-	^ typeNames
+ABAPExportNode >> target [
+	^ target
 ]
 
 { #category : #generated }
-ABAPExportNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
+ABAPExportNode >> target: anABAPTargetNode [
+	self target notNil ifTrue: [ self target parent: nil ].
+	target := anABAPTargetNode.
+	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPExportNode >> tokenVariables [
+	^ #(#key #period)
+]
+
+{ #category : #generated }
+ABAPExportNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPExportNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

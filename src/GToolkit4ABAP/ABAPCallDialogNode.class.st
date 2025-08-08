@@ -3,15 +3,15 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
-		'rightParens',
+		'values',
+		'leftParen',
+		'key',
+		'rightParen',
 		'operators',
 		'fields',
 		'leftBrackets',
 		'rightBrackets',
-		'names',
-		'arrows',
-		'attributeNames',
+		'lengths',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -23,35 +23,13 @@ ABAPCallDialogNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPCallDialogNode >> compositeNodeVariables [
-	^ #(#fields #names #attributeNames #sources)
+	^ #(#fields #lengths #sources)
 ]
 
 { #category : #generated }
 ABAPCallDialogNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #leftBrackets #rightBrackets #arrows)
+	^ #(#keywords #values #operators #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -70,16 +48,23 @@ ABAPCallDialogNode >> fields: anOrderedCollection [
 ABAPCallDialogNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -103,25 +88,25 @@ ABAPCallDialogNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> leftParens [
-	^ leftParens
+ABAPCallDialogNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPCallDialogNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> names [
-	^ names
+ABAPCallDialogNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPCallDialogNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -145,13 +130,13 @@ ABAPCallDialogNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> rightParens [
-	^ rightParens
+ABAPCallDialogNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPCallDialogNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -164,4 +149,19 @@ ABAPCallDialogNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> tokenVariables [
+	^ #(#leftParen #key #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

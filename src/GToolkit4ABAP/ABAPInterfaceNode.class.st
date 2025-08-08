@@ -3,7 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'start',
-		'statements',
+		'content',
 		'keyword'
 	],
 	#category : #GToolkit4ABAP
@@ -15,14 +15,15 @@ ABAPInterfaceNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPInterfaceNode >> compositeNodeVariables [
-	^ #(#statements)
+ABAPInterfaceNode >> content [
+	^ content
 ]
 
-{ #category : #'generated-initialize-release' }
-ABAPInterfaceNode >> initialize [
-	super initialize.
-	statements := OrderedCollection new: 2.
+{ #category : #generated }
+ABAPInterfaceNode >> content: anABAPBodyNode [
+	self content notNil ifTrue: [ self content parent: nil ].
+	content := anABAPBodyNode.
+	self content notNil ifTrue: [ self content parent: self ]
 ]
 
 { #category : #generated }
@@ -37,7 +38,7 @@ ABAPInterfaceNode >> keyword: aSmaCCToken [
 
 { #category : #generated }
 ABAPInterfaceNode >> nodeVariables [
-	^ #(#start)
+	^ #(#start #content)
 ]
 
 { #category : #generated }
@@ -50,18 +51,6 @@ ABAPInterfaceNode >> start: anABAPStartInterfaceNode [
 	self start notNil ifTrue: [ self start parent: nil ].
 	start := anABAPStartInterfaceNode.
 	self start notNil ifTrue: [ self start parent: self ]
-]
-
-{ #category : #generated }
-ABAPInterfaceNode >> statements [
-	^ statements
-]
-
-{ #category : #generated }
-ABAPInterfaceNode >> statements: anOrderedCollection [
-	self setParents: self statements to: nil.
-	statements := anOrderedCollection.
-	self setParents: self statements to: self
 ]
 
 { #category : #generated }

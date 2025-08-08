@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'_source'
+		'_source',
+		'locations'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,13 +28,14 @@ ABAPBreakNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPBreakNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #locations)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPBreakNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	locations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -44,6 +46,16 @@ ABAPBreakNode >> keywords [
 { #category : #generated }
 ABAPBreakNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPBreakNode >> locations [
+	^ locations
+]
+
+{ #category : #generated }
+ABAPBreakNode >> locations: anOrderedCollection [
+	locations := anOrderedCollection
 ]
 
 { #category : #generated }

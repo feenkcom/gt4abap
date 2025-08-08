@@ -276,6 +276,11 @@ TABAPRootNodeVisitor >> visitConcatenate: aConcatenate [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitConcatenatedString: aConcatenatedString [
+	^ self visitRoot: aConcatenatedString
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitCondense: aCondense [
 	^ self visitStatement: aCondense
 ]
@@ -421,6 +426,11 @@ TABAPRootNodeVisitor >> visitDo: aDo [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitDynamic: aDynamic [
+	^ self visitRoot: aDynamic
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitEditorCall: anEditorCall [
 	^ self visitStatement: anEditorCall
 ]
@@ -506,8 +516,18 @@ TABAPRootNodeVisitor >> visitFetchNextCursor: aFetchNextCursor [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitFieldChain: aFieldChain [
+	^ self visitRoot: aFieldChain
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitFieldGroup: aFieldGroup [
 	^ self visitStatement: aFieldGroup
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitFieldLength: aFieldLength [
+	^ self visitRoot: aFieldLength
 ]
 
 { #category : #generated }
@@ -721,6 +741,11 @@ TABAPRootNodeVisitor >> visitInsertTextpool: anInsertTextpool [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitInteger: anInteger [
+	^ self visitRoot: anInteger
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitInterface: anInterface [
 	^ self visitStatement: anInterface
 ]
@@ -783,6 +808,11 @@ TABAPRootNodeVisitor >> visitMacroCall: aMacroCall [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitMessage: aMessage [
 	^ self visitStatement: aMessage
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitMethod: aMethod [
+	^ self visitRoot: aMethod
 ]
 
 { #category : #generated }
@@ -1181,6 +1211,11 @@ TABAPRootNodeVisitor >> visitShift: aShift [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitSimpleFieldChain: aSimpleFieldChain [
+	^ self visitRoot: aSimpleFieldChain
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSkip: aSkip [
 	^ self visitStatement: aSkip
 ]
@@ -1326,6 +1361,11 @@ TABAPRootNodeVisitor >> visitStop: aStop [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitString: aString [
+	^ self visitRoot: aString
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSubmit: aSubmit [
 	^ self visitStatement: aSubmit
 ]
@@ -1373,6 +1413,11 @@ TABAPRootNodeVisitor >> visitSystemCall: aSystemCall [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitTables: aTables [
 	^ self visitStatement: aTables
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitTarget: aTarget [
+	^ self visitRoot: aTarget
 ]
 
 { #category : #generated }

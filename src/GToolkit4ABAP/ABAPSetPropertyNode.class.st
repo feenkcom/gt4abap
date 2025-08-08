@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
+		'values',
 		'leftParen',
+		'key',
 		'rightParen',
 		'operators',
 		'field'
@@ -24,7 +26,7 @@ ABAPSetPropertyNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSetPropertyNode >> compositeTokenVariables [
-	^ #(#keywords #operators)
+	^ #(#keywords #values #operators)
 ]
 
 { #category : #generated }
@@ -44,7 +46,18 @@ ABAPSetPropertyNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> key [
+	^ key
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> key: aSmaCCToken [
+	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -106,5 +119,15 @@ ABAPSetPropertyNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPSetPropertyNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #key #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

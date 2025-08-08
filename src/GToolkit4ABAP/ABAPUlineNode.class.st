@@ -7,7 +7,7 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
-		'fields',
+		'dashs',
 		'rightParen'
 	],
 	#category : #GToolkit4ABAP
@@ -42,24 +42,22 @@ ABAPUlineNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPUlineNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields)
+	^ #(#names #attributeNames)
 ]
 
 { #category : #generated }
 ABAPUlineNode >> compositeTokenVariables [
-	^ #(#keywords #arrows)
+	^ #(#keywords #arrows #dashs)
 ]
 
 { #category : #generated }
-ABAPUlineNode >> fields [
-	^ fields
+ABAPUlineNode >> dashs [
+	^ dashs
 ]
 
 { #category : #generated }
-ABAPUlineNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPUlineNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -69,7 +67,7 @@ ABAPUlineNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

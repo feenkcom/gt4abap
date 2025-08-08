@@ -5,15 +5,11 @@ Class {
 		'keywords',
 		'includeName',
 		'sources',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
-		'leftParens',
-		'rightParens',
-		'names',
-		'arrows',
-		'attributeNames',
-		'fields',
-		'operators'
+		'lengths',
+		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,47 +20,25 @@ ABAPSubmitNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSubmitNode >> compositeNodeVariables [
-	^ #(#sources #names #attributeNames #fields)
+	^ #(#sources #lengths)
 ]
 
 { #category : #generated }
 ABAPSubmitNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #rightParens #arrows #operators)
+	^ #(#keywords #values #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> fields [
-	^ fields
+ABAPSubmitNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
+ABAPSubmitNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -84,15 +58,10 @@ ABAPSubmitNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -116,40 +85,20 @@ ABAPSubmitNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> leftParens [
-	^ leftParens
+ABAPSubmitNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPSubmitNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
 ABAPSubmitNode >> nodeVariables [
-	^ #(#includeName)
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+	^ #(#includeName #dynamic)
 ]
 
 { #category : #generated }
@@ -163,16 +112,6 @@ ABAPSubmitNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSubmitNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPSubmitNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPSubmitNode >> sources [
 	^ sources
 ]
@@ -182,4 +121,14 @@ ABAPSubmitNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

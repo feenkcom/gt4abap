@@ -3,17 +3,15 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'fields',
+		'name',
+		'fieldChains',
 		'typeNames',
-		'leftParens',
-		'rightParens',
-		'sources',
-		'operators'
+		'values',
+		'chains',
+		'decimalses',
+		'lengths',
+		'defaults',
+		'fields'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,35 +22,61 @@ ABAPConstantStatementNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> arrows [
-	^ arrows
+ABAPConstantStatementNode >> chains [
+	^ chains
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPConstantStatementNode >> chains: anOrderedCollection [
+	self setParents: self chains to: nil.
+	chains := anOrderedCollection.
+	self setParents: self chains to: self
 ]
 
 { #category : #generated }
 ABAPConstantStatementNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #fields #typeNames #sources)
+	^ #(#fieldChains #typeNames #values #chains #decimalses #lengths #defaults #fields)
 ]
 
 { #category : #generated }
 ABAPConstantStatementNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftBrackets #rightBrackets #leftParens #rightParens #operators)
+	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> decimalses [
+	^ decimalses
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> decimalses: anOrderedCollection [
+	self setParents: self decimalses to: nil.
+	decimalses := anOrderedCollection.
+	self setParents: self decimalses to: self
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> defaults [
+	^ defaults
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> defaults: anOrderedCollection [
+	self setParents: self defaults to: nil.
+	defaults := anOrderedCollection.
+	self setParents: self defaults to: self
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> fieldChains [
+	^ fieldChains
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> fieldChains: anOrderedCollection [
+	self setParents: self fieldChains to: nil.
+	fieldChains := anOrderedCollection.
+	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -71,17 +95,14 @@ ABAPConstantStatementNode >> fields: anOrderedCollection [
 ABAPConstantStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	chains := OrderedCollection new: 2.
+	decimalses := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	defaults := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -95,77 +116,32 @@ ABAPConstantStatementNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> leftBrackets [
-	^ leftBrackets
+ABAPConstantStatementNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPConstantStatementNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> leftParens [
-	^ leftParens
+ABAPConstantStatementNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPConstantStatementNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPConstantStatementNode >> nodeVariables [
+	^ #(#name)
 ]
 
 { #category : #generated }
@@ -178,4 +154,16 @@ ABAPConstantStatementNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPConstantStatementNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

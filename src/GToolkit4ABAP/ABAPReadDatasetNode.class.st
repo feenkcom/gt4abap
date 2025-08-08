@@ -3,11 +3,24 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
-		'targets'
+		'_source',
+		'targets',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPReadDatasetNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPReadDatasetNode >> _source: anABAPSourceNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPSourceNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPReadDatasetNode >> acceptVisitor: aRootVisitor [
@@ -16,7 +29,7 @@ ABAPReadDatasetNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadDatasetNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#targets #lengths)
 ]
 
 { #category : #generated }
@@ -28,8 +41,8 @@ ABAPReadDatasetNode >> compositeTokenVariables [
 ABAPReadDatasetNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -43,15 +56,20 @@ ABAPReadDatasetNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadDatasetNode >> sources [
-	^ sources
+ABAPReadDatasetNode >> lengths [
+	^ lengths
 ]
 
 { #category : #generated }
-ABAPReadDatasetNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPReadDatasetNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
+ABAPReadDatasetNode >> nodeVariables [
+	^ #(#_source)
 ]
 
 { #category : #generated }

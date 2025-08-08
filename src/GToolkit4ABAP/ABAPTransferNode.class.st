@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources'
+		'sources',
+		'length'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,6 +39,23 @@ ABAPTransferNode >> keywords [
 { #category : #generated }
 ABAPTransferNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPTransferNode >> length [
+	^ length
+]
+
+{ #category : #generated }
+ABAPTransferNode >> length: anABAPSourceNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPSourceNode.
+	self length notNil ifTrue: [ self length parent: self ]
+]
+
+{ #category : #generated }
+ABAPTransferNode >> nodeVariables [
+	^ #(#length)
 ]
 
 { #category : #generated }

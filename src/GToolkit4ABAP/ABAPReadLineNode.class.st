@@ -16,7 +16,7 @@ ABAPReadLineNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadLineNode >> compositeNodeVariables [
-	^ #(#targets #sources)
+	^ #(#sources #targets)
 ]
 
 { #category : #generated }
@@ -28,8 +28,8 @@ ABAPReadLineNode >> compositeTokenVariables [
 ABAPReadLineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -25,7 +25,7 @@ ABAPMessageNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPMessageNode >> compositeNodeVariables [
-	^ #(#sources #targets #exceptionNames #fieldChains)
+	^ #(#sources #exceptionNames #targets #fieldChains)
 ]
 
 { #category : #generated }
@@ -74,8 +74,8 @@ ABAPMessageNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	exceptionNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.

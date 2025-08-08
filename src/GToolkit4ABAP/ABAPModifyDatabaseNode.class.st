@@ -23,12 +23,12 @@ ABAPModifyDatabaseNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #sources #fieldChains)
+	^ #(#dynamics #fieldChains #sources)
 ]
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #values #keies #operators #dashs)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
 ]
 
 { #category : #generated }
@@ -70,13 +70,13 @@ ABAPModifyDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 ]
 

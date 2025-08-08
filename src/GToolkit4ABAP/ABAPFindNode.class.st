@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'targets'
+		'targets',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +17,7 @@ ABAPFindNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFindNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#sources #targets #lengths)
 ]
 
 { #category : #generated }
@@ -30,6 +31,7 @@ ABAPFindNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -40,6 +42,18 @@ ABAPFindNode >> keywords [
 { #category : #generated }
 ABAPFindNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPFindNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPFindNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }

@@ -53,12 +53,12 @@ ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #dynamics #fieldLengths #fieldOffsets #lengths #attributeNames)
+	^ #(#names #dynamics #sources #fieldLengths #fieldOffsets #lengths #attributeNames)
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #dashs)
+	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -111,10 +111,9 @@ ABAPDeleteInternalNode >> fieldOffsets: anOrderedCollection [
 ABAPDeleteInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
@@ -125,6 +124,7 @@ ABAPDeleteInternalNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 ]

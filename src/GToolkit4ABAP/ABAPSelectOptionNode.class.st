@@ -59,7 +59,7 @@ ABAPSelectOptionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeNodeVariables [
-	^ #(#lengths #fieldChains #defaults #tos #fields #sources #names #attributeNames #typeNames #methodNames #dynamics #parameterNames #targets)
+	^ #(#lengths #fieldChains #defaults #tos #fields #names #attributeNames #typeNames #sources #methodNames #dynamics #parameterNames #targets)
 ]
 
 { #category : #generated }
@@ -147,7 +147,6 @@ ABAPSelectOptionNode >> initialize [
 	defaults := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
@@ -157,6 +156,7 @@ ABAPSelectOptionNode >> initialize [
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.

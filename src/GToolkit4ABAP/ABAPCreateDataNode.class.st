@@ -7,7 +7,8 @@ Class {
 		'sources',
 		'typeName',
 		'fields',
-		'dynamics'
+		'dynamics',
+		'length'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -71,8 +72,20 @@ ABAPCreateDataNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCreateDataNode >> length [
+	^ length
+]
+
+{ #category : #generated }
+ABAPCreateDataNode >> length: anABAPSourceNode [
+	self length notNil ifTrue: [ self length parent: nil ].
+	length := anABAPSourceNode.
+	self length notNil ifTrue: [ self length parent: self ]
+]
+
+{ #category : #generated }
 ABAPCreateDataNode >> nodeVariables [
-	^ #(#target #typeName)
+	^ #(#target #typeName #length)
 ]
 
 { #category : #generated }

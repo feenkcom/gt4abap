@@ -71,12 +71,12 @@ ABAPDeleteDatabaseNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #fieldNames #withNames #asNames #fields #fieldChains #sources #lengths #decs #names #functions #attributeNames)
+	^ #(#dynamics #targets #fieldNames #withNames #asNames #fields #fieldChains #lengths #decs #names #attributeNames #sources #functions)
 ]
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #leftBrackets #rightBrackets #dashs #arrows)
+	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #leftBrackets #rightBrackets #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -188,16 +188,16 @@ ABAPDeleteDatabaseNode >> initialize [
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -71,7 +71,7 @@ ABAPUpdateDatabaseNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #functions #attributeNames)
+	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #attributeNames #functions)
 ]
 
 { #category : #generated }
@@ -195,9 +195,9 @@ ABAPUpdateDatabaseNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

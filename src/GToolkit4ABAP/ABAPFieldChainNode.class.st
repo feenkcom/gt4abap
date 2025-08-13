@@ -9,10 +9,9 @@ Class {
 		'sources',
 		'rightBrackets',
 		'keywords',
-		'fieldLengths',
-		'fieldOffsets',
 		'eqs',
-		'dynamics',
+		'fieldOffset',
+		'fieldLength',
 		'field',
 		'value'
 	],
@@ -48,24 +47,12 @@ ABAPFieldChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #sources #fieldLengths #fieldOffsets #dynamics)
+	^ #(#attributeNames #sources)
 ]
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeTokenVariables [
 	^ #(#arrows #leftBrackets #rightBrackets #keywords #eqs)
-]
-
-{ #category : #generated }
-ABAPFieldChainNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPFieldChainNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -91,27 +78,27 @@ ABAPFieldChainNode >> field: anABAPNameNode [
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> fieldLengths [
-	^ fieldLengths
+ABAPFieldChainNode >> fieldLength [
+	^ fieldLength
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
+ABAPFieldChainNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> fieldOffsets [
-	^ fieldOffsets
+ABAPFieldChainNode >> fieldOffset [
+	^ fieldOffset
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+ABAPFieldChainNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -124,10 +111,7 @@ ABAPFieldChainNode >> initialize [
 	sources := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -157,14 +141,19 @@ ABAPFieldChainNode >> names [
 
 { #category : #generated }
 ABAPFieldChainNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
 ABAPFieldChainNode >> nodeVariables [
-	^ #(#field)
+	^ #(#fieldOffset #fieldLength #field)
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

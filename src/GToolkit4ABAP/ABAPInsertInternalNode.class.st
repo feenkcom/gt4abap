@@ -10,19 +10,19 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'rightParens',
-		'dynamics',
-		'key',
-		'operators',
+		'dynamic',
 		'dashs',
+		'key',
 		'names',
 		'arrows',
 		'attributeNames',
-		'fieldLengths',
-		'fieldOffsets',
 		'eqs',
+		'fieldOffset',
+		'fieldLength',
 		'fields',
 		'methodNames',
 		'parameterNames',
+		'operators',
 		'fieldChain',
 		'typeNames',
 		'lengths'
@@ -59,12 +59,12 @@ ABAPInsertInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertInternalNode >> compositeNodeVariables [
-	^ #(#sources #targets #dynamics #names #attributeNames #fieldLengths #fieldOffsets #fields #methodNames #parameterNames #typeNames #lengths)
+	^ #(#sources #targets #attributeNames #fields #methodNames #parameterNames #typeNames #lengths)
 ]
 
 { #category : #generated }
 ABAPInsertInternalNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #operators #dashs #arrows #eqs)
+	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #dashs #arrows #eqs #operators)
 ]
 
 { #category : #generated }
@@ -78,15 +78,15 @@ ABAPInsertInternalNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> dynamics [
-	^ dynamics
+ABAPInsertInternalNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPInsertInternalNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -112,27 +112,27 @@ ABAPInsertInternalNode >> fieldChain: anABAPFieldChainNode [
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> fieldLengths [
-	^ fieldLengths
+ABAPInsertInternalNode >> fieldLength [
+	^ fieldLength
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
+ABAPInsertInternalNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> fieldOffsets [
-	^ fieldOffsets
+ABAPInsertInternalNode >> fieldOffset [
+	^ fieldOffset
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+ABAPInsertInternalNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #generated }
@@ -158,18 +158,15 @@ ABAPInsertInternalNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]
@@ -245,14 +242,14 @@ ABAPInsertInternalNode >> names [
 
 { #category : #generated }
 ABAPInsertInternalNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
 ABAPInsertInternalNode >> nodeVariables [
-	^ #(#fieldChain)
+	^ #(#dynamic #fieldOffset #fieldLength #fieldChain)
 ]
 
 { #category : #generated }
@@ -267,7 +264,7 @@ ABAPInsertInternalNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertInternalNode >> otherVariables [
-	^ #(#values)
+	^ #(#values #names)
 ]
 
 { #category : #generated }

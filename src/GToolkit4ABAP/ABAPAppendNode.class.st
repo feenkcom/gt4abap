@@ -11,18 +11,17 @@ Class {
 		'rightBrackets',
 		'rightParens',
 		'fields',
-		'key',
-		'operators',
 		'dashs',
+		'key',
 		'names',
 		'arrows',
 		'attributeNames',
-		'fieldLengths',
-		'fieldOffsets',
 		'eqs',
-		'dynamics',
+		'fieldOffset',
+		'fieldLength',
 		'methodNames',
 		'parameterNames',
+		'operators',
 		'fieldChain',
 		'typeNames',
 		'lengths'
@@ -59,12 +58,12 @@ ABAPAppendNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPAppendNode >> compositeNodeVariables [
-	^ #(#sources #targets #fields #names #attributeNames #fieldLengths #fieldOffsets #dynamics #methodNames #parameterNames #typeNames #lengths)
+	^ #(#sources #targets #fields #attributeNames #methodNames #parameterNames #typeNames #lengths)
 ]
 
 { #category : #generated }
 ABAPAppendNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #operators #dashs #arrows #eqs)
+	^ #(#keywords #leftParens #leftBrackets #rightBrackets #rightParens #dashs #arrows #eqs #operators)
 ]
 
 { #category : #generated }
@@ -75,18 +74,6 @@ ABAPAppendNode >> dashs [
 { #category : #generated }
 ABAPAppendNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPAppendNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPAppendNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -112,27 +99,27 @@ ABAPAppendNode >> fieldChain: anABAPFieldChainNode [
 ]
 
 { #category : #generated }
-ABAPAppendNode >> fieldLengths [
-	^ fieldLengths
+ABAPAppendNode >> fieldLength [
+	^ fieldLength
 ]
 
 { #category : #generated }
-ABAPAppendNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
+ABAPAppendNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #generated }
-ABAPAppendNode >> fieldOffsets [
-	^ fieldOffsets
+ABAPAppendNode >> fieldOffset [
+	^ fieldOffset
 ]
 
 { #category : #generated }
-ABAPAppendNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+ABAPAppendNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #generated }
@@ -159,17 +146,14 @@ ABAPAppendNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]
@@ -245,14 +229,14 @@ ABAPAppendNode >> names [
 
 { #category : #generated }
 ABAPAppendNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
 ABAPAppendNode >> nodeVariables [
-	^ #(#fieldChain)
+	^ #(#fieldOffset #fieldLength #fieldChain)
 ]
 
 { #category : #generated }
@@ -267,7 +251,7 @@ ABAPAppendNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPAppendNode >> otherVariables [
-	^ #(#values)
+	^ #(#values #names)
 ]
 
 { #category : #generated }

@@ -15,9 +15,8 @@ Class {
 		'arrows',
 		'attributeNames',
 		'names',
-		'fieldLengths',
-		'fieldOffsets',
-		'dynamics',
+		'fieldOffset',
+		'fieldLength',
 		'parameterNames',
 		'lengths'
 	],
@@ -53,24 +52,12 @@ ABAPTargetNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPTargetNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #names #fieldLengths #fieldOffsets #dynamics #parameterNames #lengths)
+	^ #(#fields #typeNames #sources #attributeNames #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPTargetNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens #values #leftBrackets #rightBrackets #eqs #arrows)
-]
-
-{ #category : #generated }
-ABAPTargetNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPTargetNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -84,27 +71,27 @@ ABAPTargetNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPTargetNode >> fieldLengths [
-	^ fieldLengths
+ABAPTargetNode >> fieldLength [
+	^ fieldLength
 ]
 
 { #category : #generated }
-ABAPTargetNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
+ABAPTargetNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #generated }
-ABAPTargetNode >> fieldOffsets [
-	^ fieldOffsets
+ABAPTargetNode >> fieldOffset [
+	^ fieldOffset
 ]
 
 { #category : #generated }
-ABAPTargetNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+ABAPTargetNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #generated }
@@ -135,9 +122,6 @@ ABAPTargetNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]
@@ -191,9 +175,19 @@ ABAPTargetNode >> names [
 
 { #category : #generated }
 ABAPTargetNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
+]
+
+{ #category : #generated }
+ABAPTargetNode >> nodeVariables [
+	^ #(#fieldOffset #fieldLength)
+]
+
+{ #category : #generated }
+ABAPTargetNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

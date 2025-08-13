@@ -86,6 +86,16 @@ TABAPRootNodeVisitor >> visitBack: aBack [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitBetweenExpression: aBetweenExpression [
+	^ self visitExpression: aBetweenExpression
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitBinaryExpression: aBinaryExpression [
+	^ self visitExpression: aBinaryExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitBody: aBody [
 	^ self visitRoot: aBody
 ]
@@ -248,6 +258,11 @@ TABAPRootNodeVisitor >> visitCloseDataset: aCloseDataset [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitCollect: aCollect [
 	^ self visitStatement: aCollect
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitCollectionExpression: aCollectionExpression [
+	^ self visitExpression: aCollectionExpression
 ]
 
 { #category : #generated }
@@ -506,6 +521,11 @@ TABAPRootNodeVisitor >> visitExportDynpro: anExportDynpro [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitExpression: anExpression [
+	^ self visitRoot: anExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitExtract: anExtract [
 	^ self visitStatement: anExtract
 ]
@@ -701,6 +721,11 @@ TABAPRootNodeVisitor >> visitImportNametab: anImportNametab [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitInExpression: anInExpression [
+	^ self visitExpression: anInExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitInclude: anInclude [
 	^ self visitStatement: anInclude
 ]
@@ -771,6 +796,11 @@ TABAPRootNodeVisitor >> visitInterfaceLoad: anInterfaceLoad [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitIsExpression: anIsExpression [
+	^ self visitExpression: anIsExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitKernelId: aKernelId [
 	^ self visitRoot: aKernelId
 ]
@@ -823,6 +853,11 @@ TABAPRootNodeVisitor >> visitMessage: aMessage [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitMethod: aMethod [
 	^ self visitRoot: aMethod
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitMethodCallChain: aMethodCallChain [
+	^ self visitExpression: aMethodCallChain
 ]
 
 { #category : #generated }
@@ -1246,6 +1281,11 @@ TABAPRootNodeVisitor >> visitSource: aSource [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitSourceFieldSymbolChain: aSourceFieldSymbolChain [
+	^ self visitExpression: aSourceFieldSymbolChain
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSplit: aSplit [
 	^ self visitStatement: aSplit
 ]
@@ -1513,6 +1553,11 @@ TABAPRootNodeVisitor >> visitTypePools: aTypePools [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitUline: anUline [
 	^ self visitStatement: anUline
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitUnaryExpression: anUnaryExpression [
+	^ self visitExpression: anUnaryExpression
 ]
 
 { #category : #generated }

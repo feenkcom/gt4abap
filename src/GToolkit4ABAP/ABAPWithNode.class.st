@@ -7,24 +7,25 @@ Class {
 		'leftParens',
 		'dynamics',
 		'fieldNames',
+		'commas',
 		'asNames',
 		'names',
 		'arrows',
 		'attributeNames',
-		'dashs',
 		'leftBrackets',
 		'rightParens',
 		'operators',
-		'sources',
 		'values',
-		'keies',
-		'fieldChains',
 		'rightBrackets',
+		'keies',
+		'lengths',
 		'fields',
+		'decs',
+		'dashs',
+		'fieldChains',
+		'sources',
 		'eqs',
 		'targets',
-		'lengths',
-		'decs',
 		'functions',
 		'body'
 	],
@@ -83,13 +84,23 @@ ABAPWithNode >> body: anABAPBodyNode [
 ]
 
 { #category : #generated }
+ABAPWithNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPWithNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPWithNode >> compositeNodeVariables [
 	^ #(#withNames #dynamics #fieldNames #asNames #names #attributeNames #lengths #fields #fieldChains #targets #sources #decs #functions)
 ]
 
 { #category : #generated }
 ABAPWithNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightParens #operators #rightBrackets #keies #eqs #dashs)
+	^ #(#keywords #leftParens #commas #arrows #dashs #leftBrackets #rightParens #operators #rightBrackets #keies #eqs)
 ]
 
 { #category : #generated }
@@ -192,10 +203,12 @@ ABAPWithNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
@@ -209,7 +222,6 @@ ABAPWithNode >> initialize [
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
 ]
 

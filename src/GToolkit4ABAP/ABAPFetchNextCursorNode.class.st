@@ -11,7 +11,8 @@ Class {
 		'dashs',
 		'fieldChains',
 		'sources',
-		'targets'
+		'targets',
+		'commas'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -22,13 +23,23 @@ ABAPFetchNextCursorNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPFetchNextCursorNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPFetchNextCursorNode >> compositeNodeVariables [
 	^ #(#fieldChains #sources #targets)
 ]
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs #commas)
 ]
 
 { #category : #generated }
@@ -66,6 +77,7 @@ ABAPFetchNextCursorNode >> initialize [
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

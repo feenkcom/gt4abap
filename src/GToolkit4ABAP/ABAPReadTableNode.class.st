@@ -14,14 +14,11 @@ Class {
 		'dynamics',
 		'fieldChain',
 		'fields',
-		'names',
-		'fieldLengths',
-		'fieldOffsets',
 		'targets',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'arrows'
+		'names'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,23 +29,13 @@ ABAPReadTableNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPReadTableNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #fields #names #fieldLengths #fieldOffsets #targets #lengths)
+	^ #(#sources #dynamics #fields #targets #lengths)
 ]
 
 { #category : #generated }
 ABAPReadTableNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows)
+	^ #(#keywords #values #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -96,30 +83,6 @@ ABAPReadTableNode >> fieldChain: anABAPFieldChainNode [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
-]
-
-{ #category : #generated }
 ABAPReadTableNode >> fields [
 	^ fields
 ]
@@ -143,14 +106,11 @@ ABAPReadTableNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -212,9 +172,9 @@ ABAPReadTableNode >> names [
 
 { #category : #generated }
 ABAPReadTableNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
@@ -230,6 +190,11 @@ ABAPReadTableNode >> operators [
 { #category : #generated }
 ABAPReadTableNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

@@ -21,7 +21,8 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'arrows'
+		'arrows',
+		'commas'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -42,13 +43,23 @@ ABAPStartLoopNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPStartLoopNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPStartLoopNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #names #targets #fieldLengths #fieldOffsets #lengths)
+	^ #(#sources #dynamics #targets #fieldLengths #fieldOffsets #lengths)
 ]
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows #commas)
 ]
 
 { #category : #generated }
@@ -139,6 +150,7 @@ ABAPStartLoopNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -200,9 +212,9 @@ ABAPStartLoopNode >> names [
 
 { #category : #generated }
 ABAPStartLoopNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
@@ -218,6 +230,11 @@ ABAPStartLoopNode >> operators [
 { #category : #generated }
 ABAPStartLoopNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

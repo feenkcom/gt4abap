@@ -35,7 +35,7 @@ ABAPSortNode >> arrows: anOrderedCollection [
 
 { #category : #generated }
 ABAPSortNode >> compositeNodeVariables [
-	^ #(#dynamics #names #fieldLengths #fieldOffsets #sources)
+	^ #(#dynamics #fieldLengths #fieldOffsets #sources)
 ]
 
 { #category : #generated }
@@ -132,14 +132,19 @@ ABAPSortNode >> names [
 
 { #category : #generated }
 ABAPSortNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
 ABAPSortNode >> nodeVariables [
 	^ #(#target)
+]
+
+{ #category : #generated }
+ABAPSortNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

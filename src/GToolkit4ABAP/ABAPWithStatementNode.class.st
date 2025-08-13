@@ -7,6 +7,7 @@ Class {
 		'leftParens',
 		'dynamics',
 		'fieldNames',
+		'commas',
 		'asNames',
 		'names',
 		'arrows',
@@ -14,18 +15,18 @@ Class {
 		'leftBrackets',
 		'rightParens',
 		'operators',
-		'sources',
 		'values',
-		'keies',
-		'fieldChains',
 		'rightBrackets',
+		'keies',
 		'lengths',
 		'fields',
+		'decs',
+		'dashs',
+		'fieldChains',
+		'sources',
 		'eqs',
 		'targets',
-		'decs',
-		'functions',
-		'dashs'
+		'functions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -70,13 +71,23 @@ ABAPWithStatementNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPWithStatementNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
 	^ #(#withNames #dynamics #fieldNames #asNames #names #attributeNames #lengths #fields #fieldChains #targets #sources #decs #functions)
 ]
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #arrows #leftBrackets #rightParens #operators #rightBrackets #keies #eqs #dashs)
+	^ #(#keywords #leftParens #commas #arrows #dashs #leftBrackets #rightParens #operators #rightBrackets #keies #eqs)
 ]
 
 { #category : #generated }
@@ -179,10 +190,12 @@ ABAPWithStatementNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
@@ -197,7 +210,6 @@ ABAPWithStatementNode >> initialize [
 	sources := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

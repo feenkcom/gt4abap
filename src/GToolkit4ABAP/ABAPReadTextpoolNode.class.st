@@ -17,7 +17,6 @@ Class {
 		'fields',
 		'eqs',
 		'values',
-		'dynamics',
 		'parameterNames',
 		'lengths'
 	],
@@ -53,24 +52,12 @@ ABAPReadTextpoolNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeNodeVariables [
-	^ #(#sources #fieldOffsets #fieldLengths #names #attributeNames #typeNames #fields #dynamics #parameterNames #lengths)
+	^ #(#sources #fieldOffsets #fieldLengths #attributeNames #typeNames #fields #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeTokenVariables [
 	^ #(#keywords #leftBrackets #rightBrackets #arrows #leftParens #rightParens #eqs #values)
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -137,7 +124,6 @@ ABAPReadTextpoolNode >> initialize [
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]
@@ -191,9 +177,14 @@ ABAPReadTextpoolNode >> names [
 
 { #category : #generated }
 ABAPReadTextpoolNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

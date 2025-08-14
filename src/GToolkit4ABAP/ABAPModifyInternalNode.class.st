@@ -55,7 +55,7 @@ ABAPModifyInternalNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #rightParens #keies #arrows #commas)
+	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #rightParens #keies #commas #arrows)
 ]
 
 { #category : #generated }
@@ -110,8 +110,8 @@ ABAPModifyInternalNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -75,7 +75,7 @@ ABAPSourceNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSourceNode >> compositeNodeVariables [
-	^ #(#typeNames #sources #fieldLengths #fieldOffsets #lengths #fields #whiles #fieldChains #lefts #rights #parameterNames #messageClasses #methodNames #targets #attributeNames #dynamics)
+	^ #(#typeNames #sources #fieldLengths #fieldOffsets #lengths #fields #whiles #fieldChains #lefts #rights #parameterNames #messageClasses #methodNames #attributeNames #dynamics #targets)
 ]
 
 { #category : #generated }
@@ -193,9 +193,9 @@ ABAPSourceNode >> initialize [
 	parameterNames := OrderedCollection new: 2.
 	messageClasses := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

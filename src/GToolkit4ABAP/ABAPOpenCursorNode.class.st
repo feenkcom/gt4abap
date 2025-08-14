@@ -82,7 +82,7 @@ ABAPOpenCursorNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeNodeVariables [
-	^ #(#targets #fieldNames #dynamics #withNames #asNames #fields #fieldChains #lengths #decs #names #attributeNames #sources #functions)
+	^ #(#targets #dynamics #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #functions #sources #names #attributeNames)
 ]
 
 { #category : #generated }
@@ -189,7 +189,6 @@ ABAPOpenCursorNode >> initialize [
 	targets := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
@@ -200,15 +199,16 @@ ABAPOpenCursorNode >> initialize [
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 ]
 

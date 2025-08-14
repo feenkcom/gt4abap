@@ -45,7 +45,7 @@ ABAPTypeEnumNode >> chains: anOrderedCollection [
 
 { #category : #generated }
 ABAPTypeEnumNode >> compositeNodeVariables [
-	^ #(#names #lengths #chains #occurses #fieldChains #typeNames #eventNames #sources #decimalses #sizes #fields #defaults)
+	^ #(#names #lengths #chains #fieldChains #typeNames #eventNames #sources #decimalses #occurses #sizes #fields #defaults)
 ]
 
 { #category : #generated }
@@ -121,12 +121,12 @@ ABAPTypeEnumNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	chains := OrderedCollection new: 2.
-	occurses := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	eventNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
+	occurses := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.

@@ -82,7 +82,7 @@ ABAPDeleteDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #fieldNames #withNames #asNames #fields #fieldChains #lengths #decs #names #attributeNames #sources #functions)
+	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #functions #names #attributeNames #sources)
 ]
 
 { #category : #generated }
@@ -190,7 +190,6 @@ ABAPDeleteDatabaseNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
@@ -200,16 +199,17 @@ ABAPDeleteDatabaseNode >> initialize [
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

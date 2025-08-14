@@ -82,7 +82,7 @@ ABAPInsertDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources #targets #fieldNames #withNames #asNames #fields #lengths #decs #names #attributeNames #functions)
+	^ #(#dynamics #fieldChains #sources #targets #withNames #asNames #fields #fieldNames #lengths #decs #functions #names #attributeNames)
 ]
 
 { #category : #generated }
@@ -196,20 +196,20 @@ ABAPInsertDatabaseNode >> initialize [
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

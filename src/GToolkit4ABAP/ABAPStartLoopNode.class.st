@@ -59,7 +59,7 @@ ABAPStartLoopNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets #arrows #commas)
+	^ #(#keywords #values #leftParens #keies #rightParens #operators #eqs #leftBrackets #rightBrackets #commas #arrows)
 ]
 
 { #category : #generated }
@@ -149,8 +149,8 @@ ABAPStartLoopNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

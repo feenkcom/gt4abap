@@ -40,7 +40,7 @@ ABAPSortNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSortNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #values #arrows #eqs)
+	^ #(#keywords #leftBrackets #rightBrackets #values #eqs #arrows)
 ]
 
 { #category : #generated }
@@ -100,9 +100,9 @@ ABAPSortNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

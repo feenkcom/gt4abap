@@ -27,7 +27,7 @@ ABAPSubmitNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSubmitNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #leftBrackets #rightBrackets)
+	^ #(#keywords #values #leftBrackets #rightBrackets #eqs)
 ]
 
 { #category : #generated }
@@ -69,11 +69,11 @@ ABAPSubmitNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

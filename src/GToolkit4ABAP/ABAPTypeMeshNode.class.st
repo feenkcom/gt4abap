@@ -33,7 +33,7 @@ ABAPTypeMeshNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPTypeMeshNode >> compositeNodeVariables [
-	^ #(#names #typeNames #lengths #occurses #fieldChains #eventNames #sources #decimalses #sizes #fields #defaults)
+	^ #(#names #typeNames #lengths #fieldChains #eventNames #sources #decimalses #occurses #sizes #fields #defaults)
 ]
 
 { #category : #generated }
@@ -118,11 +118,11 @@ ABAPTypeMeshNode >> initialize [
 	names := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	occurses := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	eventNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
+	occurses := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.

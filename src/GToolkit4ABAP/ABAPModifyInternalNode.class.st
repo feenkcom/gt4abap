@@ -14,10 +14,11 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'keies',
 		'rightParens',
+		'keies',
 		'arrows',
-		'dynamics'
+		'commas',
+		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,25 +39,35 @@ ABAPModifyInternalNode >> arrows: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPModifyInternalNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#names #fieldLengths #fieldOffsets #sources #lengths #dynamics)
+	^ #(#fieldLengths #fieldOffsets #sources #lengths)
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows)
+	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #rightParens #keies #arrows #commas)
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> dynamics [
-	^ dynamics
+ABAPModifyInternalNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPModifyInternalNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -97,10 +108,10 @@ ABAPModifyInternalNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -162,14 +173,14 @@ ABAPModifyInternalNode >> names [
 
 { #category : #generated }
 ABAPModifyInternalNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> nodeVariables [
-	^ #(#target)
+	^ #(#target #dynamic)
 ]
 
 { #category : #generated }
@@ -180,6 +191,11 @@ ABAPModifyInternalNode >> operators [
 { #category : #generated }
 ABAPModifyInternalNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

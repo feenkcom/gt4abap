@@ -14,9 +14,8 @@ Class {
 		'names',
 		'leftBrackets',
 		'rightBrackets',
-		'fieldLengths',
-		'fieldOffsets',
-		'dynamics',
+		'fieldOffset',
+		'fieldLength',
 		'parameterNames',
 		'values',
 		'lengths'
@@ -53,24 +52,12 @@ ABAPMoveCorrespondingNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> compositeNodeVariables [
-	^ #(#sources #typeNames #fields #attributeNames #names #fieldLengths #fieldOffsets #dynamics #parameterNames #lengths)
+	^ #(#sources #typeNames #fields #attributeNames #parameterNames #lengths)
 ]
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens #eqs #arrows #leftBrackets #rightBrackets #values)
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
 ]
 
 { #category : #generated }
@@ -84,27 +71,27 @@ ABAPMoveCorrespondingNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> fieldLengths [
-	^ fieldLengths
+ABAPMoveCorrespondingNode >> fieldLength [
+	^ fieldLength
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
+ABAPMoveCorrespondingNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> fieldOffsets [
-	^ fieldOffsets
+ABAPMoveCorrespondingNode >> fieldOffset [
+	^ fieldOffset
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+ABAPMoveCorrespondingNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #generated }
@@ -134,9 +121,6 @@ ABAPMoveCorrespondingNode >> initialize [
 	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
@@ -191,9 +175,19 @@ ABAPMoveCorrespondingNode >> names [
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> nodeVariables [
+	^ #(#fieldOffset #fieldLength)
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> otherVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }

@@ -2,7 +2,8 @@ Class {
 	#name : #ABAPChainedStatementNode,
 	#superclass : #ABAPStatementNode,
 	#instVars : [
-		'statements'
+		'statements',
+		'comma'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -21,6 +22,16 @@ ABAPChainedStatementNode >> addChainedStatement: aStatement [
 { #category : #initialization }
 ABAPChainedStatementNode >> addChainedStatements: aCollection [
 	aCollection do: [ :each | self addChainedStatement: each ]
+]
+
+{ #category : #generated }
+ABAPChainedStatementNode >> comma [
+	^ comma
+]
+
+{ #category : #generated }
+ABAPChainedStatementNode >> comma: aSmaCCToken [
+	comma := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -44,4 +55,9 @@ ABAPChainedStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
+]
+
+{ #category : #generated }
+ABAPChainedStatementNode >> tokenVariables [
+	^ #(#comma #period)
 ]

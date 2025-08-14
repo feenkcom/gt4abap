@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'dynamics',
 		'fieldNames',
+		'commas',
 		'leftParens',
 		'rightParens',
 		'fields',
@@ -12,19 +13,19 @@ Class {
 		'operators',
 		'values',
 		'keies',
-		'sources',
 		'decs',
 		'names',
 		'leftBrackets',
-		'fieldChains',
 		'rightBrackets',
 		'arrows',
 		'attributeNames',
-		'functions',
 		'dashs',
+		'targets',
+		'fieldChains',
+		'sources',
+		'functions',
 		'withNames',
 		'eqs',
-		'targets',
 		'lengths',
 		'period'
 	],
@@ -71,13 +72,23 @@ ABAPStartSelectLoopNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPStartSelectLoopNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldNames #fields #asNames #decs #names #attributeNames #fieldChains #sources #functions #withNames #targets #lengths)
+	^ #(#dynamics #fieldNames #fields #asNames #decs #names #attributeNames #fieldChains #sources #withNames #targets #lengths #functions)
 ]
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #keies #leftBrackets #rightBrackets #arrows #dashs #eqs)
+	^ #(#keywords #commas #leftParens #rightParens #operators #keies #leftBrackets #rightBrackets #arrows #dashs #eqs)
 ]
 
 { #category : #generated }
@@ -178,6 +189,7 @@ ABAPStartSelectLoopNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
@@ -191,14 +203,14 @@ ABAPStartSelectLoopNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

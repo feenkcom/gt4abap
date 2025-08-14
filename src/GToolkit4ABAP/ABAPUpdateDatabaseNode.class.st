@@ -9,10 +9,12 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
+		'dashs',
 		'fieldChains',
 		'sources',
 		'fieldNames',
 		'eqs',
+		'commas',
 		'targets',
 		'withNames',
 		'asNames',
@@ -24,8 +26,7 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
-		'functions',
-		'dashs'
+		'functions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -70,13 +71,23 @@ ABAPUpdateDatabaseNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPUpdateDatabaseNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPUpdateDatabaseNode >> compositeNodeVariables [
 	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #attributeNames #functions)
 ]
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #leftBrackets #rightBrackets #arrows)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #commas #leftBrackets #rightBrackets #arrows)
 ]
 
 { #category : #generated }
@@ -186,6 +197,7 @@ ABAPUpdateDatabaseNode >> initialize [
 	sources := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.

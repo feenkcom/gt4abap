@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
-		'sources',
 		'names',
 		'dynamics',
+		'sources',
 		'arrows',
 		'fieldLengths',
 		'fieldOffsets',
@@ -16,6 +16,7 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'commas',
 		'keies',
 		'rightParens',
 		'attributeNames',
@@ -52,13 +53,23 @@ ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPDeleteInternalNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#names #dynamics #sources #fieldLengths #fieldOffsets #lengths #attributeNames)
+	^ #(#sources #names #fieldLengths #fieldOffsets #lengths #attributeNames #dynamics)
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #keies #rightParens #arrows #dashs)
+	^ #(#keywords #arrows #operators #leftParens #values #leftBrackets #rightBrackets #commas #keies #rightParens #dashs)
 ]
 
 { #category : #generated }
@@ -111,9 +122,9 @@ ABAPDeleteInternalNode >> fieldOffsets: anOrderedCollection [
 ABAPDeleteInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
@@ -122,11 +133,12 @@ ABAPDeleteInternalNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

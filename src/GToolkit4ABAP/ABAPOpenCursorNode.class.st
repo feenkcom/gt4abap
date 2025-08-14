@@ -16,7 +16,7 @@ Class {
 		'values',
 		'keies',
 		'operators',
-		'sources',
+		'commas',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
@@ -24,6 +24,7 @@ Class {
 		'names',
 		'arrows',
 		'attributeNames',
+		'sources',
 		'functions',
 		'dashs'
 	],
@@ -70,13 +71,23 @@ ABAPOpenCursorNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPOpenCursorNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPOpenCursorNode >> compositeNodeVariables [
 	^ #(#targets #fieldNames #dynamics #withNames #asNames #fields #fieldChains #lengths #decs #names #attributeNames #sources #functions)
 ]
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #commas #leftBrackets #rightBrackets #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -188,6 +199,7 @@ ABAPOpenCursorNode >> initialize [
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.

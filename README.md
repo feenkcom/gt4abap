@@ -10,7 +10,8 @@ Download [Glamorous Toolkit](https://gtoolkit.com) and load the code by executin
 Metacello new
 	repository: 'github://feenkcom/gt4abap:main/src';
 	baseline: 'GToolkit4ABAP';
-	load
+	load.
+#BaselineOfGToolkit4ABAP asClass loadLepiter
 ```
 
 # License

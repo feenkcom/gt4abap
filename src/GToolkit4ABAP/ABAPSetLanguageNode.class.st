@@ -14,9 +14,9 @@ ABAPSetLanguageNode >> _source [
 ]
 
 { #category : #generated }
-ABAPSetLanguageNode >> _source: anABAPSourceNode [
+ABAPSetLanguageNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

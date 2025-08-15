@@ -77,9 +77,9 @@ ABAPCreateDataNode >> length [
 ]
 
 { #category : #generated }
-ABAPCreateDataNode >> length: anABAPSourceNode [
+ABAPCreateDataNode >> length: anABAPExpressionNode [
 	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPSourceNode.
+	length := anABAPExpressionNode.
 	self length notNil ifTrue: [ self length parent: self ]
 ]
 

@@ -31,9 +31,9 @@ ABAPTypeNode >> _source [
 ]
 
 { #category : #generated }
-ABAPTypeNode >> _source: anABAPSourceNode [
+ABAPTypeNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 
@@ -208,9 +208,9 @@ ABAPTypeNode >> occurs [
 ]
 
 { #category : #generated }
-ABAPTypeNode >> occurs: anABAPRootNode [
+ABAPTypeNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
-	occurs := anABAPRootNode.
+	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 

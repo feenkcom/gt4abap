@@ -195,9 +195,9 @@ ABAPStaticNode >> occurs [
 ]
 
 { #category : #generated }
-ABAPStaticNode >> occurs: anABAPRootNode [
+ABAPStaticNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
-	occurs := anABAPRootNode.
+	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 

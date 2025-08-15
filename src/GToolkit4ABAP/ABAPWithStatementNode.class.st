@@ -82,7 +82,7 @@ ABAPWithStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #names #attributeNames #functions #fieldChains #targets #sources #lengths)
+	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #names #attributeNames #fieldChains #targets #lengths #sources #functions)
 ]
 
 { #category : #generated }
@@ -203,13 +203,13 @@ ABAPWithStatementNode >> initialize [
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

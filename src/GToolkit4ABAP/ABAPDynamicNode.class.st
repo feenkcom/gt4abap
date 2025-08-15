@@ -50,8 +50,8 @@ ABAPDynamicNode >> value [
 ]
 
 { #category : #generated }
-ABAPDynamicNode >> value: anABAPRootNode [
+ABAPDynamicNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPRootNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

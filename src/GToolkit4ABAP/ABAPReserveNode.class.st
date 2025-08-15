@@ -14,9 +14,9 @@ ABAPReserveNode >> _source [
 ]
 
 { #category : #generated }
-ABAPReserveNode >> _source: anABAPSourceNode [
+ABAPReserveNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

@@ -58,8 +58,8 @@ ABAPIsExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPIsExpressionNode >> value: anABAPRootNode [
+ABAPIsExpressionNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPRootNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

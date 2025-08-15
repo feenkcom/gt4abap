@@ -57,12 +57,12 @@ ABAPInsertFieldGroupNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #targets #methodNames #attributeNames #names #fieldChains #typeNames #parameterNames #lengths #fields #dynamics)
+	^ #(#sources #targets #methodNames #parameterNames #attributeNames #names #fieldChains #typeNames #lengths #fields #dynamics)
 ]
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #arrows #eqs #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #arrows #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -134,13 +134,13 @@ ABAPInsertFieldGroupNode >> initialize [
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.

@@ -25,9 +25,9 @@ ABAPKernelIdNode >> field [
 ]
 
 { #category : #generated }
-ABAPKernelIdNode >> field: anABAPSourceNode [
+ABAPKernelIdNode >> field: anABAPExpressionNode [
 	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPSourceNode.
+	field := anABAPExpressionNode.
 	self field notNil ifTrue: [ self field parent: self ]
 ]
 
@@ -37,9 +37,9 @@ ABAPKernelIdNode >> id [
 ]
 
 { #category : #generated }
-ABAPKernelIdNode >> id: anABAPSourceNode [
+ABAPKernelIdNode >> id: anABAPExpressionNode [
 	self id notNil ifTrue: [ self id parent: nil ].
-	id := anABAPSourceNode.
+	id := anABAPExpressionNode.
 	self id notNil ifTrue: [ self id parent: self ]
 ]
 

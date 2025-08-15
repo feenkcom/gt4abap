@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPConcatenatedStringNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'values',
 		'operators'
@@ -15,7 +15,7 @@ ABAPConcatenatedStringNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPConcatenatedStringNode >> compositeTokenVariables [
-	^ #(#values #operators)
+	^ #(#values #operators #leftParens #rightParens)
 ]
 
 { #category : #'generated-initialize-release' }

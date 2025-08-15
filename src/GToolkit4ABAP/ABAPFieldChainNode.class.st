@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPFieldChainNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'names',
 		'arrows',
@@ -52,7 +52,7 @@ ABAPFieldChainNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeTokenVariables [
-	^ #(#arrows #leftBrackets #rightBrackets #keywords #eqs)
+	^ #(#arrows #leftBrackets #rightBrackets #keywords #eqs #leftParens #rightParens)
 ]
 
 { #category : #generated }

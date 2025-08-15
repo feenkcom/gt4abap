@@ -1,11 +1,9 @@
 Class {
 	#name : #ABAPStringNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'value',
-		'leftParen',
-		'key',
-		'rightParen'
+		'key'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,28 +24,8 @@ ABAPStringNode >> key: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPStringNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPStringNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPStringNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPStringNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPStringNode >> tokenVariables [
-	^ #(#value #leftParen #key #rightParen)
+	^ #(#value #key)
 ]
 
 { #category : #generated }

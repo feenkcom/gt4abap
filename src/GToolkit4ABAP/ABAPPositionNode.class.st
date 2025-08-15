@@ -14,9 +14,9 @@ ABAPPositionNode >> _source [
 ]
 
 { #category : #generated }
-ABAPPositionNode >> _source: anABAPSourceNode [
+ABAPPositionNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

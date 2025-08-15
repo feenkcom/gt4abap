@@ -1,0 +1,300 @@
+Class {
+	#name : #ABAPAttributeChainNode,
+	#superclass : #ABAPExpressionNode,
+	#instVars : [
+		'methodNames',
+		'sources',
+		'parameterNames',
+		'eqs',
+		'keywords',
+		'values',
+		'operators',
+		'targets',
+		'names',
+		'arrows',
+		'attributeNames',
+		'dashs',
+		'fieldChain',
+		'typeNames',
+		'leftBrackets',
+		'rightBrackets',
+		'lengths',
+		'fields',
+		'fieldLength',
+		'fieldOffset'
+	],
+	#category : #GToolkit4ABAP
+}
+
+{ #category : #generated }
+ABAPAttributeChainNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitAttributeChain: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> arrows [
+	^ arrows
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> arrows: anOrderedCollection [
+	arrows := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> attributeNames [
+	^ attributeNames
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> attributeNames: anOrderedCollection [
+	self setParents: self attributeNames to: nil.
+	attributeNames := anOrderedCollection.
+	self setParents: self attributeNames to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> compositeNodeVariables [
+	^ #(#methodNames #sources #parameterNames #targets #attributeNames #typeNames #lengths #fields)
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> compositeTokenVariables [
+	^ #(#eqs #keywords #operators #arrows #dashs #leftBrackets #rightBrackets #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> dashs [
+	^ dashs
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> dashs: anOrderedCollection [
+	dashs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> eqs [
+	^ eqs
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldChain [
+	^ fieldChain
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldChain: anABAPFieldChainNode [
+	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
+	fieldChain := anABAPFieldChainNode.
+	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldLength [
+	^ fieldLength
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldOffset [
+	^ fieldOffset
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fields [
+	^ fields
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> fields: anOrderedCollection [
+	self setParents: self fields to: nil.
+	fields := anOrderedCollection.
+	self setParents: self fields to: self
+]
+
+{ #category : #'generated-initialize-release' }
+ABAPAttributeChainNode >> initialize [
+	super initialize.
+	methodNames := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	typeNames := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> keywords [
+	^ keywords
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> keywords: anOrderedCollection [
+	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> leftBrackets [
+	^ leftBrackets
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> leftBrackets: anOrderedCollection [
+	leftBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> methodNames [
+	^ methodNames
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> methodNames: anOrderedCollection [
+	self setParents: self methodNames to: nil.
+	methodNames := anOrderedCollection.
+	self setParents: self methodNames to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> names: anOrderedCollection [
+	self setParent: self names to: nil.
+	names := anOrderedCollection.
+	self setParent: self names to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> nodeVariables [
+	^ #(#fieldChain #fieldLength #fieldOffset)
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> operators [
+	^ operators
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> operators: anOrderedCollection [
+	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> otherVariables [
+	^ #(#values #names)
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> parameterNames [
+	^ parameterNames
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> parameterNames: anOrderedCollection [
+	self setParents: self parameterNames to: nil.
+	parameterNames := anOrderedCollection.
+	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> rightBrackets [
+	^ rightBrackets
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> rightBrackets: anOrderedCollection [
+	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> sources [
+	^ sources
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> sources: anOrderedCollection [
+	self setParents: self sources to: nil.
+	sources := anOrderedCollection.
+	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> targets [
+	^ targets
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> targets: anOrderedCollection [
+	self setParents: self targets to: nil.
+	targets := anOrderedCollection.
+	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> typeNames [
+	^ typeNames
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> typeNames: anOrderedCollection [
+	self setParents: self typeNames to: nil.
+	typeNames := anOrderedCollection.
+	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
+]

@@ -83,7 +83,7 @@ ABAPStartSelectLoopNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#dynamics #asNames #fields #fieldNames #decs #names #attributeNames #functions #withNames #fieldChains #targets #sources #lengths)
+	^ #(#dynamics #asNames #fields #fieldNames #decs #names #attributeNames #withNames #fieldChains #targets #sources #lengths #functions)
 ]
 
 { #category : #generated }
@@ -203,7 +203,6 @@ ABAPStartSelectLoopNode >> initialize [
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
@@ -211,6 +210,7 @@ ABAPStartSelectLoopNode >> initialize [
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

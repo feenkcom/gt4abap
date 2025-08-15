@@ -15,9 +15,9 @@ ABAPSubtractNode >> _source [
 ]
 
 { #category : #generated }
-ABAPSubtractNode >> _source: anABAPSourceNode [
+ABAPSubtractNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

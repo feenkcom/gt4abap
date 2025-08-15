@@ -15,9 +15,9 @@ ABAPGenerateReportNode >> _source [
 ]
 
 { #category : #generated }
-ABAPGenerateReportNode >> _source: anABAPSourceNode [
+ABAPGenerateReportNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

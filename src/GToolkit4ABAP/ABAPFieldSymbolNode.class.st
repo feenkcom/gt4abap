@@ -42,9 +42,9 @@ ABAPFieldSymbolNode >> default [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> default: anABAPRootNode [
+ABAPFieldSymbolNode >> default: anABAPExpressionNode [
 	self default notNil ifTrue: [ self default parent: nil ].
-	default := anABAPRootNode.
+	default := anABAPExpressionNode.
 	self default notNil ifTrue: [ self default parent: self ]
 ]
 
@@ -151,9 +151,9 @@ ABAPFieldSymbolNode >> occurs [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> occurs: anABAPRootNode [
+ABAPFieldSymbolNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
-	occurs := anABAPRootNode.
+	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 

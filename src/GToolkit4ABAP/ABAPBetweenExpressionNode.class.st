@@ -26,9 +26,9 @@ ABAPBetweenExpressionNode >> high [
 ]
 
 { #category : #generated }
-ABAPBetweenExpressionNode >> high: anABAPSourceNode [
+ABAPBetweenExpressionNode >> high: anABAPExpressionNode [
 	self high notNil ifTrue: [ self high parent: nil ].
-	high := anABAPSourceNode.
+	high := anABAPExpressionNode.
 	self high notNil ifTrue: [ self high parent: self ]
 ]
 
@@ -54,9 +54,9 @@ ABAPBetweenExpressionNode >> low [
 ]
 
 { #category : #generated }
-ABAPBetweenExpressionNode >> low: anABAPSourceNode [
+ABAPBetweenExpressionNode >> low: anABAPExpressionNode [
 	self low notNil ifTrue: [ self low parent: nil ].
-	low := anABAPSourceNode.
+	low := anABAPExpressionNode.
 	self low notNil ifTrue: [ self low parent: self ]
 ]
 
@@ -71,8 +71,8 @@ ABAPBetweenExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPBetweenExpressionNode >> value: anABAPSourceNode [
+ABAPBetweenExpressionNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPSourceNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

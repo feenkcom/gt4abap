@@ -47,9 +47,9 @@ ABAPTransferNode >> length [
 ]
 
 { #category : #generated }
-ABAPTransferNode >> length: anABAPSourceNode [
+ABAPTransferNode >> length: anABAPExpressionNode [
 	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPSourceNode.
+	length := anABAPExpressionNode.
 	self length notNil ifTrue: [ self length parent: self ]
 ]
 

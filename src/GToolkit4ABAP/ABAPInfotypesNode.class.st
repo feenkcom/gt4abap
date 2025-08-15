@@ -79,9 +79,9 @@ ABAPInfotypesNode >> occurs [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> occurs: anABAPRootNode [
+ABAPInfotypesNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
-	occurs := anABAPRootNode.
+	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 

@@ -45,9 +45,9 @@ ABAPBinaryExpressionNode >> left [
 ]
 
 { #category : #generated }
-ABAPBinaryExpressionNode >> left: anABAPRootNode [
+ABAPBinaryExpressionNode >> left: anABAPExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
-	left := anABAPRootNode.
+	left := anABAPExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
@@ -77,9 +77,9 @@ ABAPBinaryExpressionNode >> right [
 ]
 
 { #category : #generated }
-ABAPBinaryExpressionNode >> right: anABAPRootNode [
+ABAPBinaryExpressionNode >> right: anABAPExpressionNode [
 	self right notNil ifTrue: [ self right parent: nil ].
-	right := anABAPRootNode.
+	right := anABAPExpressionNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 

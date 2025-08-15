@@ -15,9 +15,9 @@ ABAPStartCaseNode >> _source [
 ]
 
 { #category : #generated }
-ABAPStartCaseNode >> _source: anABAPSourceNode [
+ABAPStartCaseNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

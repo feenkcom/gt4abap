@@ -93,9 +93,9 @@ ABAPReceiveNode >> functionName [
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> functionName: anABAPRootNode [
+ABAPReceiveNode >> functionName: anABAPExpressionNode [
 	self functionName notNil ifTrue: [ self functionName parent: nil ].
-	functionName := anABAPRootNode.
+	functionName := anABAPExpressionNode.
 	self functionName notNil ifTrue: [ self functionName parent: self ]
 ]
 
@@ -110,8 +110,8 @@ ABAPReceiveNode >> initialize [
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

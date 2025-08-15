@@ -137,9 +137,9 @@ ABAPCallFunctionNode >> functionName [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> functionName: anABAPRootNode [
+ABAPCallFunctionNode >> functionName: anABAPExpressionNode [
 	self functionName notNil ifTrue: [ self functionName parent: nil ].
-	functionName := anABAPRootNode.
+	functionName := anABAPExpressionNode.
 	self functionName notNil ifTrue: [ self functionName parent: self ]
 ]
 

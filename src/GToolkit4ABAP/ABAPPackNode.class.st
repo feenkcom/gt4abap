@@ -15,9 +15,9 @@ ABAPPackNode >> _source [
 ]
 
 { #category : #generated }
-ABAPPackNode >> _source: anABAPSourceNode [
+ABAPPackNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

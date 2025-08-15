@@ -76,6 +76,11 @@ TABAPRootNodeVisitor >> visitAtUserCommand: anAtUserCommand [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitAttributeChain: anAttributeChain [
+	^ self visitExpression: anAttributeChain
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitAuthorityCheck: anAuthorityCheck [
 	^ self visitStatement: anAuthorityCheck
 ]
@@ -98,6 +103,11 @@ TABAPRootNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitBody: aBody [
 	^ self visitRoot: aBody
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitBoolExpression: aBoolExpression [
+	^ self visitExpression: aBoolExpression
 ]
 
 { #category : #generated }
@@ -281,6 +291,11 @@ TABAPRootNodeVisitor >> visitCommunication: aCommunication [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitComponentChain: aComponentChain [
+	^ self visitExpression: aComponentChain
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitCompute: aCompute [
 	^ self visitStatement: aCompute
 ]
@@ -292,7 +307,12 @@ TABAPRootNodeVisitor >> visitConcatenate: aConcatenate [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitConcatenatedString: aConcatenatedString [
-	^ self visitRoot: aConcatenatedString
+	^ self visitExpression: aConcatenatedString
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitCondExpression: aCondExpression [
+	^ self visitExpression: aCondExpression
 ]
 
 { #category : #generated }
@@ -331,6 +351,11 @@ TABAPRootNodeVisitor >> visitControls: aControls [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitConversionExpression: aConversionExpression [
+	^ self visitExpression: aConversionExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitConvert: aConvert [
 	^ self visitStatement: aConvert
 ]
@@ -338,6 +363,11 @@ TABAPRootNodeVisitor >> visitConvert: aConvert [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitConvertText: aConvertText [
 	^ self visitStatement: aConvertText
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitCorrespondingExpression: aCorrespondingExpression [
+	^ self visitExpression: aCorrespondingExpression
 ]
 
 { #category : #generated }
@@ -421,6 +451,11 @@ TABAPRootNodeVisitor >> visitDemand: aDemand [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitDereferenceExpression: aDereferenceExpression [
+	^ self visitExpression: aDereferenceExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitDescribe: aDescribe [
 	^ self visitStatement: aDescribe
 ]
@@ -501,6 +536,11 @@ TABAPRootNodeVisitor >> visitEvents: anEvents [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitExactExpression: anExactExpression [
+	^ self visitExpression: anExactExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitExecSQL: anExecSQL [
 	^ self visitStatement: anExecSQL
 ]
@@ -537,7 +577,7 @@ TABAPRootNodeVisitor >> visitFetchNextCursor: aFetchNextCursor [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFieldChain: aFieldChain [
-	^ self visitRoot: aFieldChain
+	^ self visitExpression: aFieldChain
 ]
 
 { #category : #generated }
@@ -568,6 +608,11 @@ TABAPRootNodeVisitor >> visitFieldSymbol: aFieldSymbol [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFields: aFields [
 	^ self visitStatement: aFields
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitFilterExpression: aFilterExpression [
+	^ self visitExpression: aFilterExpression
 ]
 
 { #category : #generated }
@@ -772,7 +817,7 @@ TABAPRootNodeVisitor >> visitInsertTextpool: anInsertTextpool [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitInteger: anInteger [
-	^ self visitRoot: anInteger
+	^ self visitExpression: anInteger
 ]
 
 { #category : #generated }
@@ -1056,6 +1101,16 @@ TABAPRootNodeVisitor >> visitReceive: aReceive [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitReduceExpression: aReduceExpression [
+	^ self visitExpression: aReduceExpression
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitRefExpression: aRefExpression [
+	^ self visitExpression: aRefExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitRefresh: aRefresh [
 	^ self visitStatement: aRefresh
 ]
@@ -1276,11 +1331,6 @@ TABAPRootNodeVisitor >> visitSortDataset: aSortDataset [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitSource: aSource [
-	^ self visitRoot: aSource
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitSourceFieldSymbolChain: aSourceFieldSymbolChain [
 	^ self visitExpression: aSourceFieldSymbolChain
 ]
@@ -1417,7 +1467,12 @@ TABAPRootNodeVisitor >> visitStop: aStop [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitString: aString [
-	^ self visitRoot: aString
+	^ self visitExpression: aString
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitStringTemplate: aStringTemplate [
+	^ self visitExpression: aStringTemplate
 ]
 
 { #category : #generated }
@@ -1456,6 +1511,11 @@ TABAPRootNodeVisitor >> visitSuppressDialog: aSuppressDialog [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitSwitchExpression: aSwitchExpression [
+	^ self visitExpression: aSwitchExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSyntaxCheck: aSyntaxCheck [
 	^ self visitStatement: aSyntaxCheck
 ]
@@ -1487,7 +1547,7 @@ TABAPRootNodeVisitor >> visitTestSeam: aTestSeam [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitTextElement: aTextElement [
-	^ self visitRoot: aTextElement
+	^ self visitExpression: aTextElement
 ]
 
 { #category : #generated }
@@ -1573,6 +1633,11 @@ TABAPRootNodeVisitor >> visitUnpack: anUnpack [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitUpdateDatabase: anUpdateDatabase [
 	^ self visitStatement: anUpdateDatabase
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitValueExpression: aValueExpression [
+	^ self visitExpression: aValueExpression
 ]
 
 { #category : #generated }

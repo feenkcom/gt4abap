@@ -15,9 +15,9 @@ ABAPDivideNode >> _source [
 ]
 
 { #category : #generated }
-ABAPDivideNode >> _source: anABAPSourceNode [
+ABAPDivideNode >> _source: anABAPExpressionNode [
 	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPSourceNode.
+	_source := anABAPExpressionNode.
 	self _source notNil ifTrue: [ self _source parent: self ]
 ]
 

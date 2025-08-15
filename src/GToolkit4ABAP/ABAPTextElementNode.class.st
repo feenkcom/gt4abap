@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPTextElementNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keyword',
 		'dash',

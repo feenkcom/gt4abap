@@ -46,9 +46,9 @@ ABAPFieldStatementNode >> first [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> first: anABAPRootNode [
+ABAPFieldStatementNode >> first: anABAPExpressionNode [
 	self first notNil ifTrue: [ self first parent: nil ].
-	first := anABAPRootNode.
+	first := anABAPExpressionNode.
 	self first notNil ifTrue: [ self first parent: self ]
 ]
 
@@ -87,9 +87,9 @@ ABAPFieldStatementNode >> last [
 ]
 
 { #category : #generated }
-ABAPFieldStatementNode >> last: anABAPRootNode [
+ABAPFieldStatementNode >> last: anABAPExpressionNode [
 	self last notNil ifTrue: [ self last parent: nil ].
-	last := anABAPRootNode.
+	last := anABAPExpressionNode.
 	self last notNil ifTrue: [ self last parent: self ]
 ]
 

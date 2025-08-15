@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPIntegerNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'value',
 		'operator'

@@ -58,7 +58,7 @@ ABAPCallNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #lefts #rights #fields #typeNames #lengths)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields #lefts #rights #typeNames #lengths)
 ]
 
 { #category : #generated }
@@ -139,10 +139,10 @@ ABAPCallNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.

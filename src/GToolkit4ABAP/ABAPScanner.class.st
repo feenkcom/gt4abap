@@ -47,7 +47,7 @@ ABAPScanner >> BracketLeft [
 
 { #category : #generated }
 ABAPScanner >> BracketLeftWId [
-	^ 2236
+	^ 2239
 ]
 
 { #category : #private }
@@ -80,12 +80,12 @@ ABAPScanner >> BracketRight [
 
 { #category : #generated }
 ABAPScanner >> BracketRightWId [
-	^ 2237
+	^ 2240
 ]
 
 { #category : #generated }
 ABAPScanner >> BreakId [
-	^ 2238
+	^ 2241
 ]
 
 { #category : #private }
@@ -118,7 +118,7 @@ ABAPScanner >> Dash [
 
 { #category : #generated }
 ABAPScanner >> DashWId [
-	^ 2239
+	^ 2242
 ]
 
 { #category : #private }
@@ -171,7 +171,7 @@ ABAPScanner >> ParenLeft [
 
 { #category : #generated }
 ABAPScanner >> ParenLeftWId [
-	^ 2240
+	^ 2243
 ]
 
 { #category : #private }
@@ -204,7 +204,7 @@ ABAPScanner >> ParenRight [
 
 { #category : #generated }
 ABAPScanner >> ParenRightWId [
-	^ 2241
+	^ 2244
 ]
 
 { #category : #private }
@@ -237,72 +237,72 @@ ABAPScanner >> Plus [
 
 { #category : #generated }
 ABAPScanner >> PlusWId [
-	^ 2242
-]
-
-{ #category : #generated }
-ABAPScanner >> SystemCallId [
-	^ 2243
-]
-
-{ #category : #generated }
-ABAPScanner >> WAtId [
-	^ 2244
-]
-
-{ #category : #generated }
-ABAPScanner >> WBracketRightId [
 	^ 2245
 ]
 
 { #category : #generated }
-ABAPScanner >> WBracketRightWId [
+ABAPScanner >> SystemCallId [
 	^ 2246
 ]
 
 { #category : #generated }
-ABAPScanner >> WDashId [
+ABAPScanner >> WAtId [
 	^ 2247
 ]
 
 { #category : #generated }
-ABAPScanner >> WDashWId [
+ABAPScanner >> WBracketRightId [
 	^ 2248
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenLeftId [
+ABAPScanner >> WBracketRightWId [
 	^ 2249
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenLeftWId [
+ABAPScanner >> WDashId [
 	^ 2250
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenRightId [
+ABAPScanner >> WDashWId [
 	^ 2251
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenRightWId [
+ABAPScanner >> WParenLeftId [
 	^ 2252
 ]
 
 { #category : #generated }
-ABAPScanner >> WPlusId [
+ABAPScanner >> WParenLeftWId [
 	^ 2253
 ]
 
 { #category : #generated }
-ABAPScanner >> WPlusWId [
+ABAPScanner >> WParenRightId [
 	^ 2254
 ]
 
 { #category : #generated }
-ABAPScanner >> chainedId [
+ABAPScanner >> WParenRightWId [
 	^ 2255
+]
+
+{ #category : #generated }
+ABAPScanner >> WPlusId [
+	^ 2256
+]
+
+{ #category : #generated }
+ABAPScanner >> WPlusWId [
+	^ 2257
+]
+
+{ #category : #generated }
+ABAPScanner >> chainedId [
+	^ 2258
 ]
 
 { #category : #generated }
@@ -317,12 +317,12 @@ ABAPScanner >> commaId [
 
 { #category : #generated }
 ABAPScanner >> emptySymbolTokenId [
-	^ 2258
+	^ 2261
 ]
 
 { #category : #generated }
 ABAPScanner >> errorTokenId [
-	^ 2259
+	^ 2262
 ]
 
 { #category : #generated }

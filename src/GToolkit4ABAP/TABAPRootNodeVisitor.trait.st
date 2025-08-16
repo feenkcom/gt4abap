@@ -481,11 +481,6 @@ TABAPRootNodeVisitor >> visitDo: aDo [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitDynamic: aDynamic [
-	^ self visitRoot: aDynamic
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitEditorCall: anEditorCall [
 	^ self visitStatement: anEditorCall
 ]
@@ -608,6 +603,11 @@ TABAPRootNodeVisitor >> visitFieldOffset: aFieldOffset [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFieldStatement: aFieldStatement [
 	^ self visitStatement: aFieldStatement
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitFieldSub: aFieldSub [
+	^ self visitExpression: aFieldSub
 ]
 
 { #category : #generated }
@@ -891,11 +891,6 @@ TABAPRootNodeVisitor >> visitLoopAtScreen: aLoopAtScreen [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitMacroCall: aMacroCall [
-	^ self visitStatement: aMacroCall
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitMessage: aMessage [
 	^ self visitStatement: aMessage
 ]
@@ -983,11 +978,6 @@ TABAPRootNodeVisitor >> visitNewPage: aNewPage [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitNodes: aNodes [
 	^ self visitStatement: aNodes
-]
-
-{ #category : #generated }
-TABAPRootNodeVisitor >> visitNormal: aNormal [
-	^ self visitStatement: aNormal
 ]
 
 { #category : #generated }
@@ -1333,11 +1323,6 @@ TABAPRootNodeVisitor >> visitSort: aSort [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitSortDataset: aSortDataset [
 	^ self visitStatement: aSortDataset
-]
-
-{ #category : #generated }
-TABAPRootNodeVisitor >> visitSourceFieldSymbolChain: aSourceFieldSymbolChain [
-	^ self visitExpression: aSourceFieldSymbolChain
 ]
 
 { #category : #generated }

@@ -6,8 +6,7 @@ Class {
 		'target',
 		'sources',
 		'typeName',
-		'fields',
-		'dynamics',
+		'keyFields',
 		'length',
 		'likeValue'
 	],
@@ -21,7 +20,7 @@ ABAPCreateDataNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCreateDataNode >> compositeNodeVariables [
-	^ #(#sources #fields #dynamics)
+	^ #(#sources #keyFields)
 ]
 
 { #category : #generated }
@@ -29,37 +28,24 @@ ABAPCreateDataNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
-ABAPCreateDataNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPCreateDataNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPCreateDataNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPCreateDataNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
-]
-
 { #category : #'generated-initialize-release' }
 ABAPCreateDataNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	keyFields := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPCreateDataNode >> keyFields [
+	^ keyFields
+]
+
+{ #category : #generated }
+ABAPCreateDataNode >> keyFields: anOrderedCollection [
+	self setParents: self keyFields to: nil.
+	keyFields := anOrderedCollection.
+	self setParents: self keyFields to: self
 ]
 
 { #category : #generated }
@@ -90,9 +76,9 @@ ABAPCreateDataNode >> likeValue [
 ]
 
 { #category : #generated }
-ABAPCreateDataNode >> likeValue: anABAPRootNode [
+ABAPCreateDataNode >> likeValue: anABAPExpressionNode [
 	self likeValue notNil ifTrue: [ self likeValue parent: nil ].
-	likeValue := anABAPRootNode.
+	likeValue := anABAPExpressionNode.
 	self likeValue notNil ifTrue: [ self likeValue parent: self ]
 ]
 
@@ -131,8 +117,8 @@ ABAPCreateDataNode >> typeName [
 ]
 
 { #category : #generated }
-ABAPCreateDataNode >> typeName: anABAPTypeNameNode [
+ABAPCreateDataNode >> typeName: anABAPRootNode [
 	self typeName notNil ifTrue: [ self typeName parent: nil ].
-	typeName := anABAPTypeNameNode.
+	typeName := anABAPRootNode.
 	self typeName notNil ifTrue: [ self typeName parent: self ]
 ]

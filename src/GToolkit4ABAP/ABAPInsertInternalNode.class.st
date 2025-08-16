@@ -263,9 +263,9 @@ ABAPInsertInternalNode >> linesOf [
 ]
 
 { #category : #generated }
-ABAPInsertInternalNode >> linesOf: anABAPRootNode [
+ABAPInsertInternalNode >> linesOf: anABAPExpressionNode [
 	self linesOf notNil ifTrue: [ self linesOf parent: nil ].
-	linesOf := anABAPRootNode.
+	linesOf := anABAPExpressionNode.
 	self linesOf notNil ifTrue: [ self linesOf parent: self ]
 ]
 

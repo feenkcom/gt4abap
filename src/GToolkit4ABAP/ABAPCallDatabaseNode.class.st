@@ -35,9 +35,9 @@ ABAPCallDatabaseNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> dynamic: anABAPDynamicNode [
+ABAPCallDatabaseNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
@@ -133,8 +133,8 @@ ABAPCallDatabaseNode >> value [
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> value: anABAPDynamicNode [
+ABAPCallDatabaseNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPDynamicNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

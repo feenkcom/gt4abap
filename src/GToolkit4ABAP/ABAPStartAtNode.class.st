@@ -31,9 +31,9 @@ ABAPStartAtNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> dynamic: anABAPDynamicNode [
+ABAPStartAtNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 

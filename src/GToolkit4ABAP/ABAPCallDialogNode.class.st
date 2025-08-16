@@ -36,10 +36,10 @@ ABAPCallDialogNode >> dialog [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> dialog: anObject [
-	self setParent: self dialog to: nil.
-	dialog := anObject.
-	self setParent: self dialog to: self
+ABAPCallDialogNode >> dialog: anABAPExpressionNode [
+	self dialog notNil ifTrue: [ self dialog parent: nil ].
+	dialog := anABAPExpressionNode.
+	self dialog notNil ifTrue: [ self dialog parent: self ]
 ]
 
 { #category : #generated }
@@ -124,7 +124,7 @@ ABAPCallDialogNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> otherVariables [
+ABAPCallDialogNode >> nodeVariables [
 	^ #(#dialog)
 ]
 

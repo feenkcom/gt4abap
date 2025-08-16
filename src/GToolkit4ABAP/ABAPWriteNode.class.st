@@ -259,8 +259,8 @@ ABAPWriteNode >> write [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> write: anABAPRootNode [
+ABAPWriteNode >> write: anABAPExpressionNode [
 	self write notNil ifTrue: [ self write parent: nil ].
-	write := anABAPRootNode.
+	write := anABAPExpressionNode.
 	self write notNil ifTrue: [ self write parent: self ]
 ]

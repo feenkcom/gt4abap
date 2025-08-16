@@ -48,9 +48,9 @@ ABAPModifyDatabaseNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> dynamic: anABAPDynamicNode [
+ABAPModifyDatabaseNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 

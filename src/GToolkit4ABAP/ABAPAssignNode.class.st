@@ -16,7 +16,11 @@ Class {
 		'field',
 		'leftBracket',
 		'rightBracket',
+		'range',
+		'like',
+		'handle',
 		'typeNames',
+		'decimals',
 		'target'
 	],
 	#category : #GToolkit4ABAP
@@ -29,7 +33,7 @@ ABAPAssignNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPAssignNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #typeNames)
+	^ #(#sources #dynamics #typeNames #decimals)
 ]
 
 { #category : #generated }
@@ -45,6 +49,18 @@ ABAPAssignNode >> dash [
 { #category : #generated }
 ABAPAssignNode >> dash: aSmaCCToken [
 	dash := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPAssignNode >> decimals [
+	^ decimals
+]
+
+{ #category : #generated }
+ABAPAssignNode >> decimals: anOrderedCollection [
+	self setParents: self decimals to: nil.
+	decimals := anOrderedCollection.
+	self setParents: self decimals to: self
 ]
 
 { #category : #generated }
@@ -83,6 +99,18 @@ ABAPAssignNode >> fieldChain: anABAPFieldChainNode [
 	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 
+{ #category : #generated }
+ABAPAssignNode >> handle [
+	^ handle
+]
+
+{ #category : #generated }
+ABAPAssignNode >> handle: anABAPExpressionNode [
+	self handle notNil ifTrue: [ self handle parent: nil ].
+	handle := anABAPExpressionNode.
+	self handle notNil ifTrue: [ self handle parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPAssignNode >> initialize [
 	super initialize.
@@ -94,6 +122,7 @@ ABAPAssignNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
+	decimals := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -137,8 +166,20 @@ ABAPAssignNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAssignNode >> like [
+	^ like
+]
+
+{ #category : #generated }
+ABAPAssignNode >> like: anABAPExpressionNode [
+	self like notNil ifTrue: [ self like parent: nil ].
+	like := anABAPExpressionNode.
+	self like notNil ifTrue: [ self like parent: self ]
+]
+
+{ #category : #generated }
 ABAPAssignNode >> nodeVariables [
-	^ #(#fieldChain #tableField #field #target)
+	^ #(#fieldChain #tableField #field #range #like #handle #target)
 ]
 
 { #category : #generated }
@@ -149,6 +190,18 @@ ABAPAssignNode >> operators [
 { #category : #generated }
 ABAPAssignNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPAssignNode >> range [
+	^ range
+]
+
+{ #category : #generated }
+ABAPAssignNode >> range: anABAPExpressionNode [
+	self range notNil ifTrue: [ self range parent: nil ].
+	range := anABAPExpressionNode.
+	self range notNil ifTrue: [ self range parent: self ]
 ]
 
 { #category : #generated }
@@ -189,9 +242,9 @@ ABAPAssignNode >> tableField [
 ]
 
 { #category : #generated }
-ABAPAssignNode >> tableField: anABAPRootNode [
+ABAPAssignNode >> tableField: anABAPExpressionNode [
 	self tableField notNil ifTrue: [ self tableField parent: nil ].
-	tableField := anABAPRootNode.
+	tableField := anABAPExpressionNode.
 	self tableField notNil ifTrue: [ self tableField parent: self ]
 ]
 

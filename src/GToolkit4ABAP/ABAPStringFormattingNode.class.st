@@ -61,8 +61,8 @@ ABAPStringFormattingNode >> value [
 ]
 
 { #category : #generated }
-ABAPStringFormattingNode >> value: anABAPRootNode [
+ABAPStringFormattingNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPRootNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

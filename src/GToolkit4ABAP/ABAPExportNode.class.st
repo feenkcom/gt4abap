@@ -39,9 +39,9 @@ ABAPExportNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPExportNode >> dynamic: anABAPDynamicNode [
+ABAPExportNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 

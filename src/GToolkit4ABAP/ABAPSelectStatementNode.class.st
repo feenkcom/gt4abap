@@ -84,7 +84,7 @@ ABAPSelectStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectStatementNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #functions #lefts #rights #attributeNames #sources)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #functions #sources #lefts #rights #attributeNames)
 ]
 
 { #category : #generated }
@@ -208,12 +208,12 @@ ABAPSelectStatementNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

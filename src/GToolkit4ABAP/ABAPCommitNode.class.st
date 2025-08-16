@@ -61,8 +61,8 @@ ABAPCommitNode >> value [
 ]
 
 { #category : #generated }
-ABAPCommitNode >> value: anABAPDynamicNode [
+ABAPCommitNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPDynamicNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

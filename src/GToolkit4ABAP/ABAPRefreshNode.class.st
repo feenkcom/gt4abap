@@ -25,9 +25,9 @@ ABAPRefreshNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPRefreshNode >> dynamic: anABAPDynamicNode [
+ABAPRefreshNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 

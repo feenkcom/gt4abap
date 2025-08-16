@@ -24,6 +24,11 @@ ABAPCollectionExpressionNode >> commas: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCollectionExpressionNode >> compositeNodeVariables [
+	^ #(#items)
+]
+
+{ #category : #generated }
 ABAPCollectionExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
@@ -42,12 +47,7 @@ ABAPCollectionExpressionNode >> items [
 
 { #category : #generated }
 ABAPCollectionExpressionNode >> items: anOrderedCollection [
-	self setParent: self items to: nil.
+	self setParents: self items to: nil.
 	items := anOrderedCollection.
-	self setParent: self items to: self
-]
-
-{ #category : #generated }
-ABAPCollectionExpressionNode >> otherVariables [
-	^ #(#items)
+	self setParents: self items to: self
 ]

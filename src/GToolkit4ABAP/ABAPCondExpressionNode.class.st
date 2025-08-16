@@ -58,7 +58,7 @@ ABAPCondExpressionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCondExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #fields #expressions #lengths)
+	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #lengths #fields #expressions)
 ]
 
 { #category : #generated }
@@ -143,11 +143,11 @@ ABAPCondExpressionNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	expressions := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

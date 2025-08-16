@@ -41,9 +41,9 @@ ABAPAssignLocalCopyNode >> dynamic [
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> dynamic: anABAPDynamicNode [
+ABAPAssignLocalCopyNode >> dynamic: anABAPExpressionNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
+	dynamic := anABAPExpressionNode.
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
@@ -53,9 +53,9 @@ ABAPAssignLocalCopyNode >> initial [
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> initial: anABAPRootNode [
+ABAPAssignLocalCopyNode >> initial: anABAPExpressionNode [
 	self initial notNil ifTrue: [ self initial parent: nil ].
-	initial := anABAPRootNode.
+	initial := anABAPExpressionNode.
 	self initial notNil ifTrue: [ self initial parent: self ]
 ]
 

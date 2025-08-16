@@ -61,8 +61,8 @@ ABAPRollbackNode >> value [
 ]
 
 { #category : #generated }
-ABAPRollbackNode >> value: anABAPDynamicNode [
+ABAPRollbackNode >> value: anABAPExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPDynamicNode.
+	value := anABAPExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

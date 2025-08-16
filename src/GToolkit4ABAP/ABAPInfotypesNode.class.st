@@ -8,7 +8,8 @@ Class {
 		'leftBracket',
 		'rightBracket',
 		'length',
-		'sources'
+		'from',
+		'toSource'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,13 +20,20 @@ ABAPInfotypesNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> compositeNodeVariables [
-	^ #(#sources)
+ABAPInfotypesNode >> compositeTokenVariables [
+	^ #(#keywords #values)
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+ABAPInfotypesNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -33,7 +41,6 @@ ABAPInfotypesNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -70,7 +77,7 @@ ABAPInfotypesNode >> length: anABAPFieldLengthNode [
 
 { #category : #generated }
 ABAPInfotypesNode >> nodeVariables [
-	^ #(#occurs #length)
+	^ #(#occurs #length #from #toSource)
 ]
 
 { #category : #generated }
@@ -96,15 +103,15 @@ ABAPInfotypesNode >> rightBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> sources [
-	^ sources
+ABAPInfotypesNode >> toSource [
+	^ toSource
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPInfotypesNode >> toSource: anABAPExpressionNode [
+	self toSource notNil ifTrue: [ self toSource parent: nil ].
+	toSource := anABAPExpressionNode.
+	self toSource notNil ifTrue: [ self toSource parent: self ]
 ]
 
 { #category : #generated }

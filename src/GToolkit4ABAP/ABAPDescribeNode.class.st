@@ -5,7 +5,8 @@ Class {
 		'keywords',
 		'fieldChain',
 		'targets',
-		'sources'
+		'sources',
+		'intoTargets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,7 +18,7 @@ ABAPDescribeNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPDescribeNode >> compositeNodeVariables [
-	^ #(#targets #sources)
+	^ #(#targets #sources #intoTargets)
 ]
 
 { #category : #generated }
@@ -43,6 +44,19 @@ ABAPDescribeNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPDescribeNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPDescribeNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }

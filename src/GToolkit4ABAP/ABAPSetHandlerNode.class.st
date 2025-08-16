@@ -16,6 +16,8 @@ Class {
 		'eqs',
 		'targets',
 		'operators',
+		'lefts',
+		'rights',
 		'dashs',
 		'fields'
 	],
@@ -51,7 +53,7 @@ ABAPSetHandlerNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSetHandlerNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #lefts #rights #fields)
 ]
 
 { #category : #generated }
@@ -120,6 +122,8 @@ ABAPSetHandlerNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
@@ -142,6 +146,18 @@ ABAPSetHandlerNode >> leftParens [
 { #category : #generated }
 ABAPSetHandlerNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -203,6 +219,18 @@ ABAPSetHandlerNode >> rightParens [
 { #category : #generated }
 ABAPSetHandlerNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPSetHandlerNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

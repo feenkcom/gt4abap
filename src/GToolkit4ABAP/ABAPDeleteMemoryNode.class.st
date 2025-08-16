@@ -6,6 +6,7 @@ Class {
 		'sources',
 		'field',
 		'leftParen',
+		'name',
 		'rightParen'
 	],
 	#category : #GToolkit4ABAP
@@ -66,6 +67,16 @@ ABAPDeleteMemoryNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPDeleteMemoryNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPDeleteMemoryNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPDeleteMemoryNode >> nodeVariables [
 	^ #(#field)
 ]
@@ -94,5 +105,5 @@ ABAPDeleteMemoryNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteMemoryNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #name #rightParen #period)
 ]

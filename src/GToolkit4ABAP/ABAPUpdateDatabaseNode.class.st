@@ -16,6 +16,7 @@ Class {
 		'eqs',
 		'commas',
 		'targets',
+		'names',
 		'withNames',
 		'asNames',
 		'fields',
@@ -23,10 +24,11 @@ Class {
 		'rightBrackets',
 		'lengths',
 		'decs',
-		'names',
+		'functions',
+		'lefts',
+		'rights',
 		'arrows',
-		'attributeNames',
-		'functions'
+		'attributeNames'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -82,7 +84,7 @@ ABAPUpdateDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #names #attributeNames #functions)
+	^ #(#dynamics #fieldChains #sources #fieldNames #targets #withNames #asNames #fields #lengths #decs #functions #lefts #rights #attributeNames)
 ]
 
 { #category : #generated }
@@ -199,6 +201,7 @@ ABAPUpdateDatabaseNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
@@ -206,10 +209,11 @@ ABAPUpdateDatabaseNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -253,6 +257,18 @@ ABAPUpdateDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPUpdateDatabaseNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPUpdateDatabaseNode >> lengths [
 	^ lengths
 ]
@@ -271,9 +287,9 @@ ABAPUpdateDatabaseNode >> names [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
@@ -288,7 +304,7 @@ ABAPUpdateDatabaseNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> otherVariables [
-	^ #(#values)
+	^ #(#values #names)
 ]
 
 { #category : #generated }
@@ -309,6 +325,18 @@ ABAPUpdateDatabaseNode >> rightParens [
 { #category : #generated }
 ABAPUpdateDatabaseNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

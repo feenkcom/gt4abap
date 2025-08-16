@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamic'
+		'name',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,18 +17,6 @@ ABAPRollbackNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPRollbackNode >> compositeTokenVariables [
 	^ #(#keywords)
-]
-
-{ #category : #generated }
-ABAPRollbackNode >> dynamic [
-	^ dynamic
-]
-
-{ #category : #generated }
-ABAPRollbackNode >> dynamic: anABAPDynamicNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -47,6 +36,33 @@ ABAPRollbackNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPRollbackNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPRollbackNode >> nodeVariables [
-	^ #(#dynamic)
+	^ #(#value)
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> tokenVariables [
+	^ #(#name #period)
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> value: anABAPDynamicNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPDynamicNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

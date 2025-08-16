@@ -4,11 +4,15 @@ Class {
 	#instVars : [
 		'keywords',
 		'leftParen',
-		'names',
+		'lefts',
+		'operators',
+		'rights',
 		'arrows',
 		'attributeNames',
 		'dashs',
-		'rightParen'
+		'names',
+		'rightParen',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -42,12 +46,12 @@ ABAPUlineNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPUlineNode >> compositeNodeVariables [
-	^ #(#names #attributeNames)
+	^ #(#lefts #rights #attributeNames #names)
 ]
 
 { #category : #generated }
 ABAPUlineNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #dashs)
+	^ #(#keywords #operators #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -64,10 +68,13 @@ ABAPUlineNode >> dashs: anOrderedCollection [
 ABAPUlineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -91,6 +98,18 @@ ABAPUlineNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPUlineNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPUlineNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPUlineNode >> names [
 	^ names
 ]
@@ -100,6 +119,16 @@ ABAPUlineNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPUlineNode >> operators [
+	^ operators
+]
+
+{ #category : #generated }
+ABAPUlineNode >> operators: anOrderedCollection [
+	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -113,6 +142,28 @@ ABAPUlineNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPUlineNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPUlineNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
+]
+
+{ #category : #generated }
 ABAPUlineNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #rightParen #value #period)
+]
+
+{ #category : #generated }
+ABAPUlineNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPUlineNode >> value: aSmaCCToken [
+	value := aSmaCCToken
 ]

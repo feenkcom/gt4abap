@@ -5,6 +5,8 @@ Class {
 		'keywords',
 		'sources',
 		'targets',
+		'froms',
+		'toSources',
 		'lengths'
 	],
 	#category : #GToolkit4ABAP
@@ -17,12 +19,24 @@ ABAPFindNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFindNode >> compositeNodeVariables [
-	^ #(#sources #targets #lengths)
+	^ #(#sources #targets #froms #toSources #lengths)
 ]
 
 { #category : #generated }
 ABAPFindNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPFindNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPFindNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -31,6 +45,8 @@ ABAPFindNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 ]
 
@@ -78,4 +94,16 @@ ABAPFindNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPFindNode >> toSources [
+	^ toSources
+]
+
+{ #category : #generated }
+ABAPFindNode >> toSources: anOrderedCollection [
+	self setParents: self toSources to: nil.
+	toSources := anOrderedCollection.
+	self setParents: self toSources to: self
 ]

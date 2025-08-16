@@ -4,26 +4,29 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'targets',
+		'intoTarget',
 		'values',
 		'leftParens',
 		'keies',
 		'rightParens',
 		'operators',
+		'dashs',
 		'methodNames',
 		'parameterNames',
 		'eqs',
+		'targets',
 		'names',
+		'lefts',
+		'rights',
 		'arrows',
 		'attributeNames',
-		'dashs',
 		'fieldChains',
 		'typeNames',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
 		'fields',
-		'dynamics'
+		'expressions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -57,7 +60,7 @@ ABAPInsertFieldGroupNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #targets #methodNames #parameterNames #attributeNames #names #fieldChains #typeNames #lengths #fields #dynamics)
+	^ #(#sources #methodNames #parameterNames #targets #names #lefts #rights #attributeNames #fieldChains #typeNames #lengths #fields #expressions)
 ]
 
 { #category : #generated }
@@ -76,18 +79,6 @@ ABAPInsertFieldGroupNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertFieldGroupNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
 ABAPInsertFieldGroupNode >> eqs [
 	^ eqs
 ]
@@ -95,6 +86,18 @@ ABAPInsertFieldGroupNode >> eqs [
 { #category : #generated }
 ABAPInsertFieldGroupNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -126,7 +129,6 @@ ABAPInsertFieldGroupNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
@@ -136,16 +138,31 @@ ABAPInsertFieldGroupNode >> initialize [
 	methodNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 
 { #category : #generated }
@@ -189,6 +206,18 @@ ABAPInsertFieldGroupNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPInsertFieldGroupNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPInsertFieldGroupNode >> lengths [
 	^ lengths
 ]
@@ -222,6 +251,11 @@ ABAPInsertFieldGroupNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> nodeVariables [
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }
@@ -269,6 +303,18 @@ ABAPInsertFieldGroupNode >> rightParens [
 { #category : #generated }
 ABAPInsertFieldGroupNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

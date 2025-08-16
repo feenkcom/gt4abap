@@ -11,21 +11,24 @@ Class {
 		'defaults',
 		'tos',
 		'fields',
-		'sources',
 		'names',
-		'arrows',
-		'attributeNames',
 		'leftParens',
 		'keies',
 		'rightParens',
 		'operators',
 		'dashs',
+		'arrows',
 		'typeNames',
+		'sources',
+		'lefts',
+		'rights',
 		'methodNames',
 		'eqs',
-		'dynamics',
+		'expressions',
+		'attributeNames',
 		'parameterNames',
-		'targets'
+		'targets',
+		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -59,12 +62,12 @@ ABAPSelectOptionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeNodeVariables [
-	^ #(#lengths #fieldChains #defaults #tos #fields #names #attributeNames #typeNames #sources #methodNames #parameterNames #dynamics #targets)
+	^ #(#lengths #fieldChains #defaults #tos #fields #names #typeNames #sources #lefts #rights #methodNames #expressions #attributeNames #parameterNames #targets)
 ]
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #arrows #leftParens #keies #rightParens #operators #dashs #eqs)
+	^ #(#keywords #leftBrackets #rightBrackets #leftParens #keies #rightParens #operators #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -90,15 +93,15 @@ ABAPSelectOptionNode >> defaults: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> dynamics [
-	^ dynamics
+ABAPSelectOptionNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPSelectOptionNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -109,6 +112,18 @@ ABAPSelectOptionNode >> eqs [
 { #category : #generated }
 ABAPSelectOptionNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -148,19 +163,21 @@ ABAPSelectOptionNode >> initialize [
 	tos := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 ]
 
@@ -205,6 +222,18 @@ ABAPSelectOptionNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPSelectOptionNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPSelectOptionNode >> lengths [
 	^ lengths
 ]
@@ -238,6 +267,11 @@ ABAPSelectOptionNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> nodeVariables [
+	^ #(#dynamic)
 ]
 
 { #category : #generated }
@@ -285,6 +319,18 @@ ABAPSelectOptionNode >> rightParens [
 { #category : #generated }
 ABAPSelectOptionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

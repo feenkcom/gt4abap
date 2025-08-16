@@ -8,7 +8,8 @@ Class {
 		'typeName',
 		'fields',
 		'dynamics',
-		'length'
+		'length',
+		'likeValue'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -84,8 +85,20 @@ ABAPCreateDataNode >> length: anABAPExpressionNode [
 ]
 
 { #category : #generated }
+ABAPCreateDataNode >> likeValue [
+	^ likeValue
+]
+
+{ #category : #generated }
+ABAPCreateDataNode >> likeValue: anABAPRootNode [
+	self likeValue notNil ifTrue: [ self likeValue parent: nil ].
+	likeValue := anABAPRootNode.
+	self likeValue notNil ifTrue: [ self likeValue parent: self ]
+]
+
+{ #category : #generated }
 ABAPCreateDataNode >> nodeVariables [
-	^ #(#target #typeName #length)
+	^ #(#target #typeName #length #likeValue)
 ]
 
 { #category : #generated }

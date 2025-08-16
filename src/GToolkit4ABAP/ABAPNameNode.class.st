@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPNameNode,
-	#superclass : #ABAPRootNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'values'
 	],
@@ -14,7 +14,7 @@ ABAPNameNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPNameNode >> compositeTokenVariables [
-	^ #(#values)
+	^ #(#values #leftParens #rightParens)
 ]
 
 { #category : #'generated-initialize-release' }

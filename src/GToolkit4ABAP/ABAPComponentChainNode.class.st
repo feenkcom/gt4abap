@@ -10,10 +10,12 @@ Class {
 		'values',
 		'operators',
 		'targets',
+		'lefts',
+		'rights',
+		'dashs',
 		'names',
 		'arrows',
 		'attributeNames',
-		'dashs',
 		'fieldChain',
 		'typeNames',
 		'leftBrackets',
@@ -55,12 +57,12 @@ ABAPComponentChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPComponentChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #attributeNames #typeNames #lengths #fields)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #lengths #fields)
 ]
 
 { #category : #generated }
 ABAPComponentChainNode >> compositeTokenVariables [
-	^ #(#eqs #keywords #operators #arrows #dashs #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#eqs #keywords #operators #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -142,10 +144,12 @@ ABAPComponentChainNode >> initialize [
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
@@ -171,6 +175,18 @@ ABAPComponentChainNode >> leftBrackets [
 { #category : #generated }
 ABAPComponentChainNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -204,9 +220,9 @@ ABAPComponentChainNode >> names [
 
 { #category : #generated }
 ABAPComponentChainNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -226,7 +242,7 @@ ABAPComponentChainNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPComponentChainNode >> otherVariables [
-	^ #(#values #names)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -249,6 +265,18 @@ ABAPComponentChainNode >> rightBrackets [
 { #category : #generated }
 ABAPComponentChainNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

@@ -4,23 +4,11 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
-		'_source',
+		'from',
 		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPSetLocksNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPSetLocksNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPSetLocksNode >> acceptVisitor: aRootVisitor [
@@ -35,6 +23,18 @@ ABAPSetLocksNode >> compositeNodeVariables [
 { #category : #generated }
 ABAPSetLocksNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPSetLocksNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPSetLocksNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -69,7 +69,7 @@ ABAPSetLocksNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPSetLocksNode >> nodeVariables [
-	^ #(#_source)
+	^ #(#from)
 ]
 
 { #category : #generated }

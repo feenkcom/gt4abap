@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,6 +38,18 @@ ABAPGetReferenceNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPGetReferenceNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPGetReferenceNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPGetReferenceNode >> keywords [
 	^ keywords
 ]
@@ -49,17 +61,5 @@ ABAPGetReferenceNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPGetReferenceNode >> nodeVariables [
-	^ #(#_source #target)
-]
-
-{ #category : #generated }
-ABAPGetReferenceNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPGetReferenceNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
+	^ #(#_source #intoTarget)
 ]

@@ -60,9 +60,9 @@ ABAPSetPropertyNode >> name [
 ]
 
 { #category : #generated }
-ABAPSetPropertyNode >> name: anABAPRootNode [
+ABAPSetPropertyNode >> name: anABAPExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPRootNode.
+	name := anABAPExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 

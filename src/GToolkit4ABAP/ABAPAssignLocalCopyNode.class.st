@@ -3,11 +3,12 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'_source',
+		'initial',
 		'value',
 		'leftBracket',
 		'rightBracket',
-		'dynamic'
+		'dynamic',
+		'_source'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -46,6 +47,18 @@ ABAPAssignLocalCopyNode >> dynamic: anABAPDynamicNode [
 	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
+{ #category : #generated }
+ABAPAssignLocalCopyNode >> initial [
+	^ initial
+]
+
+{ #category : #generated }
+ABAPAssignLocalCopyNode >> initial: anABAPRootNode [
+	self initial notNil ifTrue: [ self initial parent: nil ].
+	initial := anABAPRootNode.
+	self initial notNil ifTrue: [ self initial parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPAssignLocalCopyNode >> initialize [
 	super initialize.
@@ -74,7 +87,7 @@ ABAPAssignLocalCopyNode >> leftBracket: aSmaCCToken [
 
 { #category : #generated }
 ABAPAssignLocalCopyNode >> nodeVariables [
-	^ #(#_source #dynamic)
+	^ #(#initial #dynamic #_source)
 ]
 
 { #category : #generated }

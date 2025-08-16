@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'targets'
+		'intoTargets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +16,7 @@ ABAPReadReportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadReportNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#sources #intoTargets)
 ]
 
 { #category : #generated }
@@ -29,7 +29,19 @@ ABAPReadReportNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPReadReportNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPReadReportNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }
@@ -52,16 +64,4 @@ ABAPReadReportNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPReadReportNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPReadReportNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
 ]

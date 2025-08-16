@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,6 +32,18 @@ ABAPLoadReportNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPLoadReportNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPLoadReportNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPLoadReportNode >> keywords [
 	^ keywords
 ]
@@ -43,7 +55,7 @@ ABAPLoadReportNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPLoadReportNode >> nodeVariables [
-	^ #(#target)
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }
@@ -56,16 +68,4 @@ ABAPLoadReportNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPLoadReportNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPLoadReportNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]

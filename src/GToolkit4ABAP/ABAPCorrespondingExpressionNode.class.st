@@ -8,9 +8,9 @@ Class {
 		'fields',
 		'names',
 		'eqs',
+		'values',
 		'leftBrackets',
 		'rightBrackets',
-		'arrows',
 		'fieldLengths',
 		'fieldOffsets'
 	],
@@ -23,23 +23,13 @@ ABAPCorrespondingExpressionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCorrespondingExpressionNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPCorrespondingExpressionNode >> compositeNodeVariables [
-	^ #(#sources #fields #fieldLengths #fieldOffsets)
+	^ #(#sources #fields #names #fieldLengths #fieldOffsets)
 ]
 
 { #category : #generated }
 ABAPCorrespondingExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #leftBrackets #rightBrackets #arrows #leftParens #rightParens)
+	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -96,9 +86,9 @@ ABAPCorrespondingExpressionNode >> initialize [
 	fields := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 ]
@@ -130,19 +120,14 @@ ABAPCorrespondingExpressionNode >> names [
 
 { #category : #generated }
 ABAPCorrespondingExpressionNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 ABAPCorrespondingExpressionNode >> nodeVariables [
 	^ #(#typeName)
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> otherVariables [
-	^ #(#names)
 ]
 
 { #category : #generated }
@@ -177,4 +162,14 @@ ABAPCorrespondingExpressionNode >> typeName: anABAPTypeNameNode [
 	self typeName notNil ifTrue: [ self typeName parent: nil ].
 	typeName := anABAPTypeNameNode.
 	self typeName notNil ifTrue: [ self typeName parent: self ]
+]
+
+{ #category : #generated }
+ABAPCorrespondingExpressionNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPCorrespondingExpressionNode >> values: anOrderedCollection [
+	values := anOrderedCollection
 ]

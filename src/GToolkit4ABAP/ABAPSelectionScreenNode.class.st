@@ -241,9 +241,9 @@ ABAPSelectionScreenNode >> userCommand [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> userCommand: anABAPRootNode [
+ABAPSelectionScreenNode >> userCommand: anABAPExpressionNode [
 	self userCommand notNil ifTrue: [ self userCommand parent: nil ].
-	userCommand := anABAPRootNode.
+	userCommand := anABAPExpressionNode.
 	self userCommand notNil ifTrue: [ self userCommand parent: self ]
 ]
 

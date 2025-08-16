@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'targets'
+		'intoTargets',
+		'froms',
+		'toSources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +18,7 @@ ABAPScanNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPScanNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#sources #intoTargets #froms #toSources)
 ]
 
 { #category : #generated }
@@ -24,12 +26,38 @@ ABAPScanNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
+{ #category : #generated }
+ABAPScanNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPScanNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPScanNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPScanNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPScanNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }
@@ -55,13 +83,13 @@ ABAPScanNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPScanNode >> targets [
-	^ targets
+ABAPScanNode >> toSources [
+	^ toSources
 ]
 
 { #category : #generated }
-ABAPScanNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
+ABAPScanNode >> toSources: anOrderedCollection [
+	self setParents: self toSources to: nil.
+	toSources := anOrderedCollection.
+	self setParents: self toSources to: self
 ]

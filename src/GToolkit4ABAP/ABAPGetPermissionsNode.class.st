@@ -4,11 +4,24 @@ Class {
 	#instVars : [
 		'keywords',
 		'name',
-		'sources',
-		'targets'
+		'_source',
+		'targets',
+		'from'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPGetPermissionsNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPGetPermissionsNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPGetPermissionsNode >> acceptVisitor: aRootVisitor [
@@ -17,7 +30,7 @@ ABAPGetPermissionsNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPGetPermissionsNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#targets)
 ]
 
 { #category : #generated }
@@ -25,11 +38,22 @@ ABAPGetPermissionsNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
+{ #category : #generated }
+ABAPGetPermissionsNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPGetPermissionsNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPGetPermissionsNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 ]
 
@@ -57,19 +81,7 @@ ABAPGetPermissionsNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPGetPermissionsNode >> nodeVariables [
-	^ #(#name)
-]
-
-{ #category : #generated }
-ABAPGetPermissionsNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPGetPermissionsNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+	^ #(#name #_source #from)
 ]
 
 { #category : #generated }

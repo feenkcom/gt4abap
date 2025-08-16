@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'target'
+		'toTarget',
+		'toSources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +17,7 @@ ABAPAddNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPAddNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#sources #toSources)
 ]
 
 { #category : #generated }
@@ -29,6 +30,7 @@ ABAPAddNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -43,7 +45,7 @@ ABAPAddNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPAddNode >> nodeVariables [
-	^ #(#target)
+	^ #(#toTarget)
 ]
 
 { #category : #generated }
@@ -59,13 +61,25 @@ ABAPAddNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAddNode >> target [
-	^ target
+ABAPAddNode >> toSources [
+	^ toSources
 ]
 
 { #category : #generated }
-ABAPAddNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
+ABAPAddNode >> toSources: anOrderedCollection [
+	self setParents: self toSources to: nil.
+	toSources := anOrderedCollection.
+	self setParents: self toSources to: self
+]
+
+{ #category : #generated }
+ABAPAddNode >> toTarget [
+	^ toTarget
+]
+
+{ #category : #generated }
+ABAPAddNode >> toTarget: anABAPTargetNode [
+	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
+	toTarget := anABAPTargetNode.
+	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

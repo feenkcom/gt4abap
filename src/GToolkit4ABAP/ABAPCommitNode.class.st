@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamic'
+		'name',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,18 +17,6 @@ ABAPCommitNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPCommitNode >> compositeTokenVariables [
 	^ #(#keywords)
-]
-
-{ #category : #generated }
-ABAPCommitNode >> dynamic [
-	^ dynamic
-]
-
-{ #category : #generated }
-ABAPCommitNode >> dynamic: anABAPDynamicNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -47,6 +36,33 @@ ABAPCommitNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCommitNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPCommitNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPCommitNode >> nodeVariables [
-	^ #(#dynamic)
+	^ #(#value)
+]
+
+{ #category : #generated }
+ABAPCommitNode >> tokenVariables [
+	^ #(#name #period)
+]
+
+{ #category : #generated }
+ABAPCommitNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPCommitNode >> value: anABAPDynamicNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPDynamicNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

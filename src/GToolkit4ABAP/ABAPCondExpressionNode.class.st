@@ -20,11 +20,11 @@ Class {
 		'arrows',
 		'attributeNames',
 		'fieldChains',
+		'fields',
+		'expressions',
 		'leftBrackets',
 		'rightBrackets',
-		'lengths',
-		'fields',
-		'dynamics'
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -58,7 +58,7 @@ ABAPCondExpressionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCondExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #lengths #fields #dynamics)
+	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #fields #expressions #lengths)
 ]
 
 { #category : #generated }
@@ -77,18 +77,6 @@ ABAPCondExpressionNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCondExpressionNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
 ABAPCondExpressionNode >> eqs [
 	^ eqs
 ]
@@ -96,6 +84,18 @@ ABAPCondExpressionNode >> eqs [
 { #category : #generated }
 ABAPCondExpressionNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCondExpressionNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPCondExpressionNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -143,11 +143,11 @@ ABAPCondExpressionNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -3,8 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'targets',
-		'sources'
+		'sources',
+		'intoTargets',
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +17,7 @@ ABAPReadLineNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadLineNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#sources #intoTargets #targets)
 ]
 
 { #category : #generated }
@@ -29,7 +30,20 @@ ABAPReadLineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPReadLineNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPReadLineNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }

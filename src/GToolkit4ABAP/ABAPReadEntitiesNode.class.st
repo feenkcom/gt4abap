@@ -7,7 +7,8 @@ Class {
 		'leftParens',
 		'rightParens',
 		'sources',
-		'targets'
+		'targets',
+		'froms'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,12 +20,24 @@ ABAPReadEntitiesNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadEntitiesNode >> compositeNodeVariables [
-	^ #(#names #sources #targets)
+	^ #(#names #sources #targets #froms)
 ]
 
 { #category : #generated }
 ABAPReadEntitiesNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPReadEntitiesNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPReadEntitiesNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -36,6 +49,7 @@ ABAPReadEntitiesNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -10,8 +10,8 @@ Class {
 		'eqs',
 		'values',
 		'operators',
-		'arrows',
-		'attributeNames',
+		'lefts',
+		'rights',
 		'dashs',
 		'parameterNames'
 	],
@@ -24,35 +24,13 @@ ABAPCreateObjectNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCreateObjectNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPCreateObjectNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPCreateObjectNode >> compositeNodeVariables [
-	^ #(#targets #names #dynamics #sources #attributeNames #parameterNames)
+	^ #(#targets #names #dynamics #sources #lefts #rights #parameterNames)
 ]
 
 { #category : #generated }
 ABAPCreateObjectNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #operators #arrows #dashs)
+	^ #(#keywords #eqs #values #operators #dashs)
 ]
 
 { #category : #generated }
@@ -98,10 +76,10 @@ ABAPCreateObjectNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -112,6 +90,18 @@ ABAPCreateObjectNode >> keywords [
 { #category : #generated }
 ABAPCreateObjectNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -146,6 +136,18 @@ ABAPCreateObjectNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPCreateObjectNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

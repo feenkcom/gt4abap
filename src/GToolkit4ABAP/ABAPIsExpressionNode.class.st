@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'value',
 		'keywords',
-		'_class'
+		'_class',
+		'fieldOffset',
+		'fieldLength'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -15,9 +17,9 @@ ABAPIsExpressionNode >> _class [
 ]
 
 { #category : #generated }
-ABAPIsExpressionNode >> _class: anABAPNameNode [
+ABAPIsExpressionNode >> _class: anABAPExpressionNode [
 	self _class notNil ifTrue: [ self _class parent: nil ].
-	_class := anABAPNameNode.
+	_class := anABAPExpressionNode.
 	self _class notNil ifTrue: [ self _class parent: self ]
 ]
 
@@ -29,6 +31,30 @@ ABAPIsExpressionNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPIsExpressionNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPIsExpressionNode >> fieldLength [
+	^ fieldLength
+]
+
+{ #category : #generated }
+ABAPIsExpressionNode >> fieldLength: anABAPFieldLengthNode [
+	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
+	fieldLength := anABAPFieldLengthNode.
+	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
+]
+
+{ #category : #generated }
+ABAPIsExpressionNode >> fieldOffset [
+	^ fieldOffset
+]
+
+{ #category : #generated }
+ABAPIsExpressionNode >> fieldOffset: anABAPFieldOffsetNode [
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
+	fieldOffset := anABAPFieldOffsetNode.
+	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -49,7 +75,12 @@ ABAPIsExpressionNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPIsExpressionNode >> nodeVariables [
-	^ #(#value #_class)
+	^ #(#_class #fieldOffset #fieldLength)
+]
+
+{ #category : #generated }
+ABAPIsExpressionNode >> otherVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -58,8 +89,8 @@ ABAPIsExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPIsExpressionNode >> value: anABAPExpressionNode [
-	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPExpressionNode.
-	self value notNil ifTrue: [ self value parent: self ]
+ABAPIsExpressionNode >> value: anObject [
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

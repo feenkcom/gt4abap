@@ -3,11 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamics',
+		'dynamic',
 		'parameterNames',
 		'eqs',
 		'targets',
-		'sources'
+		'sources',
+		'name',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,7 +21,7 @@ ABAPCallDatabaseNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCallDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #parameterNames #targets #sources)
+	^ #(#parameterNames #targets #sources)
 ]
 
 { #category : #generated }
@@ -28,15 +30,15 @@ ABAPCallDatabaseNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> dynamics [
-	^ dynamics
+ABAPCallDatabaseNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPCallDatabaseNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -53,7 +55,6 @@ ABAPCallDatabaseNode >> eqs: anOrderedCollection [
 ABAPCallDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
@@ -68,6 +69,21 @@ ABAPCallDatabaseNode >> keywords [
 { #category : #generated }
 ABAPCallDatabaseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> nodeVariables [
+	^ #(#dynamic #value)
 ]
 
 { #category : #generated }
@@ -104,4 +120,21 @@ ABAPCallDatabaseNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> tokenVariables [
+	^ #(#name #period)
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> value: anABAPDynamicNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPDynamicNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

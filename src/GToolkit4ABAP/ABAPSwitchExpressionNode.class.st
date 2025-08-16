@@ -15,6 +15,8 @@ Class {
 		'dashs',
 		'methodNames',
 		'targets',
+		'lefts',
+		'rights',
 		'arrows',
 		'attributeNames',
 		'fieldChains',
@@ -22,7 +24,7 @@ Class {
 		'rightBrackets',
 		'lengths',
 		'fields',
-		'dynamics'
+		'expressions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -56,7 +58,7 @@ ABAPSwitchExpressionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPSwitchExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #sources #names #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #lengths #fields #dynamics)
+	^ #(#typeNames #sources #names #parameterNames #messageClasses #methodNames #targets #lefts #rights #attributeNames #fieldChains #lengths #fields #expressions)
 ]
 
 { #category : #generated }
@@ -75,18 +77,6 @@ ABAPSwitchExpressionNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSwitchExpressionNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
 ABAPSwitchExpressionNode >> eqs [
 	^ eqs
 ]
@@ -94,6 +84,18 @@ ABAPSwitchExpressionNode >> eqs [
 { #category : #generated }
 ABAPSwitchExpressionNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -136,6 +138,8 @@ ABAPSwitchExpressionNode >> initialize [
 	dashs := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
@@ -143,7 +147,7 @@ ABAPSwitchExpressionNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -174,6 +178,18 @@ ABAPSwitchExpressionNode >> leftBrackets [
 { #category : #generated }
 ABAPSwitchExpressionNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -259,6 +275,18 @@ ABAPSwitchExpressionNode >> rightBrackets [
 { #category : #generated }
 ABAPSwitchExpressionNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

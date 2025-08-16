@@ -7,8 +7,8 @@ Class {
 		'messageClass',
 		'rightParens',
 		'sources',
-		'targets',
 		'exceptionNames',
+		'intoTargets',
 		'values',
 		'keies',
 		'operators',
@@ -25,7 +25,7 @@ ABAPMessageNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPMessageNode >> compositeNodeVariables [
-	^ #(#sources #exceptionNames #targets #fieldChains)
+	^ #(#sources #exceptionNames #intoTargets #fieldChains)
 ]
 
 { #category : #generated }
@@ -75,12 +75,24 @@ ABAPMessageNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	exceptionNames := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPMessageNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPMessageNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }
@@ -160,18 +172,6 @@ ABAPMessageNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPMessageNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPMessageNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
 ]
 
 { #category : #generated }

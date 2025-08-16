@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'target'
+		'toTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -43,7 +43,7 @@ ABAPSystemCallNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPSystemCallNode >> nodeVariables [
-	^ #(#target)
+	^ #(#toTarget)
 ]
 
 { #category : #generated }
@@ -59,13 +59,13 @@ ABAPSystemCallNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> target [
-	^ target
+ABAPSystemCallNode >> toTarget [
+	^ toTarget
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
+ABAPSystemCallNode >> toTarget: anABAPTargetNode [
+	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
+	toTarget := anABAPTargetNode.
+	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

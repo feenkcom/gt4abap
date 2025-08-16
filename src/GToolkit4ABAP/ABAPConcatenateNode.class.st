@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'target',
+		'intoTarget',
 		'values',
 		'leftParens',
 		'keies',
@@ -79,6 +79,18 @@ ABAPConcatenateNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPConcatenateNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPConcatenateNode >> keies [
 	^ keies
 ]
@@ -110,7 +122,7 @@ ABAPConcatenateNode >> leftParens: anOrderedCollection [
 
 { #category : #generated }
 ABAPConcatenateNode >> nodeVariables [
-	^ #(#_source #target)
+	^ #(#_source #intoTarget)
 ]
 
 { #category : #generated }
@@ -131,18 +143,6 @@ ABAPConcatenateNode >> rightParens [
 { #category : #generated }
 ABAPConcatenateNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }

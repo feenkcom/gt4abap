@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'eqs'
+		'eqs',
+		'froms'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +17,7 @@ ABAPModifyLineNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPModifyLineNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#sources #froms)
 ]
 
 { #category : #generated }
@@ -34,12 +35,25 @@ ABAPModifyLineNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
 ]
 
+{ #category : #generated }
+ABAPModifyLineNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPModifyLineNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPModifyLineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
-		'arrows',
+		'arrow',
 		'attributeNames',
 		'dynamics',
 		'methodNames',
@@ -16,8 +16,10 @@ Class {
 		'eqs',
 		'targets',
 		'operators',
-		'field',
-		'dashs'
+		'lefts',
+		'rights',
+		'dashs',
+		'field'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -28,13 +30,13 @@ ABAPCallBadiNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> arrows [
-	^ arrows
+ABAPCallBadiNode >> arrow [
+	^ arrow
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
+ABAPCallBadiNode >> arrow: aSmaCCToken [
+	arrow := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -51,12 +53,12 @@ ABAPCallBadiNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallBadiNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
 ABAPCallBadiNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #operators #dashs)
 ]
 
 { #category : #generated }
@@ -108,7 +110,6 @@ ABAPCallBadiNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
@@ -120,6 +121,8 @@ ABAPCallBadiNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 ]
 
@@ -141,6 +144,18 @@ ABAPCallBadiNode >> leftParens [
 { #category : #generated }
 ABAPCallBadiNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -210,6 +225,18 @@ ABAPCallBadiNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallBadiNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
+]
+
+{ #category : #generated }
 ABAPCallBadiNode >> sources [
 	^ sources
 ]
@@ -231,6 +258,11 @@ ABAPCallBadiNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> tokenVariables [
+	^ #(#arrow #period)
 ]
 
 { #category : #generated }

@@ -5,19 +5,21 @@ Class {
 		'keywords',
 		'target',
 		'names',
-		'fieldLengths',
-		'fieldOffsets',
 		'operators',
-		'sources',
-		'leftParens',
 		'values',
+		'lefts',
+		'rights',
+		'lows',
+		'highs',
+		'fieldOffsets',
+		'fieldLengths',
+		'classes',
+		'leftParens',
+		'rightParens',
 		'leftBrackets',
 		'rightBrackets',
-		'lengths',
-		'rightParens',
-		'keies',
-		'arrows',
-		'commas',
+		'sources',
+		'froms',
 		'dynamic'
 	],
 	#category : #GToolkit4ABAP
@@ -29,33 +31,25 @@ ABAPModifyInternalNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> arrows [
-	^ arrows
+ABAPModifyInternalNode >> classes [
+	^ classes
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> commas [
-	^ commas
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
+ABAPModifyInternalNode >> classes: anOrderedCollection [
+	self setParents: self classes to: nil.
+	classes := anOrderedCollection.
+	self setParents: self classes to: self
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#fieldLengths #fieldOffsets #sources #lengths)
+	^ #(#names #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes #sources #froms)
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #values #leftBrackets #rightBrackets #rightParens #keies #commas #arrows)
+	^ #(#keywords #operators #leftParens #rightParens #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -94,34 +88,50 @@ ABAPModifyInternalNode >> fieldOffsets: anOrderedCollection [
 	self setParents: self fieldOffsets to: self
 ]
 
+{ #category : #generated }
+ABAPModifyInternalNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> highs [
+	^ highs
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> highs: anOrderedCollection [
+	self setParents: self highs to: nil.
+	highs := anOrderedCollection.
+	self setParents: self highs to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPModifyInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	classes := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	sources := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -155,15 +165,27 @@ ABAPModifyInternalNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> lengths [
-	^ lengths
+ABAPModifyInternalNode >> lefts [
+	^ lefts
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
+ABAPModifyInternalNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> lows [
+	^ lows
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> lows: anOrderedCollection [
+	self setParents: self lows to: nil.
+	lows := anOrderedCollection.
+	self setParents: self lows to: self
 ]
 
 { #category : #generated }
@@ -173,9 +195,9 @@ ABAPModifyInternalNode >> names [
 
 { #category : #generated }
 ABAPModifyInternalNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -195,7 +217,7 @@ ABAPModifyInternalNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPModifyInternalNode >> otherVariables [
-	^ #(#names)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -216,6 +238,18 @@ ABAPModifyInternalNode >> rightParens [
 { #category : #generated }
 ABAPModifyInternalNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -249,5 +283,7 @@ ABAPModifyInternalNode >> values [
 
 { #category : #generated }
 ABAPModifyInternalNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

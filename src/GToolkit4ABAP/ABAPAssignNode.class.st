@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'arrow',
 		'dynamics',
 		'values',
 		'leftParens',
@@ -13,6 +12,7 @@ Class {
 		'operators',
 		'dash',
 		'fieldChain',
+		'tableField',
 		'field',
 		'leftBracket',
 		'rightBracket',
@@ -25,16 +25,6 @@ Class {
 { #category : #generated }
 ABAPAssignNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAssign: self
-]
-
-{ #category : #generated }
-ABAPAssignNode >> arrow [
-	^ arrow
-]
-
-{ #category : #generated }
-ABAPAssignNode >> arrow: aSmaCCToken [
-	arrow := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -148,7 +138,7 @@ ABAPAssignNode >> leftParens: anOrderedCollection [
 
 { #category : #generated }
 ABAPAssignNode >> nodeVariables [
-	^ #(#fieldChain #field #target)
+	^ #(#fieldChain #tableField #field #target)
 ]
 
 { #category : #generated }
@@ -194,6 +184,18 @@ ABAPAssignNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAssignNode >> tableField [
+	^ tableField
+]
+
+{ #category : #generated }
+ABAPAssignNode >> tableField: anABAPRootNode [
+	self tableField notNil ifTrue: [ self tableField parent: nil ].
+	tableField := anABAPRootNode.
+	self tableField notNil ifTrue: [ self tableField parent: self ]
+]
+
+{ #category : #generated }
 ABAPAssignNode >> target [
 	^ target
 ]
@@ -207,7 +209,7 @@ ABAPAssignNode >> target: anABAPTargetNode [
 
 { #category : #generated }
 ABAPAssignNode >> tokenVariables [
-	^ #(#arrow #key #dash #leftBracket #rightBracket #period)
+	^ #(#key #dash #leftBracket #rightBracket #period)
 ]
 
 { #category : #generated }

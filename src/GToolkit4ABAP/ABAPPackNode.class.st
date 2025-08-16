@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'target'
+		'toTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -49,17 +49,17 @@ ABAPPackNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPPackNode >> nodeVariables [
-	^ #(#_source #target)
+	^ #(#_source #toTarget)
 ]
 
 { #category : #generated }
-ABAPPackNode >> target [
-	^ target
+ABAPPackNode >> toTarget [
+	^ toTarget
 ]
 
 { #category : #generated }
-ABAPPackNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
+ABAPPackNode >> toTarget: anABAPTargetNode [
+	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
+	toTarget := anABAPTargetNode.
+	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

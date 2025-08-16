@@ -6,16 +6,15 @@ Class {
 		'typeName',
 		'sources',
 		'names',
-		'arrows',
-		'fieldLengths',
-		'fieldOffsets',
 		'operators',
 		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
-		'commas',
-		'keies'
+		'lefts',
+		'rights',
+		'lows',
+		'highs',
+		'fieldOffsets',
+		'fieldLengths',
+		'classes'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,33 +25,25 @@ ABAPFilterExpressionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> arrows [
-	^ arrows
+ABAPFilterExpressionNode >> classes [
+	^ classes
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFilterExpressionNode >> commas [
-	^ commas
-]
-
-{ #category : #generated }
-ABAPFilterExpressionNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
+ABAPFilterExpressionNode >> classes: anOrderedCollection [
+	self setParents: self classes to: nil.
+	classes := anOrderedCollection.
+	self setParents: self classes to: self
 ]
 
 { #category : #generated }
 ABAPFilterExpressionNode >> compositeNodeVariables [
-	^ #(#sources #names #fieldLengths #fieldOffsets #lengths)
+	^ #(#sources #names #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes)
 ]
 
 { #category : #generated }
 ABAPFilterExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #operators #values #leftBrackets #rightBrackets #commas #keies #leftParens #rightParens)
+	^ #(#keywords #operators #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -79,32 +70,33 @@ ABAPFilterExpressionNode >> fieldOffsets: anOrderedCollection [
 	self setParents: self fieldOffsets to: self
 ]
 
+{ #category : #generated }
+ABAPFilterExpressionNode >> highs [
+	^ highs
+]
+
+{ #category : #generated }
+ABAPFilterExpressionNode >> highs: anOrderedCollection [
+	self setParents: self highs to: nil.
+	highs := anOrderedCollection.
+	self setParents: self highs to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPFilterExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPFilterExpressionNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPFilterExpressionNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	classes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -118,25 +110,27 @@ ABAPFilterExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> leftBrackets [
-	^ leftBrackets
+ABAPFilterExpressionNode >> lefts [
+	^ lefts
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPFilterExpressionNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> lengths [
-	^ lengths
+ABAPFilterExpressionNode >> lows [
+	^ lows
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
+ABAPFilterExpressionNode >> lows: anOrderedCollection [
+	self setParents: self lows to: nil.
+	lows := anOrderedCollection.
+	self setParents: self lows to: self
 ]
 
 { #category : #generated }
@@ -167,13 +161,20 @@ ABAPFilterExpressionNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> rightBrackets [
-	^ rightBrackets
+ABAPFilterExpressionNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPFilterExpressionNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPFilterExpressionNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -207,5 +208,7 @@ ABAPFilterExpressionNode >> values [
 
 { #category : #generated }
 ABAPFilterExpressionNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

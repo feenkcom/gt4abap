@@ -9,12 +9,14 @@ Class {
 		'rightParens',
 		'operators',
 		'dash',
-		'sources',
+		'expressions',
 		'eqs',
-		'dynamics',
 		'fieldChain',
 		'fields',
-		'targets',
+		'dynamics',
+		'sources',
+		'froms',
+		'intoTargets',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
@@ -30,12 +32,12 @@ ABAPReadTableNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadTableNode >> compositeNodeVariables [
-	^ #(#sources #dynamics #fields #targets #lengths)
+	^ #(#expressions #fields #dynamics #sources #froms #intoTargets #lengths #names)
 ]
 
 { #category : #generated }
 ABAPReadTableNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -71,6 +73,18 @@ ABAPReadTableNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReadTableNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
+]
+
+{ #category : #generated }
 ABAPReadTableNode >> fieldChain [
 	^ fieldChain
 ]
@@ -94,6 +108,18 @@ ABAPReadTableNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPReadTableNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPReadTableNode >> initialize [
 	super initialize.
@@ -102,15 +128,29 @@ ABAPReadTableNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }
@@ -172,9 +212,9 @@ ABAPReadTableNode >> names [
 
 { #category : #generated }
 ABAPReadTableNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -194,7 +234,7 @@ ABAPReadTableNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadTableNode >> otherVariables [
-	^ #(#names)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -230,18 +270,6 @@ ABAPReadTableNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
-]
-
-{ #category : #generated }
 ABAPReadTableNode >> tokenVariables [
 	^ #(#key #dash #period)
 ]
@@ -253,5 +281,7 @@ ABAPReadTableNode >> values [
 
 { #category : #generated }
 ABAPReadTableNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

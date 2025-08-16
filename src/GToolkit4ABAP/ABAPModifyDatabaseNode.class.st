@@ -3,14 +3,15 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamics',
-		'leftParens',
-		'sources',
-		'rightParens',
+		'dynamic',
+		'names',
 		'values',
+		'leftParens',
 		'keies',
+		'rightParens',
 		'operators',
 		'fieldChains',
+		'sources',
 		'dashs'
 	],
 	#category : #GToolkit4ABAP
@@ -23,12 +24,12 @@ ABAPModifyDatabaseNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources)
+	^ #(#fieldChains #sources)
 ]
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+	^ #(#keywords #names #leftParens #keies #rightParens #operators #dashs)
 ]
 
 { #category : #generated }
@@ -42,15 +43,15 @@ ABAPModifyDatabaseNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> dynamics [
-	^ dynamics
+ABAPModifyDatabaseNode >> dynamic [
+	^ dynamic
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPModifyDatabaseNode >> dynamic: anABAPDynamicNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPDynamicNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -69,7 +70,7 @@ ABAPModifyDatabaseNode >> fieldChains: anOrderedCollection [
 ABAPModifyDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
@@ -111,6 +112,21 @@ ABAPModifyDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPModifyDatabaseNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> names: anOrderedCollection [
+	names := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> nodeVariables [
+	^ #(#dynamic)
+]
+
+{ #category : #generated }
 ABAPModifyDatabaseNode >> operators [
 	^ operators
 ]
@@ -118,6 +134,11 @@ ABAPModifyDatabaseNode >> operators [
 { #category : #generated }
 ABAPModifyDatabaseNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -149,5 +170,7 @@ ABAPModifyDatabaseNode >> values [
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

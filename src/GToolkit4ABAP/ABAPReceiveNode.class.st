@@ -8,10 +8,10 @@ Class {
 		'values',
 		'operators',
 		'targets',
-		'names',
-		'arrows',
-		'attributeNames',
+		'lefts',
+		'rights',
 		'dashs',
+		'names',
 		'parameterNames',
 		'field'
 	],
@@ -24,35 +24,13 @@ ABAPReceiveNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPReceiveNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPReceiveNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPReceiveNode >> compositeNodeVariables [
-	^ #(#targets #names #attributeNames #parameterNames)
+	^ #(#targets #lefts #rights #names #parameterNames)
 ]
 
 { #category : #generated }
 ABAPReceiveNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #operators #arrows #dashs)
+	^ #(#keywords #eqs #values #operators #dashs)
 ]
 
 { #category : #generated }
@@ -107,11 +85,11 @@ ABAPReceiveNode >> initialize [
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -122,6 +100,18 @@ ABAPReceiveNode >> keywords [
 { #category : #generated }
 ABAPReceiveNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -161,6 +151,18 @@ ABAPReceiveNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPReceiveNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

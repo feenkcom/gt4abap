@@ -3,20 +3,28 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
+		'_source',
+		'toSource',
 		'length'
 	],
 	#category : #GToolkit4ABAP
 }
 
 { #category : #generated }
-ABAPTransferNode >> acceptVisitor: aRootVisitor [
-	^ aRootVisitor visitTransfer: self
+ABAPTransferNode >> _source [
+	^ _source
 ]
 
 { #category : #generated }
-ABAPTransferNode >> compositeNodeVariables [
-	^ #(#sources)
+ABAPTransferNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
+
+{ #category : #generated }
+ABAPTransferNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitTransfer: self
 ]
 
 { #category : #generated }
@@ -28,7 +36,6 @@ ABAPTransferNode >> compositeTokenVariables [
 ABAPTransferNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -55,17 +62,17 @@ ABAPTransferNode >> length: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPTransferNode >> nodeVariables [
-	^ #(#length)
+	^ #(#_source #toSource #length)
 ]
 
 { #category : #generated }
-ABAPTransferNode >> sources [
-	^ sources
+ABAPTransferNode >> toSource [
+	^ toSource
 ]
 
 { #category : #generated }
-ABAPTransferNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPTransferNode >> toSource: anABAPExpressionNode [
+	self toSource notNil ifTrue: [ self toSource parent: nil ].
+	toSource := anABAPExpressionNode.
+	self toSource notNil ifTrue: [ self toSource parent: self ]
 ]

@@ -9,7 +9,7 @@ Class {
 		'leftBracket',
 		'rightBracket',
 		'rightParen',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -40,6 +40,18 @@ ABAPCollectNode >> compositeTokenVariables [
 ABAPCollectNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPCollectNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPCollectNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 
 { #category : #generated }
@@ -74,7 +86,7 @@ ABAPCollectNode >> leftParen: aSmaCCToken [
 
 { #category : #generated }
 ABAPCollectNode >> nodeVariables [
-	^ #(#_source #target)
+	^ #(#_source #intoTarget)
 ]
 
 { #category : #generated }
@@ -95,18 +107,6 @@ ABAPCollectNode >> rightParen [
 { #category : #generated }
 ABAPCollectNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCollectNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPCollectNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }

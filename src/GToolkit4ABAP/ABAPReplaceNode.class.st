@@ -5,7 +5,8 @@ Class {
 		'keywords',
 		'targets',
 		'sources',
-		'lengths'
+		'lengths',
+		'intoTargets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,7 +18,7 @@ ABAPReplaceNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReplaceNode >> compositeNodeVariables [
-	^ #(#targets #sources #lengths)
+	^ #(#targets #sources #lengths #intoTargets)
 ]
 
 { #category : #generated }
@@ -32,6 +33,19 @@ ABAPReplaceNode >> initialize [
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPReplaceNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPReplaceNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }

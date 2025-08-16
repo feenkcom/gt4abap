@@ -7,26 +7,28 @@ Class {
 		'leftParens',
 		'targets',
 		'rightParens',
-		'fieldNames',
+		'names',
+		'values',
 		'withNames',
 		'asNames',
 		'fields',
 		'eqs',
 		'fieldChains',
-		'values',
 		'keies',
 		'operators',
 		'commas',
+		'fieldNames',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
 		'decs',
-		'names',
+		'functions',
+		'lefts',
+		'rights',
 		'arrows',
 		'attributeNames',
-		'sources',
-		'functions',
-		'dashs'
+		'dashs',
+		'sources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -82,7 +84,7 @@ ABAPDeleteDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #names #attributeNames #sources #functions)
+	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #functions #lefts #rights #attributeNames #sources)
 ]
 
 { #category : #generated }
@@ -190,12 +192,13 @@ ABAPDeleteDatabaseNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
@@ -204,12 +207,13 @@ ABAPDeleteDatabaseNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -253,6 +257,18 @@ ABAPDeleteDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPDeleteDatabaseNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPDeleteDatabaseNode >> lengths [
 	^ lengths
 ]
@@ -271,9 +287,9 @@ ABAPDeleteDatabaseNode >> names [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
@@ -288,7 +304,7 @@ ABAPDeleteDatabaseNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> otherVariables [
-	^ #(#values)
+	^ #(#names #values)
 ]
 
 { #category : #generated }
@@ -309,6 +325,18 @@ ABAPDeleteDatabaseNode >> rightParens [
 { #category : #generated }
 ABAPDeleteDatabaseNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

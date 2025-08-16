@@ -3,22 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'_source'
+		'from'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPModifyScreenNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPModifyScreenNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPModifyScreenNode >> acceptVisitor: aRootVisitor [
@@ -28,6 +16,18 @@ ABAPModifyScreenNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPModifyScreenNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPModifyScreenNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPModifyScreenNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -48,5 +48,5 @@ ABAPModifyScreenNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPModifyScreenNode >> nodeVariables [
-	^ #(#_source)
+	^ #(#from)
 ]

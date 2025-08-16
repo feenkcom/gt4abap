@@ -4,23 +4,25 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
-		'names',
-		'dynamics',
 		'sources',
+		'names',
+		'from',
+		'lefts',
+		'operators',
+		'rights',
 		'arrows',
+		'attributeNames',
+		'dashs',
 		'fieldLengths',
 		'fieldOffsets',
-		'operators',
-		'leftParens',
+		'dynamics',
 		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
-		'commas',
-		'keies',
+		'lows',
+		'highs',
+		'classes',
+		'leftParens',
 		'rightParens',
-		'attributeNames',
-		'dashs'
+		'toSource'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -53,23 +55,25 @@ ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> commas [
-	^ commas
+ABAPDeleteInternalNode >> classes [
+	^ classes
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
+ABAPDeleteInternalNode >> classes: anOrderedCollection [
+	self setParents: self classes to: nil.
+	classes := anOrderedCollection.
+	self setParents: self classes to: self
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #fieldLengths #fieldOffsets #lengths #attributeNames #dynamics)
+	^ #(#sources #names #lefts #rights #attributeNames #fieldLengths #fieldOffsets #dynamics #lows #highs #classes)
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #operators #leftParens #values #leftBrackets #rightBrackets #commas #keies #rightParens #dashs)
+	^ #(#keywords #operators #arrows #dashs #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -118,37 +122,51 @@ ABAPDeleteInternalNode >> fieldOffsets: anOrderedCollection [
 	self setParents: self fieldOffsets to: self
 ]
 
+{ #category : #generated }
+ABAPDeleteInternalNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> highs [
+	^ highs
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> highs: anOrderedCollection [
+	self setParents: self highs to: nil.
+	highs := anOrderedCollection.
+	self setParents: self highs to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPDeleteInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	values := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
+	classes := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -162,16 +180,6 @@ ABAPDeleteInternalNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPDeleteInternalNode >> leftParens [
 	^ leftParens
 ]
@@ -182,15 +190,27 @@ ABAPDeleteInternalNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> lengths [
-	^ lengths
+ABAPDeleteInternalNode >> lefts [
+	^ lefts
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
+ABAPDeleteInternalNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> lows [
+	^ lows
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> lows: anOrderedCollection [
+	self setParents: self lows to: nil.
+	lows := anOrderedCollection.
+	self setParents: self lows to: self
 ]
 
 { #category : #generated }
@@ -207,7 +227,7 @@ ABAPDeleteInternalNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> nodeVariables [
-	^ #(#target)
+	^ #(#target #from #toSource)
 ]
 
 { #category : #generated }
@@ -221,13 +241,8 @@ ABAPDeleteInternalNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPDeleteInternalNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -238,6 +253,18 @@ ABAPDeleteInternalNode >> rightParens [
 { #category : #generated }
 ABAPDeleteInternalNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -265,11 +292,25 @@ ABAPDeleteInternalNode >> target: anABAPTargetNode [
 ]
 
 { #category : #generated }
+ABAPDeleteInternalNode >> toSource [
+	^ toSource
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> toSource: anABAPExpressionNode [
+	self toSource notNil ifTrue: [ self toSource parent: nil ].
+	toSource := anABAPExpressionNode.
+	self toSource notNil ifTrue: [ self toSource parent: self ]
+]
+
+{ #category : #generated }
 ABAPDeleteInternalNode >> values [
 	^ values
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

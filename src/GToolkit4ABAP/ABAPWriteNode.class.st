@@ -3,19 +3,22 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'write',
 		'sources',
-		'targets',
+		'toTargets',
 		'eqs',
 		'values',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
-		'dynamic',
 		'leftParen',
-		'names',
+		'lefts',
+		'operators',
+		'rights',
 		'arrows',
 		'attributeNames',
 		'dashs',
+		'names',
 		'rightParen'
 	],
 	#category : #GToolkit4ABAP
@@ -50,12 +53,12 @@ ABAPWriteNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> compositeNodeVariables [
-	^ #(#sources #targets #lengths #names #attributeNames)
+	^ #(#sources #toTargets #lengths #lefts #rights #attributeNames #names)
 ]
 
 { #category : #generated }
 ABAPWriteNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #operators #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -66,18 +69,6 @@ ABAPWriteNode >> dashs [
 { #category : #generated }
 ABAPWriteNode >> dashs: anOrderedCollection [
 	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPWriteNode >> dynamic [
-	^ dynamic
-]
-
-{ #category : #generated }
-ABAPWriteNode >> dynamic: anABAPDynamicNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPDynamicNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -95,16 +86,19 @@ ABAPWriteNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	toTargets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -138,6 +132,18 @@ ABAPWriteNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPWriteNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPWriteNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPWriteNode >> lengths [
 	^ lengths
 ]
@@ -163,7 +169,17 @@ ABAPWriteNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> nodeVariables [
-	^ #(#dynamic)
+	^ #(#write)
+]
+
+{ #category : #generated }
+ABAPWriteNode >> operators [
+	^ operators
+]
+
+{ #category : #generated }
+ABAPWriteNode >> operators: anOrderedCollection [
+	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -187,6 +203,18 @@ ABAPWriteNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPWriteNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPWriteNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
+]
+
+{ #category : #generated }
 ABAPWriteNode >> sources [
 	^ sources
 ]
@@ -199,15 +227,15 @@ ABAPWriteNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> targets [
-	^ targets
+ABAPWriteNode >> toTargets [
+	^ toTargets
 ]
 
 { #category : #generated }
-ABAPWriteNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
+ABAPWriteNode >> toTargets: anOrderedCollection [
+	self setParents: self toTargets to: nil.
+	toTargets := anOrderedCollection.
+	self setParents: self toTargets to: self
 ]
 
 { #category : #generated }
@@ -223,4 +251,16 @@ ABAPWriteNode >> values [
 { #category : #generated }
 ABAPWriteNode >> values: anOrderedCollection [
 	values := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPWriteNode >> write [
+	^ write
+]
+
+{ #category : #generated }
+ABAPWriteNode >> write: anABAPRootNode [
+	self write notNil ifTrue: [ self write parent: nil ].
+	write := anABAPRootNode.
+	self write notNil ifTrue: [ self write parent: self ]
 ]

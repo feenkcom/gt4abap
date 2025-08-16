@@ -3,7 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'target',
+		'intoTarget',
 		'body'
 	],
 	#category : #GToolkit4ABAP
@@ -38,6 +38,18 @@ ABAPLoopAtScreenNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPLoopAtScreenNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPLoopAtScreenNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPLoopAtScreenNode >> keywords [
 	^ keywords
 ]
@@ -49,17 +61,5 @@ ABAPLoopAtScreenNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPLoopAtScreenNode >> nodeVariables [
-	^ #(#target #body)
-]
-
-{ #category : #generated }
-ABAPLoopAtScreenNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPLoopAtScreenNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
+	^ #(#intoTarget #body)
 ]

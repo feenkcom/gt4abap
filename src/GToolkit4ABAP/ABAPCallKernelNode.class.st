@@ -21,9 +21,9 @@ ABAPCallKernelNode >> call [
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> call: anABAPRootNode [
+ABAPCallKernelNode >> call: anABAPExpressionNode [
 	self call notNil ifTrue: [ self call parent: nil ].
-	call := anABAPRootNode.
+	call := anABAPExpressionNode.
 	self call notNil ifTrue: [ self call parent: self ]
 ]
 

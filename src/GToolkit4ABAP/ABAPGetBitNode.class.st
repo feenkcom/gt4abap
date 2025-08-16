@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,6 +32,18 @@ ABAPGetBitNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPGetBitNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPGetBitNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPGetBitNode >> keywords [
 	^ keywords
 ]
@@ -43,7 +55,7 @@ ABAPGetBitNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPGetBitNode >> nodeVariables [
-	^ #(#target)
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }
@@ -56,16 +68,4 @@ ABAPGetBitNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPGetBitNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPGetBitNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]

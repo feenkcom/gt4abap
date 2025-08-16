@@ -7,6 +7,7 @@ Class {
 		'sources',
 		'leftParens',
 		'rightParens',
+		'froms',
 		'targets'
 	],
 	#category : #GToolkit4ABAP
@@ -19,12 +20,24 @@ ABAPModifyEntitiesNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPModifyEntitiesNode >> compositeNodeVariables [
-	^ #(#names #sources #targets)
+	^ #(#names #sources #froms #targets)
 ]
 
 { #category : #generated }
 ABAPModifyEntitiesNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPModifyEntitiesNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPModifyEntitiesNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -35,6 +48,7 @@ ABAPModifyEntitiesNode >> initialize [
 	sources := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 ]
 

@@ -6,8 +6,9 @@ Class {
 		'methodName',
 		'period',
 		'names',
-		'arrows',
-		'attributeNames',
+		'lefts',
+		'operators',
+		'rights',
 		'dashs'
 	],
 	#category : #GToolkit4ABAP
@@ -19,35 +20,13 @@ ABAPMethodImplementationNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPMethodImplementationNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPMethodImplementationNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPMethodImplementationNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPMethodImplementationNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPMethodImplementationNode >> compositeNodeVariables [
-	^ #(#attributeNames)
+	^ #(#lefts #rights)
 ]
 
 { #category : #generated }
 ABAPMethodImplementationNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #dashs)
+	^ #(#keywords #operators #dashs)
 ]
 
 { #category : #generated }
@@ -65,8 +44,9 @@ ABAPMethodImplementationNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 ]
 
@@ -78,6 +58,18 @@ ABAPMethodImplementationNode >> keywords [
 { #category : #generated }
 ABAPMethodImplementationNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMethodImplementationNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPMethodImplementationNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -110,6 +102,16 @@ ABAPMethodImplementationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+ABAPMethodImplementationNode >> operators [
+	^ operators
+]
+
+{ #category : #generated }
+ABAPMethodImplementationNode >> operators: anOrderedCollection [
+	operators := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPMethodImplementationNode >> otherVariables [
 	^ #(#names)
 ]
@@ -122,6 +124,18 @@ ABAPMethodImplementationNode >> period [
 { #category : #generated }
 ABAPMethodImplementationNode >> period: aSmaCCToken [
 	period := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPMethodImplementationNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPMethodImplementationNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

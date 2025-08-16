@@ -2,9 +2,12 @@ Class {
 	#name : #ABAPFieldChainNode,
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
-		'names',
+		'left',
+		'operator',
+		'right',
 		'arrows',
 		'attributeNames',
+		'names',
 		'leftBrackets',
 		'sources',
 		'rightBrackets',
@@ -47,7 +50,7 @@ ABAPFieldChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeNodeVariables [
-	^ #(#attributeNames #sources)
+	^ #(#attributeNames #names #sources)
 ]
 
 { #category : #generated }
@@ -104,9 +107,9 @@ ABAPFieldChainNode >> fieldOffset: anABAPFieldOffsetNode [
 { #category : #'generated-initialize-release' }
 ABAPFieldChainNode >> initialize [
 	super initialize.
-	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
@@ -122,6 +125,18 @@ ABAPFieldChainNode >> keywords [
 { #category : #generated }
 ABAPFieldChainNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> left: anABAPNameNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPNameNode.
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -141,19 +156,36 @@ ABAPFieldChainNode >> names [
 
 { #category : #generated }
 ABAPFieldChainNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 ABAPFieldChainNode >> nodeVariables [
-	^ #(#fieldOffset #fieldLength #field)
+	^ #(#left #right #fieldOffset #fieldLength #field)
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> otherVariables [
-	^ #(#names)
+ABAPFieldChainNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> right: anABAPNameNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := anABAPNameNode.
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }
@@ -180,7 +212,7 @@ ABAPFieldChainNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> tokenVariables [
-	^ #(#value)
+	^ #(#operator #value)
 ]
 
 { #category : #generated }

@@ -11,6 +11,7 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
+		'dashs',
 		'fieldChains',
 		'names',
 		'arrows',
@@ -18,10 +19,12 @@ Class {
 		'dynamics',
 		'fields',
 		'methodNames',
+		'expressions',
 		'eqs',
 		'parameterNames',
 		'targets',
-		'dashs'
+		'lefts',
+		'rights'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -55,7 +58,7 @@ ABAPCallFunctionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#sources #formNames #fieldChains #names #attributeNames #dynamics #fields #methodNames #targets #parameterNames)
+	^ #(#sources #formNames #fieldChains #names #attributeNames #dynamics #fields #methodNames #expressions #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
@@ -93,6 +96,18 @@ ABAPCallFunctionNode >> eqs [
 { #category : #generated }
 ABAPCallFunctionNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -162,9 +177,12 @@ ABAPCallFunctionNode >> initialize [
 	dynamics := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -195,6 +213,18 @@ ABAPCallFunctionNode >> leftParens [
 { #category : #generated }
 ABAPCallFunctionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -261,6 +291,18 @@ ABAPCallFunctionNode >> rightParens [
 { #category : #generated }
 ABAPCallFunctionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

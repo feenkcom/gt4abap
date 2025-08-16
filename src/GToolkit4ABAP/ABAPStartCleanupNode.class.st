@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'period',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,6 +26,18 @@ ABAPStartCleanupNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPStartCleanupNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPStartCleanupNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPStartCleanupNode >> keywords [
 	^ keywords
 ]
@@ -37,7 +49,7 @@ ABAPStartCleanupNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartCleanupNode >> nodeVariables [
-	^ #(#target)
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }
@@ -48,18 +60,6 @@ ABAPStartCleanupNode >> period [
 { #category : #generated }
 ABAPStartCleanupNode >> period: aSmaCCToken [
 	period := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPStartCleanupNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPStartCleanupNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }

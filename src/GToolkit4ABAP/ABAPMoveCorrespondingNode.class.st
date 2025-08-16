@@ -18,7 +18,10 @@ Class {
 		'fieldLength',
 		'parameterNames',
 		'values',
-		'lengths'
+		'lengths',
+		'left',
+		'operator',
+		'right'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -52,7 +55,7 @@ ABAPMoveCorrespondingNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> compositeNodeVariables [
-	^ #(#sources #typeNames #fields #attributeNames #parameterNames #lengths)
+	^ #(#sources #typeNames #fields #attributeNames #names #parameterNames #lengths)
 ]
 
 { #category : #generated }
@@ -137,6 +140,18 @@ ABAPMoveCorrespondingNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPMoveCorrespondingNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> left: anABAPNameNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPNameNode.
+	self left notNil ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
 ABAPMoveCorrespondingNode >> leftBrackets [
 	^ leftBrackets
 ]
@@ -175,19 +190,24 @@ ABAPMoveCorrespondingNode >> names [
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 ABAPMoveCorrespondingNode >> nodeVariables [
-	^ #(#fieldOffset #fieldLength)
+	^ #(#fieldOffset #fieldLength #left #right)
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> otherVariables [
-	^ #(#names)
+ABAPMoveCorrespondingNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -200,6 +220,18 @@ ABAPMoveCorrespondingNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> right: anABAPNameNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := anABAPNameNode.
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }
@@ -232,6 +264,11 @@ ABAPMoveCorrespondingNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPMoveCorrespondingNode >> tokenVariables [
+	^ #(#operator #period)
 ]
 
 { #category : #generated }

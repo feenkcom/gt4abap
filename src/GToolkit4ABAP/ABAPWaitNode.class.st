@@ -4,22 +4,10 @@ Class {
 	#instVars : [
 		'keywords',
 		'until',
-		'_source'
+		'toSource'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPWaitNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPWaitNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPWaitNode >> acceptVisitor: aRootVisitor [
@@ -49,7 +37,19 @@ ABAPWaitNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPWaitNode >> nodeVariables [
-	^ #(#until #_source)
+	^ #(#until #toSource)
+]
+
+{ #category : #generated }
+ABAPWaitNode >> toSource [
+	^ toSource
+]
+
+{ #category : #generated }
+ABAPWaitNode >> toSource: anABAPExpressionNode [
+	self toSource notNil ifTrue: [ self toSource parent: nil ].
+	toSource := anABAPExpressionNode.
+	self toSource notNil ifTrue: [ self toSource parent: self ]
 ]
 
 { #category : #generated }

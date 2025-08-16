@@ -16,8 +16,10 @@ Class {
 		'eqs',
 		'targets',
 		'operators',
-		'fields',
+		'lefts',
+		'rights',
 		'dashs',
+		'fields',
 		'fieldChain',
 		'typeNames',
 		'leftBrackets',
@@ -56,7 +58,7 @@ ABAPCallNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields #typeNames #lengths)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #lefts #rights #fields #typeNames #lengths)
 ]
 
 { #category : #generated }
@@ -137,8 +139,10 @@ ABAPCallNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
@@ -173,6 +177,18 @@ ABAPCallNode >> leftParens [
 { #category : #generated }
 ABAPCallNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPCallNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -261,6 +277,18 @@ ABAPCallNode >> rightParens [
 { #category : #generated }
 ABAPCallNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPCallNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPCallNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

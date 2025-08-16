@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
+		'toTarget',
 		'targets',
 		'eqs'
 	],
@@ -55,6 +56,11 @@ ABAPMoveNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPMoveNode >> nodeVariables [
+	^ #(#toTarget)
+]
+
+{ #category : #generated }
 ABAPMoveNode >> sources [
 	^ sources
 ]
@@ -76,4 +82,16 @@ ABAPMoveNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPMoveNode >> toTarget [
+	^ toTarget
+]
+
+{ #category : #generated }
+ABAPMoveNode >> toTarget: anABAPTargetNode [
+	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
+	toTarget := anABAPTargetNode.
+	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

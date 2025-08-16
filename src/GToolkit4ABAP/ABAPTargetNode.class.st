@@ -18,7 +18,10 @@ Class {
 		'fieldOffset',
 		'fieldLength',
 		'parameterNames',
-		'lengths'
+		'lengths',
+		'left',
+		'operator',
+		'right'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -52,7 +55,7 @@ ABAPTargetNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPTargetNode >> compositeNodeVariables [
-	^ #(#fields #typeNames #sources #attributeNames #parameterNames #lengths)
+	^ #(#fields #typeNames #sources #attributeNames #names #parameterNames #lengths)
 ]
 
 { #category : #generated }
@@ -137,6 +140,18 @@ ABAPTargetNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPTargetNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+ABAPTargetNode >> left: anABAPNameNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPNameNode.
+	self left notNil ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
 ABAPTargetNode >> leftBrackets [
 	^ leftBrackets
 ]
@@ -175,19 +190,24 @@ ABAPTargetNode >> names [
 
 { #category : #generated }
 ABAPTargetNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 ABAPTargetNode >> nodeVariables [
-	^ #(#fieldOffset #fieldLength)
+	^ #(#fieldOffset #fieldLength #left #right)
 ]
 
 { #category : #generated }
-ABAPTargetNode >> otherVariables [
-	^ #(#names)
+ABAPTargetNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+ABAPTargetNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -200,6 +220,18 @@ ABAPTargetNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPTargetNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+ABAPTargetNode >> right: anABAPNameNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := anABAPNameNode.
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }
@@ -232,6 +264,11 @@ ABAPTargetNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPTargetNode >> tokenVariables [
+	^ #(#operator)
 ]
 
 { #category : #generated }

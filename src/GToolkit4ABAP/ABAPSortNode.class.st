@@ -11,7 +11,6 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'values',
-		'arrows',
 		'sources',
 		'eqs'
 	],
@@ -24,23 +23,13 @@ ABAPSortNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSortNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSortNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPSortNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldLengths #fieldOffsets #sources)
+	^ #(#dynamics #names #fieldLengths #fieldOffsets #sources)
 ]
 
 { #category : #generated }
 ABAPSortNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #values #eqs #arrows)
+	^ #(#keywords #leftBrackets #rightBrackets #values #eqs)
 ]
 
 { #category : #generated }
@@ -102,7 +91,6 @@ ABAPSortNode >> initialize [
 	values := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -132,19 +120,14 @@ ABAPSortNode >> names [
 
 { #category : #generated }
 ABAPSortNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 ABAPSortNode >> nodeVariables [
 	^ #(#target)
-]
-
-{ #category : #generated }
-ABAPSortNode >> otherVariables [
-	^ #(#names)
 ]
 
 { #category : #generated }

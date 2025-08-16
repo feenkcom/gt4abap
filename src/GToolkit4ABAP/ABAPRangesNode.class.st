@@ -4,6 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'names',
+		'left',
+		'operator',
+		'right',
 		'arrows',
 		'attributeNames',
 		'dashs',
@@ -105,6 +108,18 @@ ABAPRangesNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPRangesNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+ABAPRangesNode >> left: anABAPNameNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPNameNode.
+	self left notNil ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
 ABAPRangesNode >> names [
 	^ names
 ]
@@ -118,5 +133,32 @@ ABAPRangesNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPRangesNode >> nodeVariables [
-	^ #(#fieldLength #_source)
+	^ #(#left #right #fieldLength #_source)
+]
+
+{ #category : #generated }
+ABAPRangesNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+ABAPRangesNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPRangesNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+ABAPRangesNode >> right: anABAPNameNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := anABAPNameNode.
+	self right notNil ifTrue: [ self right parent: self ]
+]
+
+{ #category : #generated }
+ABAPRangesNode >> tokenVariables [
+	^ #(#operator #period)
 ]

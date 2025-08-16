@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
+		'intoTarget',
 		'targets',
 		'lengths'
 	],
@@ -46,6 +47,18 @@ ABAPReadDatasetNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPReadDatasetNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPReadDatasetNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPReadDatasetNode >> keywords [
 	^ keywords
 ]
@@ -69,7 +82,7 @@ ABAPReadDatasetNode >> lengths: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadDatasetNode >> nodeVariables [
-	^ #(#_source)
+	^ #(#_source #intoTarget)
 ]
 
 { #category : #generated }

@@ -196,6 +196,11 @@ TABAPRootNodeVisitor >> visitChain: aChain [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitChainExpression: aChainExpression [
+	^ self visitExpression: aChainExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitChainedStatement: aChainedStatement [
 	^ self visitStatement: aChainedStatement
 ]
@@ -546,6 +551,11 @@ TABAPRootNodeVisitor >> visitExecSQL: anExecSQL [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitExistsExpression: anExistsExpression [
+	^ self visitExpression: anExistsExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitExit: anExit [
 	^ self visitStatement: anExit
 ]
@@ -766,11 +776,6 @@ TABAPRootNodeVisitor >> visitImportNametab: anImportNametab [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitInExpression: anInExpression [
-	^ self visitExpression: anInExpression
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitInclude: anInclude [
 	^ self visitStatement: anInclude
 ]
@@ -962,7 +967,7 @@ TABAPRootNodeVisitor >> visitMultiply: aMultiply [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitName: aName [
-	^ self visitRoot: aName
+	^ self visitExpression: aName
 ]
 
 { #category : #generated }
@@ -1468,6 +1473,11 @@ TABAPRootNodeVisitor >> visitStop: aStop [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitString: aString [
 	^ self visitExpression: aString
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitStringFormatting: aStringFormatting [
+	^ self visitRoot: aStringFormatting
 ]
 
 { #category : #generated }

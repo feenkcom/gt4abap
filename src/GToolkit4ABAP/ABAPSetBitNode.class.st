@@ -3,20 +3,28 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
-		'target'
+		'_source',
+		'target',
+		'toSource'
 	],
 	#category : #GToolkit4ABAP
 }
 
 { #category : #generated }
-ABAPSetBitNode >> acceptVisitor: aRootVisitor [
-	^ aRootVisitor visitSetBit: self
+ABAPSetBitNode >> _source [
+	^ _source
 ]
 
 { #category : #generated }
-ABAPSetBitNode >> compositeNodeVariables [
-	^ #(#sources)
+ABAPSetBitNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
+
+{ #category : #generated }
+ABAPSetBitNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitSetBit: self
 ]
 
 { #category : #generated }
@@ -28,7 +36,6 @@ ABAPSetBitNode >> compositeTokenVariables [
 ABAPSetBitNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -43,19 +50,7 @@ ABAPSetBitNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPSetBitNode >> nodeVariables [
-	^ #(#target)
-]
-
-{ #category : #generated }
-ABAPSetBitNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPSetBitNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+	^ #(#_source #target #toSource)
 ]
 
 { #category : #generated }
@@ -68,4 +63,16 @@ ABAPSetBitNode >> target: anABAPTargetNode [
 	self target notNil ifTrue: [ self target parent: nil ].
 	target := anABAPTargetNode.
 	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPSetBitNode >> toSource [
+	^ toSource
+]
+
+{ #category : #generated }
+ABAPSetBitNode >> toSource: anABAPExpressionNode [
+	self toSource notNil ifTrue: [ self toSource parent: nil ].
+	toSource := anABAPExpressionNode.
+	self toSource notNil ifTrue: [ self toSource parent: self ]
 ]

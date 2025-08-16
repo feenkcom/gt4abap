@@ -10,10 +10,12 @@ Class {
 		'values',
 		'operators',
 		'targets',
+		'lefts',
+		'rights',
+		'dashs',
 		'names',
 		'arrows',
 		'attributeNames',
-		'dashs',
 		'fieldChain',
 		'typeNames',
 		'leftBrackets',
@@ -53,12 +55,12 @@ ABAPMethodCallChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMethodCallChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #names #attributeNames #typeNames #lengths #fields)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #lengths #fields)
 ]
 
 { #category : #generated }
 ABAPMethodCallChainNode >> compositeTokenVariables [
-	^ #(#eqs #keywords #operators #arrows #dashs #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#eqs #keywords #operators #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -116,10 +118,12 @@ ABAPMethodCallChainNode >> initialize [
 	values := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
@@ -145,6 +149,18 @@ ABAPMethodCallChainNode >> leftBrackets [
 { #category : #generated }
 ABAPMethodCallChainNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -223,6 +239,18 @@ ABAPMethodCallChainNode >> rightBrackets [
 { #category : #generated }
 ABAPMethodCallChainNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

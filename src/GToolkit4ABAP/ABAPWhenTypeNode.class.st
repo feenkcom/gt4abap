@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'name',
-		'target',
+		'intoTarget',
 		'body',
 		'period'
 	],
@@ -40,6 +40,18 @@ ABAPWhenTypeNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPWhenTypeNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPWhenTypeNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPWhenTypeNode >> keywords [
 	^ keywords
 ]
@@ -63,7 +75,7 @@ ABAPWhenTypeNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPWhenTypeNode >> nodeVariables [
-	^ #(#name #target #body)
+	^ #(#name #intoTarget #body)
 ]
 
 { #category : #generated }
@@ -74,18 +86,6 @@ ABAPWhenTypeNode >> period [
 { #category : #generated }
 ABAPWhenTypeNode >> period: aSmaCCToken [
 	period := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }

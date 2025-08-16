@@ -4,22 +4,10 @@ Class {
 	#instVars : [
 		'keywords',
 		'eventName',
-		'_source'
+		'from'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPRaiseEntityEventNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPRaiseEntityEventNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPRaiseEntityEventNode >> acceptVisitor: aRootVisitor [
@@ -43,6 +31,18 @@ ABAPRaiseEntityEventNode >> eventName: anABAPNameNode [
 	self eventName notNil ifTrue: [ self eventName parent: self ]
 ]
 
+{ #category : #generated }
+ABAPRaiseEntityEventNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPRaiseEntityEventNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPRaiseEntityEventNode >> initialize [
 	super initialize.
@@ -61,5 +61,5 @@ ABAPRaiseEntityEventNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPRaiseEntityEventNode >> nodeVariables [
-	^ #(#eventName #_source)
+	^ #(#eventName #from)
 ]

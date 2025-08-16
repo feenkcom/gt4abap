@@ -5,7 +5,7 @@ Class {
 		'keywords',
 		'names',
 		'period',
-		'target'
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -33,6 +33,18 @@ ABAPStartCatchNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPStartCatchNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPStartCatchNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPStartCatchNode >> keywords [
 	^ keywords
 ]
@@ -56,7 +68,7 @@ ABAPStartCatchNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartCatchNode >> nodeVariables [
-	^ #(#target)
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }
@@ -67,18 +79,6 @@ ABAPStartCatchNode >> period [
 { #category : #generated }
 ABAPStartCatchNode >> period: aSmaCCToken [
 	period := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPStartCatchNode >> target [
-	^ target
-]
-
-{ #category : #generated }
-ABAPStartCatchNode >> target: anABAPTargetNode [
-	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
-	self target notNil ifTrue: [ self target parent: self ]
 ]
 
 { #category : #generated }

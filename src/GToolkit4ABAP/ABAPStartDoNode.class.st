@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'sources',
 		'targets',
+		'froms',
 		'period'
 	],
 	#category : #GToolkit4ABAP
@@ -17,12 +18,24 @@ ABAPStartDoNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPStartDoNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#sources #targets #froms)
 ]
 
 { #category : #generated }
 ABAPStartDoNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPStartDoNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPStartDoNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -31,6 +44,7 @@ ABAPStartDoNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

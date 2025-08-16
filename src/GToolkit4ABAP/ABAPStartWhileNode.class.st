@@ -6,6 +6,7 @@ Class {
 		'while',
 		'targets',
 		'sources',
+		'froms',
 		'period'
 	],
 	#category : #GToolkit4ABAP
@@ -18,12 +19,24 @@ ABAPStartWhileNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPStartWhileNode >> compositeNodeVariables [
-	^ #(#targets #sources)
+	^ #(#targets #sources #froms)
 ]
 
 { #category : #generated }
 ABAPStartWhileNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPStartWhileNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPStartWhileNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -32,6 +45,7 @@ ABAPStartWhileNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

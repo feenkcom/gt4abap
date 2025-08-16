@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources'
+		'sources',
+		'from'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,6 +24,18 @@ ABAPInsertReportNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
+{ #category : #generated }
+ABAPInsertReportNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPInsertReportNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPInsertReportNode >> initialize [
 	super initialize.
@@ -38,6 +51,11 @@ ABAPInsertReportNode >> keywords [
 { #category : #generated }
 ABAPInsertReportNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPInsertReportNode >> nodeVariables [
+	^ #(#from)
 ]
 
 { #category : #generated }

@@ -13,13 +13,17 @@ Class {
 		'rightBrackets',
 		'names',
 		'fieldChains',
-		'fieldLengths',
-		'fieldOffsets',
+		'froms',
+		'toSources',
 		'operators',
-		'lengths',
-		'keies',
-		'commas',
-		'arrows'
+		'lefts',
+		'rights',
+		'lows',
+		'highs',
+		'fieldOffsets',
+		'fieldLengths',
+		'classes',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -30,33 +34,25 @@ ABAPValueExpressionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPValueExpressionNode >> arrows [
-	^ arrows
+ABAPValueExpressionNode >> classes [
+	^ classes
 ]
 
 { #category : #generated }
-ABAPValueExpressionNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPValueExpressionNode >> commas [
-	^ commas
-]
-
-{ #category : #generated }
-ABAPValueExpressionNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
+ABAPValueExpressionNode >> classes: anOrderedCollection [
+	self setParents: self classes to: nil.
+	classes := anOrderedCollection.
+	self setParents: self classes to: self
 ]
 
 { #category : #generated }
 ABAPValueExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #fields #sources #whiles #fieldChains #fieldLengths #fieldOffsets #lengths)
+	^ #(#typeNames #fields #sources #whiles #names #fieldChains #froms #toSources #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes #lengths)
 ]
 
 { #category : #generated }
 ABAPValueExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #operators #keies #commas #arrows #leftParens #rightParens)
+	^ #(#keywords #eqs #leftBrackets #rightBrackets #operators #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -117,6 +113,30 @@ ABAPValueExpressionNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPValueExpressionNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> highs [
+	^ highs
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> highs: anOrderedCollection [
+	self setParents: self highs to: nil.
+	highs := anOrderedCollection.
+	self setParents: self highs to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPValueExpressionNode >> initialize [
 	super initialize.
@@ -131,23 +151,17 @@ ABAPValueExpressionNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	classes := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPValueExpressionNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPValueExpressionNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -171,6 +185,18 @@ ABAPValueExpressionNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPValueExpressionNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPValueExpressionNode >> lengths [
 	^ lengths
 ]
@@ -183,15 +209,27 @@ ABAPValueExpressionNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPValueExpressionNode >> lows [
+	^ lows
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> lows: anOrderedCollection [
+	self setParents: self lows to: nil.
+	lows := anOrderedCollection.
+	self setParents: self lows to: self
+]
+
+{ #category : #generated }
 ABAPValueExpressionNode >> names [
 	^ names
 ]
 
 { #category : #generated }
 ABAPValueExpressionNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -206,7 +244,7 @@ ABAPValueExpressionNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPValueExpressionNode >> otherVariables [
-	^ #(#names)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -220,6 +258,18 @@ ABAPValueExpressionNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPValueExpressionNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
+]
+
+{ #category : #generated }
 ABAPValueExpressionNode >> sources [
 	^ sources
 ]
@@ -229,6 +279,18 @@ ABAPValueExpressionNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> toSources [
+	^ toSources
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> toSources: anOrderedCollection [
+	self setParents: self toSources to: nil.
+	toSources := anOrderedCollection.
+	self setParents: self toSources to: self
 ]
 
 { #category : #generated }
@@ -250,7 +312,9 @@ ABAPValueExpressionNode >> values [
 
 { #category : #generated }
 ABAPValueExpressionNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]
 
 { #category : #generated }

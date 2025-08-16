@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
-		'sources'
+		'sources',
+		'toSources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -16,7 +17,7 @@ ABAPShiftNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPShiftNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#sources #toSources)
 ]
 
 { #category : #generated }
@@ -29,6 +30,7 @@ ABAPShiftNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -68,4 +70,16 @@ ABAPShiftNode >> target: anABAPTargetNode [
 	self target notNil ifTrue: [ self target parent: nil ].
 	target := anABAPTargetNode.
 	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPShiftNode >> toSources [
+	^ toSources
+]
+
+{ #category : #generated }
+ABAPShiftNode >> toSources: anOrderedCollection [
+	self setParents: self toSources to: nil.
+	toSources := anOrderedCollection.
+	self setParents: self toSources to: self
 ]

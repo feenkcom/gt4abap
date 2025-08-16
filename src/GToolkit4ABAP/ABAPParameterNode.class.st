@@ -26,9 +26,12 @@ Class {
 		'sources',
 		'methodNames',
 		'eqs',
+		'expressions',
 		'attributeNames',
 		'parameterNames',
-		'targets'
+		'targets',
+		'lefts',
+		'rights'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -62,7 +65,7 @@ ABAPParameterNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #sources #methodNames #attributeNames #parameterNames #targets)
+	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #sources #methodNames #expressions #attributeNames #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
@@ -124,6 +127,18 @@ ABAPParameterNode >> eqs [
 { #category : #generated }
 ABAPParameterNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPParameterNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+ABAPParameterNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #generated }
@@ -213,9 +228,12 @@ ABAPParameterNode >> initialize [
 	sources := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -256,6 +274,18 @@ ABAPParameterNode >> leftParens [
 { #category : #generated }
 ABAPParameterNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPParameterNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPParameterNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -339,6 +369,18 @@ ABAPParameterNode >> rightParens [
 { #category : #generated }
 ABAPParameterNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPParameterNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPParameterNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

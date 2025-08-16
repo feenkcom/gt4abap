@@ -5,7 +5,8 @@ Class {
 		'keywords',
 		'fields',
 		'eqs',
-		'targets'
+		'targets',
+		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -57,6 +58,18 @@ ABAPDemandNode >> initialize [
 ]
 
 { #category : #generated }
+ABAPDemandNode >> intoTarget [
+	^ intoTarget
+]
+
+{ #category : #generated }
+ABAPDemandNode >> intoTarget: anABAPTargetNode [
+	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
+	intoTarget := anABAPTargetNode.
+	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
+]
+
+{ #category : #generated }
 ABAPDemandNode >> keywords [
 	^ keywords
 ]
@@ -64,6 +77,11 @@ ABAPDemandNode >> keywords [
 { #category : #generated }
 ABAPDemandNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPDemandNode >> nodeVariables [
+	^ #(#intoTarget)
 ]
 
 { #category : #generated }

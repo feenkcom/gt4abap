@@ -12,21 +12,23 @@ Class {
 		'dashs',
 		'fieldChains',
 		'sources',
+		'names',
 		'targets',
-		'fieldNames',
 		'withNames',
 		'asNames',
 		'fields',
 		'eqs',
 		'commas',
+		'fieldNames',
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
 		'decs',
-		'names',
+		'functions',
+		'lefts',
+		'rights',
 		'arrows',
-		'attributeNames',
-		'functions'
+		'attributeNames'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -82,7 +84,7 @@ ABAPInsertDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldChains #sources #targets #withNames #asNames #fields #fieldNames #lengths #decs #functions #names #attributeNames)
+	^ #(#dynamics #fieldChains #sources #targets #withNames #asNames #fields #fieldNames #lengths #decs #functions #lefts #rights #attributeNames)
 ]
 
 { #category : #generated }
@@ -195,6 +197,7 @@ ABAPInsertDatabaseNode >> initialize [
 	dashs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	withNames := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
@@ -207,7 +210,8 @@ ABAPInsertDatabaseNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 ]
@@ -253,6 +257,18 @@ ABAPInsertDatabaseNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPInsertDatabaseNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
 ABAPInsertDatabaseNode >> lengths [
 	^ lengths
 ]
@@ -271,9 +287,9 @@ ABAPInsertDatabaseNode >> names [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
+	self setParent: self names to: nil.
 	names := anOrderedCollection.
-	self setParents: self names to: self
+	self setParent: self names to: self
 ]
 
 { #category : #generated }
@@ -288,7 +304,7 @@ ABAPInsertDatabaseNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> otherVariables [
-	^ #(#values)
+	^ #(#values #names)
 ]
 
 { #category : #generated }
@@ -309,6 +325,18 @@ ABAPInsertDatabaseNode >> rightParens [
 { #category : #generated }
 ABAPInsertDatabaseNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
 ]
 
 { #category : #generated }

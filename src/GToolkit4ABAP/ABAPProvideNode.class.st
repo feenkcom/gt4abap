@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'fieldNames',
-		'sources',
-		'targets',
+		'froms',
+		'intoTargets',
 		'fields',
 		'wheres',
 		'values',
@@ -39,7 +39,7 @@ ABAPProvideNode >> body: anABAPBodyNode [
 
 { #category : #generated }
 ABAPProvideNode >> compositeNodeVariables [
-	^ #(#fieldNames #sources #targets #fields #wheres #fieldChains)
+	^ #(#fieldNames #froms #intoTargets #fields #wheres #fieldChains)
 ]
 
 { #category : #generated }
@@ -93,13 +93,25 @@ ABAPProvideNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPProvideNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPProvideNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPProvideNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	wheres := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
@@ -109,6 +121,18 @@ ABAPProvideNode >> initialize [
 	operators := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPProvideNode >> intoTargets [
+	^ intoTargets
+]
+
+{ #category : #generated }
+ABAPProvideNode >> intoTargets: anOrderedCollection [
+	self setParents: self intoTargets to: nil.
+	intoTargets := anOrderedCollection.
+	self setParents: self intoTargets to: self
 ]
 
 { #category : #generated }
@@ -164,30 +188,6 @@ ABAPProvideNode >> rightParens [
 { #category : #generated }
 ABAPProvideNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPProvideNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPProvideNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPProvideNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPProvideNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
 ]
 
 { #category : #generated }

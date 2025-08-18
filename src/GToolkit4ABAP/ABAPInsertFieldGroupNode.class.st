@@ -15,17 +15,16 @@ Class {
 		'parameterNames',
 		'eqs',
 		'targets',
-		'names',
 		'lefts',
 		'rights',
+		'names',
 		'arrows',
 		'attributeNames',
 		'fieldChains',
 		'typeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'args',
 		'fields',
+		'castValues',
 		'expressions'
 	],
 	#category : #GToolkit4ABAP
@@ -34,6 +33,18 @@ Class {
 { #category : #generated }
 ABAPInsertFieldGroupNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitInsertFieldGroup: self
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -59,13 +70,25 @@ ABAPInsertFieldGroupNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPInsertFieldGroupNode >> castValues [
+	^ castValues
+]
+
+{ #category : #generated }
+ABAPInsertFieldGroupNode >> castValues: anOrderedCollection [
+	self setParents: self castValues to: nil.
+	castValues := anOrderedCollection.
+	self setParents: self castValues to: self
+]
+
+{ #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #methodNames #parameterNames #targets #names #lefts #rights #attributeNames #fieldChains #typeNames #lengths #fields #expressions)
+	^ #(#sources #methodNames #parameterNames #targets #names #lefts #rights #attributeNames #fieldChains #typeNames #args #fields #castValues #expressions)
 ]
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #arrows #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #arrows)
 ]
 
 { #category : #generated }
@@ -146,10 +169,9 @@ ABAPInsertFieldGroupNode >> initialize [
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	castValues := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 ]
 
@@ -159,9 +181,9 @@ ABAPInsertFieldGroupNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPInsertFieldGroupNode >> intoTarget: anABAPTargetNode [
+ABAPInsertFieldGroupNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 
@@ -186,16 +208,6 @@ ABAPInsertFieldGroupNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertFieldGroupNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPInsertFieldGroupNode >> leftParens [
 	^ leftParens
 ]
@@ -215,18 +227,6 @@ ABAPInsertFieldGroupNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -283,16 +283,6 @@ ABAPInsertFieldGroupNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPInsertFieldGroupNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

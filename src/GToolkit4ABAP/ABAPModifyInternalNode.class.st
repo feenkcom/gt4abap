@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
+		'assignings',
 		'names',
 		'operators',
 		'values',
@@ -16,8 +17,6 @@ Class {
 		'classes',
 		'leftParens',
 		'rightParens',
-		'leftBrackets',
-		'rightBrackets',
 		'sources',
 		'froms',
 		'dynamic'
@@ -28,6 +27,18 @@ Class {
 { #category : #generated }
 ABAPModifyInternalNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitModifyInternal: self
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> assignings [
+	^ assignings
+]
+
+{ #category : #generated }
+ABAPModifyInternalNode >> assignings: anOrderedCollection [
+	self setParents: self assignings to: nil.
+	assignings := anOrderedCollection.
+	self setParents: self assignings to: self
 ]
 
 { #category : #generated }
@@ -44,12 +55,12 @@ ABAPModifyInternalNode >> classes: anOrderedCollection [
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#names #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes #sources #froms)
+	^ #(#assignings #names #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes #sources #froms)
 ]
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #rightParens #leftBrackets #rightBrackets)
+	^ #(#keywords #operators #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -116,6 +127,7 @@ ABAPModifyInternalNode >> highs: anOrderedCollection [
 ABAPModifyInternalNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	assignings := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
@@ -128,8 +140,6 @@ ABAPModifyInternalNode >> initialize [
 	classes := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
 ]
@@ -142,16 +152,6 @@ ABAPModifyInternalNode >> keywords [
 { #category : #generated }
 ABAPModifyInternalNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -221,16 +221,6 @@ ABAPModifyInternalNode >> otherVariables [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPModifyInternalNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPModifyInternalNode >> rightParens [
 	^ rightParens
 ]
@@ -270,9 +260,9 @@ ABAPModifyInternalNode >> target [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> target: anABAPTargetNode [
+ABAPModifyInternalNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

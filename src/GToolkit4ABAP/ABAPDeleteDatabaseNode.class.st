@@ -21,13 +21,16 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'ats',
 		'decs',
-		'functions',
 		'lefts',
 		'rights',
+		'functions',
 		'arrows',
 		'attributeNames',
 		'dashs',
+		'fieldOffsets',
+		'fieldLengths',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -61,6 +64,16 @@ ABAPDeleteDatabaseNode >> asNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPDeleteDatabaseNode >> ats [
+	^ ats
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> ats: anOrderedCollection [
+	ats := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPDeleteDatabaseNode >> attributeNames [
 	^ attributeNames
 ]
@@ -84,12 +97,12 @@ ABAPDeleteDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #functions #lefts #rights #attributeNames #sources)
+	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #commas #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #operators #commas #leftBrackets #rightBrackets #ats #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -149,6 +162,18 @@ ABAPDeleteDatabaseNode >> fieldChains: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPDeleteDatabaseNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
 ABAPDeleteDatabaseNode >> fieldNames [
 	^ fieldNames
 ]
@@ -158,6 +183,18 @@ ABAPDeleteDatabaseNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: nil.
 	fieldNames := anOrderedCollection.
 	self setParents: self fieldNames to: self
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -206,13 +243,16 @@ ABAPDeleteDatabaseNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -223,7 +263,9 @@ ABAPDeleteDatabaseNode >> keies [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -263,9 +305,9 @@ ABAPDeleteDatabaseNode >> lefts [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
+	self setParent: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
+	self setParent: self lefts to: self
 ]
 
 { #category : #generated }
@@ -304,7 +346,7 @@ ABAPDeleteDatabaseNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> otherVariables [
-	^ #(#names #values)
+	^ #(#names #values #keies #lefts)
 ]
 
 { #category : #generated }

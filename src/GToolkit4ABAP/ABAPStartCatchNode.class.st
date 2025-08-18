@@ -38,9 +38,9 @@ ABAPStartCatchNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPStartCatchNode >> intoTarget: anABAPTargetNode [
+ABAPStartCatchNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

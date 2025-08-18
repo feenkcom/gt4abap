@@ -43,9 +43,9 @@ ABAPGetReferenceNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPGetReferenceNode >> intoTarget: anABAPTargetNode [
+ABAPGetReferenceNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

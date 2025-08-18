@@ -34,9 +34,9 @@ ABAPFreeNode >> target [
 ]
 
 { #category : #generated }
-ABAPFreeNode >> target: anABAPTargetNode [
+ABAPFreeNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

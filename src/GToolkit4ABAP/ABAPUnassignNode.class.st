@@ -3,9 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keyword',
-		'value',
+		'name',
 		'leftBracket',
-		'rightBracket'
+		'rightBracket',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -36,6 +37,23 @@ ABAPUnassignNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPUnassignNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPUnassignNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+ABAPUnassignNode >> nodeVariables [
+	^ #(#name)
+]
+
+{ #category : #generated }
 ABAPUnassignNode >> rightBracket [
 	^ rightBracket
 ]
@@ -47,7 +65,7 @@ ABAPUnassignNode >> rightBracket: aSmaCCToken [
 
 { #category : #generated }
 ABAPUnassignNode >> tokenVariables [
-	^ #(#keyword #value #leftBracket #rightBracket #period)
+	^ #(#keyword #leftBracket #rightBracket #value #period)
 ]
 
 { #category : #generated }

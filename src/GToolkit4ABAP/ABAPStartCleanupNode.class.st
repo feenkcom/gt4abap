@@ -31,9 +31,9 @@ ABAPStartCleanupNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPStartCleanupNode >> intoTarget: anABAPTargetNode [
+ABAPStartCleanupNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

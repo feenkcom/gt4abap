@@ -63,9 +63,9 @@ ABAPDemandNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPDemandNode >> intoTarget: anABAPTargetNode [
+ABAPDemandNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

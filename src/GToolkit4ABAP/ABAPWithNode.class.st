@@ -20,15 +20,18 @@ Class {
 		'operators',
 		'rights',
 		'keies',
+		'functions',
 		'arrows',
 		'attributeNames',
 		'dashs',
+		'fieldOffsets',
+		'fieldLengths',
+		'ats',
 		'eqs',
 		'fieldChains',
 		'targets',
 		'lengths',
 		'sources',
-		'functions',
 		'body'
 	],
 	#category : #GToolkit4ABAP
@@ -59,6 +62,16 @@ ABAPWithNode >> asNames: anOrderedCollection [
 	self setParents: self asNames to: nil.
 	asNames := anOrderedCollection.
 	self setParents: self asNames to: self
+]
+
+{ #category : #generated }
+ABAPWithNode >> ats [
+	^ ats
+]
+
+{ #category : #generated }
+ABAPWithNode >> ats: anOrderedCollection [
+	ats := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -97,12 +110,12 @@ ABAPWithNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithNode >> compositeNodeVariables [
-	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #lefts #rights #attributeNames #fieldChains #targets #lengths #sources #functions)
+	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #fieldChains #targets #lengths #sources)
 ]
 
 { #category : #generated }
 ABAPWithNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #commas #rightParens #leftBrackets #rightBrackets #operators #keies #arrows #dashs #eqs)
+	^ #(#keywords #leftParens #commas #rightParens #leftBrackets #rightBrackets #operators #arrows #dashs #ats #eqs)
 ]
 
 { #category : #generated }
@@ -162,6 +175,18 @@ ABAPWithNode >> fieldChains: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPWithNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPWithNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
 ABAPWithNode >> fieldNames [
 	^ fieldNames
 ]
@@ -171,6 +196,18 @@ ABAPWithNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: nil.
 	fieldNames := anOrderedCollection.
 	self setParents: self fieldNames to: self
+]
+
+{ #category : #generated }
+ABAPWithNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPWithNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -218,15 +255,18 @@ ABAPWithNode >> initialize [
 	operators := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -236,7 +276,9 @@ ABAPWithNode >> keies [
 
 { #category : #generated }
 ABAPWithNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -276,9 +318,9 @@ ABAPWithNode >> lefts [
 
 { #category : #generated }
 ABAPWithNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
+	self setParent: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
+	self setParent: self lefts to: self
 ]
 
 { #category : #generated }
@@ -322,7 +364,7 @@ ABAPWithNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithNode >> otherVariables [
-	^ #(#values #names)
+	^ #(#values #names #lefts #keies)
 ]
 
 { #category : #generated }

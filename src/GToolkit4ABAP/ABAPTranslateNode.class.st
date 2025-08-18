@@ -58,8 +58,8 @@ ABAPTranslateNode >> target [
 ]
 
 { #category : #generated }
-ABAPTranslateNode >> target: anABAPTargetNode [
+ABAPTranslateNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

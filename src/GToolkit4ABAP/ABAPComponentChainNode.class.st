@@ -6,8 +6,8 @@ Class {
 		'sources',
 		'parameterNames',
 		'eqs',
-		'keywords',
 		'values',
+		'keywords',
 		'operators',
 		'targets',
 		'lefts',
@@ -18,12 +18,11 @@ Class {
 		'attributeNames',
 		'fieldChain',
 		'typeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'args',
 		'fields',
-		'fieldLength',
-		'fieldOffset'
+		'castValue',
+		'fieldOffset',
+		'fieldLength'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -31,6 +30,18 @@ Class {
 { #category : #generated }
 ABAPComponentChainNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitComponentChain: self
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -56,13 +67,25 @@ ABAPComponentChainNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPComponentChainNode >> castValue [
+	^ castValue
+]
+
+{ #category : #generated }
+ABAPComponentChainNode >> castValue: anABAPExpressionNode [
+	self castValue notNil ifTrue: [ self castValue parent: nil ].
+	castValue := anABAPExpressionNode.
+	self castValue notNil ifTrue: [ self castValue parent: self ]
+]
+
+{ #category : #generated }
 ABAPComponentChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #lengths #fields)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #args #fields)
 ]
 
 { #category : #generated }
 ABAPComponentChainNode >> compositeTokenVariables [
-	^ #(#eqs #keywords #operators #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#eqs #keywords #operators #dashs #arrows #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -140,8 +163,8 @@ ABAPComponentChainNode >> initialize [
 	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	keywords := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
@@ -151,9 +174,7 @@ ABAPComponentChainNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
 
@@ -168,16 +189,6 @@ ABAPComponentChainNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPComponentChainNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPComponentChainNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPComponentChainNode >> lefts [
 	^ lefts
 ]
@@ -187,18 +198,6 @@ ABAPComponentChainNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPComponentChainNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPComponentChainNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -227,7 +226,7 @@ ABAPComponentChainNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPComponentChainNode >> nodeVariables [
-	^ #(#fieldChain #fieldLength #fieldOffset)
+	^ #(#fieldChain #castValue #fieldOffset #fieldLength)
 ]
 
 { #category : #generated }
@@ -255,16 +254,6 @@ ABAPComponentChainNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPComponentChainNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPComponentChainNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

@@ -58,8 +58,8 @@ ABAPConvertTextNode >> target [
 ]
 
 { #category : #generated }
-ABAPConvertTextNode >> target: anABAPTargetNode [
+ABAPConvertTextNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

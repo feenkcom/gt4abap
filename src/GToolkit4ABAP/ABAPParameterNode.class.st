@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'values',
-		'leftBrackets',
-		'rightBrackets',
+		'leftBracket',
+		'rightBracket',
 		'lengths',
 		'typeNames',
 		'fieldLengths',
@@ -23,10 +23,12 @@ Class {
 		'dashs',
 		'arrows',
 		'names',
-		'sources',
+		'args',
 		'methodNames',
+		'castValues',
 		'eqs',
 		'expressions',
+		'sources',
 		'attributeNames',
 		'parameterNames',
 		'targets',
@@ -39,6 +41,18 @@ Class {
 { #category : #generated }
 ABAPParameterNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitParameter: self
+]
+
+{ #category : #generated }
+ABAPParameterNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPParameterNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -64,13 +78,25 @@ ABAPParameterNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPParameterNode >> castValues [
+	^ castValues
+]
+
+{ #category : #generated }
+ABAPParameterNode >> castValues: anOrderedCollection [
+	self setParents: self castValues to: nil.
+	castValues := anOrderedCollection.
+	self setParents: self castValues to: self
+]
+
+{ #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #sources #methodNames #expressions #attributeNames #parameterNames #targets #lefts #rights)
+	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #args #methodNames #castValues #expressions #sources #attributeNames #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
 ABAPParameterNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #leftParens #keies #rightParens #operators #dashs #arrows #eqs)
+	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -206,8 +232,6 @@ ABAPParameterNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
@@ -225,10 +249,12 @@ ABAPParameterNode >> initialize [
 	dashs := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
+	castValues := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
@@ -257,13 +283,13 @@ ABAPParameterNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> leftBrackets [
-	^ leftBrackets
+ABAPParameterNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-ABAPParameterNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPParameterNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -352,13 +378,13 @@ ABAPParameterNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> rightBrackets [
-	^ rightBrackets
+ABAPParameterNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-ABAPParameterNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPParameterNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -405,6 +431,11 @@ ABAPParameterNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPParameterNode >> tokenVariables [
+	^ #(#leftBracket #rightBracket #period)
 ]
 
 { #category : #generated }

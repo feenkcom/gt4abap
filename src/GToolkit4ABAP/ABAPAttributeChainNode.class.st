@@ -6,8 +6,8 @@ Class {
 		'sources',
 		'parameterNames',
 		'eqs',
-		'keywords',
 		'values',
+		'keywords',
 		'operators',
 		'targets',
 		'lefts',
@@ -18,10 +18,12 @@ Class {
 		'attributeNames',
 		'fieldChain',
 		'typeNames',
+		'args',
+		'fields',
+		'castValue',
 		'leftBrackets',
 		'rightBrackets',
-		'lengths',
-		'fields',
+		'keies',
 		'fieldLength',
 		'fieldOffset'
 	],
@@ -31,6 +33,18 @@ Class {
 { #category : #generated }
 ABAPAttributeChainNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAttributeChain: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -56,8 +70,20 @@ ABAPAttributeChainNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAttributeChainNode >> castValue [
+	^ castValue
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> castValue: anABAPExpressionNode [
+	self castValue notNil ifTrue: [ self castValue parent: nil ].
+	castValue := anABAPExpressionNode.
+	self castValue notNil ifTrue: [ self castValue parent: self ]
+]
+
+{ #category : #generated }
 ABAPAttributeChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #lengths #fields)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #args #fields #keies)
 ]
 
 { #category : #generated }
@@ -140,8 +166,8 @@ ABAPAttributeChainNode >> initialize [
 	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	keywords := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
@@ -151,10 +177,23 @@ ABAPAttributeChainNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> keies: anOrderedCollection [
+	self setParents: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParents: self keies to: self
 ]
 
 { #category : #generated }
@@ -190,18 +229,6 @@ ABAPAttributeChainNode >> lefts: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAttributeChainNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPAttributeChainNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
-]
-
-{ #category : #generated }
 ABAPAttributeChainNode >> methodNames [
 	^ methodNames
 ]
@@ -227,7 +254,7 @@ ABAPAttributeChainNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPAttributeChainNode >> nodeVariables [
-	^ #(#fieldChain #fieldLength #fieldOffset)
+	^ #(#fieldChain #castValue #fieldLength #fieldOffset)
 ]
 
 { #category : #generated }

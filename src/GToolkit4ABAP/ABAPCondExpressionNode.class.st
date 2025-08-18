@@ -11,20 +11,19 @@ Class {
 		'sources',
 		'parameterNames',
 		'eqs',
-		'messageClasses',
 		'values',
+		'messageClasses',
 		'keies',
 		'dashs',
 		'methodNames',
-		'targets',
 		'arrows',
-		'attributeNames',
 		'fieldChains',
+		'args',
+		'castValues',
 		'fields',
 		'expressions',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths'
+		'attributeNames',
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,6 +31,18 @@ Class {
 { #category : #generated }
 ABAPCondExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitCondExpression: self
+]
+
+{ #category : #generated }
+ABAPCondExpressionNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPCondExpressionNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -57,13 +68,25 @@ ABAPCondExpressionNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCondExpressionNode >> castValues [
+	^ castValues
+]
+
+{ #category : #generated }
+ABAPCondExpressionNode >> castValues: anOrderedCollection [
+	self setParents: self castValues to: nil.
+	castValues := anOrderedCollection.
+	self setParents: self castValues to: self
+]
+
+{ #category : #generated }
 ABAPCondExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #targets #attributeNames #fieldChains #lengths #fields #expressions)
+	^ #(#typeNames #lefts #rights #names #sources #parameterNames #messageClasses #methodNames #fieldChains #attributeNames #args #castValues #fields #expressions #targets)
 ]
 
 { #category : #generated }
 ABAPCondExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #operators #eqs #keies #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#keywords #operators #eqs #keies #dashs #arrows #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -134,20 +157,19 @@ ABAPCondExpressionNode >> initialize [
 	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	messageClasses := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	messageClasses := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
+	castValues := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -171,16 +193,6 @@ ABAPCondExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCondExpressionNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPCondExpressionNode >> lefts [
 	^ lefts
 ]
@@ -190,18 +202,6 @@ ABAPCondExpressionNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -265,16 +265,6 @@ ABAPCondExpressionNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCondExpressionNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

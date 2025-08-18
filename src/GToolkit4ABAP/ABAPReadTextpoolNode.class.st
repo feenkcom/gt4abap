@@ -4,24 +4,12 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
+		'names',
 		'leftBrackets',
 		'rightBrackets',
-		'fieldOffsets',
-		'fieldLengths',
-		'lefts',
-		'operators',
-		'rights',
-		'typeNames',
-		'leftParens',
-		'rightParens',
-		'fields',
-		'eqs',
-		'arrows',
-		'attributeNames',
-		'names',
 		'values',
-		'parameterNames',
-		'lengths'
+		'fieldOffsets',
+		'fieldLengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,45 +20,13 @@ ABAPReadTextpoolNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPReadTextpoolNode >> compositeNodeVariables [
-	^ #(#sources #fieldOffsets #fieldLengths #lefts #rights #typeNames #fields #attributeNames #names #parameterNames #lengths)
+	^ #(#sources #names #fieldOffsets #fieldLengths)
 ]
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #operators #leftParens #rightParens #eqs #arrows #values)
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> eqs [
-	^ eqs
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> eqs: anOrderedCollection [
-	eqs := anOrderedCollection
+	^ #(#keywords #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -97,41 +53,17 @@ ABAPReadTextpoolNode >> fieldOffsets: anOrderedCollection [
 	self setParents: self fieldOffsets to: self
 ]
 
-{ #category : #generated }
-ABAPReadTextpoolNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
-]
-
 { #category : #'generated-initialize-release' }
 ABAPReadTextpoolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	typeNames := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -155,40 +87,6 @@ ABAPReadTextpoolNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
-]
-
-{ #category : #generated }
 ABAPReadTextpoolNode >> names [
 	^ names
 ]
@@ -201,25 +99,8 @@ ABAPReadTextpoolNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPReadTextpoolNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -230,28 +111,6 @@ ABAPReadTextpoolNode >> rightBrackets [
 { #category : #generated }
 ABAPReadTextpoolNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> rights [
-	^ rights
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -267,23 +126,13 @@ ABAPReadTextpoolNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> typeNames [
-	^ typeNames
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> typeNames: anOrderedCollection [
-	self setParents: self typeNames to: nil.
-	typeNames := anOrderedCollection.
-	self setParents: self typeNames to: self
-]
-
-{ #category : #generated }
 ABAPReadTextpoolNode >> values [
 	^ values
 ]
 
 { #category : #generated }
 ABAPReadTextpoolNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

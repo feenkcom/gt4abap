@@ -58,8 +58,8 @@ ABAPGetParameterNode >> target [
 ]
 
 { #category : #generated }
-ABAPGetParameterNode >> target: anABAPTargetNode [
+ABAPGetParameterNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

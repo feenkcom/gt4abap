@@ -19,13 +19,16 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'ats',
 		'decs',
-		'functions',
 		'lefts',
 		'rights',
+		'functions',
 		'arrows',
 		'attributeNames',
 		'dashs',
+		'fieldOffsets',
+		'fieldLengths',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -59,6 +62,16 @@ ABAPExistsExpressionNode >> asNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPExistsExpressionNode >> ats [
+	^ ats
+]
+
+{ #category : #generated }
+ABAPExistsExpressionNode >> ats: anOrderedCollection [
+	ats := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPExistsExpressionNode >> attributeNames [
 	^ attributeNames
 ]
@@ -82,12 +95,12 @@ ABAPExistsExpressionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPExistsExpressionNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #functions #sources #lefts #rights #attributeNames)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
 ABAPExistsExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #keies #operators #commas #leftBrackets #rightBrackets #arrows #dashs #leftParens #rightParens)
+	^ #(#keywords #eqs #operators #commas #leftBrackets #rightBrackets #ats #arrows #dashs #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -147,6 +160,18 @@ ABAPExistsExpressionNode >> fieldChains: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPExistsExpressionNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPExistsExpressionNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
 ABAPExistsExpressionNode >> fieldNames [
 	^ fieldNames
 ]
@@ -156,6 +181,18 @@ ABAPExistsExpressionNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: nil.
 	fieldNames := anOrderedCollection.
 	self setParents: self fieldNames to: self
+]
+
+{ #category : #generated }
+ABAPExistsExpressionNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPExistsExpressionNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -202,14 +239,17 @@ ABAPExistsExpressionNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -219,7 +259,9 @@ ABAPExistsExpressionNode >> keies [
 
 { #category : #generated }
 ABAPExistsExpressionNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -249,9 +291,9 @@ ABAPExistsExpressionNode >> lefts [
 
 { #category : #generated }
 ABAPExistsExpressionNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
+	self setParent: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
+	self setParent: self lefts to: self
 ]
 
 { #category : #generated }
@@ -290,7 +332,7 @@ ABAPExistsExpressionNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPExistsExpressionNode >> otherVariables [
-	^ #(#names #values)
+	^ #(#names #values #keies #lefts)
 ]
 
 { #category : #generated }

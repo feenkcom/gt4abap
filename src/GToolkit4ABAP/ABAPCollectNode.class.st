@@ -4,11 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'leftParen',
-		'value',
-		'leftBracket',
-		'rightBracket',
-		'rightParen',
+		'assigning',
 		'intoTarget'
 	],
 	#category : #GToolkit4ABAP
@@ -32,6 +28,18 @@ ABAPCollectNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPCollectNode >> assigning [
+	^ assigning
+]
+
+{ #category : #generated }
+ABAPCollectNode >> assigning: anABAPExpressionNode [
+	self assigning notNil ifTrue: [ self assigning parent: nil ].
+	assigning := anABAPExpressionNode.
+	self assigning notNil ifTrue: [ self assigning parent: self ]
+]
+
+{ #category : #generated }
 ABAPCollectNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
@@ -48,9 +56,9 @@ ABAPCollectNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPCollectNode >> intoTarget: anABAPTargetNode [
+ABAPCollectNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 
@@ -65,61 +73,6 @@ ABAPCollectNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCollectNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPCollectNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCollectNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPCollectNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPCollectNode >> nodeVariables [
-	^ #(#_source #intoTarget)
-]
-
-{ #category : #generated }
-ABAPCollectNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPCollectNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCollectNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPCollectNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCollectNode >> tokenVariables [
-	^ #(#leftParen #value #leftBracket #rightBracket #rightParen #period)
-]
-
-{ #category : #generated }
-ABAPCollectNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPCollectNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+	^ #(#_source #assigning #intoTarget)
 ]

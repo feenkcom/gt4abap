@@ -45,8 +45,8 @@ ABAPGetTimeNode >> target [
 ]
 
 { #category : #generated }
-ABAPGetTimeNode >> target: anABAPTargetNode [
+ABAPGetTimeNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

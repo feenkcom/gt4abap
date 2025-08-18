@@ -52,9 +52,9 @@ ABAPReadDatasetNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPReadDatasetNode >> intoTarget: anABAPTargetNode [
+ABAPReadDatasetNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

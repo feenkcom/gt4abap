@@ -2,7 +2,7 @@ Class {
 	#name : #ABAPDereferenceExpressionNode,
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
-		'value',
+		'values',
 		'arrow'
 	],
 	#category : #GToolkit4ABAP
@@ -23,9 +23,15 @@ ABAPDereferenceExpressionNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
+{ #category : #'generated-initialize-release' }
+ABAPDereferenceExpressionNode >> initialize [
+	super initialize.
+	values := OrderedCollection new: 2.
+]
+
 { #category : #generated }
-ABAPDereferenceExpressionNode >> nodeVariables [
-	^ #(#value)
+ABAPDereferenceExpressionNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -34,13 +40,13 @@ ABAPDereferenceExpressionNode >> tokenVariables [
 ]
 
 { #category : #generated }
-ABAPDereferenceExpressionNode >> value [
-	^ value
+ABAPDereferenceExpressionNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPDereferenceExpressionNode >> value: anABAPExpressionNode [
-	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPExpressionNode.
-	self value notNil ifTrue: [ self value parent: self ]
+ABAPDereferenceExpressionNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

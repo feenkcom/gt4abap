@@ -69,9 +69,9 @@ ABAPComputeNode >> target [
 ]
 
 { #category : #generated }
-ABAPComputeNode >> target: anABAPTargetNode [
+ABAPComputeNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

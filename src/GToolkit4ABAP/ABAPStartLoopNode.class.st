@@ -19,15 +19,14 @@ Class {
 		'toSources',
 		'names',
 		'intoTargets',
+		'assignings',
 		'lefts',
 		'rights',
 		'lows',
 		'highs',
 		'fieldOffsets',
 		'fieldLengths',
-		'classes',
-		'leftBrackets',
-		'rightBrackets'
+		'classes'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -35,6 +34,18 @@ Class {
 { #category : #generated }
 ABAPStartLoopNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStartLoop: self
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> assignings [
+	^ assignings
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> assignings: anOrderedCollection [
+	self setParents: self assignings to: nil.
+	assignings := anOrderedCollection.
+	self setParents: self assignings to: self
 ]
 
 { #category : #generated }
@@ -51,12 +62,12 @@ ABAPStartLoopNode >> classes: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeNodeVariables [
-	^ #(#expressions #dynamics #sources #froms #toSources #names #intoTargets #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes)
+	^ #(#expressions #dynamics #sources #froms #toSources #names #intoTargets #assignings #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes)
 ]
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #rightParens #operators #eqs)
 ]
 
 { #category : #generated }
@@ -179,6 +190,7 @@ ABAPStartLoopNode >> initialize [
 	toSources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
+	assignings := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	lows := OrderedCollection new: 2.
@@ -186,8 +198,6 @@ ABAPStartLoopNode >> initialize [
 	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	classes := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -220,16 +230,6 @@ ABAPStartLoopNode >> keywords [
 { #category : #generated }
 ABAPStartLoopNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -306,16 +306,6 @@ ABAPStartLoopNode >> period [
 { #category : #generated }
 ABAPStartLoopNode >> period: aSmaCCToken [
 	period := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

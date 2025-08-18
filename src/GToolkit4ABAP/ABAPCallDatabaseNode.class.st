@@ -7,12 +7,24 @@ Class {
 		'parameterNames',
 		'eqs',
 		'targets',
-		'sources',
-		'name',
-		'value'
+		'values',
+		'_source',
+		'name'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPCallDatabaseNode >> acceptVisitor: aRootVisitor [
@@ -21,7 +33,7 @@ ABAPCallDatabaseNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCallDatabaseNode >> compositeNodeVariables [
-	^ #(#parameterNames #targets #sources)
+	^ #(#parameterNames #targets #values)
 ]
 
 { #category : #generated }
@@ -58,7 +70,7 @@ ABAPCallDatabaseNode >> initialize [
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -83,7 +95,7 @@ ABAPCallDatabaseNode >> name: aSmaCCToken [
 
 { #category : #generated }
 ABAPCallDatabaseNode >> nodeVariables [
-	^ #(#dynamic #value)
+	^ #(#dynamic #_source)
 ]
 
 { #category : #generated }
@@ -96,18 +108,6 @@ ABAPCallDatabaseNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPCallDatabaseNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPCallDatabaseNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
 ]
 
 { #category : #generated }
@@ -128,13 +128,13 @@ ABAPCallDatabaseNode >> tokenVariables [
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> value [
-	^ value
+ABAPCallDatabaseNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> value: anABAPExpressionNode [
-	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPExpressionNode.
-	self value notNil ifTrue: [ self value parent: self ]
+ABAPCallDatabaseNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

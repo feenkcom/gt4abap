@@ -3,28 +3,22 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
+		'_at',
+		'value',
 		'leftParen',
-		'key',
-		'rightParen',
-		'operators',
-		'dash',
-		'fieldChain',
-		'_source'
+		'rightParen'
 	],
 	#category : #GToolkit4ABAP
 }
 
 { #category : #generated }
-ABAPCloseCursorNode >> _source [
-	^ _source
+ABAPCloseCursorNode >> _at [
+	^ _at
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
+ABAPCloseCursorNode >> _at: aSmaCCToken [
+	_at := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -34,47 +28,13 @@ ABAPCloseCursorNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCloseCursorNode >> compositeTokenVariables [
-	^ #(#keywords #values #operators)
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> dash [
-	^ dash
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> dash: aSmaCCToken [
-	dash := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> fieldChain [
-	^ fieldChain
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> fieldChain: anABAPFieldChainNode [
-	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPFieldChainNode.
-	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPCloseCursorNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> key: aSmaCCToken [
-	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -98,18 +58,8 @@ ABAPCloseCursorNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> nodeVariables [
-	^ #(#fieldChain #_source)
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPCloseCursorNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPCloseCursorNode >> otherVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -124,15 +74,17 @@ ABAPCloseCursorNode >> rightParen: aSmaCCToken [
 
 { #category : #generated }
 ABAPCloseCursorNode >> tokenVariables [
-	^ #(#leftParen #key #rightParen #dash #period)
+	^ #(#_at #leftParen #rightParen #period)
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> values [
-	^ values
+ABAPCloseCursorNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPCloseCursorNode >> value: anObject [
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

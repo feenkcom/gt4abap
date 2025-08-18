@@ -1,6 +1,6 @@
 Class {
 	#name : #ABAPFieldSymbolNode,
-	#superclass : #ABAPStatementNode,
+	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keywords',
 		'values',
@@ -9,14 +9,13 @@ Class {
 		'default',
 		'fields',
 		'occurs',
-		'leftParens',
 		'keies',
-		'rightParens',
 		'operators',
 		'sizes',
 		'leftBrackets',
 		'rightBrackets',
-		'lengths'
+		'lengths',
+		'name'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -33,7 +32,7 @@ ABAPFieldSymbolNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFieldSymbolNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+	^ #(#keywords #values #keies #operators #leftBrackets #rightBrackets #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -78,9 +77,7 @@ ABAPFieldSymbolNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
@@ -119,16 +116,6 @@ ABAPFieldSymbolNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPFieldSymbolNode >> lengths [
 	^ lengths
 ]
@@ -141,8 +128,20 @@ ABAPFieldSymbolNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPFieldSymbolNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> name: anABAPExpressionNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPExpressionNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
 ABAPFieldSymbolNode >> nodeVariables [
-	^ #(#fieldChain #typeName #default #occurs)
+	^ #(#fieldChain #typeName #default #occurs #name)
 ]
 
 { #category : #generated }
@@ -175,16 +174,6 @@ ABAPFieldSymbolNode >> rightBrackets [
 { #category : #generated }
 ABAPFieldSymbolNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }

@@ -90,8 +90,8 @@ ABAPMoveNode >> toTarget [
 ]
 
 { #category : #generated }
-ABAPMoveNode >> toTarget: anABAPTargetNode [
+ABAPMoveNode >> toTarget: anABAPExpressionNode [
 	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPTargetNode.
+	toTarget := anABAPExpressionNode.
 	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

@@ -58,8 +58,8 @@ ABAPRefreshNode >> target [
 ]
 
 { #category : #generated }
-ABAPRefreshNode >> target: anABAPTargetNode [
+ABAPRefreshNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

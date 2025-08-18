@@ -6,7 +6,7 @@ Class {
 		'eventName',
 		'parameterNames',
 		'eqs',
-		'sources'
+		'values'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -18,7 +18,7 @@ ABAPRaiseEventNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPRaiseEventNode >> compositeNodeVariables [
-	^ #(#parameterNames #sources)
+	^ #(#parameterNames #values)
 ]
 
 { #category : #generated }
@@ -54,7 +54,7 @@ ABAPRaiseEventNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -85,13 +85,13 @@ ABAPRaiseEventNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPRaiseEventNode >> sources [
-	^ sources
+ABAPRaiseEventNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPRaiseEventNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPRaiseEventNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

@@ -51,7 +51,7 @@ ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #lefts #rights #fieldLengths #fieldOffsets #dynamics #attributeNames)
+	^ #(#sources #names #lefts #rights #attributeNames #fieldLengths #fieldOffsets #dynamics)
 ]
 
 { #category : #generated }
@@ -126,12 +126,12 @@ ABAPDeleteInternalNode >> initialize [
 	lefts := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -218,9 +218,9 @@ ABAPDeleteInternalNode >> target [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> target: anABAPTargetNode [
+ABAPDeleteInternalNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

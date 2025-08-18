@@ -58,8 +58,8 @@ ABAPSubtractCorrespondingNode >> target [
 ]
 
 { #category : #generated }
-ABAPSubtractCorrespondingNode >> target: anABAPTargetNode [
+ABAPSubtractCorrespondingNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

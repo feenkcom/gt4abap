@@ -5,14 +5,9 @@ Class {
 		'keywords',
 		'target',
 		'dynamics',
-		'names',
-		'fieldLengths',
-		'fieldOffsets',
-		'leftBrackets',
-		'rightBrackets',
 		'values',
-		'sources',
-		'eqs'
+		'fieldOffsets',
+		'fieldLengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,12 +19,12 @@ ABAPSortNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSortNode >> compositeNodeVariables [
-	^ #(#dynamics #names #fieldLengths #fieldOffsets #sources)
+	^ #(#dynamics #fieldOffsets #fieldLengths)
 ]
 
 { #category : #generated }
 ABAPSortNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #values #eqs)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -42,16 +37,6 @@ ABAPSortNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPSortNode >> eqs [
-	^ eqs
-]
-
-{ #category : #generated }
-ABAPSortNode >> eqs: anOrderedCollection [
-	eqs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -83,14 +68,9 @@ ABAPSortNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -104,52 +84,13 @@ ABAPSortNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSortNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPSortNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPSortNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPSortNode >> nodeVariables [
 	^ #(#target)
 ]
 
 { #category : #generated }
-ABAPSortNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPSortNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSortNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPSortNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPSortNode >> otherVariables [
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -158,9 +99,9 @@ ABAPSortNode >> target [
 ]
 
 { #category : #generated }
-ABAPSortNode >> target: anABAPTargetNode [
+ABAPSortNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 
@@ -171,5 +112,7 @@ ABAPSortNode >> values [
 
 { #category : #generated }
 ABAPSortNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

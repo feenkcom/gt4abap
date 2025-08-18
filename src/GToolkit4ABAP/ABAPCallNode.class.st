@@ -22,9 +22,8 @@ Class {
 		'fields',
 		'fieldChain',
 		'typeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths'
+		'args',
+		'castValue'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -32,6 +31,18 @@ Class {
 { #category : #generated }
 ABAPCallNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitCall: self
+]
+
+{ #category : #generated }
+ABAPCallNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPCallNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -57,13 +68,25 @@ ABAPCallNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallNode >> castValue [
+	^ castValue
+]
+
+{ #category : #generated }
+ABAPCallNode >> castValue: anABAPExpressionNode [
+	self castValue notNil ifTrue: [ self castValue parent: nil ].
+	castValue := anABAPExpressionNode.
+	self castValue notNil ifTrue: [ self castValue parent: self ]
+]
+
+{ #category : #generated }
 ABAPCallNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields #lefts #rights #typeNames #lengths)
+	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #fields #lefts #rights #typeNames #args)
 ]
 
 { #category : #generated }
 ABAPCallNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs #leftBrackets #rightBrackets)
+	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs)
 ]
 
 { #category : #generated }
@@ -144,9 +167,7 @@ ABAPCallNode >> initialize [
 	rights := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -157,16 +178,6 @@ ABAPCallNode >> keywords [
 { #category : #generated }
 ABAPCallNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCallNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -189,18 +200,6 @@ ABAPCallNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPCallNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPCallNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -229,7 +228,7 @@ ABAPCallNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallNode >> nodeVariables [
-	^ #(#fieldChain)
+	^ #(#fieldChain #castValue)
 ]
 
 { #category : #generated }
@@ -257,16 +256,6 @@ ABAPCallNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPCallNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCallNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

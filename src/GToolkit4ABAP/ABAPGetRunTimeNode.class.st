@@ -45,8 +45,8 @@ ABAPGetRunTimeNode >> target [
 ]
 
 { #category : #generated }
-ABAPGetRunTimeNode >> target: anABAPTargetNode [
+ABAPGetRunTimeNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

@@ -37,9 +37,9 @@ ABAPGetBitNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPGetBitNode >> intoTarget: anABAPTargetNode [
+ABAPGetBitNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

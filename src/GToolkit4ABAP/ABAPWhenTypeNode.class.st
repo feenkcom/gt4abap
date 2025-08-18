@@ -45,9 +45,9 @@ ABAPWhenTypeNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPWhenTypeNode >> intoTarget: anABAPTargetNode [
+ABAPWhenTypeNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

@@ -5,14 +5,11 @@ Class {
 		'keywords',
 		'toSource',
 		'toTarget',
-		'leftParen',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'rightParen',
+		'assigning',
 		'intoTarget',
 		'field',
-		'from'
+		'from',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -20,6 +17,18 @@ Class {
 { #category : #generated }
 ABAPAppendNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAppend: self
+]
+
+{ #category : #generated }
+ABAPAppendNode >> assigning [
+	^ assigning
+]
+
+{ #category : #generated }
+ABAPAppendNode >> assigning: anABAPExpressionNode [
+	self assigning notNil ifTrue: [ self assigning parent: nil ].
+	assigning := anABAPExpressionNode.
+	self assigning notNil ifTrue: [ self assigning parent: self ]
 ]
 
 { #category : #generated }
@@ -55,7 +64,6 @@ ABAPAppendNode >> from: anABAPExpressionNode [
 ABAPAppendNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -64,9 +72,9 @@ ABAPAppendNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPAppendNode >> intoTarget: anABAPTargetNode [
+ABAPAppendNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 
@@ -81,53 +89,8 @@ ABAPAppendNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAppendNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPAppendNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAppendNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPAppendNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPAppendNode >> nodeVariables [
-	^ #(#toSource #toTarget #intoTarget #field #from)
-]
-
-{ #category : #generated }
-ABAPAppendNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPAppendNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPAppendNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAppendNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPAppendNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
+	^ #(#toSource #toTarget #assigning #intoTarget #field #from #value)
 ]
 
 { #category : #generated }
@@ -148,25 +111,20 @@ ABAPAppendNode >> toTarget [
 ]
 
 { #category : #generated }
-ABAPAppendNode >> toTarget: anABAPTargetNode [
+ABAPAppendNode >> toTarget: anABAPExpressionNode [
 	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPTargetNode.
+	toTarget := anABAPExpressionNode.
 	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]
 
 { #category : #generated }
-ABAPAppendNode >> tokenVariables [
-	^ #(#leftParen #leftBracket #rightBracket #rightParen #period)
+ABAPAppendNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPAppendNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPAppendNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+ABAPAppendNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

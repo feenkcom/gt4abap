@@ -46,6 +46,11 @@ TABAPRootNodeVisitor >> visitAt: anAt [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitAtExpression: anAtExpression [
+	^ self visitExpression: anAtExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitAtFirst: anAtFirst [
 	^ self visitStatement: anAtFirst
 ]
@@ -186,6 +191,11 @@ TABAPRootNodeVisitor >> visitCaseType: aCaseType [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitCast: aCast [
+	^ self visitExpression: aCast
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitCatchSystemExceptions: aCatchSystemExceptions [
 	^ self visitStatement: aCatchSystemExceptions
 ]
@@ -298,6 +308,11 @@ TABAPRootNodeVisitor >> visitCommunication: aCommunication [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitComponentChain: aComponentChain [
 	^ self visitExpression: aComponentChain
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitComponentExpression: aComponentExpression [
+	^ self visitStatement: aComponentExpression
 ]
 
 { #category : #generated }
@@ -612,7 +627,7 @@ TABAPRootNodeVisitor >> visitFieldSub: aFieldSub [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFieldSymbol: aFieldSymbol [
-	^ self visitStatement: aFieldSymbol
+	^ self visitExpression: aFieldSymbol
 ]
 
 { #category : #generated }
@@ -776,6 +791,11 @@ TABAPRootNodeVisitor >> visitImportNametab: anImportNametab [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitInExpression: anInExpression [
+	^ self visitExpression: anInExpression
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitInclude: anInclude [
 	^ self visitStatement: anInclude
 ]
@@ -793,6 +813,11 @@ TABAPRootNodeVisitor >> visitInfotypes: anInfotypes [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitInitialization: anInitialization [
 	^ self visitStatement: anInitialization
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitInlineData: anInlineData [
+	^ self visitExpression: anInlineData
 ]
 
 { #category : #generated }
@@ -858,6 +883,11 @@ TABAPRootNodeVisitor >> visitKernelId: aKernelId [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitLeave: aLeave [
 	^ self visitStatement: aLeave
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitLikeExpression: aLikeExpression [
+	^ self visitExpression: aLikeExpression
 ]
 
 { #category : #generated }
@@ -963,6 +993,11 @@ TABAPRootNodeVisitor >> visitMultiply: aMultiply [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitName: aName [
 	^ self visitExpression: aName
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitNewExpression: aNewExpression [
+	^ self visitExpression: aNewExpression
 ]
 
 { #category : #generated }
@@ -1163,6 +1198,16 @@ TABAPRootNodeVisitor >> visitRollbackEntities: aRollbackEntities [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitRoot: aRoot [
 	^ self visitSmaCCParseNode: aRoot
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitSQLCompareExpression: aSQLCompareExpression [
+	^ self visitExpression: aSQLCompareExpression
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitSQLSelect: aSQLSelect [
+	^ self visitExpression: aSQLSelect
 ]
 
 { #category : #generated }
@@ -1521,13 +1566,23 @@ TABAPRootNodeVisitor >> visitSystemCall: aSystemCall [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitTables: aTables [
-	^ self visitStatement: aTables
+TABAPRootNodeVisitor >> visitTableExpression: aTableExpression [
+	^ self visitExpression: aTableExpression
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitTarget: aTarget [
-	^ self visitRoot: aTarget
+TABAPRootNodeVisitor >> visitTableField: aTableField [
+	^ self visitExpression: aTableField
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitTableName: aTableName [
+	^ self visitExpression: aTableName
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitTables: aTables [
+	^ self visitStatement: aTables
 ]
 
 { #category : #generated }

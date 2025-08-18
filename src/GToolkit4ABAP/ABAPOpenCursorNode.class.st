@@ -21,13 +21,16 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'ats',
 		'decs',
-		'functions',
 		'lefts',
 		'rights',
+		'functions',
 		'arrows',
 		'attributeNames',
 		'dashs',
+		'fieldOffsets',
+		'fieldLengths',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -61,6 +64,16 @@ ABAPOpenCursorNode >> asNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPOpenCursorNode >> ats [
+	^ ats
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> ats: anOrderedCollection [
+	ats := anOrderedCollection
+]
+
+{ #category : #generated }
 ABAPOpenCursorNode >> attributeNames [
 	^ attributeNames
 ]
@@ -84,12 +97,12 @@ ABAPOpenCursorNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #functions #sources #lefts #rights #attributeNames)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #keies #operators #commas #leftBrackets #rightBrackets #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #operators #commas #leftBrackets #rightBrackets #ats #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -149,6 +162,18 @@ ABAPOpenCursorNode >> fieldChains: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPOpenCursorNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
 ABAPOpenCursorNode >> fieldNames [
 	^ fieldNames
 ]
@@ -158,6 +183,18 @@ ABAPOpenCursorNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: nil.
 	fieldNames := anOrderedCollection.
 	self setParents: self fieldNames to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -206,14 +243,17 @@ ABAPOpenCursorNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -223,7 +263,9 @@ ABAPOpenCursorNode >> keies [
 
 { #category : #generated }
 ABAPOpenCursorNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -263,9 +305,9 @@ ABAPOpenCursorNode >> lefts [
 
 { #category : #generated }
 ABAPOpenCursorNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
+	self setParent: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
+	self setParent: self lefts to: self
 ]
 
 { #category : #generated }
@@ -304,7 +346,7 @@ ABAPOpenCursorNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> otherVariables [
-	^ #(#names #values)
+	^ #(#names #values #keies #lefts)
 ]
 
 { #category : #generated }

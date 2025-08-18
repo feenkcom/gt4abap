@@ -105,9 +105,9 @@ ABAPCreateDataNode >> target [
 ]
 
 { #category : #generated }
-ABAPCreateDataNode >> target: anABAPTargetNode [
+ABAPCreateDataNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

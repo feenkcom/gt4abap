@@ -169,9 +169,9 @@ ABAPExportNode >> target [
 ]
 
 { #category : #generated }
-ABAPExportNode >> target: anABAPTargetNode [
+ABAPExportNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]
 

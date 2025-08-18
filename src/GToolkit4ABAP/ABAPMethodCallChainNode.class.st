@@ -6,8 +6,8 @@ Class {
 		'sources',
 		'parameterNames',
 		'eqs',
-		'keywords',
 		'values',
+		'keywords',
 		'operators',
 		'targets',
 		'lefts',
@@ -18,10 +18,9 @@ Class {
 		'attributeNames',
 		'fieldChain',
 		'typeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
-		'fields'
+		'args',
+		'fields',
+		'castValue'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -29,6 +28,18 @@ Class {
 { #category : #generated }
 ABAPMethodCallChainNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitMethodCallChain: self
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> args [
+	^ args
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> args: anOrderedCollection [
+	self setParents: self args to: nil.
+	args := anOrderedCollection.
+	self setParents: self args to: self
 ]
 
 { #category : #generated }
@@ -54,13 +65,25 @@ ABAPMethodCallChainNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPMethodCallChainNode >> castValue [
+	^ castValue
+]
+
+{ #category : #generated }
+ABAPMethodCallChainNode >> castValue: anABAPExpressionNode [
+	self castValue notNil ifTrue: [ self castValue parent: nil ].
+	castValue := anABAPExpressionNode.
+	self castValue notNil ifTrue: [ self castValue parent: self ]
+]
+
+{ #category : #generated }
 ABAPMethodCallChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #lengths #fields)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #args #fields)
 ]
 
 { #category : #generated }
 ABAPMethodCallChainNode >> compositeTokenVariables [
-	^ #(#eqs #keywords #operators #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#eqs #keywords #operators #dashs #arrows #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -114,8 +137,8 @@ ABAPMethodCallChainNode >> initialize [
 	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	keywords := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
@@ -125,9 +148,7 @@ ABAPMethodCallChainNode >> initialize [
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	args := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
 
@@ -142,16 +163,6 @@ ABAPMethodCallChainNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMethodCallChainNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPMethodCallChainNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPMethodCallChainNode >> lefts [
 	^ lefts
 ]
@@ -161,18 +172,6 @@ ABAPMethodCallChainNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPMethodCallChainNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPMethodCallChainNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -201,7 +200,7 @@ ABAPMethodCallChainNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPMethodCallChainNode >> nodeVariables [
-	^ #(#fieldChain)
+	^ #(#fieldChain #castValue)
 ]
 
 { #category : #generated }
@@ -229,16 +228,6 @@ ABAPMethodCallChainNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPMethodCallChainNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPMethodCallChainNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

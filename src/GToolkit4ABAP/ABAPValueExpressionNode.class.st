@@ -6,12 +6,14 @@ Class {
 		'typeNames',
 		'fields',
 		'eqs',
-		'sources',
-		'whiles',
 		'values',
+		'whiles',
+		'sources',
+		'groupses',
+		'ofs',
+		'names',
 		'leftBrackets',
 		'rightBrackets',
-		'names',
 		'fieldChains',
 		'froms',
 		'toSources',
@@ -22,8 +24,7 @@ Class {
 		'highs',
 		'fieldOffsets',
 		'fieldLengths',
-		'classes',
-		'lengths'
+		'classes'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -47,7 +48,7 @@ ABAPValueExpressionNode >> classes: anOrderedCollection [
 
 { #category : #generated }
 ABAPValueExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #fields #sources #whiles #names #fieldChains #froms #toSources #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes #lengths)
+	^ #(#typeNames #fields #whiles #sources #groupses #ofs #names #fieldChains #froms #toSources #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes)
 ]
 
 { #category : #generated }
@@ -126,6 +127,18 @@ ABAPValueExpressionNode >> froms: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPValueExpressionNode >> groupses [
+	^ groupses
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> groupses: anOrderedCollection [
+	self setParents: self groupses to: nil.
+	groupses := anOrderedCollection.
+	self setParents: self groupses to: self
+]
+
+{ #category : #generated }
 ABAPValueExpressionNode >> highs [
 	^ highs
 ]
@@ -144,12 +157,14 @@ ABAPValueExpressionNode >> initialize [
 	typeNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	whiles := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	whiles := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	groupses := OrderedCollection new: 2.
+	ofs := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
 	toSources := OrderedCollection new: 2.
@@ -161,7 +176,6 @@ ABAPValueExpressionNode >> initialize [
 	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	classes := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -197,18 +211,6 @@ ABAPValueExpressionNode >> lefts: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPValueExpressionNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPValueExpressionNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
-]
-
-{ #category : #generated }
 ABAPValueExpressionNode >> lows [
 	^ lows
 ]
@@ -230,6 +232,18 @@ ABAPValueExpressionNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> ofs [
+	^ ofs
+]
+
+{ #category : #generated }
+ABAPValueExpressionNode >> ofs: anOrderedCollection [
+	self setParents: self ofs to: nil.
+	ofs := anOrderedCollection.
+	self setParents: self ofs to: self
 ]
 
 { #category : #generated }

@@ -58,8 +58,8 @@ ABAPMultiplyNode >> target [
 ]
 
 { #category : #generated }
-ABAPMultiplyNode >> target: anABAPTargetNode [
+ABAPMultiplyNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

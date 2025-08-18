@@ -43,9 +43,9 @@ ABAPLoopAtScreenNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPLoopAtScreenNode >> intoTarget: anABAPTargetNode [
+ABAPLoopAtScreenNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

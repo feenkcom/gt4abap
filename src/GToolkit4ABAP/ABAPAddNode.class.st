@@ -78,8 +78,8 @@ ABAPAddNode >> toTarget [
 ]
 
 { #category : #generated }
-ABAPAddNode >> toTarget: anABAPTargetNode [
+ABAPAddNode >> toTarget: anABAPExpressionNode [
 	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPTargetNode.
+	toTarget := anABAPExpressionNode.
 	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

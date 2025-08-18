@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'keywords',
 		'typeNames',
-		'sources',
+		'let',
 		'fields',
-		'eqs'
+		'eqs',
+		'values'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -18,7 +19,7 @@ ABAPConversionExpressionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPConversionExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #sources #fields)
+	^ #(#typeNames #fields #values)
 ]
 
 { #category : #generated }
@@ -53,9 +54,9 @@ ABAPConversionExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -69,15 +70,20 @@ ABAPConversionExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPConversionExpressionNode >> sources [
-	^ sources
+ABAPConversionExpressionNode >> let [
+	^ let
 ]
 
 { #category : #generated }
-ABAPConversionExpressionNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPConversionExpressionNode >> let: anABAPExpressionNode [
+	self let notNil ifTrue: [ self let parent: nil ].
+	let := anABAPExpressionNode.
+	self let notNil ifTrue: [ self let parent: self ]
+]
+
+{ #category : #generated }
+ABAPConversionExpressionNode >> nodeVariables [
+	^ #(#let)
 ]
 
 { #category : #generated }
@@ -90,4 +96,16 @@ ABAPConversionExpressionNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
+]
+
+{ #category : #generated }
+ABAPConversionExpressionNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPConversionExpressionNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

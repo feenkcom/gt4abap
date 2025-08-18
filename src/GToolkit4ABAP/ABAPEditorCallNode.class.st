@@ -3,29 +3,25 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'_source',
-		'values',
-		'leftParens',
-		'keies',
-		'rightParens',
+		'sources',
+		'lefts',
 		'operators',
-		'fieldChains',
-		'dashs'
+		'rights',
+		'fieldOffsets',
+		'fieldLengths',
+		'leftBrackets',
+		'rightBrackets',
+		'fields',
+		'dashs',
+		'keies',
+		'arrows',
+		'values',
+		'attributeNames',
+		'names',
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPEditorCallNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPEditorCallNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPEditorCallNode >> acceptVisitor: aRootVisitor [
@@ -33,13 +29,35 @@ ABAPEditorCallNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPEditorCallNode >> arrows [
+	^ arrows
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> arrows: anOrderedCollection [
+	arrows := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> attributeNames [
+	^ attributeNames
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> attributeNames: anOrderedCollection [
+	self setParents: self attributeNames to: nil.
+	attributeNames := anOrderedCollection.
+	self setParents: self attributeNames to: self
+]
+
+{ #category : #generated }
 ABAPEditorCallNode >> compositeNodeVariables [
-	^ #(#fieldChains)
+	^ #(#sources #lefts #rights #fieldOffsets #fieldLengths #fields #attributeNames #names)
 ]
 
 { #category : #generated }
 ABAPEditorCallNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators #dashs)
+	^ #(#keywords #operators #leftBrackets #rightBrackets #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -53,28 +71,71 @@ ABAPEditorCallNode >> dashs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> fieldChains [
-	^ fieldChains
+ABAPEditorCallNode >> eqs [
+	^ eqs
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> fieldChains: anOrderedCollection [
-	self setParents: self fieldChains to: nil.
-	fieldChains := anOrderedCollection.
-	self setParents: self fieldChains to: self
+ABAPEditorCallNode >> eqs: anOrderedCollection [
+	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fieldLengths [
+	^ fieldLengths
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fieldLengths: anOrderedCollection [
+	self setParents: self fieldLengths to: nil.
+	fieldLengths := anOrderedCollection.
+	self setParents: self fieldLengths to: self
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fieldOffsets [
+	^ fieldOffsets
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fieldOffsets: anOrderedCollection [
+	self setParents: self fieldOffsets to: nil.
+	fieldOffsets := anOrderedCollection.
+	self setParents: self fieldOffsets to: self
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fields [
+	^ fields
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> fields: anOrderedCollection [
+	self setParents: self fields to: nil.
+	fields := anOrderedCollection.
+	self setParents: self fields to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPEditorCallNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
+	fieldOffsets := OrderedCollection new: 2.
+	fieldLengths := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -84,7 +145,9 @@ ABAPEditorCallNode >> keies [
 
 { #category : #generated }
 ABAPEditorCallNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -98,18 +161,37 @@ ABAPEditorCallNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> leftParens [
-	^ leftParens
+ABAPEditorCallNode >> leftBrackets [
+	^ leftBrackets
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPEditorCallNode >> leftBrackets: anOrderedCollection [
+	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> nodeVariables [
-	^ #(#_source)
+ABAPEditorCallNode >> lefts [
+	^ lefts
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> lefts: anOrderedCollection [
+	self setParents: self lefts to: nil.
+	lefts := anOrderedCollection.
+	self setParents: self lefts to: self
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> names: anOrderedCollection [
+	self setParents: self names to: nil.
+	names := anOrderedCollection.
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
@@ -123,13 +205,42 @@ ABAPEditorCallNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> rightParens [
-	^ rightParens
+ABAPEditorCallNode >> otherVariables [
+	^ #(#keies #values)
 ]
 
 { #category : #generated }
-ABAPEditorCallNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPEditorCallNode >> rightBrackets [
+	^ rightBrackets
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> rightBrackets: anOrderedCollection [
+	rightBrackets := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> rights [
+	^ rights
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> rights: anOrderedCollection [
+	self setParents: self rights to: nil.
+	rights := anOrderedCollection.
+	self setParents: self rights to: self
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> sources [
+	^ sources
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> sources: anOrderedCollection [
+	self setParents: self sources to: nil.
+	sources := anOrderedCollection.
+	self setParents: self sources to: self
 ]
 
 { #category : #generated }
@@ -139,5 +250,7 @@ ABAPEditorCallNode >> values [
 
 { #category : #generated }
 ABAPEditorCallNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

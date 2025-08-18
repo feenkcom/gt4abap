@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'keywords',
 		'initial',
-		'value',
+		'name',
 		'leftBracket',
 		'rightBracket',
+		'value',
 		'dynamic',
 		'_source'
 	],
@@ -86,8 +87,20 @@ ABAPAssignLocalCopyNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPAssignLocalCopyNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPAssignLocalCopyNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
 ABAPAssignLocalCopyNode >> nodeVariables [
-	^ #(#initial #dynamic #_source)
+	^ #(#initial #name #dynamic #_source)
 ]
 
 { #category : #generated }
@@ -102,7 +115,7 @@ ABAPAssignLocalCopyNode >> rightBracket: aSmaCCToken [
 
 { #category : #generated }
 ABAPAssignLocalCopyNode >> tokenVariables [
-	^ #(#value #leftBracket #rightBracket #period)
+	^ #(#leftBracket #rightBracket #value #period)
 ]
 
 { #category : #generated }

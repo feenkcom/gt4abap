@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'keywords',
 		'values',
-		'leftParens',
+		'leftParen',
 		'key',
-		'rightParens',
+		'rightParen',
 		'operators',
 		'dash',
 		'expressions',
@@ -16,6 +16,7 @@ Class {
 		'dynamics',
 		'sources',
 		'froms',
+		'assignings',
 		'intoTargets',
 		'leftBrackets',
 		'rightBrackets',
@@ -31,13 +32,25 @@ ABAPReadTableNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPReadTableNode >> assignings [
+	^ assignings
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> assignings: anOrderedCollection [
+	self setParents: self assignings to: nil.
+	assignings := anOrderedCollection.
+	self setParents: self assignings to: self
+]
+
+{ #category : #generated }
 ABAPReadTableNode >> compositeNodeVariables [
-	^ #(#expressions #fields #dynamics #sources #froms #intoTargets #lengths #names)
+	^ #(#expressions #fields #dynamics #sources #froms #assignings #intoTargets #lengths #names)
 ]
 
 { #category : #generated }
 ABAPReadTableNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #eqs #leftBrackets #rightBrackets)
+	^ #(#keywords #operators #eqs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -125,8 +138,6 @@ ABAPReadTableNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
@@ -134,6 +145,7 @@ ABAPReadTableNode >> initialize [
 	dynamics := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
+	assignings := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
@@ -184,13 +196,13 @@ ABAPReadTableNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> leftParens [
-	^ leftParens
+ABAPReadTableNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPReadTableNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -248,13 +260,13 @@ ABAPReadTableNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> rightParens [
-	^ rightParens
+ABAPReadTableNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPReadTableNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPReadTableNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -271,7 +283,7 @@ ABAPReadTableNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPReadTableNode >> tokenVariables [
-	^ #(#key #dash #period)
+	^ #(#leftParen #key #rightParen #dash #period)
 ]
 
 { #category : #generated }

@@ -4,13 +4,26 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
-		'sources',
+		'_source',
 		'parameterNames',
 		'eqs',
+		'values',
 		'dynamic'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPGetBadiNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPGetBadiNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPGetBadiNode >> acceptVisitor: aRootVisitor [
@@ -19,7 +32,7 @@ ABAPGetBadiNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPGetBadiNode >> compositeNodeVariables [
-	^ #(#sources #parameterNames)
+	^ #(#parameterNames #values)
 ]
 
 { #category : #generated }
@@ -53,9 +66,9 @@ ABAPGetBadiNode >> eqs: anOrderedCollection [
 ABAPGetBadiNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -70,7 +83,7 @@ ABAPGetBadiNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPGetBadiNode >> nodeVariables [
-	^ #(#target #dynamic)
+	^ #(#target #_source #dynamic)
 ]
 
 { #category : #generated }
@@ -86,25 +99,25 @@ ABAPGetBadiNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPGetBadiNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPGetBadiNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
 ABAPGetBadiNode >> target [
 	^ target
 ]
 
 { #category : #generated }
-ABAPGetBadiNode >> target: anABAPTargetNode [
+ABAPGetBadiNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPGetBadiNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+ABAPGetBadiNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

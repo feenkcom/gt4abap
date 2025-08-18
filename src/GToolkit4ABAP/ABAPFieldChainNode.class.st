@@ -6,17 +6,18 @@ Class {
 		'operator',
 		'right',
 		'arrows',
+		'values',
 		'attributeNames',
 		'names',
 		'leftBrackets',
-		'sources',
 		'rightBrackets',
 		'keywords',
+		'keies',
 		'eqs',
+		'sources',
 		'fieldOffset',
 		'fieldLength',
-		'field',
-		'value'
+		'field'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -50,7 +51,7 @@ ABAPFieldChainNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> compositeNodeVariables [
-	^ #(#attributeNames #names #sources)
+	^ #(#attributeNames #names #keies #sources)
 ]
 
 { #category : #generated }
@@ -108,13 +109,27 @@ ABAPFieldChainNode >> fieldOffset: anABAPFieldOffsetNode [
 ABAPFieldChainNode >> initialize [
 	super initialize.
 	arrows := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> keies [
+	^ keies
+]
+
+{ #category : #generated }
+ABAPFieldChainNode >> keies: anOrderedCollection [
+	self setParents: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParents: self keies to: self
 ]
 
 { #category : #generated }
@@ -177,6 +192,11 @@ ABAPFieldChainNode >> operator: aSmaCCToken [
 ]
 
 { #category : #generated }
+ABAPFieldChainNode >> otherVariables [
+	^ #(#values)
+]
+
+{ #category : #generated }
 ABAPFieldChainNode >> right [
 	^ right
 ]
@@ -212,15 +232,17 @@ ABAPFieldChainNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldChainNode >> tokenVariables [
-	^ #(#operator #value)
+	^ #(#operator)
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> value [
-	^ value
+ABAPFieldChainNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-ABAPFieldChainNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+ABAPFieldChainNode >> values: anOrderedCollection [
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

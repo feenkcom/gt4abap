@@ -64,8 +64,8 @@ ABAPGetPFStatusNode >> target [
 ]
 
 { #category : #generated }
-ABAPGetPFStatusNode >> target: anABAPTargetNode [
+ABAPGetPFStatusNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
-	target := anABAPTargetNode.
+	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
 ]

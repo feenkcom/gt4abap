@@ -37,9 +37,9 @@ ABAPLoadReportNode >> intoTarget [
 ]
 
 { #category : #generated }
-ABAPLoadReportNode >> intoTarget: anABAPTargetNode [
+ABAPLoadReportNode >> intoTarget: anABAPExpressionNode [
 	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPTargetNode.
+	intoTarget := anABAPExpressionNode.
 	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
 ]
 

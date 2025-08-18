@@ -30,7 +30,7 @@ ABAPCreateObjectNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCreateObjectNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #operators #dashs)
+	^ #(#keywords #eqs #operators #dashs)
 ]
 
 { #category : #generated }
@@ -127,6 +127,11 @@ ABAPCreateObjectNode >> operators: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCreateObjectNode >> otherVariables [
+	^ #(#values)
+]
+
+{ #category : #generated }
 ABAPCreateObjectNode >> parameterNames [
 	^ parameterNames
 ]
@@ -181,5 +186,7 @@ ABAPCreateObjectNode >> values [
 
 { #category : #generated }
 ABAPCreateObjectNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

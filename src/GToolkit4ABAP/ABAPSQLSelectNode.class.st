@@ -19,6 +19,7 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'selects',
 		'ats',
 		'decs',
 		'lefts',
@@ -95,7 +96,7 @@ ABAPSQLSelectNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLSelectNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
@@ -239,6 +240,7 @@ ABAPSQLSelectNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	selects := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
@@ -291,9 +293,9 @@ ABAPSQLSelectNode >> lefts [
 
 { #category : #generated }
 ABAPSQLSelectNode >> lefts: anOrderedCollection [
-	self setParent: self lefts to: nil.
+	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParent: self lefts to: self
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -332,7 +334,7 @@ ABAPSQLSelectNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLSelectNode >> otherVariables [
-	^ #(#names #values #keies #lefts)
+	^ #(#names #values #keies)
 ]
 
 { #category : #generated }
@@ -355,6 +357,18 @@ ABAPSQLSelectNode >> rights: anOrderedCollection [
 	self setParents: self rights to: nil.
 	rights := anOrderedCollection.
 	self setParents: self rights to: self
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> selects [
+	^ selects
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> selects: anOrderedCollection [
+	self setParents: self selects to: nil.
+	selects := anOrderedCollection.
+	self setParents: self selects to: self
 ]
 
 { #category : #generated }

@@ -27,6 +27,7 @@ Class {
 		'fieldOffsets',
 		'fieldLengths',
 		'ats',
+		'selects',
 		'eqs',
 		'fieldChains',
 		'targets',
@@ -97,7 +98,7 @@ ABAPWithStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #fieldChains #targets #lengths #sources)
+	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #selects #fieldChains #targets #lengths #sources)
 ]
 
 { #category : #generated }
@@ -249,6 +250,7 @@ ABAPWithStatementNode >> initialize [
 	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
+	selects := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
@@ -305,9 +307,9 @@ ABAPWithStatementNode >> lefts [
 
 { #category : #generated }
 ABAPWithStatementNode >> lefts: anOrderedCollection [
-	self setParent: self lefts to: nil.
+	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParent: self lefts to: self
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -346,7 +348,7 @@ ABAPWithStatementNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> otherVariables [
-	^ #(#values #names #lefts #keies)
+	^ #(#values #names #keies)
 ]
 
 { #category : #generated }
@@ -379,6 +381,18 @@ ABAPWithStatementNode >> rights: anOrderedCollection [
 	self setParents: self rights to: nil.
 	rights := anOrderedCollection.
 	self setParents: self rights to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> selects [
+	^ selects
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> selects: anOrderedCollection [
+	self setParents: self selects to: nil.
+	selects := anOrderedCollection.
+	self setParents: self selects to: self
 ]
 
 { #category : #generated }

@@ -306,11 +306,6 @@ TABAPRootNodeVisitor >> visitCommunication: aCommunication [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitComponentChain: aComponentChain [
-	^ self visitExpression: aComponentChain
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitComponentExpression: aComponentExpression [
 	^ self visitStatement: aComponentExpression
 ]
@@ -923,6 +918,11 @@ TABAPRootNodeVisitor >> visitLoopAtScreen: aLoopAtScreen [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitMessage: aMessage [
 	^ self visitStatement: aMessage
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitMessageSource: aMessageSource [
+	^ self visitRoot: aMessageSource
 ]
 
 { #category : #generated }
@@ -1598,6 +1598,11 @@ TABAPRootNodeVisitor >> visitTestSeam: aTestSeam [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitTextElement: aTextElement [
 	^ self visitExpression: aTextElement
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitThrow: aThrow [
+	^ self visitRoot: aThrow
 ]
 
 { #category : #generated }

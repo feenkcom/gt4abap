@@ -7,7 +7,6 @@ Class {
 		'fieldChains',
 		'typeNames',
 		'values',
-		'chains',
 		'decimalses',
 		'lengths',
 		'defaults',
@@ -22,20 +21,8 @@ ABAPConstantStatementNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPConstantStatementNode >> chains [
-	^ chains
-]
-
-{ #category : #generated }
-ABAPConstantStatementNode >> chains: anOrderedCollection [
-	self setParents: self chains to: nil.
-	chains := anOrderedCollection.
-	self setParents: self chains to: self
-]
-
-{ #category : #generated }
 ABAPConstantStatementNode >> compositeNodeVariables [
-	^ #(#fieldChains #typeNames #values #chains #decimalses #lengths #defaults #fields)
+	^ #(#fieldChains #typeNames #values #decimalses #lengths #defaults #fields)
 ]
 
 { #category : #generated }
@@ -98,7 +85,6 @@ ABAPConstantStatementNode >> initialize [
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	chains := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.

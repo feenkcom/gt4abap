@@ -4,28 +4,31 @@ Class {
 	#instVars : [
 		'keywords',
 		'period',
-		'values',
-		'leftParens',
-		'key',
-		'rightParens',
-		'operators',
 		'dash',
-		'expressions',
-		'eqs',
-		'fieldChain',
-		'dynamics',
-		'sources',
-		'froms',
-		'toSources',
-		'names',
-		'intoTargets',
-		'assignings',
+		'keies',
 		'lefts',
+		'operators',
 		'rights',
-		'lows',
-		'highs',
+		'arrows',
+		'values',
+		'attributeNames',
+		'names',
+		'leftBrackets',
+		'rightBrackets',
+		'eqs',
+		'sources',
 		'fieldOffsets',
 		'fieldLengths',
+		'field',
+		'dynamics',
+		'froms',
+		'toSources',
+		'leftParens',
+		'rightParens',
+		'intoTargets',
+		'assignings',
+		'lows',
+		'highs',
 		'classes'
 	],
 	#category : #GToolkit4ABAP
@@ -34,6 +37,16 @@ Class {
 { #category : #generated }
 ABAPStartLoopNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStartLoop: self
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> arrows [
+	^ arrows
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> arrows: anOrderedCollection [
+	arrows := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -46,6 +59,18 @@ ABAPStartLoopNode >> assignings: anOrderedCollection [
 	self setParents: self assignings to: nil.
 	assignings := anOrderedCollection.
 	self setParents: self assignings to: self
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> attributeNames [
+	^ attributeNames
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> attributeNames: anOrderedCollection [
+	self setParents: self attributeNames to: nil.
+	attributeNames := anOrderedCollection.
+	self setParents: self attributeNames to: self
 ]
 
 { #category : #generated }
@@ -62,12 +87,12 @@ ABAPStartLoopNode >> classes: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeNodeVariables [
-	^ #(#expressions #dynamics #sources #froms #toSources #names #intoTargets #assignings #lefts #rights #lows #highs #fieldOffsets #fieldLengths #classes)
+	^ #(#lefts #rights #attributeNames #names #sources #fieldOffsets #fieldLengths #dynamics #froms #toSources #intoTargets #assignings #lows #highs #classes)
 ]
 
 { #category : #generated }
 ABAPStartLoopNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #eqs)
+	^ #(#keywords #operators #arrows #leftBrackets #rightBrackets #eqs #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -103,27 +128,15 @@ ABAPStartLoopNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> expressions [
-	^ expressions
+ABAPStartLoopNode >> field [
+	^ field
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> fieldChain [
-	^ fieldChain
-]
-
-{ #category : #generated }
-ABAPStartLoopNode >> fieldChain: anABAPFieldChainNode [
-	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPFieldChainNode.
-	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
+ABAPStartLoopNode >> field: anABAPNameNode [
+	self field notNil ifTrue: [ self field parent: nil ].
+	field := anABAPNameNode.
+	self field notNil ifTrue: [ self field parent: self ]
 ]
 
 { #category : #generated }
@@ -178,25 +191,29 @@ ABAPStartLoopNode >> highs: anOrderedCollection [
 ABAPStartLoopNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	expressions := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	froms := OrderedCollection new: 2.
-	toSources := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	intoTargets := OrderedCollection new: 2.
-	assignings := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
-	lows := OrderedCollection new: 2.
-	highs := OrderedCollection new: 2.
+	arrows := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	attributeNames := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	toSources := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
+	assignings := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
 	classes := OrderedCollection new: 2.
 ]
 
@@ -213,13 +230,15 @@ ABAPStartLoopNode >> intoTargets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> key [
-	^ key
+ABAPStartLoopNode >> keies [
+	^ keies
 ]
 
 { #category : #generated }
-ABAPStartLoopNode >> key: aSmaCCToken [
-	key := aSmaCCToken
+ABAPStartLoopNode >> keies: anOrderedCollection [
+	self setParent: self keies to: nil.
+	keies := anOrderedCollection.
+	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -230,6 +249,16 @@ ABAPStartLoopNode >> keywords [
 { #category : #generated }
 ABAPStartLoopNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> leftBrackets [
+	^ leftBrackets
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> leftBrackets: anOrderedCollection [
+	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -280,7 +309,7 @@ ABAPStartLoopNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> nodeVariables [
-	^ #(#fieldChain)
+	^ #(#field)
 ]
 
 { #category : #generated }
@@ -295,7 +324,7 @@ ABAPStartLoopNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> otherVariables [
-	^ #(#values)
+	^ #(#keies #values)
 ]
 
 { #category : #generated }
@@ -306,6 +335,16 @@ ABAPStartLoopNode >> period [
 { #category : #generated }
 ABAPStartLoopNode >> period: aSmaCCToken [
 	period := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> rightBrackets [
+	^ rightBrackets
+]
+
+{ #category : #generated }
+ABAPStartLoopNode >> rightBrackets: anOrderedCollection [
+	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -356,7 +395,7 @@ ABAPStartLoopNode >> toSources: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartLoopNode >> tokenVariables [
-	^ #(#period #key #dash)
+	^ #(#period #dash)
 ]
 
 { #category : #generated }

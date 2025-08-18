@@ -3,11 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParen',
-		'messageClass',
-		'rightParen',
-		'sources',
+		'messageSource',
 		'exceptionNames',
+		'sources',
 		'intoTargets',
 		'dashs',
 		'keies',
@@ -57,7 +55,7 @@ ABAPMessageNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPMessageNode >> compositeNodeVariables [
-	^ #(#sources #exceptionNames #intoTargets #lefts #rights #attributeNames #names #fieldOffsets #fieldLengths #fields)
+	^ #(#exceptionNames #sources #intoTargets #lefts #rights #attributeNames #names #fieldOffsets #fieldLengths #fields)
 ]
 
 { #category : #generated }
@@ -137,8 +135,8 @@ ABAPMessageNode >> fields: anOrderedCollection [
 ABAPMessageNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	exceptionNames := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
@@ -202,16 +200,6 @@ ABAPMessageNode >> leftBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-ABAPMessageNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPMessageNode >> lefts [
 	^ lefts
 ]
@@ -224,15 +212,15 @@ ABAPMessageNode >> lefts: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> messageClass [
-	^ messageClass
+ABAPMessageNode >> messageSource [
+	^ messageSource
 ]
 
 { #category : #generated }
-ABAPMessageNode >> messageClass: anABAPNameNode [
-	self messageClass notNil ifTrue: [ self messageClass parent: nil ].
-	messageClass := anABAPNameNode.
-	self messageClass notNil ifTrue: [ self messageClass parent: self ]
+ABAPMessageNode >> messageSource: anABAPMessageSourceNode [
+	self messageSource notNil ifTrue: [ self messageSource parent: nil ].
+	messageSource := anABAPMessageSourceNode.
+	self messageSource notNil ifTrue: [ self messageSource parent: self ]
 ]
 
 { #category : #generated }
@@ -249,7 +237,7 @@ ABAPMessageNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPMessageNode >> nodeVariables [
-	^ #(#messageClass)
+	^ #(#messageSource)
 ]
 
 { #category : #generated }
@@ -278,16 +266,6 @@ ABAPMessageNode >> rightBrackets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMessageNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-ABAPMessageNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPMessageNode >> rights [
 	^ rights
 ]
@@ -309,11 +287,6 @@ ABAPMessageNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPMessageNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
 ]
 
 { #category : #generated }

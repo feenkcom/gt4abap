@@ -22,6 +22,7 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'selects',
 		'decs',
 		'lefts',
 		'rights',
@@ -97,7 +98,7 @@ ABAPInsertDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
+	^ #(#dynamics #targets #withNames #asNames #fields #fieldChains #fieldNames #lengths #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
@@ -244,6 +245,7 @@ ABAPInsertDatabaseNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	selects := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
@@ -305,9 +307,9 @@ ABAPInsertDatabaseNode >> lefts [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> lefts: anOrderedCollection [
-	self setParent: self lefts to: nil.
+	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParent: self lefts to: self
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -346,7 +348,7 @@ ABAPInsertDatabaseNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> otherVariables [
-	^ #(#values #names #keies #lefts)
+	^ #(#values #names #keies)
 ]
 
 { #category : #generated }
@@ -379,6 +381,18 @@ ABAPInsertDatabaseNode >> rights: anOrderedCollection [
 	self setParents: self rights to: nil.
 	rights := anOrderedCollection.
 	self setParents: self rights to: self
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> selects [
+	^ selects
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> selects: anOrderedCollection [
+	self setParents: self selects to: nil.
+	selects := anOrderedCollection.
+	self setParents: self selects to: self
 ]
 
 { #category : #generated }

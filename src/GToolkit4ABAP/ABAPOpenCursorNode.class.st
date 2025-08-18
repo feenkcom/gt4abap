@@ -21,6 +21,7 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'lengths',
+		'selects',
 		'ats',
 		'decs',
 		'lefts',
@@ -97,7 +98,7 @@ ABAPOpenCursorNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #decs #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
@@ -243,6 +244,7 @@ ABAPOpenCursorNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	selects := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
@@ -305,9 +307,9 @@ ABAPOpenCursorNode >> lefts [
 
 { #category : #generated }
 ABAPOpenCursorNode >> lefts: anOrderedCollection [
-	self setParent: self lefts to: nil.
+	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
-	self setParent: self lefts to: self
+	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -346,7 +348,7 @@ ABAPOpenCursorNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPOpenCursorNode >> otherVariables [
-	^ #(#names #values #keies #lefts)
+	^ #(#names #values #keies)
 ]
 
 { #category : #generated }
@@ -379,6 +381,18 @@ ABAPOpenCursorNode >> rights: anOrderedCollection [
 	self setParents: self rights to: nil.
 	rights := anOrderedCollection.
 	self setParents: self rights to: self
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> selects [
+	^ selects
+]
+
+{ #category : #generated }
+ABAPOpenCursorNode >> selects: anOrderedCollection [
+	self setParents: self selects to: nil.
+	selects := anOrderedCollection.
+	self setParents: self selects to: self
 ]
 
 { #category : #generated }

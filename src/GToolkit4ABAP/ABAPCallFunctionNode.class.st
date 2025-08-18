@@ -4,31 +4,34 @@ Class {
 	#instVars : [
 		'keywords',
 		'functionName',
-		'sources',
+		'tasks',
+		'units',
 		'formNames',
-		'values',
-		'leftParens',
-		'keies',
-		'rightParens',
-		'operators',
-		'dashs',
-		'fieldChains',
+		'sources',
 		'names',
 		'arrows',
 		'attributeNames',
 		'dynamics',
 		'fields',
 		'methodNames',
-		'expressions',
+		'values',
+		'leftParens',
+		'rightParens',
+		'parameterNames',
 		'eqs',
 		'targets',
-		'parameterNames',
+		'operators',
+		'exception',
+		'dashs',
+		'keies',
 		'lefts',
 		'rights',
+		'leftBrackets',
+		'rightBrackets',
 		'fieldOffsets',
 		'fieldLengths',
-		'leftBrackets',
-		'rightBrackets'
+		'parameterTable',
+		'exceptionTable'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -62,12 +65,12 @@ ABAPCallFunctionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#sources #formNames #fieldChains #names #attributeNames #dynamics #fields #methodNames #expressions #targets #parameterNames #lefts #rights #fieldOffsets #fieldLengths)
+	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #parameterNames #targets #lefts #rights #fieldOffsets #fieldLengths)
 ]
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #dashs #arrows #eqs #leftBrackets #rightBrackets)
+	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -103,27 +106,27 @@ ABAPCallFunctionNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> expressions [
-	^ expressions
+ABAPCallFunctionNode >> exception [
+	^ exception
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
+ABAPCallFunctionNode >> exception: anABAPNameNode [
+	self exception notNil ifTrue: [ self exception parent: nil ].
+	exception := anABAPNameNode.
+	self exception notNil ifTrue: [ self exception parent: self ]
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> fieldChains [
-	^ fieldChains
+ABAPCallFunctionNode >> exceptionTable [
+	^ exceptionTable
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> fieldChains: anOrderedCollection [
-	self setParents: self fieldChains to: nil.
-	fieldChains := anOrderedCollection.
-	self setParents: self fieldChains to: self
+ABAPCallFunctionNode >> exceptionTable: anABAPExpressionNode [
+	self exceptionTable notNil ifTrue: [ self exceptionTable parent: nil ].
+	exceptionTable := anABAPExpressionNode.
+	self exceptionTable notNil ifTrue: [ self exceptionTable parent: self ]
 ]
 
 { #category : #generated }
@@ -190,27 +193,27 @@ ABAPCallFunctionNode >> functionName: anABAPExpressionNode [
 ABAPCallFunctionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	tasks := OrderedCollection new: 2.
+	units := OrderedCollection new: 2.
 	formNames := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	methodNames := OrderedCollection new: 2.
-	expressions := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	keies := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
@@ -297,7 +300,7 @@ ABAPCallFunctionNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> nodeVariables [
-	^ #(#functionName)
+	^ #(#functionName #exception #parameterTable #exceptionTable)
 ]
 
 { #category : #generated }
@@ -325,6 +328,18 @@ ABAPCallFunctionNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> parameterTable [
+	^ parameterTable
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> parameterTable: anABAPExpressionNode [
+	self parameterTable notNil ifTrue: [ self parameterTable parent: nil ].
+	parameterTable := anABAPExpressionNode.
+	self parameterTable notNil ifTrue: [ self parameterTable parent: self ]
 ]
 
 { #category : #generated }
@@ -381,6 +396,30 @@ ABAPCallFunctionNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> tasks [
+	^ tasks
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> tasks: anOrderedCollection [
+	self setParents: self tasks to: nil.
+	tasks := anOrderedCollection.
+	self setParents: self tasks to: self
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> units [
+	^ units
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> units: anOrderedCollection [
+	self setParents: self units to: nil.
+	units := anOrderedCollection.
+	self setParents: self units to: self
 ]
 
 { #category : #generated }

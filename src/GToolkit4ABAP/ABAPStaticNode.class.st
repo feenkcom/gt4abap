@@ -7,7 +7,6 @@ Class {
 		'fieldChains',
 		'typeNames',
 		'values',
-		'chains',
 		'lengths',
 		'decimalses',
 		'defaults',
@@ -30,20 +29,8 @@ ABAPStaticNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPStaticNode >> chains [
-	^ chains
-]
-
-{ #category : #generated }
-ABAPStaticNode >> chains: anOrderedCollection [
-	self setParents: self chains to: nil.
-	chains := anOrderedCollection.
-	self setParents: self chains to: self
-]
-
-{ #category : #generated }
 ABAPStaticNode >> compositeNodeVariables [
-	^ #(#fieldChains #typeNames #chains #lengths #decimalses #defaults #fields #sizes)
+	^ #(#fieldChains #typeNames #lengths #decimalses #defaults #fields #sizes)
 ]
 
 { #category : #generated }
@@ -106,7 +93,6 @@ ABAPStaticNode >> initialize [
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	chains := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.

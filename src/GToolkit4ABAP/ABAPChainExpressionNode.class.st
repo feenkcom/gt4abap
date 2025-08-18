@@ -4,7 +4,10 @@ Class {
 	#instVars : [
 		'value',
 		'fieldOffset',
-		'fieldLength'
+		'fieldLength',
+		'name',
+		'leftBracket',
+		'rightBracket'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -39,8 +42,45 @@ ABAPChainExpressionNode >> fieldOffset: anABAPFieldOffsetNode [
 ]
 
 { #category : #generated }
+ABAPChainExpressionNode >> leftBracket [
+	^ leftBracket
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> name: anABAPExpressionNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPExpressionNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
 ABAPChainExpressionNode >> nodeVariables [
-	^ #(#value #fieldOffset #fieldLength)
+	^ #(#value #fieldOffset #fieldLength #name)
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> rightBracket [
+	^ rightBracket
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPChainExpressionNode >> tokenVariables [
+	^ #(#leftBracket #rightBracket)
 ]
 
 { #category : #generated }

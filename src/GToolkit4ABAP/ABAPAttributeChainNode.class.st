@@ -21,11 +21,10 @@ Class {
 		'args',
 		'fields',
 		'castValue',
-		'leftBrackets',
-		'rightBrackets',
-		'keies',
-		'fieldLength',
-		'fieldOffset'
+		'leftBracket',
+		'rightBracket',
+		'fieldOffset',
+		'fieldLength'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -83,12 +82,12 @@ ABAPAttributeChainNode >> castValue: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPAttributeChainNode >> compositeNodeVariables [
-	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #args #fields #keies)
+	^ #(#methodNames #sources #parameterNames #targets #lefts #rights #names #attributeNames #typeNames #args #fields)
 ]
 
 { #category : #generated }
 ABAPAttributeChainNode >> compositeTokenVariables [
-	^ #(#eqs #keywords #operators #dashs #arrows #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#eqs #keywords #operators #dashs #arrows #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -179,21 +178,6 @@ ABAPAttributeChainNode >> initialize [
 	typeNames := OrderedCollection new: 2.
 	args := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPAttributeChainNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPAttributeChainNode >> keies: anOrderedCollection [
-	self setParents: self keies to: nil.
-	keies := anOrderedCollection.
-	self setParents: self keies to: self
 ]
 
 { #category : #generated }
@@ -207,13 +191,13 @@ ABAPAttributeChainNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAttributeChainNode >> leftBrackets [
-	^ leftBrackets
+ABAPAttributeChainNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-ABAPAttributeChainNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPAttributeChainNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -254,7 +238,7 @@ ABAPAttributeChainNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPAttributeChainNode >> nodeVariables [
-	^ #(#fieldChain #castValue #fieldLength #fieldOffset)
+	^ #(#fieldChain #castValue #fieldOffset #fieldLength)
 ]
 
 { #category : #generated }
@@ -285,13 +269,13 @@ ABAPAttributeChainNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAttributeChainNode >> rightBrackets [
-	^ rightBrackets
+ABAPAttributeChainNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-ABAPAttributeChainNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPAttributeChainNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -328,6 +312,11 @@ ABAPAttributeChainNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPAttributeChainNode >> tokenVariables [
+	^ #(#leftBracket #rightBracket)
 ]
 
 { #category : #generated }

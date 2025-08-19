@@ -16,7 +16,7 @@ Class {
 		'fieldChains',
 		'values',
 		'leftParens',
-		'keies',
+		'keys',
 		'rightParens',
 		'operators',
 		'dashs',
@@ -95,7 +95,7 @@ ABAPParameterNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPParameterNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #arrows #eqs)
+	^ #(#keywords #leftParens #keys #rightParens #operators #dashs #arrows #eqs)
 ]
 
 { #category : #generated }
@@ -242,7 +242,7 @@ ABAPParameterNode >> initialize [
 	fieldChains := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
@@ -262,13 +262,13 @@ ABAPParameterNode >> initialize [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> keies [
-	^ keies
+ABAPParameterNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPParameterNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+ABAPParameterNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }

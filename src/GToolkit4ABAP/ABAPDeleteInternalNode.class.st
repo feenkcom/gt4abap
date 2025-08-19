@@ -7,15 +7,9 @@ Class {
 		'sources',
 		'names',
 		'from',
-		'lefts',
-		'operators',
-		'rights',
+		'comparings',
 		'fieldLengths',
 		'fieldOffsets',
-		'dynamics',
-		'arrows',
-		'attributeNames',
-		'dashs',
 		'where',
 		'toSource'
 	],
@@ -28,57 +22,25 @@ ABAPDeleteInternalNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> arrows [
-	^ arrows
+ABAPDeleteInternalNode >> comparings [
+	^ comparings
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPDeleteInternalNode >> comparings: anOrderedCollection [
+	self setParents: self comparings to: nil.
+	comparings := anOrderedCollection.
+	self setParents: self comparings to: self
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #lefts #rights #attributeNames #fieldLengths #fieldOffsets #dynamics)
+	^ #(#sources #names #comparings #fieldLengths #fieldOffsets)
 ]
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeTokenVariables [
-	^ #(#keywords #operators #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -123,15 +85,9 @@ ABAPDeleteInternalNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	comparings := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -142,18 +98,6 @@ ABAPDeleteInternalNode >> keywords [
 { #category : #generated }
 ABAPDeleteInternalNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -171,28 +115,6 @@ ABAPDeleteInternalNode >> names: anOrderedCollection [
 { #category : #generated }
 ABAPDeleteInternalNode >> nodeVariables [
 	^ #(#target #from #where #toSource)
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> rights [
-	^ rights
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
 ]
 
 { #category : #generated }

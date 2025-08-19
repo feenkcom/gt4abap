@@ -6,7 +6,7 @@ Class {
 		'target',
 		'wheres',
 		'assignings',
-		'usingKeies',
+		'usingKeys',
 		'sources',
 		'names',
 		'froms',
@@ -34,7 +34,7 @@ ABAPModifyInternalNode >> assignings: anOrderedCollection [
 
 { #category : #generated }
 ABAPModifyInternalNode >> compositeNodeVariables [
-	^ #(#wheres #assignings #usingKeies #sources #names #froms)
+	^ #(#wheres #assignings #usingKeys #sources #names #froms)
 ]
 
 { #category : #generated }
@@ -72,7 +72,7 @@ ABAPModifyInternalNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	wheres := OrderedCollection new: 2.
 	assignings := OrderedCollection new: 2.
-	usingKeies := OrderedCollection new: 2.
+	usingKeys := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
@@ -130,15 +130,15 @@ ABAPModifyInternalNode >> target: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> usingKeies [
-	^ usingKeies
+ABAPModifyInternalNode >> usingKeys [
+	^ usingKeys
 ]
 
 { #category : #generated }
-ABAPModifyInternalNode >> usingKeies: anOrderedCollection [
-	self setParents: self usingKeies to: nil.
-	usingKeies := anOrderedCollection.
-	self setParents: self usingKeies to: self
+ABAPModifyInternalNode >> usingKeys: anOrderedCollection [
+	self setParents: self usingKeys to: nil.
+	usingKeys := anOrderedCollection.
+	self setParents: self usingKeys to: self
 ]
 
 { #category : #generated }

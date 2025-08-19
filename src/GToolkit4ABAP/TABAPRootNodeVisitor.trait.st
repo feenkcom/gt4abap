@@ -466,11 +466,6 @@ TABAPRootNodeVisitor >> visitDemand: aDemand [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitDereferenceExpression: aDereferenceExpression [
-	^ self visitExpression: aDereferenceExpression
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitDescribe: aDescribe [
 	^ self visitStatement: aDescribe
 ]
@@ -588,11 +583,6 @@ TABAPRootNodeVisitor >> visitExtract: anExtract [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFetchNextCursor: aFetchNextCursor [
 	^ self visitStatement: aFetchNextCursor
-]
-
-{ #category : #generated }
-TABAPRootNodeVisitor >> visitFieldChain: aFieldChain [
-	^ self visitExpression: aFieldChain
 ]
 
 { #category : #generated }
@@ -1211,8 +1201,28 @@ TABAPRootNodeVisitor >> visitRoot: aRoot [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitSQLAggregation: aSQLAggregation [
+	^ self visitExpression: aSQLAggregation
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitSQLCase: aSQLCase [
+	^ self visitExpression: aSQLCase
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSQLCompareExpression: aSQLCompareExpression [
 	^ self visitExpression: aSQLCompareExpression
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitSQLFunction: aSQLFunction [
+	^ self visitExpression: aSQLFunction
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitSQLPath: aSQLPath [
+	^ self visitExpression: aSQLPath
 ]
 
 { #category : #generated }

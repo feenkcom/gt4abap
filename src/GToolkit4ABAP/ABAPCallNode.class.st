@@ -127,9 +127,9 @@ ABAPCallNode >> fieldChain [
 ]
 
 { #category : #generated }
-ABAPCallNode >> fieldChain: anABAPFieldChainNode [
+ABAPCallNode >> fieldChain: anABAPExpressionNode [
 	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPFieldChainNode.
+	fieldChain := anABAPExpressionNode.
 	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 

@@ -10,7 +10,6 @@ Class {
 		'rightParens',
 		'fieldNames',
 		'eqs',
-		'operators',
 		'commas',
 		'selects',
 		'name'
@@ -50,7 +49,7 @@ ABAPUpdateDatabaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #ats #leftParens #rightParens #eqs #operators #commas)
+	^ #(#keywords #ats #leftParens #rightParens #eqs #commas)
 ]
 
 { #category : #generated }
@@ -98,7 +97,6 @@ ABAPUpdateDatabaseNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	selects := OrderedCollection new: 2.
 ]
@@ -131,16 +129,6 @@ ABAPUpdateDatabaseNode >> name [
 { #category : #generated }
 ABAPUpdateDatabaseNode >> name: aSmaCCToken [
 	name := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }

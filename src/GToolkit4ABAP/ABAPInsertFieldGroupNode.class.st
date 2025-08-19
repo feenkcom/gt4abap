@@ -7,7 +7,7 @@ Class {
 		'intoTarget',
 		'values',
 		'leftParens',
-		'keies',
+		'keys',
 		'rightParens',
 		'operators',
 		'dashs',
@@ -15,9 +15,9 @@ Class {
 		'parameterNames',
 		'eqs',
 		'targets',
+		'names',
 		'lefts',
 		'rights',
-		'names',
 		'arrows',
 		'attributeNames',
 		'fieldChains',
@@ -83,12 +83,12 @@ ABAPInsertFieldGroupNode >> castValues: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #methodNames #parameterNames #targets #lefts #rights #names #attributeNames #fieldChains #typeNames #args #fields #castValues #expressions)
+	^ #(#sources #methodNames #parameterNames #targets #names #lefts #rights #attributeNames #fieldChains #typeNames #args #fields #castValues #expressions)
 ]
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #dashs #eqs #arrows)
+	^ #(#keywords #leftParens #keys #rightParens #operators #dashs #eqs #arrows)
 ]
 
 { #category : #generated }
@@ -154,7 +154,7 @@ ABAPInsertFieldGroupNode >> initialize [
 	sources := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
@@ -162,9 +162,9 @@ ABAPInsertFieldGroupNode >> initialize [
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
@@ -188,13 +188,13 @@ ABAPInsertFieldGroupNode >> intoTarget: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPInsertFieldGroupNode >> keies [
-	^ keies
+ABAPInsertFieldGroupNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPInsertFieldGroupNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+ABAPInsertFieldGroupNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }

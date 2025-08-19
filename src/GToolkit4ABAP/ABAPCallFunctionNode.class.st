@@ -21,15 +21,11 @@ Class {
 		'eqs',
 		'targets',
 		'operators',
-		'exception',
-		'dashs',
-		'keies',
 		'lefts',
 		'rights',
-		'leftBrackets',
-		'rightBrackets',
-		'fieldOffsets',
-		'fieldLengths',
+		'dashs',
+		'exception',
+		'keys',
 		'parameterTable',
 		'exceptionTable'
 	],
@@ -65,12 +61,12 @@ ABAPCallFunctionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #targets #parameterNames #lefts #rights #fieldOffsets #fieldLengths)
+	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs #leftBrackets #rightBrackets)
+	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs #keys)
 ]
 
 { #category : #generated }
@@ -130,30 +126,6 @@ ABAPCallFunctionNode >> exceptionTable: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
-]
-
-{ #category : #generated }
 ABAPCallFunctionNode >> fields [
 	^ fields
 ]
@@ -206,30 +178,24 @@ ABAPCallFunctionNode >> initialize [
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> keies [
-	^ keies
+ABAPCallFunctionNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> keies: anOrderedCollection [
-	self setParent: self keies to: nil.
-	keies := anOrderedCollection.
-	self setParent: self keies to: self
+ABAPCallFunctionNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -240,16 +206,6 @@ ABAPCallFunctionNode >> keywords [
 { #category : #generated }
 ABAPCallFunctionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -315,7 +271,7 @@ ABAPCallFunctionNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> otherVariables [
-	^ #(#values #keies)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -340,16 +296,6 @@ ABAPCallFunctionNode >> parameterTable: anABAPExpressionNode [
 	self parameterTable notNil ifTrue: [ self parameterTable parent: nil ].
 	parameterTable := anABAPExpressionNode.
 	self parameterTable notNil ifTrue: [ self parameterTable parent: self ]
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

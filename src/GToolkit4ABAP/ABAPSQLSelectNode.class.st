@@ -3,6 +3,7 @@ Class {
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keywords',
+		'ats',
 		'targets',
 		'names',
 		'values',
@@ -12,25 +13,18 @@ Class {
 		'fields',
 		'eqs',
 		'fieldChains',
-		'keies',
+		'keys',
 		'operators',
 		'commas',
 		'fieldNames',
 		'hints',
 		'selects',
-		'ats',
-		'decs',
-		'leftBrackets',
-		'rightBrackets',
 		'lefts',
 		'rights',
-		'functions',
-		'arrows',
-		'attributeNames',
-		'dashs',
-		'fieldOffsets',
-		'fieldLengths',
-		'sources'
+		'ins',
+		'upTos',
+		'offsets',
+		'havings'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,16 +32,6 @@ Class {
 { #category : #generated }
 ABAPSQLSelectNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSQLSelect: self
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -73,18 +57,6 @@ ABAPSQLSelectNode >> ats: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSQLSelectNode >> commas [
 	^ commas
 ]
@@ -96,34 +68,12 @@ ABAPSQLSelectNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLSelectNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #hints #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #hints #selects #lefts #rights #ins #upTos #offsets #havings)
 ]
 
 { #category : #generated }
 ABAPSQLSelectNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #operators #commas #ats #leftBrackets #rightBrackets #arrows #dashs #leftParens #rightParens)
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> decs [
-	^ decs
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> decs: anOrderedCollection [
-	self setParents: self decs to: nil.
-	decs := anOrderedCollection.
-	self setParents: self decs to: self
+	^ #(#keywords #ats #eqs #keys #operators #commas #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -161,18 +111,6 @@ ABAPSQLSelectNode >> fieldChains: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
 ABAPSQLSelectNode >> fieldNames [
 	^ fieldNames
 ]
@@ -182,18 +120,6 @@ ABAPSQLSelectNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: nil.
 	fieldNames := anOrderedCollection.
 	self setParents: self fieldNames to: self
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -209,15 +135,15 @@ ABAPSQLSelectNode >> fields: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> functions [
-	^ functions
+ABAPSQLSelectNode >> havings [
+	^ havings
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> functions: anOrderedCollection [
-	self setParents: self functions to: nil.
-	functions := anOrderedCollection.
-	self setParents: self functions to: self
+ABAPSQLSelectNode >> havings: anOrderedCollection [
+	self setParents: self havings to: nil.
+	havings := anOrderedCollection.
+	self setParents: self havings to: self
 ]
 
 { #category : #generated }
@@ -236,6 +162,7 @@ ABAPSQLSelectNode >> hints: anOrderedCollection [
 ABAPSQLSelectNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
@@ -245,37 +172,40 @@ ABAPSQLSelectNode >> initialize [
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	hints := OrderedCollection new: 2.
 	selects := OrderedCollection new: 2.
-	ats := OrderedCollection new: 2.
-	decs := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	ins := OrderedCollection new: 2.
+	upTos := OrderedCollection new: 2.
+	offsets := OrderedCollection new: 2.
+	havings := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> keies [
-	^ keies
+ABAPSQLSelectNode >> ins [
+	^ ins
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> keies: anOrderedCollection [
-	self setParent: self keies to: nil.
-	keies := anOrderedCollection.
-	self setParent: self keies to: self
+ABAPSQLSelectNode >> ins: anOrderedCollection [
+	self setParents: self ins to: nil.
+	ins := anOrderedCollection.
+	self setParents: self ins to: self
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> keys [
+	^ keys
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -286,16 +216,6 @@ ABAPSQLSelectNode >> keywords [
 { #category : #generated }
 ABAPSQLSelectNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -323,6 +243,18 @@ ABAPSQLSelectNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPSQLSelectNode >> offsets [
+	^ offsets
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> offsets: anOrderedCollection [
+	self setParents: self offsets to: nil.
+	offsets := anOrderedCollection.
+	self setParents: self offsets to: self
+]
+
+{ #category : #generated }
 ABAPSQLSelectNode >> operators [
 	^ operators
 ]
@@ -334,17 +266,7 @@ ABAPSQLSelectNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLSelectNode >> otherVariables [
-	^ #(#names #values #keies)
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+	^ #(#names #values)
 ]
 
 { #category : #generated }
@@ -372,18 +294,6 @@ ABAPSQLSelectNode >> selects: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSQLSelectNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
 ABAPSQLSelectNode >> targets [
 	^ targets
 ]
@@ -393,6 +303,18 @@ ABAPSQLSelectNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> upTos [
+	^ upTos
+]
+
+{ #category : #generated }
+ABAPSQLSelectNode >> upTos: anOrderedCollection [
+	self setParents: self upTos to: nil.
+	upTos := anOrderedCollection.
+	self setParents: self upTos to: self
 ]
 
 { #category : #generated }

@@ -31,7 +31,7 @@ ABAPDeleteDatabaseNode >> ats: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #selects)
+	^ #(#dynamics #selects #values)
 ]
 
 { #category : #generated }
@@ -94,11 +94,6 @@ ABAPDeleteDatabaseNode >> name: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
 ABAPDeleteDatabaseNode >> rightParens [
 	^ rightParens
 ]
@@ -132,7 +127,7 @@ ABAPDeleteDatabaseNode >> values [
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]

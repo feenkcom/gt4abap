@@ -6,9 +6,7 @@ Class {
 		'operator',
 		'right',
 		'dashs',
-		'names',
-		'arrows',
-		'attributeNames'
+		'names'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,35 +17,13 @@ ABAPSimpleFieldChainNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSimpleFieldChainNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPSimpleFieldChainNode >> compositeNodeVariables [
-	^ #(#names #attributeNames)
+	^ #(#names)
 ]
 
 { #category : #generated }
 ABAPSimpleFieldChainNode >> compositeTokenVariables [
-	^ #(#dashs #arrows)
+	^ #(#dashs)
 ]
 
 { #category : #generated }
@@ -65,8 +41,6 @@ ABAPSimpleFieldChainNode >> initialize [
 	super initialize.
 	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

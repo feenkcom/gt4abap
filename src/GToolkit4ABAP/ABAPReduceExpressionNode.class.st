@@ -12,7 +12,7 @@ Class {
 		'ins',
 		'groups',
 		'indexes',
-		'usingKeies',
+		'usingKeys',
 		'froms',
 		'toSources',
 		'wheres',
@@ -35,7 +35,7 @@ ABAPReduceExpressionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReduceExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #fields #whiles #sources #ins #groups #indexes #usingKeies #froms #toSources #wheres #groupses #ofs #fieldChains #names #fieldOffsets #fieldLengths)
+	^ #(#typeNames #fields #whiles #sources #ins #groups #indexes #usingKeys #froms #toSources #wheres #groupses #ofs #fieldChains #names #fieldOffsets #fieldLengths)
 ]
 
 { #category : #generated }
@@ -162,7 +162,7 @@ ABAPReduceExpressionNode >> initialize [
 	ins := OrderedCollection new: 2.
 	groups := OrderedCollection new: 2.
 	indexes := OrderedCollection new: 2.
-	usingKeies := OrderedCollection new: 2.
+	usingKeys := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
 	toSources := OrderedCollection new: 2.
 	wheres := OrderedCollection new: 2.
@@ -284,15 +284,15 @@ ABAPReduceExpressionNode >> typeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReduceExpressionNode >> usingKeies [
-	^ usingKeies
+ABAPReduceExpressionNode >> usingKeys [
+	^ usingKeys
 ]
 
 { #category : #generated }
-ABAPReduceExpressionNode >> usingKeies: anOrderedCollection [
-	self setParents: self usingKeies to: nil.
-	usingKeies := anOrderedCollection.
-	self setParents: self usingKeies to: self
+ABAPReduceExpressionNode >> usingKeys: anOrderedCollection [
+	self setParents: self usingKeys to: nil.
+	usingKeys := anOrderedCollection.
+	self setParents: self usingKeys to: self
 ]
 
 { #category : #generated }

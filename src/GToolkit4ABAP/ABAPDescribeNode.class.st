@@ -32,9 +32,9 @@ ABAPDescribeNode >> fieldChain [
 ]
 
 { #category : #generated }
-ABAPDescribeNode >> fieldChain: anABAPFieldChainNode [
+ABAPDescribeNode >> fieldChain: anABAPExpressionNode [
 	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPFieldChainNode.
+	fieldChain := anABAPExpressionNode.
 	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 

@@ -10,7 +10,7 @@ Class {
 		'fields',
 		'occurs',
 		'leftParens',
-		'keies',
+		'keys',
 		'rightParens',
 		'operators',
 		'sizes'
@@ -30,7 +30,7 @@ ABAPFieldSymbolNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFieldSymbolNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keys #rightParens #operators)
 ]
 
 { #category : #generated }
@@ -51,9 +51,9 @@ ABAPFieldSymbolNode >> fieldChain [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> fieldChain: anABAPFieldChainNode [
+ABAPFieldSymbolNode >> fieldChain: anABAPExpressionNode [
 	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPFieldChainNode.
+	fieldChain := anABAPExpressionNode.
 	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
 ]
 
@@ -76,20 +76,20 @@ ABAPFieldSymbolNode >> initialize [
 	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> keies [
-	^ keies
+ABAPFieldSymbolNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+ABAPFieldSymbolNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }

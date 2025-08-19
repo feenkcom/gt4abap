@@ -8,7 +8,7 @@ Class {
 		'rightParen',
 		'fields',
 		'dashs',
-		'keies',
+		'keys',
 		'forFields',
 		'skip',
 		'name',
@@ -76,21 +76,21 @@ ABAPSelectionScreenNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	forFields := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> keies [
-	^ keies
+ABAPSelectionScreenNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> keies: anOrderedCollection [
-	self setParent: self keies to: nil.
-	keies := anOrderedCollection.
-	self setParent: self keies to: self
+ABAPSelectionScreenNode >> keys: anOrderedCollection [
+	self setParent: self keys to: nil.
+	keys := anOrderedCollection.
+	self setParent: self keys to: self
 ]
 
 { #category : #generated }
@@ -144,7 +144,7 @@ ABAPSelectionScreenNode >> nodeVariables [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> otherVariables [
-	^ #(#keies)
+	^ #(#keys)
 ]
 
 { #category : #generated }

@@ -13,7 +13,7 @@ Class {
 		'occurs',
 		'values',
 		'leftParens',
-		'keies',
+		'keys',
 		'rightParens',
 		'operators',
 		'sizes',
@@ -47,7 +47,7 @@ ABAPTypeNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPTypeNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keies #rightParens #operators)
+	^ #(#keywords #values #leftParens #keys #rightParens #operators)
 ]
 
 { #category : #generated }
@@ -123,20 +123,20 @@ ABAPTypeNode >> initialize [
 	fields := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPTypeNode >> keies [
-	^ keies
+ABAPTypeNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ABAPTypeNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+ABAPTypeNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }

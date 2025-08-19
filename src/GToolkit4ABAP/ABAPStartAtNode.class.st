@@ -7,7 +7,8 @@ Class {
 		'fieldOffset',
 		'fieldLength',
 		'period',
-		'end'
+		'end',
+		'atName'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,6 +28,16 @@ ABAPStartAtNode >> _at: anABAPExpressionNode [
 { #category : #generated }
 ABAPStartAtNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStartAt: self
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> atName [
+	^ atName
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> atName: aSmaCCToken [
+	atName := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -103,5 +114,5 @@ ABAPStartAtNode >> period: aSmaCCToken [
 
 { #category : #generated }
 ABAPStartAtNode >> tokenVariables [
-	^ #(#period)
+	^ #(#period #atName)
 ]

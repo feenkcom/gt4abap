@@ -9,15 +9,12 @@ Class {
 		'eqs',
 		'onOffs',
 		'leftParen',
-		'lefts',
-		'operators',
-		'rights',
-		'arrows',
-		'attributeNames',
-		'dashs',
-		'names',
+		'ats',
 		'rightParen',
-		'value'
+		'atInteger',
+		'star',
+		'selectionScreen',
+		'slash'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -28,45 +25,35 @@ ABAPWriteNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> arrows [
-	^ arrows
+ABAPWriteNode >> atInteger [
+	^ atInteger
 ]
 
 { #category : #generated }
-ABAPWriteNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
+ABAPWriteNode >> atInteger: aSmaCCToken [
+	atInteger := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPWriteNode >> attributeNames [
-	^ attributeNames
+ABAPWriteNode >> ats [
+	^ ats
 ]
 
 { #category : #generated }
-ABAPWriteNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPWriteNode >> ats: anOrderedCollection [
+	self setParents: self ats to: nil.
+	ats := anOrderedCollection.
+	self setParents: self ats to: self
 ]
 
 { #category : #generated }
 ABAPWriteNode >> compositeNodeVariables [
-	^ #(#sources #toTargets #onOffs #lefts #rights #attributeNames #names)
+	^ #(#sources #toTargets #onOffs #ats)
 ]
 
 { #category : #generated }
 ABAPWriteNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #operators #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPWriteNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPWriteNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -87,13 +74,7 @@ ABAPWriteNode >> initialize [
 	toTargets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	onOffs := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -117,30 +98,6 @@ ABAPWriteNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPWriteNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPWriteNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPWriteNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPWriteNode >> nodeVariables [
 	^ #(#write)
 ]
@@ -158,16 +115,6 @@ ABAPWriteNode >> onOffs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPWriteNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPWriteNode >> rightParen [
 	^ rightParen
 ]
@@ -178,15 +125,23 @@ ABAPWriteNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> rights [
-	^ rights
+ABAPWriteNode >> selectionScreen [
+	^ selectionScreen
 ]
 
 { #category : #generated }
-ABAPWriteNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
+ABAPWriteNode >> selectionScreen: aSmaCCToken [
+	selectionScreen := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPWriteNode >> slash [
+	^ slash
+]
+
+{ #category : #generated }
+ABAPWriteNode >> slash: aSmaCCToken [
+	slash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -199,6 +154,16 @@ ABAPWriteNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPWriteNode >> star [
+	^ star
+]
+
+{ #category : #generated }
+ABAPWriteNode >> star: aSmaCCToken [
+	star := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -215,17 +180,7 @@ ABAPWriteNode >> toTargets: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> tokenVariables [
-	^ #(#leftParen #rightParen #value #period)
-]
-
-{ #category : #generated }
-ABAPWriteNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPWriteNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+	^ #(#leftParen #rightParen #atInteger #star #selectionScreen #slash #period)
 ]
 
 { #category : #generated }

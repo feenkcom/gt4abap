@@ -6,7 +6,7 @@ Class {
 		'names',
 		'types',
 		'typeNames',
-		'usingKeies',
+		'usingKeys',
 		'eqs'
 	],
 	#category : #GToolkit4ABAP
@@ -19,7 +19,7 @@ ABAPTypeMeshNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPTypeMeshNode >> compositeNodeVariables [
-	^ #(#names #types #typeNames #usingKeies)
+	^ #(#names #types #typeNames #usingKeys)
 ]
 
 { #category : #generated }
@@ -44,7 +44,7 @@ ABAPTypeMeshNode >> initialize [
 	names := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	usingKeies := OrderedCollection new: 2.
+	usingKeys := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 ]
 
@@ -95,13 +95,13 @@ ABAPTypeMeshNode >> types: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPTypeMeshNode >> usingKeies [
-	^ usingKeies
+ABAPTypeMeshNode >> usingKeys [
+	^ usingKeys
 ]
 
 { #category : #generated }
-ABAPTypeMeshNode >> usingKeies: anOrderedCollection [
-	self setParents: self usingKeies to: nil.
-	usingKeies := anOrderedCollection.
-	self setParents: self usingKeies to: self
+ABAPTypeMeshNode >> usingKeys: anOrderedCollection [
+	self setParents: self usingKeys to: nil.
+	usingKeys := anOrderedCollection.
+	self setParents: self usingKeys to: self
 ]

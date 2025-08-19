@@ -16,7 +16,7 @@ Class {
 		'ofs',
 		'wheres',
 		'fieldChains',
-		'usingKeies',
+		'usingKeys',
 		'froms',
 		'toSources',
 		'names'
@@ -31,7 +31,7 @@ ABAPValueExpressionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPValueExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #fields #values #whiles #sources #ins #groups #indexes #groupses #ofs #wheres #fieldChains #usingKeies #froms #toSources #names)
+	^ #(#typeNames #fields #values #whiles #sources #ins #groups #indexes #groupses #ofs #wheres #fieldChains #usingKeys #froms #toSources #names)
 ]
 
 { #category : #generated }
@@ -138,7 +138,7 @@ ABAPValueExpressionNode >> initialize [
 	ofs := OrderedCollection new: 2.
 	wheres := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	usingKeies := OrderedCollection new: 2.
+	usingKeys := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
 	toSources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
@@ -227,15 +227,15 @@ ABAPValueExpressionNode >> typeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPValueExpressionNode >> usingKeies [
-	^ usingKeies
+ABAPValueExpressionNode >> usingKeys [
+	^ usingKeys
 ]
 
 { #category : #generated }
-ABAPValueExpressionNode >> usingKeies: anOrderedCollection [
-	self setParents: self usingKeies to: nil.
-	usingKeies := anOrderedCollection.
-	self setParents: self usingKeies to: self
+ABAPValueExpressionNode >> usingKeys: anOrderedCollection [
+	self setParents: self usingKeys to: nil.
+	usingKeys := anOrderedCollection.
+	self setParents: self usingKeys to: self
 ]
 
 { #category : #generated }

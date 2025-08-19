@@ -3,29 +3,31 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
+		'_className',
 		'messageSource',
 		'withs',
-		'sources',
+		'message',
+		'number',
 		'parameterNames',
 		'eqs',
 		'values',
-		'dash',
-		'keies',
-		'left',
-		'operator',
-		'right',
-		'arrows',
-		'attributeNames',
-		'leftBrackets',
-		'rightBrackets',
-		'fieldOffset',
-		'fieldLength',
-		'field',
+		'raise',
 		'exceptionName'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPRaiseNode >> _className [
+	^ _className
+]
+
+{ #category : #generated }
+ABAPRaiseNode >> _className: anABAPNameNode [
+	self _className notNil ifTrue: [ self _className parent: nil ].
+	_className := anABAPNameNode.
+	self _className notNil ifTrue: [ self _className parent: self ]
+]
 
 { #category : #generated }
 ABAPRaiseNode >> acceptVisitor: aRootVisitor [
@@ -33,45 +35,13 @@ ABAPRaiseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPRaiseNode >> compositeNodeVariables [
-	^ #(#names #sources #parameterNames #attributeNames)
+	^ #(#parameterNames #values)
 ]
 
 { #category : #generated }
 ABAPRaiseNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #arrows #leftBrackets #rightBrackets)
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> dash [
-	^ dash
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> dash: aSmaCCToken [
-	dash := aSmaCCToken
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -96,69 +66,14 @@ ABAPRaiseNode >> exceptionName: anABAPNameNode [
 	self exceptionName notNil ifTrue: [ self exceptionName parent: self ]
 ]
 
-{ #category : #generated }
-ABAPRaiseNode >> field [
-	^ field
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> fieldLength [
-	^ fieldLength
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> fieldLength: anABAPFieldLengthNode [
-	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
-	fieldLength := anABAPFieldLengthNode.
-	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> fieldOffset [
-	^ fieldOffset
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> fieldOffset: anABAPFieldOffsetNode [
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
-	fieldOffset := anABAPFieldOffsetNode.
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
-]
-
 { #category : #'generated-initialize-release' }
 ABAPRaiseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	withs := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	keies := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> keies [
-	^ keies
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> keies: anOrderedCollection [
-	self setParent: self keies to: nil.
-	keies := anOrderedCollection.
-	self setParent: self keies to: self
 ]
 
 { #category : #generated }
@@ -172,25 +87,15 @@ ABAPRaiseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> left [
-	^ left
+ABAPRaiseNode >> message [
+	^ message
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> left: anABAPExpressionNode [
-	self left notNil ifTrue: [ self left parent: nil ].
-	left := anABAPExpressionNode.
-	self left notNil ifTrue: [ self left parent: self ]
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPRaiseNode >> message: anABAPExpressionNode [
+	self message notNil ifTrue: [ self message parent: nil ].
+	message := anABAPExpressionNode.
+	self message notNil ifTrue: [ self message parent: self ]
 ]
 
 { #category : #generated }
@@ -206,35 +111,25 @@ ABAPRaiseNode >> messageSource: anABAPMessageSourceNode [
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPRaiseNode >> nodeVariables [
-	^ #(#messageSource #left #right #fieldOffset #fieldLength #field #exceptionName)
+	^ #(#_className #messageSource #message #raise #exceptionName)
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> operator [
-	^ operator
+ABAPRaiseNode >> number [
+	^ number
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
+ABAPRaiseNode >> number: anObject [
+	self setParent: self number to: nil.
+	number := anObject.
+	self setParent: self number to: self
 ]
 
 { #category : #generated }
 ABAPRaiseNode >> otherVariables [
-	^ #(#withs #values #keies)
+	^ #(#withs #number)
 ]
 
 { #category : #generated }
@@ -250,42 +145,15 @@ ABAPRaiseNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> right [
-	^ right
+ABAPRaiseNode >> raise [
+	^ raise
 ]
 
 { #category : #generated }
-ABAPRaiseNode >> right: anABAPExpressionNode [
-	self right notNil ifTrue: [ self right parent: nil ].
-	right := anABAPExpressionNode.
-	self right notNil ifTrue: [ self right parent: self ]
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPRaiseNode >> tokenVariables [
-	^ #(#dash #operator #period)
+ABAPRaiseNode >> raise: anABAPExpressionNode [
+	self raise notNil ifTrue: [ self raise parent: nil ].
+	raise := anABAPExpressionNode.
+	self raise notNil ifTrue: [ self raise parent: self ]
 ]
 
 { #category : #generated }
@@ -295,9 +163,9 @@ ABAPRaiseNode >> values [
 
 { #category : #generated }
 ABAPRaiseNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]
 
 { #category : #generated }

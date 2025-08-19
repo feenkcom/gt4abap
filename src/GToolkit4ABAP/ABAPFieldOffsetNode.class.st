@@ -3,8 +3,7 @@ Class {
 	#superclass : #ABAPRootNode,
 	#instVars : [
 		'plus',
-		'value',
-		'fieldChain'
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -15,20 +14,8 @@ ABAPFieldOffsetNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPFieldOffsetNode >> fieldChain [
-	^ fieldChain
-]
-
-{ #category : #generated }
-ABAPFieldOffsetNode >> fieldChain: anABAPSimpleFieldChainNode [
-	self fieldChain notNil ifTrue: [ self fieldChain parent: nil ].
-	fieldChain := anABAPSimpleFieldChainNode.
-	self fieldChain notNil ifTrue: [ self fieldChain parent: self ]
-]
-
-{ #category : #generated }
-ABAPFieldOffsetNode >> nodeVariables [
-	^ #(#fieldChain)
+ABAPFieldOffsetNode >> otherVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -43,7 +30,7 @@ ABAPFieldOffsetNode >> plus: aSmaCCToken [
 
 { #category : #generated }
 ABAPFieldOffsetNode >> tokenVariables [
-	^ #(#plus #value)
+	^ #(#plus)
 ]
 
 { #category : #generated }
@@ -52,6 +39,8 @@ ABAPFieldOffsetNode >> value [
 ]
 
 { #category : #generated }
-ABAPFieldOffsetNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+ABAPFieldOffsetNode >> value: anObject [
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

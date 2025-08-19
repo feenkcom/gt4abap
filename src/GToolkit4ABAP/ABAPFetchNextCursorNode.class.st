@@ -40,7 +40,7 @@ ABAPFetchNextCursorNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeNodeVariables [
-	^ #(#targets)
+	^ #(#values #targets)
 ]
 
 { #category : #generated }
@@ -81,11 +81,6 @@ ABAPFetchNextCursorNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
 ABAPFetchNextCursorNode >> rightParens [
 	^ rightParens
 ]
@@ -114,7 +109,7 @@ ABAPFetchNextCursorNode >> values [
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]

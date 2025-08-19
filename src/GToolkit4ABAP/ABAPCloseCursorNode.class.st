@@ -58,7 +58,7 @@ ABAPCloseCursorNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> otherVariables [
+ABAPCloseCursorNode >> nodeVariables [
 	^ #(#value)
 ]
 
@@ -83,8 +83,8 @@ ABAPCloseCursorNode >> value [
 ]
 
 { #category : #generated }
-ABAPCloseCursorNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+ABAPCloseCursorNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

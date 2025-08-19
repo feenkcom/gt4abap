@@ -3,30 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'left',
-		'operator',
-		'right',
-		'arrows',
-		'attributeNames',
-		'dashs',
+		'name',
+		'rangeFor',
 		'fieldLength',
-		'_source'
+		'occurs'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPRangesNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPRangesNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPRangesNode >> acceptVisitor: aRootVisitor [
@@ -34,45 +17,8 @@ ABAPRangesNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPRangesNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPRangesNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPRangesNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPRangesNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
-ABAPRangesNode >> compositeNodeVariables [
-	^ #(#names #attributeNames)
-]
-
-{ #category : #generated }
 ABAPRangesNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPRangesNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPRangesNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -91,10 +37,6 @@ ABAPRangesNode >> fieldLength: anABAPFieldLengthNode [
 ABAPRangesNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -108,57 +50,42 @@ ABAPRangesNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPRangesNode >> left [
-	^ left
+ABAPRangesNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-ABAPRangesNode >> left: anABAPNameNode [
-	self left notNil ifTrue: [ self left parent: nil ].
-	left := anABAPNameNode.
-	self left notNil ifTrue: [ self left parent: self ]
-]
-
-{ #category : #generated }
-ABAPRangesNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPRangesNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPRangesNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 ABAPRangesNode >> nodeVariables [
-	^ #(#left #right #fieldLength #_source)
+	^ #(#name #rangeFor #fieldLength #occurs)
 ]
 
 { #category : #generated }
-ABAPRangesNode >> operator [
-	^ operator
+ABAPRangesNode >> occurs [
+	^ occurs
 ]
 
 { #category : #generated }
-ABAPRangesNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
+ABAPRangesNode >> occurs: anABAPExpressionNode [
+	self occurs notNil ifTrue: [ self occurs parent: nil ].
+	occurs := anABAPExpressionNode.
+	self occurs notNil ifTrue: [ self occurs parent: self ]
 ]
 
 { #category : #generated }
-ABAPRangesNode >> right [
-	^ right
+ABAPRangesNode >> rangeFor [
+	^ rangeFor
 ]
 
 { #category : #generated }
-ABAPRangesNode >> right: anABAPNameNode [
-	self right notNil ifTrue: [ self right parent: nil ].
-	right := anABAPNameNode.
-	self right notNil ifTrue: [ self right parent: self ]
-]
-
-{ #category : #generated }
-ABAPRangesNode >> tokenVariables [
-	^ #(#operator #period)
+ABAPRangesNode >> rangeFor: anABAPExpressionNode [
+	self rangeFor notNil ifTrue: [ self rangeFor parent: nil ].
+	rangeFor := anABAPExpressionNode.
+	self rangeFor notNil ifTrue: [ self rangeFor parent: self ]
 ]

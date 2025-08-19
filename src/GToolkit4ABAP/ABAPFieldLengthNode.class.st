@@ -33,9 +33,9 @@ ABAPFieldLengthNode >> length [
 ]
 
 { #category : #generated }
-ABAPFieldLengthNode >> length: anABAPSimpleFieldChainNode [
+ABAPFieldLengthNode >> length: anABAPRootNode [
 	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPSimpleFieldChainNode.
+	length := anABAPRootNode.
 	self length notNil ifTrue: [ self length parent: self ]
 ]
 

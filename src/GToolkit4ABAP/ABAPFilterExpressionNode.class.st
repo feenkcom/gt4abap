@@ -5,7 +5,7 @@ Class {
 		'keywords',
 		'typeName',
 		'sources',
-		'usingKeies',
+		'usingKeys',
 		'where'
 	],
 	#category : #GToolkit4ABAP
@@ -18,7 +18,7 @@ ABAPFilterExpressionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFilterExpressionNode >> compositeNodeVariables [
-	^ #(#sources #usingKeies)
+	^ #(#sources #usingKeys)
 ]
 
 { #category : #generated }
@@ -31,7 +31,7 @@ ABAPFilterExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	usingKeies := OrderedCollection new: 2.
+	usingKeys := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -74,15 +74,15 @@ ABAPFilterExpressionNode >> typeName: anABAPTypeNameNode [
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> usingKeies [
-	^ usingKeies
+ABAPFilterExpressionNode >> usingKeys [
+	^ usingKeys
 ]
 
 { #category : #generated }
-ABAPFilterExpressionNode >> usingKeies: anOrderedCollection [
-	self setParents: self usingKeies to: nil.
-	usingKeies := anOrderedCollection.
-	self setParents: self usingKeies to: self
+ABAPFilterExpressionNode >> usingKeys: anOrderedCollection [
+	self setParents: self usingKeys to: nil.
+	usingKeys := anOrderedCollection.
+	self setParents: self usingKeys to: self
 ]
 
 { #category : #generated }

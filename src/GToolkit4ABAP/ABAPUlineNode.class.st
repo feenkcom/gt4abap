@@ -4,15 +4,12 @@ Class {
 	#instVars : [
 		'keywords',
 		'leftParen',
-		'lefts',
-		'operators',
-		'rights',
-		'arrows',
-		'attributeNames',
-		'dashs',
-		'names',
+		'ats',
 		'rightParen',
-		'value'
+		'atInteger',
+		'star',
+		'selectionScreen',
+		'slash'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,58 +20,42 @@ ABAPUlineNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPUlineNode >> arrows [
-	^ arrows
+ABAPUlineNode >> atInteger [
+	^ atInteger
 ]
 
 { #category : #generated }
-ABAPUlineNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
+ABAPUlineNode >> atInteger: aSmaCCToken [
+	atInteger := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPUlineNode >> attributeNames [
-	^ attributeNames
+ABAPUlineNode >> ats [
+	^ ats
 ]
 
 { #category : #generated }
-ABAPUlineNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
+ABAPUlineNode >> ats: anOrderedCollection [
+	self setParents: self ats to: nil.
+	ats := anOrderedCollection.
+	self setParents: self ats to: self
 ]
 
 { #category : #generated }
 ABAPUlineNode >> compositeNodeVariables [
-	^ #(#lefts #rights #attributeNames #names)
+	^ #(#ats)
 ]
 
 { #category : #generated }
 ABAPUlineNode >> compositeTokenVariables [
-	^ #(#keywords #operators #arrows #dashs)
-]
-
-{ #category : #generated }
-ABAPUlineNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPUlineNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPUlineNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
+	ats := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -98,40 +79,6 @@ ABAPUlineNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPUlineNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPUlineNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPUlineNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPUlineNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
-ABAPUlineNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPUlineNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPUlineNode >> rightParen [
 	^ rightParen
 ]
@@ -142,28 +89,36 @@ ABAPUlineNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPUlineNode >> rights [
-	^ rights
+ABAPUlineNode >> selectionScreen [
+	^ selectionScreen
 ]
 
 { #category : #generated }
-ABAPUlineNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
+ABAPUlineNode >> selectionScreen: aSmaCCToken [
+	selectionScreen := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPUlineNode >> slash [
+	^ slash
+]
+
+{ #category : #generated }
+ABAPUlineNode >> slash: aSmaCCToken [
+	slash := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPUlineNode >> star [
+	^ star
+]
+
+{ #category : #generated }
+ABAPUlineNode >> star: aSmaCCToken [
+	star := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPUlineNode >> tokenVariables [
-	^ #(#leftParen #rightParen #value #period)
-]
-
-{ #category : #generated }
-ABAPUlineNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPUlineNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+	^ #(#leftParen #rightParen #atInteger #star #selectionScreen #slash #period)
 ]

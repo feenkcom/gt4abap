@@ -20,10 +20,10 @@ Class {
 		'leftBrackets',
 		'rightBrackets',
 		'selects',
-		'names',
 		'dashs',
 		'arrows',
 		'attributeNames',
+		'names',
 		'eqs',
 		'sources'
 	],
@@ -212,8 +212,8 @@ ABAPInExpressionNode >> initialize [
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	selects := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	dashs := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.

@@ -4,14 +4,12 @@ Class {
 	#instVars : [
 		'keywords',
 		'leftParen',
-		'values',
+		'value',
 		'rightParen',
 		'fields',
 		'dashs',
 		'keies',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'forFields',
 		'skip',
 		'name',
 		'userCommand',
@@ -30,12 +28,12 @@ ABAPSelectionScreenNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeNodeVariables [
-	^ #(#fields #lengths #sources)
+	^ #(#fields #forFields #sources)
 ]
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #dashs #leftBrackets #rightBrackets)
+	^ #(#keywords #dashs)
 ]
 
 { #category : #generated }
@@ -60,17 +58,26 @@ ABAPSelectionScreenNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPSelectionScreenNode >> forFields [
+	^ forFields
+]
+
+{ #category : #generated }
+ABAPSelectionScreenNode >> forFields: anOrderedCollection [
+	self setParents: self forFields to: nil.
+	forFields := anOrderedCollection.
+	self setParents: self forFields to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPSelectionScreenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	forFields := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -97,16 +104,6 @@ ABAPSelectionScreenNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPSelectionScreenNode >> leftParen [
 	^ leftParen
 ]
@@ -114,18 +111,6 @@ ABAPSelectionScreenNode >> leftParen [
 { #category : #generated }
 ABAPSelectionScreenNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -154,22 +139,12 @@ ABAPSelectionScreenNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> nodeVariables [
-	^ #(#skip #name #userCommand #tab #screen #lines)
+	^ #(#value #skip #name #userCommand #tab #screen #lines)
 ]
 
 { #category : #generated }
 ABAPSelectionScreenNode >> otherVariables [
-	^ #(#values #keies)
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+	^ #(#keies)
 ]
 
 { #category : #generated }
@@ -248,13 +223,13 @@ ABAPSelectionScreenNode >> userCommand: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> values [
-	^ values
+ABAPSelectionScreenNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+ABAPSelectionScreenNode >> value: anABAPIntegerNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPIntegerNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

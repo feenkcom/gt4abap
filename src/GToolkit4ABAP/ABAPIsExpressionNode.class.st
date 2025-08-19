@@ -4,9 +4,7 @@ Class {
 	#instVars : [
 		'value',
 		'keywords',
-		'_class',
-		'fieldOffset',
-		'fieldLength'
+		'_class'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -33,30 +31,6 @@ ABAPIsExpressionNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
 ]
 
-{ #category : #generated }
-ABAPIsExpressionNode >> fieldLength [
-	^ fieldLength
-]
-
-{ #category : #generated }
-ABAPIsExpressionNode >> fieldLength: anABAPFieldLengthNode [
-	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
-	fieldLength := anABAPFieldLengthNode.
-	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
-]
-
-{ #category : #generated }
-ABAPIsExpressionNode >> fieldOffset [
-	^ fieldOffset
-]
-
-{ #category : #generated }
-ABAPIsExpressionNode >> fieldOffset: anABAPFieldOffsetNode [
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
-	fieldOffset := anABAPFieldOffsetNode.
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
-]
-
 { #category : #'generated-initialize-release' }
 ABAPIsExpressionNode >> initialize [
 	super initialize.
@@ -75,7 +49,7 @@ ABAPIsExpressionNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPIsExpressionNode >> nodeVariables [
-	^ #(#_class #fieldOffset #fieldLength)
+	^ #(#_class)
 ]
 
 { #category : #generated }

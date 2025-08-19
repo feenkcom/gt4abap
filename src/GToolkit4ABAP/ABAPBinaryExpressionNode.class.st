@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'left',
 		'operators',
-		'right'
+		'right',
+		'keyword'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,6 +24,16 @@ ABAPBinaryExpressionNode >> compositeTokenVariables [
 ABAPBinaryExpressionNode >> initialize [
 	super initialize.
 	operators := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPBinaryExpressionNode >> keyword [
+	^ keyword
+]
+
+{ #category : #generated }
+ABAPBinaryExpressionNode >> keyword: aSmaCCToken [
+	keyword := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -62,4 +73,9 @@ ABAPBinaryExpressionNode >> right: anABAPExpressionNode [
 	self right notNil ifTrue: [ self right parent: nil ].
 	right := anABAPExpressionNode.
 	self right notNil ifTrue: [ self right parent: self ]
+]
+
+{ #category : #generated }
+ABAPBinaryExpressionNode >> tokenVariables [
+	^ #(#keyword)
 ]

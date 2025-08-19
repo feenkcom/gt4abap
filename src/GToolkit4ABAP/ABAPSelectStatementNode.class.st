@@ -18,12 +18,12 @@ Class {
 		'operators',
 		'commas',
 		'fieldNames',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'hints',
 		'selects',
 		'ats',
 		'decs',
+		'leftBrackets',
+		'rightBrackets',
 		'lefts',
 		'rights',
 		'functions',
@@ -98,12 +98,12 @@ ABAPSelectStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectStatementNode >> compositeNodeVariables [
-	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #lengths #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
+	^ #(#targets #withNames #asNames #dynamics #fields #fieldChains #fieldNames #hints #selects #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #sources)
 ]
 
 { #category : #generated }
 ABAPSelectStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #operators #commas #leftBrackets #rightBrackets #ats #arrows #dashs)
+	^ #(#keywords #leftParens #rightParens #eqs #operators #commas #ats #leftBrackets #rightBrackets #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -222,6 +222,18 @@ ABAPSelectStatementNode >> functions: anOrderedCollection [
 	self setParents: self functions to: self
 ]
 
+{ #category : #generated }
+ABAPSelectStatementNode >> hints [
+	^ hints
+]
+
+{ #category : #generated }
+ABAPSelectStatementNode >> hints: anOrderedCollection [
+	self setParents: self hints to: nil.
+	hints := anOrderedCollection.
+	self setParents: self hints to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPSelectStatementNode >> initialize [
 	super initialize.
@@ -241,12 +253,12 @@ ABAPSelectStatementNode >> initialize [
 	operators := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	hints := OrderedCollection new: 2.
 	selects := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
@@ -310,18 +322,6 @@ ABAPSelectStatementNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPSelectStatementNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPSelectStatementNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }

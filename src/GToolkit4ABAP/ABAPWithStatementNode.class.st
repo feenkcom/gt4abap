@@ -31,7 +31,7 @@ Class {
 		'eqs',
 		'fieldChains',
 		'targets',
-		'lengths',
+		'hints',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -98,7 +98,7 @@ ABAPWithStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #selects #fieldChains #targets #lengths #sources)
+	^ #(#withNames #dynamics #asNames #fields #fieldNames #decs #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #selects #fieldChains #targets #hints #sources)
 ]
 
 { #category : #generated }
@@ -222,6 +222,18 @@ ABAPWithStatementNode >> functions: anOrderedCollection [
 	self setParents: self functions to: self
 ]
 
+{ #category : #generated }
+ABAPWithStatementNode >> hints [
+	^ hints
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> hints: anOrderedCollection [
+	self setParents: self hints to: nil.
+	hints := anOrderedCollection.
+	self setParents: self hints to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPWithStatementNode >> initialize [
 	super initialize.
@@ -254,7 +266,7 @@ ABAPWithStatementNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	hints := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -310,18 +322,6 @@ ABAPWithStatementNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }

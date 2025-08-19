@@ -4,27 +4,11 @@ Class {
 	#instVars : [
 		'keywords',
 		'initial',
-		'name',
-		'leftBracket',
-		'rightBracket',
-		'value',
-		'dynamic',
-		'_source'
+		'to',
+		'mainTableField'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPAssignLocalCopyNode >> acceptVisitor: aRootVisitor [
@@ -34,18 +18,6 @@ ABAPAssignLocalCopyNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPAssignLocalCopyNode >> compositeTokenVariables [
 	^ #(#keywords)
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> dynamic [
-	^ dynamic
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -77,53 +49,30 @@ ABAPAssignLocalCopyNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> leftBracket [
-	^ leftBracket
+ABAPAssignLocalCopyNode >> mainTableField [
+	^ mainTableField
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> name: anABAPNameNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPNameNode.
-	self name notNil ifTrue: [ self name parent: self ]
+ABAPAssignLocalCopyNode >> mainTableField: anABAPExpressionNode [
+	self mainTableField notNil ifTrue: [ self mainTableField parent: nil ].
+	mainTableField := anABAPExpressionNode.
+	self mainTableField notNil ifTrue: [ self mainTableField parent: self ]
 ]
 
 { #category : #generated }
 ABAPAssignLocalCopyNode >> nodeVariables [
-	^ #(#initial #name #dynamic #_source)
+	^ #(#initial #to #mainTableField)
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> rightBracket [
-	^ rightBracket
+ABAPAssignLocalCopyNode >> to [
+	^ to
 ]
 
 { #category : #generated }
-ABAPAssignLocalCopyNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #value #period)
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPAssignLocalCopyNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+ABAPAssignLocalCopyNode >> to: anABAPExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := anABAPExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
 ]

@@ -3,11 +3,11 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
-		'field'
+		'valueRequest',
+		'field',
+		'on',
+		'helpRequest',
+		'onBlockName'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,7 +19,7 @@ ABAPAtSelectionScreenNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPAtSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -34,11 +34,22 @@ ABAPAtSelectionScreenNode >> field: anABAPNameNode [
 	self field notNil ifTrue: [ self field parent: self ]
 ]
 
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> helpRequest [
+	^ helpRequest
+]
+
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> helpRequest: anABAPFieldSubNode [
+	self helpRequest notNil ifTrue: [ self helpRequest parent: nil ].
+	helpRequest := anABAPFieldSubNode.
+	self helpRequest notNil ifTrue: [ self helpRequest parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPAtSelectionScreenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -52,53 +63,45 @@ ABAPAtSelectionScreenNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPAtSelectionScreenNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
-]
-
-{ #category : #generated }
 ABAPAtSelectionScreenNode >> nodeVariables [
-	^ #(#length #field)
+	^ #(#valueRequest #field #on #helpRequest)
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> rightBracket [
-	^ rightBracket
+ABAPAtSelectionScreenNode >> on [
+	^ on
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
+ABAPAtSelectionScreenNode >> on: anABAPFieldSubNode [
+	self on notNil ifTrue: [ self on parent: nil ].
+	on := anABAPFieldSubNode.
+	self on notNil ifTrue: [ self on parent: self ]
+]
+
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> onBlockName [
+	^ onBlockName
+]
+
+{ #category : #generated }
+ABAPAtSelectionScreenNode >> onBlockName: aSmaCCToken [
+	onBlockName := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPAtSelectionScreenNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
+	^ #(#onBlockName #period)
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> values [
-	^ values
+ABAPAtSelectionScreenNode >> valueRequest [
+	^ valueRequest
 ]
 
 { #category : #generated }
-ABAPAtSelectionScreenNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPAtSelectionScreenNode >> valueRequest: anABAPFieldSubNode [
+	self valueRequest notNil ifTrue: [ self valueRequest parent: nil ].
+	valueRequest := anABAPFieldSubNode.
+	self valueRequest notNil ifTrue: [ self valueRequest parent: self ]
 ]

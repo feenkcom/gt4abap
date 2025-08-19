@@ -3,10 +3,9 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keyword',
-		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'length'
+		'local',
+		'leftBracket',
+		'rightBracket'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -14,19 +13,6 @@ Class {
 { #category : #generated }
 ABAPLocalNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitLocal: self
-]
-
-{ #category : #generated }
-ABAPLocalNode >> compositeTokenVariables [
-	^ #(#values #leftBrackets #rightBrackets)
-]
-
-{ #category : #'generated-initialize-release' }
-ABAPLocalNode >> initialize [
-	super initialize.
-	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -40,53 +26,43 @@ ABAPLocalNode >> keyword: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPLocalNode >> leftBrackets [
-	^ leftBrackets
+ABAPLocalNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-ABAPLocalNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPLocalNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPLocalNode >> length [
-	^ length
+ABAPLocalNode >> local [
+	^ local
 ]
 
 { #category : #generated }
-ABAPLocalNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
+ABAPLocalNode >> local: anABAPFieldSubNode [
+	self local notNil ifTrue: [ self local parent: nil ].
+	local := anABAPFieldSubNode.
+	self local notNil ifTrue: [ self local parent: self ]
 ]
 
 { #category : #generated }
 ABAPLocalNode >> nodeVariables [
-	^ #(#length)
+	^ #(#local)
 ]
 
 { #category : #generated }
-ABAPLocalNode >> rightBrackets [
-	^ rightBrackets
+ABAPLocalNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-ABAPLocalNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+ABAPLocalNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPLocalNode >> tokenVariables [
-	^ #(#keyword #period)
-]
-
-{ #category : #generated }
-ABAPLocalNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPLocalNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	^ #(#keyword #leftBracket #rightBracket #period)
 ]

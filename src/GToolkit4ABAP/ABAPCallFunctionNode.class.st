@@ -65,7 +65,7 @@ ABAPCallFunctionNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #parameterNames #targets #lefts #rights #fieldOffsets #fieldLengths)
+	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #targets #parameterNames #lefts #rights #fieldOffsets #fieldLengths)
 ]
 
 { #category : #generated }
@@ -206,14 +206,14 @@ ABAPCallFunctionNode >> initialize [
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	parameterNames := OrderedCollection new: 2.
 	dashs := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.

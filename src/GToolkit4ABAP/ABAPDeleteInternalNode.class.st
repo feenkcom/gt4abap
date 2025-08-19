@@ -170,7 +170,7 @@ ABAPDeleteInternalNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> nodeVariables [
-	^ #(#target #from #toSource)
+	^ #(#target #from #where #toSource)
 ]
 
 { #category : #generated }
@@ -181,11 +181,6 @@ ABAPDeleteInternalNode >> operators [
 { #category : #generated }
 ABAPDeleteInternalNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteInternalNode >> otherVariables [
-	^ #(#where)
 ]
 
 { #category : #generated }
@@ -242,8 +237,8 @@ ABAPDeleteInternalNode >> where [
 ]
 
 { #category : #generated }
-ABAPDeleteInternalNode >> where: anObject [
-	self setParent: self where to: nil.
-	where := anObject.
-	self setParent: self where to: self
+ABAPDeleteInternalNode >> where: anABAPExpressionNode [
+	self where notNil ifTrue: [ self where parent: nil ].
+	where := anABAPExpressionNode.
+	self where notNil ifTrue: [ self where parent: self ]
 ]

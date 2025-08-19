@@ -5,6 +5,7 @@ Class {
 		'keywords',
 		'includeName',
 		'sources',
+		'withs',
 		'eqs',
 		'values',
 		'leftBrackets',
@@ -22,12 +23,12 @@ ABAPSubmitNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSubmitNode >> compositeNodeVariables [
-	^ #(#sources #lengths)
+	^ #(#sources #withs #lengths)
 ]
 
 { #category : #generated }
 ABAPSubmitNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftBrackets #rightBrackets #eqs)
+	^ #(#keywords #eqs #values #leftBrackets #rightBrackets)
 ]
 
 { #category : #generated }
@@ -69,11 +70,12 @@ ABAPSubmitNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	withs := OrderedCollection new: 2.
+	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -143,4 +145,16 @@ ABAPSubmitNode >> values [
 { #category : #generated }
 ABAPSubmitNode >> values: anOrderedCollection [
 	values := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> withs [
+	^ withs
+]
+
+{ #category : #generated }
+ABAPSubmitNode >> withs: anOrderedCollection [
+	self setParents: self withs to: nil.
+	withs := anOrderedCollection.
+	self setParents: self withs to: self
 ]

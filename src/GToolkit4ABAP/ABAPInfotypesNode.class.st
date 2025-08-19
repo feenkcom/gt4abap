@@ -4,10 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'occurs',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
+		'name',
 		'from',
 		'toSource'
 	],
@@ -21,7 +18,7 @@ ABAPInfotypesNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPInfotypesNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -40,7 +37,6 @@ ABAPInfotypesNode >> from: anABAPExpressionNode [
 ABAPInfotypesNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -54,30 +50,20 @@ ABAPInfotypesNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> leftBracket [
-	^ leftBracket
+ABAPInfotypesNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
+ABAPInfotypesNode >> name: anABAPFieldSubNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPFieldSubNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 ABAPInfotypesNode >> nodeVariables [
-	^ #(#occurs #length #from #toSource)
+	^ #(#occurs #name #from #toSource)
 ]
 
 { #category : #generated }
@@ -93,16 +79,6 @@ ABAPInfotypesNode >> occurs: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPInfotypesNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPInfotypesNode >> toSource [
 	^ toSource
 ]
@@ -112,19 +88,4 @@ ABAPInfotypesNode >> toSource: anABAPExpressionNode [
 	self toSource notNil ifTrue: [ self toSource parent: nil ].
 	toSource := anABAPExpressionNode.
 	self toSource notNil ifTrue: [ self toSource parent: self ]
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPInfotypesNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]

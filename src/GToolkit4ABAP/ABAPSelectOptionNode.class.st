@@ -3,10 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
+		'selectOptions',
 		'for',
 		'defaults',
 		'tos',
@@ -32,7 +29,7 @@ ABAPSelectOptionNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeTokenVariables [
-	^ #(#keywords #values #modifs)
+	^ #(#keywords #modifs)
 ]
 
 { #category : #generated }
@@ -63,7 +60,6 @@ ABAPSelectOptionNode >> for: anABAPExpressionNode [
 ABAPSelectOptionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
 	options := OrderedCollection new: 2.
@@ -82,28 +78,6 @@ ABAPSelectOptionNode >> keywords [
 { #category : #generated }
 ABAPSelectOptionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
 ]
 
 { #category : #generated }
@@ -142,7 +116,7 @@ ABAPSelectOptionNode >> modifs: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectOptionNode >> nodeVariables [
-	^ #(#length #for)
+	^ #(#selectOptions #for)
 ]
 
 { #category : #generated }
@@ -163,13 +137,15 @@ ABAPSelectOptionNode >> otherVariables [
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> rightBracket [
-	^ rightBracket
+ABAPSelectOptionNode >> selectOptions [
+	^ selectOptions
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
+ABAPSelectOptionNode >> selectOptions: anABAPFieldSubNode [
+	self selectOptions notNil ifTrue: [ self selectOptions parent: nil ].
+	selectOptions := anABAPFieldSubNode.
+	self selectOptions notNil ifTrue: [ self selectOptions parent: self ]
 ]
 
 { #category : #generated }
@@ -185,11 +161,6 @@ ABAPSelectOptionNode >> signs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
-]
-
-{ #category : #generated }
 ABAPSelectOptionNode >> tos [
 	^ tos
 ]
@@ -199,16 +170,6 @@ ABAPSelectOptionNode >> tos: anOrderedCollection [
 	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]
 
 { #category : #generated }

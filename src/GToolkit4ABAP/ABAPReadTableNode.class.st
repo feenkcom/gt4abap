@@ -21,9 +21,11 @@ Class {
 		'fields',
 		'dynamics',
 		'froms',
+		'comparings',
+		'transportings',
 		'assignings',
 		'intoTargets',
-		'lengths'
+		'transportingFields'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -68,8 +70,20 @@ ABAPReadTableNode >> attributeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReadTableNode >> comparings [
+	^ comparings
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> comparings: anOrderedCollection [
+	self setParents: self comparings to: nil.
+	comparings := anOrderedCollection.
+	self setParents: self comparings to: self
+]
+
+{ #category : #generated }
 ABAPReadTableNode >> compositeNodeVariables [
-	^ #(#attributeNames #names #sources #fields #dynamics #froms #assignings #intoTargets #lengths)
+	^ #(#attributeNames #names #sources #fields #dynamics #froms #comparings #transportings #assignings #intoTargets #transportingFields)
 ]
 
 { #category : #generated }
@@ -173,9 +187,11 @@ ABAPReadTableNode >> initialize [
 	fields := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	froms := OrderedCollection new: 2.
+	comparings := OrderedCollection new: 2.
+	transportings := OrderedCollection new: 2.
 	assignings := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	transportingFields := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -232,18 +248,6 @@ ABAPReadTableNode >> leftBrackets [
 { #category : #generated }
 ABAPReadTableNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPReadTableNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -315,6 +319,30 @@ ABAPReadTableNode >> sources: anOrderedCollection [
 { #category : #generated }
 ABAPReadTableNode >> tokenVariables [
 	^ #(#dash #operator #period)
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> transportingFields [
+	^ transportingFields
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> transportingFields: anOrderedCollection [
+	self setParents: self transportingFields to: nil.
+	transportingFields := anOrderedCollection.
+	self setParents: self transportingFields to: self
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> transportings [
+	^ transportings
+]
+
+{ #category : #generated }
+ABAPReadTableNode >> transportings: anOrderedCollection [
+	self setParents: self transportings to: nil.
+	transportings := anOrderedCollection.
+	self setParents: self transportings to: self
 ]
 
 { #category : #generated }

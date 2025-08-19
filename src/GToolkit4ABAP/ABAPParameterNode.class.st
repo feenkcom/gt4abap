@@ -3,19 +3,18 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'lengths',
+		'parameter',
 		'typeNames',
 		'fieldLengths',
 		'fieldOffsets',
 		'dynamics',
 		'defaults',
 		'fields',
+		'lengths',
 		'decimalses',
 		'groupNames',
 		'fieldChains',
+		'values',
 		'leftParens',
 		'keies',
 		'rightParens',
@@ -91,7 +90,7 @@ ABAPParameterNode >> castValues: anOrderedCollection [
 
 { #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#lengths #typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #decimalses #groupNames #fieldChains #names #args #methodNames #castValues #expressions #sources #attributeNames #parameterNames #targets #lefts #rights)
+	^ #(#typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #lengths #decimalses #groupNames #fieldChains #names #args #methodNames #castValues #expressions #sources #attributeNames #parameterNames #targets #lefts #rights)
 ]
 
 { #category : #generated }
@@ -231,17 +230,17 @@ ABAPParameterNode >> groupNames: anOrderedCollection [
 ABAPParameterNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
 	groupNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	keies := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
@@ -280,16 +279,6 @@ ABAPParameterNode >> keywords [
 { #category : #generated }
 ABAPParameterNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPParameterNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -351,6 +340,11 @@ ABAPParameterNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPParameterNode >> nodeVariables [
+	^ #(#parameter)
+]
+
+{ #category : #generated }
 ABAPParameterNode >> operators [
 	^ operators
 ]
@@ -366,6 +360,18 @@ ABAPParameterNode >> otherVariables [
 ]
 
 { #category : #generated }
+ABAPParameterNode >> parameter [
+	^ parameter
+]
+
+{ #category : #generated }
+ABAPParameterNode >> parameter: anABAPFieldSubNode [
+	self parameter notNil ifTrue: [ self parameter parent: nil ].
+	parameter := anABAPFieldSubNode.
+	self parameter notNil ifTrue: [ self parameter parent: self ]
+]
+
+{ #category : #generated }
 ABAPParameterNode >> parameterNames [
 	^ parameterNames
 ]
@@ -375,16 +381,6 @@ ABAPParameterNode >> parameterNames: anOrderedCollection [
 	self setParents: self parameterNames to: nil.
 	parameterNames := anOrderedCollection.
 	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -431,11 +427,6 @@ ABAPParameterNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
 ]
 
 { #category : #generated }

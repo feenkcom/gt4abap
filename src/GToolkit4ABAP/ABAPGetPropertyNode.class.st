@@ -3,12 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
+		'property',
 		'sources',
-		'eqs'
+		'eqs',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -42,7 +40,6 @@ ABAPGetPropertyNode >> eqs: anOrderedCollection [
 ABAPGetPropertyNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 ]
@@ -58,45 +55,20 @@ ABAPGetPropertyNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
-]
-
-{ #category : #generated }
 ABAPGetPropertyNode >> nodeVariables [
-	^ #(#length)
+	^ #(#property #value)
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> otherVariables [
-	^ #(#values)
+ABAPGetPropertyNode >> property [
+	^ property
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
+ABAPGetPropertyNode >> property: anABAPFieldSubNode [
+	self property notNil ifTrue: [ self property parent: nil ].
+	property := anABAPFieldSubNode.
+	self property notNil ifTrue: [ self property parent: self ]
 ]
 
 { #category : #generated }
@@ -112,18 +84,13 @@ ABAPGetPropertyNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
+ABAPGetPropertyNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPGetPropertyNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPGetPropertyNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+ABAPGetPropertyNode >> value: anABAPStringNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPStringNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

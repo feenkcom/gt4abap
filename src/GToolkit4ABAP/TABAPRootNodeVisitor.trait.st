@@ -622,7 +622,12 @@ TABAPRootNodeVisitor >> visitFieldSub: aFieldSub [
 
 { #category : #generated }
 TABAPRootNodeVisitor >> visitFieldSymbol: aFieldSymbol [
-	^ self visitExpression: aFieldSymbol
+	^ self visitStatement: aFieldSymbol
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitFieldSymbolExpression: aFieldSymbolExpression [
+	^ self visitExpression: aFieldSymbolExpression
 ]
 
 { #category : #generated }
@@ -913,6 +918,11 @@ TABAPRootNodeVisitor >> visitLoop: aLoop [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitLoopAtScreen: aLoopAtScreen [
 	^ self visitStatement: aLoopAtScreen
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitMacroCall: aMacroCall [
+	^ self visitStatement: aMacroCall
 ]
 
 { #category : #generated }

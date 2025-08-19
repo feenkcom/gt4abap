@@ -3,10 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
+		'enhancementPoint',
 		'field'
 	],
 	#category : #GToolkit4ABAP
@@ -19,7 +16,19 @@ ABAPEnhancementPointNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPEnhancementPointNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPEnhancementPointNode >> enhancementPoint [
+	^ enhancementPoint
+]
+
+{ #category : #generated }
+ABAPEnhancementPointNode >> enhancementPoint: anABAPFieldSubNode [
+	self enhancementPoint notNil ifTrue: [ self enhancementPoint parent: nil ].
+	enhancementPoint := anABAPFieldSubNode.
+	self enhancementPoint notNil ifTrue: [ self enhancementPoint parent: self ]
 ]
 
 { #category : #generated }
@@ -38,7 +47,6 @@ ABAPEnhancementPointNode >> field: anABAPNameNode [
 ABAPEnhancementPointNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -52,53 +60,6 @@ ABAPEnhancementPointNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPEnhancementPointNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
-]
-
-{ #category : #generated }
 ABAPEnhancementPointNode >> nodeVariables [
-	^ #(#length #field)
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPEnhancementPointNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	^ #(#enhancementPoint #field)
 ]

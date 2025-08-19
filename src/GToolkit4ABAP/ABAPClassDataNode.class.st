@@ -17,8 +17,6 @@ Class {
 		'rightParens',
 		'operators',
 		'sizes',
-		'leftBrackets',
-		'rightBrackets',
 		'eventName',
 		'_source'
 	],
@@ -49,7 +47,7 @@ ABAPClassDataNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPClassDataNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #keies #rightParens #operators)
 ]
 
 { #category : #generated }
@@ -129,8 +127,6 @@ ABAPClassDataNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -151,16 +147,6 @@ ABAPClassDataNode >> keywords [
 { #category : #generated }
 ABAPClassDataNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPClassDataNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPClassDataNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -227,16 +213,6 @@ ABAPClassDataNode >> operators: anOrderedCollection [
 { #category : #generated }
 ABAPClassDataNode >> otherVariables [
 	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPClassDataNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPClassDataNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

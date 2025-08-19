@@ -7,10 +7,7 @@ Class {
 		'sources',
 		'toTargets',
 		'eqs',
-		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'onOffs',
 		'leftParen',
 		'lefts',
 		'operators',
@@ -19,7 +16,8 @@ Class {
 		'attributeNames',
 		'dashs',
 		'names',
-		'rightParen'
+		'rightParen',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -53,12 +51,12 @@ ABAPWriteNode >> attributeNames: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> compositeNodeVariables [
-	^ #(#sources #toTargets #lengths #lefts #rights #attributeNames #names)
+	^ #(#sources #toTargets #onOffs #lefts #rights #attributeNames #names)
 ]
 
 { #category : #generated }
 ABAPWriteNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #leftBrackets #rightBrackets #operators #arrows #dashs)
+	^ #(#keywords #eqs #operators #arrows #dashs)
 ]
 
 { #category : #generated }
@@ -88,10 +86,7 @@ ABAPWriteNode >> initialize [
 	sources := OrderedCollection new: 2.
 	toTargets := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	onOffs := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
@@ -109,16 +104,6 @@ ABAPWriteNode >> keywords [
 { #category : #generated }
 ABAPWriteNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPWriteNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPWriteNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -144,18 +129,6 @@ ABAPWriteNode >> lefts: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPWriteNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
-]
-
-{ #category : #generated }
 ABAPWriteNode >> names [
 	^ names
 ]
@@ -173,6 +146,18 @@ ABAPWriteNode >> nodeVariables [
 ]
 
 { #category : #generated }
+ABAPWriteNode >> onOffs [
+	^ onOffs
+]
+
+{ #category : #generated }
+ABAPWriteNode >> onOffs: anOrderedCollection [
+	self setParents: self onOffs to: nil.
+	onOffs := anOrderedCollection.
+	self setParents: self onOffs to: self
+]
+
+{ #category : #generated }
 ABAPWriteNode >> operators [
 	^ operators
 ]
@@ -180,16 +165,6 @@ ABAPWriteNode >> operators [
 { #category : #generated }
 ABAPWriteNode >> operators: anOrderedCollection [
 	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPWriteNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPWriteNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -240,17 +215,17 @@ ABAPWriteNode >> toTargets: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #rightParen #value #period)
 ]
 
 { #category : #generated }
-ABAPWriteNode >> values [
-	^ values
+ABAPWriteNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPWriteNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPWriteNode >> value: aSmaCCToken [
+	value := aSmaCCToken
 ]
 
 { #category : #generated }

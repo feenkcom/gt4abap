@@ -3,17 +3,26 @@ Class {
 	#superclass : #ABAPRootNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBracket',
-		'rightBracket',
-		'length',
+		'_at',
 		'fieldOffset',
 		'fieldLength',
 		'period',
-		'dynamic'
+		'end'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPStartAtNode >> _at [
+	^ _at
+]
+
+{ #category : #generated }
+ABAPStartAtNode >> _at: anABAPExpressionNode [
+	self _at notNil ifTrue: [ self _at parent: nil ].
+	_at := anABAPExpressionNode.
+	self _at notNil ifTrue: [ self _at parent: self ]
+]
 
 { #category : #generated }
 ABAPStartAtNode >> acceptVisitor: aRootVisitor [
@@ -22,19 +31,19 @@ ABAPStartAtNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPStartAtNode >> compositeTokenVariables [
-	^ #(#keywords #values)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> dynamic [
-	^ dynamic
+ABAPStartAtNode >> end [
+	^ end
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+ABAPStartAtNode >> end: anABAPExpressionNode [
+	self end notNil ifTrue: [ self end parent: nil ].
+	end := anABAPExpressionNode.
+	self end notNil ifTrue: [ self end parent: self ]
 ]
 
 { #category : #generated }
@@ -65,7 +74,6 @@ ABAPStartAtNode >> fieldOffset: anABAPFieldOffsetNode [
 ABAPStartAtNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -79,30 +87,8 @@ ABAPStartAtNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> length [
-	^ length
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> length: anABAPFieldLengthNode [
-	self length notNil ifTrue: [ self length parent: nil ].
-	length := anABAPFieldLengthNode.
-	self length notNil ifTrue: [ self length parent: self ]
-]
-
-{ #category : #generated }
 ABAPStartAtNode >> nodeVariables [
-	^ #(#length #fieldOffset #fieldLength #dynamic)
+	^ #(#_at #fieldOffset #fieldLength #end)
 ]
 
 { #category : #generated }
@@ -116,26 +102,6 @@ ABAPStartAtNode >> period: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPStartAtNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPStartAtNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPStartAtNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	^ #(#period)
 ]

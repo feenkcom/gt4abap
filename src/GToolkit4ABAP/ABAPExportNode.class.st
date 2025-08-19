@@ -3,17 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
-		'sources',
+		'exports',
 		'eqs',
+		'sources',
 		'target',
 		'name',
 		'leftParen',
-		'rightParen',
-		'dynamic'
+		'rightParen'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,24 +21,12 @@ ABAPExportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPExportNode >> compositeNodeVariables [
-	^ #(#lengths #sources)
+	^ #(#exports #sources)
 ]
 
 { #category : #generated }
 ABAPExportNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets #eqs)
-]
-
-{ #category : #generated }
-ABAPExportNode >> dynamic [
-	^ dynamic
-]
-
-{ #category : #generated }
-ABAPExportNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -55,14 +39,23 @@ ABAPExportNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
 ]
 
+{ #category : #generated }
+ABAPExportNode >> exports [
+	^ exports
+]
+
+{ #category : #generated }
+ABAPExportNode >> exports: anOrderedCollection [
+	self setParents: self exports to: nil.
+	exports := anOrderedCollection.
+	self setParents: self exports to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPExportNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	exports := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
@@ -78,16 +71,6 @@ ABAPExportNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPExportNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPExportNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPExportNode >> leftParen [
 	^ leftParen
 ]
@@ -95,18 +78,6 @@ ABAPExportNode >> leftParen [
 { #category : #generated }
 ABAPExportNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPExportNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPExportNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -123,22 +94,7 @@ ABAPExportNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPExportNode >> nodeVariables [
-	^ #(#target #name #dynamic)
-]
-
-{ #category : #generated }
-ABAPExportNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPExportNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPExportNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
+	^ #(#target #name)
 ]
 
 { #category : #generated }
@@ -178,16 +134,4 @@ ABAPExportNode >> target: anABAPExpressionNode [
 { #category : #generated }
 ABAPExportNode >> tokenVariables [
 	^ #(#leftParen #rightParen #period)
-]
-
-{ #category : #generated }
-ABAPExportNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPExportNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
 ]

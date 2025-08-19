@@ -16,9 +16,7 @@ Class {
 		'keies',
 		'rightParens',
 		'operators',
-		'sizes',
-		'leftBrackets',
-		'rightBrackets'
+		'sizes'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -35,7 +33,7 @@ ABAPStaticNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPStaticNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keies #rightParens #operators #leftBrackets #rightBrackets)
+	^ #(#keywords #leftParens #keies #rightParens #operators)
 ]
 
 { #category : #generated }
@@ -102,8 +100,6 @@ ABAPStaticNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -124,16 +120,6 @@ ABAPStaticNode >> keywords [
 { #category : #generated }
 ABAPStaticNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStaticNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPStaticNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -200,16 +186,6 @@ ABAPStaticNode >> operators: anOrderedCollection [
 { #category : #generated }
 ABAPStaticNode >> otherVariables [
 	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPStaticNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPStaticNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }

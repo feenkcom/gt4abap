@@ -31,7 +31,7 @@ ABAPCaseNode >> body: anABAPBodyNode [
 
 { #category : #generated }
 ABAPCaseNode >> compositeNodeVariables [
-	^ #(#whens #includes)
+	^ #(#whens #macroCalls #includes)
 ]
 
 { #category : #generated }
@@ -71,19 +71,14 @@ ABAPCaseNode >> macroCalls [
 
 { #category : #generated }
 ABAPCaseNode >> macroCalls: anOrderedCollection [
-	self setParent: self macroCalls to: nil.
+	self setParents: self macroCalls to: nil.
 	macroCalls := anOrderedCollection.
-	self setParent: self macroCalls to: self
+	self setParents: self macroCalls to: self
 ]
 
 { #category : #generated }
 ABAPCaseNode >> nodeVariables [
 	^ #(#start #body)
-]
-
-{ #category : #generated }
-ABAPCaseNode >> otherVariables [
-	^ #(#macroCalls)
 ]
 
 { #category : #generated }

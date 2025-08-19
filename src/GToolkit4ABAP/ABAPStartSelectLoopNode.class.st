@@ -31,7 +31,7 @@ Class {
 		'eqs',
 		'fieldChains',
 		'targets',
-		'lengths',
+		'hints',
 		'sources',
 		'period'
 	],
@@ -99,7 +99,7 @@ ABAPStartSelectLoopNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#dynamics #asNames #fields #fieldNames #decs #names #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #selects #withNames #fieldChains #targets #lengths #sources)
+	^ #(#dynamics #asNames #fields #fieldNames #decs #names #lefts #rights #functions #attributeNames #fieldOffsets #fieldLengths #selects #withNames #fieldChains #targets #hints #sources)
 ]
 
 { #category : #generated }
@@ -223,6 +223,18 @@ ABAPStartSelectLoopNode >> functions: anOrderedCollection [
 	self setParents: self functions to: self
 ]
 
+{ #category : #generated }
+ABAPStartSelectLoopNode >> hints [
+	^ hints
+]
+
+{ #category : #generated }
+ABAPStartSelectLoopNode >> hints: anOrderedCollection [
+	self setParents: self hints to: nil.
+	hints := anOrderedCollection.
+	self setParents: self hints to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPStartSelectLoopNode >> initialize [
 	super initialize.
@@ -255,7 +267,7 @@ ABAPStartSelectLoopNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	hints := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -311,18 +323,6 @@ ABAPStartSelectLoopNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
 ]
 
 { #category : #generated }

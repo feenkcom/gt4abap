@@ -3,10 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keyword',
-		'name',
-		'leftBracket',
-		'rightBracket',
-		'value'
+		'unassign'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -27,53 +24,23 @@ ABAPUnassignNode >> keyword: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPUnassignNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPUnassignNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPUnassignNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPUnassignNode >> name: anABAPNameNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPNameNode.
-	self name notNil ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
 ABAPUnassignNode >> nodeVariables [
-	^ #(#name)
-]
-
-{ #category : #generated }
-ABAPUnassignNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPUnassignNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
+	^ #(#unassign)
 ]
 
 { #category : #generated }
 ABAPUnassignNode >> tokenVariables [
-	^ #(#keyword #leftBracket #rightBracket #value #period)
+	^ #(#keyword #period)
 ]
 
 { #category : #generated }
-ABAPUnassignNode >> value [
-	^ value
+ABAPUnassignNode >> unassign [
+	^ unassign
 ]
 
 { #category : #generated }
-ABAPUnassignNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+ABAPUnassignNode >> unassign: anABAPExpressionNode [
+	self unassign notNil ifTrue: [ self unassign parent: nil ].
+	unassign := anABAPExpressionNode.
+	self unassign notNil ifTrue: [ self unassign parent: self ]
 ]

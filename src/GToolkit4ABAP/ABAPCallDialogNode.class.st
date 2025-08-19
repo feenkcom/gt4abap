@@ -6,10 +6,7 @@ Class {
 		'dialog',
 		'fields',
 		'importingTos',
-		'values',
-		'leftBrackets',
-		'rightBrackets',
-		'lengths',
+		'exportings',
 		'exportingFroms'
 	],
 	#category : #GToolkit4ABAP
@@ -22,12 +19,12 @@ ABAPCallDialogNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCallDialogNode >> compositeNodeVariables [
-	^ #(#fields #importingTos #lengths #exportingFroms)
+	^ #(#fields #importingTos #exportings #exportingFroms)
 ]
 
 { #category : #generated }
 ABAPCallDialogNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftBrackets #rightBrackets)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -52,6 +49,18 @@ ABAPCallDialogNode >> exportingFroms: anOrderedCollection [
 	self setParents: self exportingFroms to: nil.
 	exportingFroms := anOrderedCollection.
 	self setParents: self exportingFroms to: self
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> exportings [
+	^ exportings
+]
+
+{ #category : #generated }
+ABAPCallDialogNode >> exportings: anOrderedCollection [
+	self setParents: self exportings to: nil.
+	exportings := anOrderedCollection.
+	self setParents: self exportings to: self
 ]
 
 { #category : #generated }
@@ -84,10 +93,7 @@ ABAPCallDialogNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	importingTos := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	lengths := OrderedCollection new: 2.
+	exportings := OrderedCollection new: 2.
 	exportingFroms := OrderedCollection new: 2.
 ]
 
@@ -102,48 +108,6 @@ ABAPCallDialogNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDialogNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> lengths [
-	^ lengths
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> lengths: anOrderedCollection [
-	self setParents: self lengths to: nil.
-	lengths := anOrderedCollection.
-	self setParents: self lengths to: self
-]
-
-{ #category : #generated }
 ABAPCallDialogNode >> nodeVariables [
 	^ #(#dialog)
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPCallDialogNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]

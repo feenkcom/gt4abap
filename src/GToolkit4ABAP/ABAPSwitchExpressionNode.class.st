@@ -36,7 +36,7 @@ ABAPSwitchExpressionNode >> args: anOrderedCollection [
 
 { #category : #generated }
 ABAPSwitchExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #sources #names #args #parameterNames #values #messageSources #fields)
+	^ #(#typeNames #sources #names #args #messageSources #parameterNames #values #fields)
 ]
 
 { #category : #generated }
@@ -74,11 +74,11 @@ ABAPSwitchExpressionNode >> initialize [
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 	args := OrderedCollection new: 2.
+	messageSources := OrderedCollection new: 2.
+	withs := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	messageSources := OrderedCollection new: 2.
-	withs := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
 

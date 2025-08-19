@@ -83,7 +83,7 @@ ABAPInsertFieldGroupNode >> castValues: anOrderedCollection [
 
 { #category : #generated }
 ABAPInsertFieldGroupNode >> compositeNodeVariables [
-	^ #(#sources #methodNames #parameterNames #targets #names #lefts #rights #attributeNames #fieldChains #typeNames #args #fields #castValues #expressions)
+	^ #(#sources #methodNames #parameterNames #targets #lefts #rights #names #attributeNames #fieldChains #typeNames #args #fields #castValues #expressions)
 ]
 
 { #category : #generated }
@@ -162,9 +162,9 @@ ABAPInsertFieldGroupNode >> initialize [
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
+	names := OrderedCollection new: 2.
 	arrows := OrderedCollection new: 2.
 	attributeNames := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.

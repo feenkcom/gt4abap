@@ -81,11 +81,6 @@ TABAPRootNodeVisitor >> visitAtUserCommand: anAtUserCommand [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitAttributeChain: anAttributeChain [
-	^ self visitExpression: anAttributeChain
-]
-
-{ #category : #generated }
 TABAPRootNodeVisitor >> visitAuthorityCheck: anAuthorityCheck [
 	^ self visitStatement: anAuthorityCheck
 ]

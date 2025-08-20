@@ -9,8 +9,6 @@ Class {
 		'names',
 		'eqs',
 		'values',
-		'fieldOffsets',
-		'fieldLengths',
 		'base'
 	],
 	#category : #GToolkit4ABAP
@@ -47,7 +45,7 @@ ABAPCorrespondingExpressionNode >> base: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPCorrespondingExpressionNode >> compositeNodeVariables [
-	^ #(#fields #names #values #fieldOffsets #fieldLengths)
+	^ #(#fields #names #values)
 ]
 
 { #category : #generated }
@@ -63,30 +61,6 @@ ABAPCorrespondingExpressionNode >> eqs [
 { #category : #generated }
 ABAPCorrespondingExpressionNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPCorrespondingExpressionNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -109,8 +83,6 @@ ABAPCorrespondingExpressionNode >> initialize [
 	names := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
+		'oleExportings',
 		'eqs',
 		'target'
 	],
@@ -22,7 +23,7 @@ ABAPCallOLENode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPCallOLENode >> compositeTokenVariables [
-	^ #(#keywords #eqs)
+	^ #(#keywords #oleExportings #eqs)
 ]
 
 { #category : #generated }
@@ -40,6 +41,7 @@ ABAPCallOLENode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
+	oleExportings := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 ]
 
@@ -56,6 +58,16 @@ ABAPCallOLENode >> keywords: anOrderedCollection [
 { #category : #generated }
 ABAPCallOLENode >> nodeVariables [
 	^ #(#target)
+]
+
+{ #category : #generated }
+ABAPCallOLENode >> oleExportings [
+	^ oleExportings
+]
+
+{ #category : #generated }
+ABAPCallOLENode >> oleExportings: anOrderedCollection [
+	oleExportings := anOrderedCollection
 ]
 
 { #category : #generated }

@@ -15,10 +15,8 @@ Class {
 		'databaseTableNames',
 		'fields',
 		'eqs',
-		'fieldChains',
 		'values',
-		'keys',
-		'operators',
+		'fieldChains',
 		'commas',
 		'fieldNames',
 		'dynamics',
@@ -26,6 +24,7 @@ Class {
 		'hints',
 		'ons',
 		'lefts',
+		'operators',
 		'rights',
 		'ins',
 		'upTos',
@@ -86,12 +85,12 @@ ABAPSQLSelectNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLSelectNode >> compositeNodeVariables [
-	^ #(#targets #wheres #clients #connections #withNames #asNames #databaseTables #fields #fieldChains #fieldNames #dynamics #names #hints #ons #lefts #rights #ins #upTos #offsets #havings)
+	^ #(#targets #wheres #clients #connections #withNames #asNames #databaseTables #fields #values #fieldChains #fieldNames #dynamics #names #hints #ons #lefts #rights #ins #upTos #offsets #havings)
 ]
 
 { #category : #generated }
 ABAPSQLSelectNode >> compositeTokenVariables [
-	^ #(#keywords #ats #connectionNames #databaseTableNames #eqs #values #keys #operators #commas #leftParens #rightParens)
+	^ #(#keywords #ats #connectionNames #databaseTableNames #eqs #commas #operators #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -236,10 +235,8 @@ ABAPSQLSelectNode >> initialize [
 	databaseTableNames := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
@@ -247,6 +244,7 @@ ABAPSQLSelectNode >> initialize [
 	hints := OrderedCollection new: 2.
 	ons := OrderedCollection new: 2.
 	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
 	rights := OrderedCollection new: 2.
 	ins := OrderedCollection new: 2.
 	upTos := OrderedCollection new: 2.
@@ -264,16 +262,6 @@ ABAPSQLSelectNode >> ins: anOrderedCollection [
 	self setParents: self ins to: nil.
 	ins := anOrderedCollection.
 	self setParents: self ins to: self
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPSQLSelectNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -387,7 +375,9 @@ ABAPSQLSelectNode >> values [
 
 { #category : #generated }
 ABAPSQLSelectNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]
 
 { #category : #generated }

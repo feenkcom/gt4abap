@@ -18,11 +18,9 @@ Class {
 		'databaseTables',
 		'databaseTableNames',
 		'eqs',
-		'fieldChains',
-		'rightParens',
 		'values',
-		'keys',
-		'operators',
+		'rightParens',
+		'fieldChains',
 		'upTos',
 		'dynamics',
 		'fieldNames',
@@ -86,12 +84,12 @@ ABAPStartSelectLoopNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#asNames #wheres #havings #clients #ins #packageSizes #withNames #databaseTables #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
+	^ #(#asNames #wheres #havings #clients #ins #packageSizes #withNames #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
 ]
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeTokenVariables [
-	^ #(#keywords #commas #ats #leftParens #databaseTableNames #eqs #rightParens #values #keys #operators)
+	^ #(#keywords #commas #ats #leftParens #databaseTableNames #eqs #rightParens)
 ]
 
 { #category : #generated }
@@ -228,11 +226,9 @@ ABAPStartSelectLoopNode >> initialize [
 	databaseTables := OrderedCollection new: 2.
 	databaseTableNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	upTos := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
@@ -251,16 +247,6 @@ ABAPStartSelectLoopNode >> ins: anOrderedCollection [
 	self setParents: self ins to: nil.
 	ins := anOrderedCollection.
 	self setParents: self ins to: self
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -310,16 +296,6 @@ ABAPStartSelectLoopNode >> ons: anOrderedCollection [
 	self setParents: self ons to: nil.
 	ons := anOrderedCollection.
 	self setParents: self ons to: self
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -395,7 +371,9 @@ ABAPStartSelectLoopNode >> values [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]
 
 { #category : #generated }

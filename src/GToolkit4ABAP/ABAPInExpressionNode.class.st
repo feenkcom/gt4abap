@@ -3,33 +3,28 @@ Class {
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keywords',
-		'functions',
+		'values',
+		'function',
 		'decs',
 		'commas',
-		'fields',
-		'distincts',
-		'fieldNames',
-		'values',
-		'keys',
-		'operators',
-		'ats'
+		'_at'
 	],
 	#category : #GToolkit4ABAP
 }
 
 { #category : #generated }
+ABAPInExpressionNode >> _at [
+	^ _at
+]
+
+{ #category : #generated }
+ABAPInExpressionNode >> _at: aSmaCCToken [
+	_at := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPInExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitInExpression: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> ats [
-	^ ats
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> ats: anOrderedCollection [
-	ats := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -44,12 +39,12 @@ ABAPInExpressionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPInExpressionNode >> compositeNodeVariables [
-	^ #(#functions #decs #fields #distincts #fieldNames)
+	^ #(#decs)
 ]
 
 { #category : #generated }
 ABAPInExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #commas #keys #operators #ats #leftParens #rightParens)
+	^ #(#keywords #commas #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -65,77 +60,24 @@ ABAPInExpressionNode >> decs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> distincts [
-	^ distincts
+ABAPInExpressionNode >> function [
+	^ function
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> distincts: anOrderedCollection [
-	self setParents: self distincts to: nil.
-	distincts := anOrderedCollection.
-	self setParents: self distincts to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> fieldNames [
-	^ fieldNames
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> fieldNames: anOrderedCollection [
-	self setParents: self fieldNames to: nil.
-	fieldNames := anOrderedCollection.
-	self setParents: self fieldNames to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> functions [
-	^ functions
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> functions: anOrderedCollection [
-	self setParents: self functions to: nil.
-	functions := anOrderedCollection.
-	self setParents: self functions to: self
+ABAPInExpressionNode >> function: anABAPIntegerNode [
+	self function notNil ifTrue: [ self function parent: nil ].
+	function := anABAPIntegerNode.
+	self function notNil ifTrue: [ self function parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPInExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	distincts := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	ats := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -149,18 +91,18 @@ ABAPInExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPInExpressionNode >> nodeVariables [
+	^ #(#function)
 ]
 
 { #category : #generated }
 ABAPInExpressionNode >> otherVariables [
 	^ #(#values)
+]
+
+{ #category : #generated }
+ABAPInExpressionNode >> tokenVariables [
+	^ #(#_at)
 ]
 
 { #category : #generated }

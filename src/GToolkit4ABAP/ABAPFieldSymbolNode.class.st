@@ -3,16 +3,12 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'values',
+		'value',
 		'fieldChain',
 		'typeName',
 		'default',
 		'fields',
 		'occurs',
-		'leftParens',
-		'keys',
-		'rightParens',
-		'operators',
 		'sizes',
 		'table'
 	],
@@ -31,7 +27,7 @@ ABAPFieldSymbolNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPFieldSymbolNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keys #rightParens #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -74,23 +70,8 @@ ABAPFieldSymbolNode >> fields: anOrderedCollection [
 ABAPFieldSymbolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -101,16 +82,6 @@ ABAPFieldSymbolNode >> keywords [
 { #category : #generated }
 ABAPFieldSymbolNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -128,26 +99,6 @@ ABAPFieldSymbolNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
 	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -175,6 +126,11 @@ ABAPFieldSymbolNode >> table: anABAPRootNode [
 ]
 
 { #category : #generated }
+ABAPFieldSymbolNode >> tokenVariables [
+	^ #(#value #period)
+]
+
+{ #category : #generated }
 ABAPFieldSymbolNode >> typeName [
 	^ typeName
 ]
@@ -187,11 +143,11 @@ ABAPFieldSymbolNode >> typeName: anABAPTypeNameNode [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> values [
-	^ values
+ABAPFieldSymbolNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPFieldSymbolNode >> value: aSmaCCToken [
+	value := aSmaCCToken
 ]

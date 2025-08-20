@@ -12,7 +12,7 @@ Class {
 		'ids',
 		'modifs',
 		'visibleLengths',
-		'keys',
+		'key',
 		'skip',
 		'position',
 		'field',
@@ -24,12 +24,10 @@ Class {
 		'uline',
 		'ulineName',
 		'blockName',
-		'title',
+		'titles',
 		'lines',
 		'includeParameter',
 		'nestingLevels',
-		'values',
-		'dashs',
 		'blockNameToken',
 		'beginVersion',
 		'program'
@@ -90,22 +88,12 @@ ABAPSelectionScreenNode >> comment: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeNodeVariables [
-	^ #(#forFields #modifs #tabs #nestingLevels)
+	^ #(#forFields #modifs #tabs #titles #nestingLevels)
 ]
 
 { #category : #generated }
 ABAPSelectionScreenNode >> compositeTokenVariables [
-	^ #(#keywords #ids #visibleLengths #values #dashs)
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #ids #visibleLengths)
 ]
 
 { #category : #generated }
@@ -188,23 +176,21 @@ ABAPSelectionScreenNode >> initialize [
 	ids := OrderedCollection new: 2.
 	modifs := OrderedCollection new: 2.
 	visibleLengths := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
 	tabs := OrderedCollection new: 2.
+	titles := OrderedCollection new: 2.
 	nestingLevels := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> keys [
-	^ keys
+ABAPSelectionScreenNode >> key [
+	^ key
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> keys: anOrderedCollection [
-	self setParent: self keys to: nil.
-	keys := anOrderedCollection.
-	self setParent: self keys to: self
+ABAPSelectionScreenNode >> key: anABAPIntegerNode [
+	self key notNil ifTrue: [ self key parent: nil ].
+	key := anABAPIntegerNode.
+	self key notNil ifTrue: [ self key parent: self ]
 ]
 
 { #category : #generated }
@@ -265,12 +251,7 @@ ABAPSelectionScreenNode >> nestingLevels: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectionScreenNode >> nodeVariables [
-	^ #(#screen #comment #skip #field #includeBlock #includeSelectOption #pushButton #userCommand #uline #blockName #title #lines #includeParameter #beginVersion #program)
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> otherVariables [
-	^ #(#keys)
+	^ #(#screen #comment #key #skip #field #includeBlock #includeSelectOption #pushButton #userCommand #uline #blockName #lines #includeParameter #beginVersion #program)
 ]
 
 { #category : #generated }
@@ -364,15 +345,15 @@ ABAPSelectionScreenNode >> tabs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> title [
-	^ title
+ABAPSelectionScreenNode >> titles [
+	^ titles
 ]
 
 { #category : #generated }
-ABAPSelectionScreenNode >> title: anABAPExpressionNode [
-	self title notNil ifTrue: [ self title parent: nil ].
-	title := anABAPExpressionNode.
-	self title notNil ifTrue: [ self title parent: self ]
+ABAPSelectionScreenNode >> titles: anOrderedCollection [
+	self setParents: self titles to: nil.
+	titles := anOrderedCollection.
+	self setParents: self titles to: self
 ]
 
 { #category : #generated }
@@ -412,16 +393,6 @@ ABAPSelectionScreenNode >> userCommand: anABAPExpressionNode [
 	self userCommand notNil ifTrue: [ self userCommand parent: nil ].
 	userCommand := anABAPExpressionNode.
 	self userCommand notNil ifTrue: [ self userCommand parent: self ]
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPSelectionScreenNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]
 
 { #category : #generated }

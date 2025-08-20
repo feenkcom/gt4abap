@@ -10,11 +10,12 @@ Class {
 		'dynamics',
 		'defaults',
 		'fields',
+		'userCommands',
 		'lengths',
 		'decimalses',
 		'groupNames',
 		'memories',
-		'values',
+		'modifs',
 		'databaseTables',
 		'databaseTableNames'
 	],
@@ -28,12 +29,12 @@ ABAPParameterNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #lengths #decimalses #groupNames #memories #databaseTables)
+	^ #(#typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #lengths #decimalses #groupNames #memories #modifs #databaseTables)
 ]
 
 { #category : #generated }
 ABAPParameterNode >> compositeTokenVariables [
-	^ #(#keywords #values #databaseTableNames)
+	^ #(#keywords #userCommands #databaseTableNames)
 ]
 
 { #category : #generated }
@@ -152,11 +153,12 @@ ABAPParameterNode >> initialize [
 	dynamics := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	userCommands := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
 	groupNames := OrderedCollection new: 2.
 	memories := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
+	modifs := OrderedCollection new: 2.
 	databaseTables := OrderedCollection new: 2.
 	databaseTableNames := OrderedCollection new: 2.
 ]
@@ -196,6 +198,18 @@ ABAPParameterNode >> memories: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPParameterNode >> modifs [
+	^ modifs
+]
+
+{ #category : #generated }
+ABAPParameterNode >> modifs: anOrderedCollection [
+	self setParents: self modifs to: nil.
+	modifs := anOrderedCollection.
+	self setParents: self modifs to: self
+]
+
+{ #category : #generated }
 ABAPParameterNode >> nodeVariables [
 	^ #(#parameter)
 ]
@@ -225,11 +239,11 @@ ABAPParameterNode >> typeNames: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> values [
-	^ values
+ABAPParameterNode >> userCommands [
+	^ userCommands
 ]
 
 { #category : #generated }
-ABAPParameterNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+ABAPParameterNode >> userCommands: anOrderedCollection [
+	userCommands := anOrderedCollection
 ]

@@ -6,18 +6,14 @@ Class {
 		'functionName',
 		'tasks',
 		'units',
+		'callings',
 		'formNames',
 		'sources',
-		'lefts',
-		'operators',
-		'rights',
-		'values',
-		'leftParens',
-		'rightParens',
 		'exception',
 		'parameterNames',
 		'eqs',
 		'targets',
+		'values',
 		'parameterTable',
 		'exceptionTable'
 	],
@@ -30,13 +26,25 @@ ABAPCallFunctionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPCallFunctionNode >> callings [
+	^ callings
+]
+
+{ #category : #generated }
+ABAPCallFunctionNode >> callings: anOrderedCollection [
+	self setParents: self callings to: nil.
+	callings := anOrderedCollection.
+	self setParents: self callings to: self
+]
+
+{ #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#tasks #units #formNames #sources #lefts #rights #parameterNames #targets)
+	^ #(#tasks #units #callings #formNames #sources #parameterNames #targets #values)
 ]
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeTokenVariables [
-	^ #(#keywords #operators #leftParens #rightParens #eqs)
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -103,17 +111,13 @@ ABAPCallFunctionNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	tasks := OrderedCollection new: 2.
 	units := OrderedCollection new: 2.
+	callings := OrderedCollection new: 2.
 	formNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -127,45 +131,8 @@ ABAPCallFunctionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
 ABAPCallFunctionNode >> nodeVariables [
 	^ #(#functionName #exception #parameterTable #exceptionTable)
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> otherVariables [
-	^ #(#values)
 ]
 
 { #category : #generated }
@@ -190,28 +157,6 @@ ABAPCallFunctionNode >> parameterTable: anABAPExpressionNode [
 	self parameterTable notNil ifTrue: [ self parameterTable parent: nil ].
 	parameterTable := anABAPExpressionNode.
 	self parameterTable notNil ifTrue: [ self parameterTable parent: self ]
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rights [
-	^ rights
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -269,7 +214,7 @@ ABAPCallFunctionNode >> values [
 
 { #category : #generated }
 ABAPCallFunctionNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]

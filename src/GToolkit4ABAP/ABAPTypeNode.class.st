@@ -11,11 +11,6 @@ Class {
 		'defaults',
 		'fields',
 		'occurs',
-		'values',
-		'leftParens',
-		'keys',
-		'rightParens',
-		'operators',
 		'sizes',
 		'table',
 		'hierarchy',
@@ -70,7 +65,7 @@ ABAPTypeNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPTypeNode >> compositeTokenVariables [
-	^ #(#keywords #values #leftParens #keys #rightParens #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -179,22 +174,7 @@ ABAPTypeNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPTypeNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPTypeNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -205,16 +185,6 @@ ABAPTypeNode >> keywords [
 { #category : #generated }
 ABAPTypeNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPTypeNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPTypeNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -268,16 +238,6 @@ ABAPTypeNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
 	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
-]
-
-{ #category : #generated }
-ABAPTypeNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPTypeNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -341,16 +301,6 @@ ABAPTypeNode >> requested: anABAPNameNode [
 ]
 
 { #category : #generated }
-ABAPTypeNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPTypeNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPTypeNode >> sizes [
 	^ sizes
 ]
@@ -384,14 +334,4 @@ ABAPTypeNode >> typeNames: anOrderedCollection [
 	self setParents: self typeNames to: nil.
 	typeNames := anOrderedCollection.
 	self setParents: self typeNames to: self
-]
-
-{ #category : #generated }
-ABAPTypeNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPTypeNode >> values: anOrderedCollection [
-	values := anOrderedCollection
 ]

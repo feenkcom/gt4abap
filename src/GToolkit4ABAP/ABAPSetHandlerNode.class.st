@@ -3,8 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'leftParens',
-		'rightParens',
+		'setHandlers',
 		'sources'
 	],
 	#category : #GToolkit4ABAP
@@ -17,20 +16,19 @@ ABAPSetHandlerNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSetHandlerNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#setHandlers #sources)
 ]
 
 { #category : #generated }
 ABAPSetHandlerNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens)
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPSetHandlerNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	setHandlers := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 ]
 
@@ -45,23 +43,15 @@ ABAPSetHandlerNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSetHandlerNode >> leftParens [
-	^ leftParens
+ABAPSetHandlerNode >> setHandlers [
+	^ setHandlers
 ]
 
 { #category : #generated }
-ABAPSetHandlerNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPSetHandlerNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPSetHandlerNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPSetHandlerNode >> setHandlers: anOrderedCollection [
+	self setParents: self setHandlers to: nil.
+	setHandlers := anOrderedCollection.
+	self setParents: self setHandlers to: self
 ]
 
 { #category : #generated }

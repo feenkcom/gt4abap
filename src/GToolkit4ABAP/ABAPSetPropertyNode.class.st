@@ -6,7 +6,8 @@ Class {
 		'sources',
 		'name',
 		'eqs',
-		'value'
+		'value',
+		'oleExportings'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,7 +24,7 @@ ABAPSetPropertyNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPSetPropertyNode >> compositeTokenVariables [
-	^ #(#keywords #eqs)
+	^ #(#keywords #eqs #oleExportings)
 ]
 
 { #category : #generated }
@@ -42,6 +43,7 @@ ABAPSetPropertyNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	oleExportings := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -69,6 +71,16 @@ ABAPSetPropertyNode >> name: anABAPExpressionNode [
 { #category : #generated }
 ABAPSetPropertyNode >> nodeVariables [
 	^ #(#name #value)
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> oleExportings [
+	^ oleExportings
+]
+
+{ #category : #generated }
+ABAPSetPropertyNode >> oleExportings: anOrderedCollection [
+	oleExportings := anOrderedCollection
 ]
 
 { #category : #generated }

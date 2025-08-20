@@ -15,20 +15,18 @@ Class {
 		'clients',
 		'ins',
 		'packageSizes',
-		'hints',
 		'databaseTables',
 		'databaseTableNames',
 		'eqs',
-		'fieldChains',
-		'rightParens',
 		'values',
-		'keys',
-		'operators',
-		'targets',
+		'rightParens',
+		'fieldChains',
 		'upTos',
 		'dynamics',
-		'distincts',
 		'fieldNames',
+		'targets',
+		'hints',
+		'distincts',
 		'ons',
 		'body'
 	],
@@ -98,12 +96,12 @@ ABAPWithNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithNode >> compositeNodeVariables [
-	^ #(#withNames #names #asNames #wheres #havings #clients #ins #packageSizes #hints #databaseTables #fieldChains #targets #upTos #dynamics #distincts #fieldNames #ons)
+	^ #(#withNames #names #asNames #wheres #havings #clients #ins #packageSizes #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #distincts #ons)
 ]
 
 { #category : #generated }
 ABAPWithNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #commas #ats #databaseTableNames #eqs #rightParens #values #keys #operators)
+	^ #(#keywords #leftParens #commas #ats #databaseTableNames #eqs #rightParens)
 ]
 
 { #category : #generated }
@@ -238,20 +236,18 @@ ABAPWithNode >> initialize [
 	clients := OrderedCollection new: 2.
 	ins := OrderedCollection new: 2.
 	packageSizes := OrderedCollection new: 2.
-	hints := OrderedCollection new: 2.
 	databaseTables := OrderedCollection new: 2.
 	databaseTableNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	upTos := OrderedCollection new: 2.
 	dynamics := OrderedCollection new: 2.
-	distincts := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
+	targets := OrderedCollection new: 2.
+	hints := OrderedCollection new: 2.
+	distincts := OrderedCollection new: 2.
 	ons := OrderedCollection new: 2.
 ]
 
@@ -265,16 +261,6 @@ ABAPWithNode >> ins: anOrderedCollection [
 	self setParents: self ins to: nil.
 	ins := anOrderedCollection.
 	self setParents: self ins to: self
-]
-
-{ #category : #generated }
-ABAPWithNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPWithNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -324,16 +310,6 @@ ABAPWithNode >> ons: anOrderedCollection [
 	self setParents: self ons to: nil.
 	ons := anOrderedCollection.
 	self setParents: self ons to: self
-]
-
-{ #category : #generated }
-ABAPWithNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPWithNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -394,7 +370,9 @@ ABAPWithNode >> values [
 
 { #category : #generated }
 ABAPWithNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]
 
 { #category : #generated }

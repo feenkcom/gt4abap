@@ -12,10 +12,6 @@ Class {
 		'defaults',
 		'fields',
 		'occurs',
-		'leftParens',
-		'keys',
-		'rightParens',
-		'operators',
 		'sizes',
 		'table'
 	],
@@ -29,12 +25,12 @@ ABAPStaticNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPStaticNode >> compositeNodeVariables [
-	^ #(#fieldChains #typeNames #lengths #decimalses #defaults #fields #sizes)
+	^ #(#fieldChains #typeNames #values #lengths #decimalses #defaults #fields #sizes)
 ]
 
 { #category : #generated }
 ABAPStaticNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keys #rightParens #operators)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -96,21 +92,7 @@ ABAPStaticNode >> initialize [
 	decimalses := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPStaticNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPStaticNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -121,16 +103,6 @@ ABAPStaticNode >> keywords [
 { #category : #generated }
 ABAPStaticNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStaticNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPStaticNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -172,31 +144,6 @@ ABAPStaticNode >> occurs: anABAPExpressionNode [
 	self occurs notNil ifTrue: [ self occurs parent: nil ].
 	occurs := anABAPExpressionNode.
 	self occurs notNil ifTrue: [ self occurs parent: self ]
-]
-
-{ #category : #generated }
-ABAPStaticNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPStaticNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStaticNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPStaticNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPStaticNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -242,7 +189,7 @@ ABAPStaticNode >> values [
 
 { #category : #generated }
 ABAPStaticNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]

@@ -3,13 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamics',
-		'leftParens',
-		'selects',
-		'rightParens',
-		'name',
-		'values',
-		'ats'
+		'databaseTable',
+		'databaseTableName',
+		'where',
+		'connectionName',
+		'connection',
+		'client',
+		'from'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -20,47 +20,82 @@ ABAPDeleteDatabaseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> ats [
-	^ ats
+ABAPDeleteDatabaseNode >> client [
+	^ client
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> ats: anOrderedCollection [
-	ats := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #selects #values)
+ABAPDeleteDatabaseNode >> client: anABAPExpressionNode [
+	self client notNil ifTrue: [ self client parent: nil ].
+	client := anABAPExpressionNode.
+	self client notNil ifTrue: [ self client parent: self ]
 ]
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #ats)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> dynamics [
-	^ dynamics
+ABAPDeleteDatabaseNode >> connection [
+	^ connection
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPDeleteDatabaseNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> databaseTable [
+	^ databaseTable
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> databaseTable: anABAPExpressionNode [
+	self databaseTable notNil ifTrue: [ self databaseTable parent: nil ].
+	databaseTable := anABAPExpressionNode.
+	self databaseTable notNil ifTrue: [ self databaseTable parent: self ]
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> databaseTableName [
+	^ databaseTableName
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> databaseTableName: aSmaCCToken [
+	databaseTableName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPDeleteDatabaseNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPDeleteDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	selects := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	ats := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -74,60 +109,23 @@ ABAPDeleteDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> selects [
-	^ selects
-]
-
-{ #category : #generated }
-ABAPDeleteDatabaseNode >> selects: anOrderedCollection [
-	self setParents: self selects to: nil.
-	selects := anOrderedCollection.
-	self setParents: self selects to: self
+ABAPDeleteDatabaseNode >> nodeVariables [
+	^ #(#databaseTable #where #connection #client #from)
 ]
 
 { #category : #generated }
 ABAPDeleteDatabaseNode >> tokenVariables [
-	^ #(#name #period)
+	^ #(#databaseTableName #connectionName #period)
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> values [
-	^ values
+ABAPDeleteDatabaseNode >> where [
+	^ where
 ]
 
 { #category : #generated }
-ABAPDeleteDatabaseNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
+ABAPDeleteDatabaseNode >> where: anABAPExpressionNode [
+	self where notNil ifTrue: [ self where parent: nil ].
+	where := anABAPExpressionNode.
+	self where notNil ifTrue: [ self where parent: self ]
 ]

@@ -31,15 +31,15 @@ ABAPSQLCompareExpressionNode >> left [
 ]
 
 { #category : #generated }
-ABAPSQLCompareExpressionNode >> left: anOrderedCollection [
-	self setParent: self left to: nil.
-	left := anOrderedCollection.
-	self setParent: self left to: self
+ABAPSQLCompareExpressionNode >> left: anABAPExpressionNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPExpressionNode.
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
 ABAPSQLCompareExpressionNode >> nodeVariables [
-	^ #(#right)
+	^ #(#left #right)
 ]
 
 { #category : #generated }
@@ -50,11 +50,6 @@ ABAPSQLCompareExpressionNode >> operator [
 { #category : #generated }
 ABAPSQLCompareExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPSQLCompareExpressionNode >> otherVariables [
-	^ #(#left)
 ]
 
 { #category : #generated }

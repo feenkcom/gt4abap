@@ -5,7 +5,7 @@ Class {
 		'keywords',
 		'includeName',
 		'messageClasses',
-		'lineses'
+		'linesSizes'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,7 +17,7 @@ ABAPFunctionPoolNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFunctionPoolNode >> compositeNodeVariables [
-	^ #(#messageClasses #lineses)
+	^ #(#messageClasses #linesSizes)
 ]
 
 { #category : #generated }
@@ -42,7 +42,7 @@ ABAPFunctionPoolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	messageClasses := OrderedCollection new: 2.
-	lineses := OrderedCollection new: 2.
+	linesSizes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -56,15 +56,15 @@ ABAPFunctionPoolNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFunctionPoolNode >> lineses [
-	^ lineses
+ABAPFunctionPoolNode >> linesSizes [
+	^ linesSizes
 ]
 
 { #category : #generated }
-ABAPFunctionPoolNode >> lineses: anOrderedCollection [
-	self setParents: self lineses to: nil.
-	lineses := anOrderedCollection.
-	self setParents: self lineses to: self
+ABAPFunctionPoolNode >> linesSizes: anOrderedCollection [
+	self setParents: self linesSizes to: nil.
+	linesSizes := anOrderedCollection.
+	self setParents: self linesSizes to: self
 ]
 
 { #category : #generated }

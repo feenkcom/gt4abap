@@ -16,7 +16,8 @@ Class {
 		'keys',
 		'rightParens',
 		'operators',
-		'sizes'
+		'sizes',
+		'table'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -158,7 +159,7 @@ ABAPStaticNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPStaticNode >> nodeVariables [
-	^ #(#name #occurs)
+	^ #(#name #occurs #table)
 ]
 
 { #category : #generated }
@@ -208,6 +209,18 @@ ABAPStaticNode >> sizes: anOrderedCollection [
 	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
 	self setParents: self sizes to: self
+]
+
+{ #category : #generated }
+ABAPStaticNode >> table [
+	^ table
+]
+
+{ #category : #generated }
+ABAPStaticNode >> table: anABAPRootNode [
+	self table notNil ifTrue: [ self table parent: nil ].
+	table := anABAPRootNode.
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

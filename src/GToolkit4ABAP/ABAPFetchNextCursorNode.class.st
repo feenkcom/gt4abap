@@ -3,12 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'nextCursor',
 		'ats',
-		'values',
-		'leftParens',
-		'rightParens',
 		'targets',
-		'commas'
+		'packageSize',
+		'leftParen',
+		'commas',
+		'rightParen'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -40,12 +41,12 @@ ABAPFetchNextCursorNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeNodeVariables [
-	^ #(#values #targets)
+	^ #(#targets)
 ]
 
 { #category : #generated }
 ABAPFetchNextCursorNode >> compositeTokenVariables [
-	^ #(#keywords #ats #leftParens #rightParens #commas)
+	^ #(#keywords #ats #commas)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -53,9 +54,6 @@ ABAPFetchNextCursorNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
@@ -71,23 +69,52 @@ ABAPFetchNextCursorNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> leftParens [
-	^ leftParens
+ABAPFetchNextCursorNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+ABAPFetchNextCursorNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> rightParens [
-	^ rightParens
+ABAPFetchNextCursorNode >> nextCursor [
+	^ nextCursor
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPFetchNextCursorNode >> nextCursor: anABAPExpressionNode [
+	self nextCursor notNil ifTrue: [ self nextCursor parent: nil ].
+	nextCursor := anABAPExpressionNode.
+	self nextCursor notNil ifTrue: [ self nextCursor parent: self ]
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> nodeVariables [
+	^ #(#nextCursor #packageSize)
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> packageSize [
+	^ packageSize
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> packageSize: anABAPExpressionNode [
+	self packageSize notNil ifTrue: [ self packageSize parent: nil ].
+	packageSize := anABAPExpressionNode.
+	self packageSize notNil ifTrue: [ self packageSize parent: self ]
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+ABAPFetchNextCursorNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -103,13 +130,6 @@ ABAPFetchNextCursorNode >> targets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFetchNextCursorNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPFetchNextCursorNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
+ABAPFetchNextCursorNode >> tokenVariables [
+	^ #(#leftParen #rightParen #period)
 ]

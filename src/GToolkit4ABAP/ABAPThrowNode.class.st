@@ -35,7 +35,7 @@ ABAPThrowNode >> arg: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPThrowNode >> compositeNodeVariables [
-	^ #(#parameterNames #values)
+	^ #(#parameterNames #values #withs)
 ]
 
 { #category : #generated }
@@ -113,11 +113,6 @@ ABAPThrowNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPThrowNode >> otherVariables [
-	^ #(#withs)
-]
-
-{ #category : #generated }
 ABAPThrowNode >> parameterNames [
 	^ parameterNames
 ]
@@ -163,7 +158,7 @@ ABAPThrowNode >> withs [
 
 { #category : #generated }
 ABAPThrowNode >> withs: anOrderedCollection [
-	self setParent: self withs to: nil.
+	self setParents: self withs to: nil.
 	withs := anOrderedCollection.
-	self setParent: self withs to: self
+	self setParents: self withs to: self
 ]

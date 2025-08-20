@@ -13,26 +13,10 @@ Class {
 		'lengths',
 		'decimalses',
 		'groupNames',
-		'fieldChains',
+		'memories',
 		'values',
-		'leftParens',
-		'keys',
-		'rightParens',
-		'operators',
-		'dashs',
-		'arrows',
-		'names',
-		'args',
-		'methodNames',
-		'castValues',
-		'eqs',
-		'expressions',
-		'sources',
-		'attributeNames',
-		'parameterNames',
-		'targets',
-		'lefts',
-		'rights'
+		'databaseTables',
+		'databaseTableNames'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -43,69 +27,35 @@ ABAPParameterNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> args [
-	^ args
-]
-
-{ #category : #generated }
-ABAPParameterNode >> args: anOrderedCollection [
-	self setParents: self args to: nil.
-	args := anOrderedCollection.
-	self setParents: self args to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPParameterNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPParameterNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> castValues [
-	^ castValues
-]
-
-{ #category : #generated }
-ABAPParameterNode >> castValues: anOrderedCollection [
-	self setParents: self castValues to: nil.
-	castValues := anOrderedCollection.
-	self setParents: self castValues to: self
-]
-
-{ #category : #generated }
 ABAPParameterNode >> compositeNodeVariables [
-	^ #(#typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #lengths #decimalses #groupNames #fieldChains #names #args #methodNames #castValues #expressions #sources #attributeNames #parameterNames #targets #lefts #rights)
+	^ #(#typeNames #fieldLengths #fieldOffsets #dynamics #defaults #fields #lengths #decimalses #groupNames #memories #databaseTables)
 ]
 
 { #category : #generated }
 ABAPParameterNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #keys #rightParens #operators #dashs #arrows #eqs)
+	^ #(#keywords #values #databaseTableNames)
 ]
 
 { #category : #generated }
-ABAPParameterNode >> dashs [
-	^ dashs
+ABAPParameterNode >> databaseTableNames [
+	^ databaseTableNames
 ]
 
 { #category : #generated }
-ABAPParameterNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+ABAPParameterNode >> databaseTableNames: anOrderedCollection [
+	databaseTableNames := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPParameterNode >> databaseTables [
+	^ databaseTables
+]
+
+{ #category : #generated }
+ABAPParameterNode >> databaseTables: anOrderedCollection [
+	self setParents: self databaseTables to: nil.
+	databaseTables := anOrderedCollection.
+	self setParents: self databaseTables to: self
 ]
 
 { #category : #generated }
@@ -142,40 +92,6 @@ ABAPParameterNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> eqs [
-	^ eqs
-]
-
-{ #category : #generated }
-ABAPParameterNode >> eqs: anOrderedCollection [
-	eqs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> expressions [
-	^ expressions
-]
-
-{ #category : #generated }
-ABAPParameterNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> fieldChains [
-	^ fieldChains
-]
-
-{ #category : #generated }
-ABAPParameterNode >> fieldChains: anOrderedCollection [
-	self setParents: self fieldChains to: nil.
-	fieldChains := anOrderedCollection.
-	self setParents: self fieldChains to: self
 ]
 
 { #category : #generated }
@@ -239,36 +155,10 @@ ABAPParameterNode >> initialize [
 	lengths := OrderedCollection new: 2.
 	decimalses := OrderedCollection new: 2.
 	groupNames := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
+	memories := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	args := OrderedCollection new: 2.
-	methodNames := OrderedCollection new: 2.
-	castValues := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
-	expressions := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPParameterNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPParameterNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
+	databaseTables := OrderedCollection new: 2.
+	databaseTableNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -279,28 +169,6 @@ ABAPParameterNode >> keywords [
 { #category : #generated }
 ABAPParameterNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPParameterNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPParameterNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
 ]
 
 { #category : #generated }
@@ -316,47 +184,20 @@ ABAPParameterNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPParameterNode >> methodNames [
-	^ methodNames
+ABAPParameterNode >> memories [
+	^ memories
 ]
 
 { #category : #generated }
-ABAPParameterNode >> methodNames: anOrderedCollection [
-	self setParents: self methodNames to: nil.
-	methodNames := anOrderedCollection.
-	self setParents: self methodNames to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPParameterNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPParameterNode >> memories: anOrderedCollection [
+	self setParents: self memories to: nil.
+	memories := anOrderedCollection.
+	self setParents: self memories to: self
 ]
 
 { #category : #generated }
 ABAPParameterNode >> nodeVariables [
 	^ #(#parameter)
-]
-
-{ #category : #generated }
-ABAPParameterNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPParameterNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> otherVariables [
-	^ #(#values)
 ]
 
 { #category : #generated }
@@ -369,64 +210,6 @@ ABAPParameterNode >> parameter: anABAPFieldSubNode [
 	self parameter notNil ifTrue: [ self parameter parent: nil ].
 	parameter := anABAPFieldSubNode.
 	self parameter notNil ifTrue: [ self parameter parent: self ]
-]
-
-{ #category : #generated }
-ABAPParameterNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPParameterNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rights [
-	^ rights
-]
-
-{ #category : #generated }
-ABAPParameterNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPParameterNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPParameterNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPParameterNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
 ]
 
 { #category : #generated }
@@ -448,7 +231,5 @@ ABAPParameterNode >> values [
 
 { #category : #generated }
 ABAPParameterNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+	values := anOrderedCollection
 ]

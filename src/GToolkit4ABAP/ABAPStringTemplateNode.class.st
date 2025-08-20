@@ -2,10 +2,9 @@ Class {
 	#name : #ABAPStringTemplateNode,
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
+		'parts',
 		'expressions',
-		'keywords',
-		'eqs',
-		'values'
+		'formats'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,22 +16,12 @@ ABAPStringTemplateNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPStringTemplateNode >> compositeNodeVariables [
-	^ #(#expressions #values)
+	^ #(#expressions #formats)
 ]
 
 { #category : #generated }
 ABAPStringTemplateNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #leftParens #rightParens)
-]
-
-{ #category : #generated }
-ABAPStringTemplateNode >> eqs [
-	^ eqs
-]
-
-{ #category : #generated }
-ABAPStringTemplateNode >> eqs: anOrderedCollection [
-	eqs := anOrderedCollection
+	^ #(#parts #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -47,33 +36,32 @@ ABAPStringTemplateNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: self
 ]
 
+{ #category : #generated }
+ABAPStringTemplateNode >> formats [
+	^ formats
+]
+
+{ #category : #generated }
+ABAPStringTemplateNode >> formats: anOrderedCollection [
+	self setParents: self formats to: nil.
+	formats := anOrderedCollection.
+	self setParents: self formats to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPStringTemplateNode >> initialize [
 	super initialize.
+	parts := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
-	keywords := OrderedCollection new: 2.
-	eqs := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
+	formats := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPStringTemplateNode >> keywords [
-	^ keywords
+ABAPStringTemplateNode >> parts [
+	^ parts
 ]
 
 { #category : #generated }
-ABAPStringTemplateNode >> keywords: anOrderedCollection [
-	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPStringTemplateNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPStringTemplateNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
+ABAPStringTemplateNode >> parts: anOrderedCollection [
+	parts := anOrderedCollection
 ]

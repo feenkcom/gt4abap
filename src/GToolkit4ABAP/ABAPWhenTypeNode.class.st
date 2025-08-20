@@ -2,11 +2,8 @@ Class {
 	#name : #ABAPWhenTypeNode,
 	#superclass : #ABAPRootNode,
 	#instVars : [
-		'keywords',
-		'name',
-		'intoTarget',
-		'body',
-		'period'
+		'when',
+		'body'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -29,66 +26,18 @@ ABAPWhenTypeNode >> body: anABAPBodyNode [
 ]
 
 { #category : #generated }
-ABAPWhenTypeNode >> compositeTokenVariables [
-	^ #(#keywords)
-]
-
-{ #category : #'generated-initialize-release' }
-ABAPWhenTypeNode >> initialize [
-	super initialize.
-	keywords := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> intoTarget [
-	^ intoTarget
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> intoTarget: anABAPExpressionNode [
-	self intoTarget notNil ifTrue: [ self intoTarget parent: nil ].
-	intoTarget := anABAPExpressionNode.
-	self intoTarget notNil ifTrue: [ self intoTarget parent: self ]
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> keywords [
-	^ keywords
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> keywords: anOrderedCollection [
-	keywords := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> name: anABAPNameNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPNameNode.
-	self name notNil ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
 ABAPWhenTypeNode >> nodeVariables [
-	^ #(#name #intoTarget #body)
+	^ #(#when #body)
 ]
 
 { #category : #generated }
-ABAPWhenTypeNode >> period [
-	^ period
+ABAPWhenTypeNode >> when [
+	^ when
 ]
 
 { #category : #generated }
-ABAPWhenTypeNode >> period: aSmaCCToken [
-	period := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPWhenTypeNode >> tokenVariables [
-	^ #(#period)
+ABAPWhenTypeNode >> when: anABAPRootNode [
+	self when notNil ifTrue: [ self when parent: nil ].
+	when := anABAPRootNode.
+	self when notNil ifTrue: [ self when parent: self ]
 ]

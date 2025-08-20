@@ -6,16 +6,13 @@ Class {
 		'decs',
 		'commas',
 		'fields',
+		'distincts',
 		'fieldNames',
 		'values',
 		'keys',
 		'operators',
 		'ats',
-		'functions',
-		'whens',
-		'thens',
-		'elses',
-		'dynamics'
+		'functions'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -47,7 +44,7 @@ ABAPSQLFunctionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLFunctionNode >> compositeNodeVariables [
-	^ #(#decs #fields #fieldNames #functions #thens #elses #dynamics)
+	^ #(#decs #fields #distincts #fieldNames #functions)
 ]
 
 { #category : #generated }
@@ -68,27 +65,15 @@ ABAPSQLFunctionNode >> decs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSQLFunctionNode >> dynamics [
-	^ dynamics
+ABAPSQLFunctionNode >> distincts [
+	^ distincts
 ]
 
 { #category : #generated }
-ABAPSQLFunctionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> elses [
-	^ elses
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> elses: anOrderedCollection [
-	self setParents: self elses to: nil.
-	elses := anOrderedCollection.
-	self setParents: self elses to: self
+ABAPSQLFunctionNode >> distincts: anOrderedCollection [
+	self setParents: self distincts to: nil.
+	distincts := anOrderedCollection.
+	self setParents: self distincts to: self
 ]
 
 { #category : #generated }
@@ -134,16 +119,13 @@ ABAPSQLFunctionNode >> initialize [
 	decs := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	distincts := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keys := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
 	functions := OrderedCollection new: 2.
-	whens := OrderedCollection new: 2.
-	thens := OrderedCollection new: 2.
-	elses := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -178,19 +160,7 @@ ABAPSQLFunctionNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLFunctionNode >> otherVariables [
-	^ #(#values #whens)
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> thens [
-	^ thens
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> thens: anOrderedCollection [
-	self setParents: self thens to: nil.
-	thens := anOrderedCollection.
-	self setParents: self thens to: self
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -203,16 +173,4 @@ ABAPSQLFunctionNode >> values: anOrderedCollection [
 	self setParent: self values to: nil.
 	values := anOrderedCollection.
 	self setParent: self values to: self
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> whens [
-	^ whens
-]
-
-{ #category : #generated }
-ABAPSQLFunctionNode >> whens: anOrderedCollection [
-	self setParent: self whens to: nil.
-	whens := anOrderedCollection.
-	self setParent: self whens to: self
 ]

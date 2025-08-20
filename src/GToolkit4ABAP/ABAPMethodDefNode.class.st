@@ -10,8 +10,11 @@ Class {
 		'leftParens',
 		'rightParens',
 		'typeNames',
+		'fieldChains',
+		'preferred',
 		'defaults',
-		'fieldChains'
+		'forCreates',
+		'forRead'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,7 +26,7 @@ ABAPMethodDefNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPMethodDefNode >> compositeNodeVariables [
-	^ #(#names #parameterNames #typeNames #defaults #fieldChains)
+	^ #(#names #parameterNames #typeNames #defaults #fieldChains #forCreates)
 ]
 
 { #category : #generated }
@@ -67,6 +70,30 @@ ABAPMethodDefNode >> fieldChains: anOrderedCollection [
 	self setParents: self fieldChains to: self
 ]
 
+{ #category : #generated }
+ABAPMethodDefNode >> forCreates [
+	^ forCreates
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> forCreates: anOrderedCollection [
+	self setParents: self forCreates to: nil.
+	forCreates := anOrderedCollection.
+	self setParents: self forCreates to: self
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> forRead [
+	^ forRead
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> forRead: anABAPRootNode [
+	self forRead notNil ifTrue: [ self forRead parent: nil ].
+	forRead := anABAPRootNode.
+	self forRead notNil ifTrue: [ self forRead parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPMethodDefNode >> initialize [
 	super initialize.
@@ -78,6 +105,7 @@ ABAPMethodDefNode >> initialize [
 	typeNames := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
+	forCreates := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -126,7 +154,7 @@ ABAPMethodDefNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPMethodDefNode >> nodeVariables [
-	^ #(#methodName #eventName)
+	^ #(#methodName #eventName #forRead)
 ]
 
 { #category : #generated }
@@ -142,6 +170,16 @@ ABAPMethodDefNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPMethodDefNode >> preferred [
+	^ preferred
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> preferred: aSmaCCToken [
+	preferred := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPMethodDefNode >> rightParens [
 	^ rightParens
 ]
@@ -149,6 +187,11 @@ ABAPMethodDefNode >> rightParens [
 { #category : #generated }
 ABAPMethodDefNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPMethodDefNode >> tokenVariables [
+	^ #(#preferred #period)
 ]
 
 { #category : #generated }

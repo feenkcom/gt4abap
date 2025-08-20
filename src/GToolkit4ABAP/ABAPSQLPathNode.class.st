@@ -5,7 +5,7 @@ Class {
 		'name',
 		'leftBracket',
 		'keywords',
-		'selects',
+		'where',
 		'rightBracket'
 	],
 	#category : #GToolkit4ABAP
@@ -17,11 +17,6 @@ ABAPSQLPathNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSQLPathNode >> compositeNodeVariables [
-	^ #(#selects)
-]
-
-{ #category : #generated }
 ABAPSQLPathNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
 ]
@@ -30,7 +25,6 @@ ABAPSQLPathNode >> compositeTokenVariables [
 ABAPSQLPathNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	selects := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -67,7 +61,7 @@ ABAPSQLPathNode >> name: anABAPNameNode [
 
 { #category : #generated }
 ABAPSQLPathNode >> nodeVariables [
-	^ #(#name)
+	^ #(#name #where)
 ]
 
 { #category : #generated }
@@ -81,18 +75,18 @@ ABAPSQLPathNode >> rightBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPSQLPathNode >> selects [
-	^ selects
-]
-
-{ #category : #generated }
-ABAPSQLPathNode >> selects: anOrderedCollection [
-	self setParents: self selects to: nil.
-	selects := anOrderedCollection.
-	self setParents: self selects to: self
-]
-
-{ #category : #generated }
 ABAPSQLPathNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
+]
+
+{ #category : #generated }
+ABAPSQLPathNode >> where [
+	^ where
+]
+
+{ #category : #generated }
+ABAPSQLPathNode >> where: anABAPExpressionNode [
+	self where notNil ifTrue: [ self where parent: nil ].
+	where := anABAPExpressionNode.
+	self where notNil ifTrue: [ self where parent: self ]
 ]

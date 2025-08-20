@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'target',
-		'dynamic'
+		'databaseTable',
+		'databaseTableName'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -20,15 +21,25 @@ ABAPRefreshNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
-ABAPRefreshNode >> dynamic [
-	^ dynamic
+ABAPRefreshNode >> databaseTable [
+	^ databaseTable
 ]
 
 { #category : #generated }
-ABAPRefreshNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+ABAPRefreshNode >> databaseTable: anABAPExpressionNode [
+	self databaseTable notNil ifTrue: [ self databaseTable parent: nil ].
+	databaseTable := anABAPExpressionNode.
+	self databaseTable notNil ifTrue: [ self databaseTable parent: self ]
+]
+
+{ #category : #generated }
+ABAPRefreshNode >> databaseTableName [
+	^ databaseTableName
+]
+
+{ #category : #generated }
+ABAPRefreshNode >> databaseTableName: aSmaCCToken [
+	databaseTableName := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -49,7 +60,7 @@ ABAPRefreshNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPRefreshNode >> nodeVariables [
-	^ #(#target #dynamic)
+	^ #(#target #databaseTable)
 ]
 
 { #category : #generated }
@@ -62,4 +73,9 @@ ABAPRefreshNode >> target: anABAPExpressionNode [
 	self target notNil ifTrue: [ self target parent: nil ].
 	target := anABAPExpressionNode.
 	self target notNil ifTrue: [ self target parent: self ]
+]
+
+{ #category : #generated }
+ABAPRefreshNode >> tokenVariables [
+	^ #(#databaseTableName #period)
 ]

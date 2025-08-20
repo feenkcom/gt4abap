@@ -49,12 +49,7 @@ ABAPIsExpressionNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPIsExpressionNode >> nodeVariables [
-	^ #(#_class)
-]
-
-{ #category : #generated }
-ABAPIsExpressionNode >> otherVariables [
-	^ #(#value)
+	^ #(#value #_class)
 ]
 
 { #category : #generated }
@@ -63,8 +58,8 @@ ABAPIsExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPIsExpressionNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+ABAPIsExpressionNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

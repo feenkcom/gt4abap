@@ -3,23 +3,16 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
-		'arrow',
-		'attributeNames',
-		'dynamics',
-		'methodNames',
-		'leftParens',
-		'sources',
-		'rightParens',
+		'left',
+		'operator',
+		'right',
 		'values',
+		'leftParens',
+		'rightParens',
+		'sources',
 		'parameterNames',
 		'eqs',
-		'targets',
-		'operators',
-		'lefts',
-		'rights',
-		'dashs',
-		'field'
+		'targets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -30,57 +23,13 @@ ABAPCallBadiNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> arrow [
-	^ arrow
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> arrow: aSmaCCToken [
-	arrow := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPCallBadiNode >> compositeNodeVariables [
-	^ #(#names #attributeNames #dynamics #methodNames #sources #parameterNames #targets #lefts #rights)
+	^ #(#parameterNames #targets #sources)
 ]
 
 { #category : #generated }
 ABAPCallBadiNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #eqs #operators #dashs)
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+	^ #(#keywords #leftParens #rightParens #eqs)
 ]
 
 { #category : #generated }
@@ -93,37 +42,17 @@ ABAPCallBadiNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
 ]
 
-{ #category : #generated }
-ABAPCallBadiNode >> field [
-	^ field
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> field: anABAPNameNode [
-	self field notNil ifTrue: [ self field parent: nil ].
-	field := anABAPNameNode.
-	self field notNil ifTrue: [ self field parent: self ]
-]
-
 { #category : #'generated-initialize-release' }
 ABAPCallBadiNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	methodNames := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	sources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -137,6 +66,18 @@ ABAPCallBadiNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallBadiNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> left: anABAPExpressionNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := anABAPExpressionNode.
+	self left notNil ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
 ABAPCallBadiNode >> leftParens [
 	^ leftParens
 ]
@@ -147,54 +88,18 @@ ABAPCallBadiNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> methodNames [
-	^ methodNames
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> methodNames: anOrderedCollection [
-	self setParents: self methodNames to: nil.
-	methodNames := anOrderedCollection.
-	self setParents: self methodNames to: self
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
 ABAPCallBadiNode >> nodeVariables [
-	^ #(#field)
+	^ #(#left #right)
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> operators [
-	^ operators
+ABAPCallBadiNode >> operator [
+	^ operator
 ]
 
 { #category : #generated }
-ABAPCallBadiNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
+ABAPCallBadiNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -215,6 +120,18 @@ ABAPCallBadiNode >> parameterNames: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPCallBadiNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+ABAPCallBadiNode >> right: anABAPExpressionNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := anABAPExpressionNode.
+	self right notNil ifTrue: [ self right parent: self ]
+]
+
+{ #category : #generated }
 ABAPCallBadiNode >> rightParens [
 	^ rightParens
 ]
@@ -222,18 +139,6 @@ ABAPCallBadiNode >> rightParens [
 { #category : #generated }
 ABAPCallBadiNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> rights [
-	^ rights
-]
-
-{ #category : #generated }
-ABAPCallBadiNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
 ]
 
 { #category : #generated }
@@ -262,7 +167,7 @@ ABAPCallBadiNode >> targets: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallBadiNode >> tokenVariables [
-	^ #(#arrow #period)
+	^ #(#operator #period)
 ]
 
 { #category : #generated }

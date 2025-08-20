@@ -8,24 +8,16 @@ Class {
 		'units',
 		'formNames',
 		'sources',
-		'names',
-		'arrows',
-		'attributeNames',
-		'dynamics',
-		'fields',
-		'methodNames',
+		'lefts',
+		'operators',
+		'rights',
 		'values',
 		'leftParens',
 		'rightParens',
+		'exception',
 		'parameterNames',
 		'eqs',
 		'targets',
-		'operators',
-		'lefts',
-		'rights',
-		'dashs',
-		'exception',
-		'keys',
 		'parameterTable',
 		'exceptionTable'
 	],
@@ -38,57 +30,13 @@ ABAPCallFunctionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> arrows [
-	^ arrows
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> arrows: anOrderedCollection [
-	arrows := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> attributeNames [
-	^ attributeNames
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> attributeNames: anOrderedCollection [
-	self setParents: self attributeNames to: nil.
-	attributeNames := anOrderedCollection.
-	self setParents: self attributeNames to: self
-]
-
-{ #category : #generated }
 ABAPCallFunctionNode >> compositeNodeVariables [
-	^ #(#tasks #units #formNames #sources #names #attributeNames #dynamics #fields #methodNames #parameterNames #targets #lefts #rights)
+	^ #(#tasks #units #formNames #sources #lefts #rights #parameterNames #targets)
 ]
 
 { #category : #generated }
 ABAPCallFunctionNode >> compositeTokenVariables [
-	^ #(#keywords #arrows #leftParens #rightParens #eqs #operators #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+	^ #(#keywords #operators #leftParens #rightParens #eqs)
 ]
 
 { #category : #generated }
@@ -126,18 +74,6 @@ ABAPCallFunctionNode >> exceptionTable: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPCallFunctionNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
-]
-
-{ #category : #generated }
 ABAPCallFunctionNode >> formNames [
 	^ formNames
 ]
@@ -169,33 +105,15 @@ ABAPCallFunctionNode >> initialize [
 	units := OrderedCollection new: 2.
 	formNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	arrows := OrderedCollection new: 2.
-	attributeNames := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
-	methodNames := OrderedCollection new: 2.
+	lefts := OrderedCollection new: 2.
+	operators := OrderedCollection new: 2.
+	rights := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	parameterNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -228,30 +146,6 @@ ABAPCallFunctionNode >> lefts: anOrderedCollection [
 	self setParents: self lefts to: nil.
 	lefts := anOrderedCollection.
 	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> methodNames [
-	^ methodNames
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> methodNames: anOrderedCollection [
-	self setParents: self methodNames to: nil.
-	methodNames := anOrderedCollection.
-	self setParents: self methodNames to: self
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPCallFunctionNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
 ]
 
 { #category : #generated }

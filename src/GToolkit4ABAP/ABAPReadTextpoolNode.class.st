@@ -3,13 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
-		'names',
-		'leftBrackets',
-		'rightBrackets',
-		'values',
-		'fieldOffsets',
-		'fieldLengths'
+		'read',
+		'intos',
+		'languages',
+		'states'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -21,49 +18,33 @@ ABAPReadTextpoolNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeNodeVariables [
-	^ #(#sources #names #fieldOffsets #fieldLengths)
+	^ #(#intos #languages #states)
 ]
 
 { #category : #generated }
 ABAPReadTextpoolNode >> compositeTokenVariables [
-	^ #(#keywords #leftBrackets #rightBrackets)
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPReadTextpoolNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
+	intos := OrderedCollection new: 2.
+	languages := OrderedCollection new: 2.
+	states := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> intos [
+	^ intos
+]
+
+{ #category : #generated }
+ABAPReadTextpoolNode >> intos: anOrderedCollection [
+	self setParents: self intos to: nil.
+	intos := anOrderedCollection.
+	self setParents: self intos to: self
 ]
 
 { #category : #generated }
@@ -77,62 +58,42 @@ ABAPReadTextpoolNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> leftBrackets [
-	^ leftBrackets
+ABAPReadTextpoolNode >> languages [
+	^ languages
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
+ABAPReadTextpoolNode >> languages: anOrderedCollection [
+	self setParents: self languages to: nil.
+	languages := anOrderedCollection.
+	self setParents: self languages to: self
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> names [
-	^ names
+ABAPReadTextpoolNode >> nodeVariables [
+	^ #(#read)
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPReadTextpoolNode >> read [
+	^ read
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> otherVariables [
-	^ #(#values)
+ABAPReadTextpoolNode >> read: anABAPExpressionNode [
+	self read notNil ifTrue: [ self read parent: nil ].
+	read := anABAPExpressionNode.
+	self read notNil ifTrue: [ self read parent: self ]
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> rightBrackets [
-	^ rightBrackets
+ABAPReadTextpoolNode >> states [
+	^ states
 ]
 
 { #category : #generated }
-ABAPReadTextpoolNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPReadTextpoolNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+ABAPReadTextpoolNode >> states: anOrderedCollection [
+	self setParents: self states to: nil.
+	states := anOrderedCollection.
+	self setParents: self states to: self
 ]

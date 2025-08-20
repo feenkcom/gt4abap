@@ -931,8 +931,8 @@ TABAPRootNodeVisitor >> visitMethod: aMethod [
 ]
 
 { #category : #generated }
-TABAPRootNodeVisitor >> visitMethodCallChain: aMethodCallChain [
-	^ self visitExpression: aMethodCallChain
+TABAPRootNodeVisitor >> visitMethodCall: aMethodCall [
+	^ self visitExpression: aMethodCall
 ]
 
 { #category : #generated }
@@ -1728,6 +1728,11 @@ TABAPRootNodeVisitor >> visitWhen: aWhen [
 { #category : #generated }
 TABAPRootNodeVisitor >> visitWhenOthers: aWhenOthers [
 	^ self visitRoot: aWhenOthers
+]
+
+{ #category : #generated }
+TABAPRootNodeVisitor >> visitWhenType1: aWhenType1 [
+	^ self visitRoot: aWhenType1
 ]
 
 { #category : #generated }

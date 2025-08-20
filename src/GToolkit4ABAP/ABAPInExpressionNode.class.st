@@ -3,23 +3,16 @@ Class {
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keywords',
+		'functions',
 		'decs',
 		'commas',
 		'fields',
+		'distincts',
 		'fieldNames',
 		'values',
 		'keys',
 		'operators',
-		'ats',
-		'functions',
-		'whens',
-		'thens',
-		'elses',
-		'dynamics',
-		'name',
-		'leftBracket',
-		'selects',
-		'rightBracket'
+		'ats'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -51,7 +44,7 @@ ABAPInExpressionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPInExpressionNode >> compositeNodeVariables [
-	^ #(#decs #fields #fieldNames #functions #thens #elses #dynamics #selects)
+	^ #(#functions #decs #fields #distincts #fieldNames)
 ]
 
 { #category : #generated }
@@ -72,27 +65,15 @@ ABAPInExpressionNode >> decs: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> dynamics [
-	^ dynamics
+ABAPInExpressionNode >> distincts [
+	^ distincts
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> elses [
-	^ elses
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> elses: anOrderedCollection [
-	self setParents: self elses to: nil.
-	elses := anOrderedCollection.
-	self setParents: self elses to: self
+ABAPInExpressionNode >> distincts: anOrderedCollection [
+	self setParents: self distincts to: nil.
+	distincts := anOrderedCollection.
+	self setParents: self distincts to: self
 ]
 
 { #category : #generated }
@@ -135,20 +116,16 @@ ABAPInExpressionNode >> functions: anOrderedCollection [
 ABAPInExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	functions := OrderedCollection new: 2.
 	decs := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	distincts := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keys := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
-	whens := OrderedCollection new: 2.
-	thens := OrderedCollection new: 2.
-	elses := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	selects := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -172,33 +149,6 @@ ABAPInExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInExpressionNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> name: anABAPNameNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPNameNode.
-	self name notNil ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> nodeVariables [
-	^ #(#name)
-]
-
-{ #category : #generated }
 ABAPInExpressionNode >> operators [
 	^ operators
 ]
@@ -210,46 +160,7 @@ ABAPInExpressionNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPInExpressionNode >> otherVariables [
-	^ #(#values #whens)
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> selects [
-	^ selects
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> selects: anOrderedCollection [
-	self setParents: self selects to: nil.
-	selects := anOrderedCollection.
-	self setParents: self selects to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> thens [
-	^ thens
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> thens: anOrderedCollection [
-	self setParents: self thens to: nil.
-	thens := anOrderedCollection.
-	self setParents: self thens to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket)
+	^ #(#values)
 ]
 
 { #category : #generated }
@@ -262,16 +173,4 @@ ABAPInExpressionNode >> values: anOrderedCollection [
 	self setParent: self values to: nil.
 	values := anOrderedCollection.
 	self setParent: self values to: self
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> whens [
-	^ whens
-]
-
-{ #category : #generated }
-ABAPInExpressionNode >> whens: anOrderedCollection [
-	self setParent: self whens to: nil.
-	whens := anOrderedCollection.
-	self setParent: self whens to: self
 ]

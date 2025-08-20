@@ -3,13 +3,25 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
-		'toTarget',
-		'targets',
+		'_source',
+		'tos',
+		'percentage',
 		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPMoveNode >> _source [
+	^ _source
+]
+
+{ #category : #generated }
+ABAPMoveNode >> _source: anABAPExpressionNode [
+	self _source notNil ifTrue: [ self _source parent: nil ].
+	_source := anABAPExpressionNode.
+	self _source notNil ifTrue: [ self _source parent: self ]
+]
 
 { #category : #generated }
 ABAPMoveNode >> acceptVisitor: aRootVisitor [
@@ -18,7 +30,7 @@ ABAPMoveNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPMoveNode >> compositeNodeVariables [
-	^ #(#sources #targets)
+	^ #(#tos)
 ]
 
 { #category : #generated }
@@ -40,8 +52,7 @@ ABAPMoveNode >> eqs: anOrderedCollection [
 ABAPMoveNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
+	tos := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 ]
 
@@ -57,41 +68,29 @@ ABAPMoveNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPMoveNode >> nodeVariables [
-	^ #(#toTarget)
+	^ #(#_source #percentage)
 ]
 
 { #category : #generated }
-ABAPMoveNode >> sources [
-	^ sources
+ABAPMoveNode >> percentage [
+	^ percentage
 ]
 
 { #category : #generated }
-ABAPMoveNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPMoveNode >> percentage: anABAPExpressionNode [
+	self percentage notNil ifTrue: [ self percentage parent: nil ].
+	percentage := anABAPExpressionNode.
+	self percentage notNil ifTrue: [ self percentage parent: self ]
 ]
 
 { #category : #generated }
-ABAPMoveNode >> targets [
-	^ targets
+ABAPMoveNode >> tos [
+	^ tos
 ]
 
 { #category : #generated }
-ABAPMoveNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
-]
-
-{ #category : #generated }
-ABAPMoveNode >> toTarget [
-	^ toTarget
-]
-
-{ #category : #generated }
-ABAPMoveNode >> toTarget: anABAPExpressionNode [
-	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPExpressionNode.
-	self toTarget notNil ifTrue: [ self toTarget parent: self ]
+ABAPMoveNode >> tos: anOrderedCollection [
+	self setParents: self tos to: nil.
+	tos := anOrderedCollection.
+	self setParents: self tos to: self
 ]

@@ -3,26 +3,18 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamic',
-		'_at',
-		'values',
-		'leftParens',
-		'rightParens',
-		'name',
-		'from'
+		'databaseTable',
+		'databaseTableName',
+		'client',
+		'connectionName',
+		'connection',
+		'from',
+		'leftParen',
+		'rightParen',
+		'value'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPInsertDatabaseNode >> _at [
-	^ _at
-]
-
-{ #category : #generated }
-ABAPInsertDatabaseNode >> _at: aSmaCCToken [
-	_at := aSmaCCToken
-]
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> acceptVisitor: aRootVisitor [
@@ -30,25 +22,64 @@ ABAPInsertDatabaseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> compositeNodeVariables [
-	^ #(#values)
+ABAPInsertDatabaseNode >> client [
+	^ client
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> client: anABAPExpressionNode [
+	self client notNil ifTrue: [ self client parent: nil ].
+	client := anABAPExpressionNode.
+	self client notNil ifTrue: [ self client parent: self ]
 ]
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> dynamic [
-	^ dynamic
+ABAPInsertDatabaseNode >> connection [
+	^ connection
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+ABAPInsertDatabaseNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> databaseTable [
+	^ databaseTable
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> databaseTable: anABAPExpressionNode [
+	self databaseTable notNil ifTrue: [ self databaseTable parent: nil ].
+	databaseTable := anABAPExpressionNode.
+	self databaseTable notNil ifTrue: [ self databaseTable parent: self ]
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> databaseTableName [
+	^ databaseTableName
+]
+
+{ #category : #generated }
+ABAPInsertDatabaseNode >> databaseTableName: aSmaCCToken [
+	databaseTableName := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -67,9 +98,6 @@ ABAPInsertDatabaseNode >> from: anABAPExpressionNode [
 ABAPInsertDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -83,53 +111,43 @@ ABAPInsertDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> leftParens [
-	^ leftParens
+ABAPInsertDatabaseNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPInsertDatabaseNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPInsertDatabaseNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+ABAPInsertDatabaseNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> nodeVariables [
-	^ #(#dynamic #from)
+	^ #(#databaseTable #client #connection #from #value)
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> rightParens [
-	^ rightParens
+ABAPInsertDatabaseNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+ABAPInsertDatabaseNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPInsertDatabaseNode >> tokenVariables [
-	^ #(#_at #name #period)
+	^ #(#databaseTableName #connectionName #leftParen #rightParen #period)
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> values [
-	^ values
+ABAPInsertDatabaseNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPInsertDatabaseNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
+ABAPInsertDatabaseNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

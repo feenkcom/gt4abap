@@ -3,25 +3,13 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'_source',
+		'linesOf',
 		'intoTarget',
-		'dashs',
-		'keys'
+		'separatedBies',
+		'lines'
 	],
 	#category : #GToolkit4ABAP
 }
-
-{ #category : #generated }
-ABAPConcatenateNode >> _source [
-	^ _source
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
-]
 
 { #category : #generated }
 ABAPConcatenateNode >> acceptVisitor: aRootVisitor [
@@ -29,26 +17,21 @@ ABAPConcatenateNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPConcatenateNode >> compositeNodeVariables [
+	^ #(#separatedBies #lines)
+]
+
+{ #category : #generated }
 ABAPConcatenateNode >> compositeTokenVariables [
-	^ #(#keywords #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPConcatenateNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
+	separatedBies := OrderedCollection new: 2.
+	lines := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -64,16 +47,6 @@ ABAPConcatenateNode >> intoTarget: anABAPExpressionNode [
 ]
 
 { #category : #generated }
-ABAPConcatenateNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPConcatenateNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPConcatenateNode >> keywords [
 	^ keywords
 ]
@@ -84,6 +57,42 @@ ABAPConcatenateNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPConcatenateNode >> lines [
+	^ lines
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> lines: anOrderedCollection [
+	self setParents: self lines to: nil.
+	lines := anOrderedCollection.
+	self setParents: self lines to: self
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> linesOf [
+	^ linesOf
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> linesOf: anABAPExpressionNode [
+	self linesOf notNil ifTrue: [ self linesOf parent: nil ].
+	linesOf := anABAPExpressionNode.
+	self linesOf notNil ifTrue: [ self linesOf parent: self ]
+]
+
+{ #category : #generated }
 ABAPConcatenateNode >> nodeVariables [
-	^ #(#_source #intoTarget)
+	^ #(#linesOf #intoTarget)
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> separatedBies [
+	^ separatedBies
+]
+
+{ #category : #generated }
+ABAPConcatenateNode >> separatedBies: anOrderedCollection [
+	self setParents: self separatedBies to: nil.
+	separatedBies := anOrderedCollection.
+	self setParents: self separatedBies to: self
 ]

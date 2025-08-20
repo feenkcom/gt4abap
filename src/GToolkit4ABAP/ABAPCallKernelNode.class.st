@@ -2,10 +2,9 @@ Class {
 	#name : #ABAPCallKernelNode,
 	#superclass : #ABAPStatementNode,
 	#instVars : [
-		'keywords',
+		'keyword',
 		'call',
-		'ids',
-		'fields'
+		'kernelIds'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -29,57 +28,43 @@ ABAPCallKernelNode >> call: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPCallKernelNode >> compositeNodeVariables [
-	^ #(#ids #fields)
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> compositeTokenVariables [
-	^ #(#keywords)
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> fields [
-	^ fields
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> fields: anOrderedCollection [
-	self setParents: self fields to: nil.
-	fields := anOrderedCollection.
-	self setParents: self fields to: self
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> ids [
-	^ ids
-]
-
-{ #category : #generated }
-ABAPCallKernelNode >> ids: anOrderedCollection [
-	self setParents: self ids to: nil.
-	ids := anOrderedCollection.
-	self setParents: self ids to: self
+	^ #(#kernelIds)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPCallKernelNode >> initialize [
 	super initialize.
-	keywords := OrderedCollection new: 2.
-	ids := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
+	kernelIds := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> keywords [
-	^ keywords
+ABAPCallKernelNode >> kernelIds [
+	^ kernelIds
 ]
 
 { #category : #generated }
-ABAPCallKernelNode >> keywords: anOrderedCollection [
-	keywords := anOrderedCollection
+ABAPCallKernelNode >> kernelIds: anOrderedCollection [
+	self setParents: self kernelIds to: nil.
+	kernelIds := anOrderedCollection.
+	self setParents: self kernelIds to: self
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> keyword [
+	^ keyword
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> keyword: aSmaCCToken [
+	keyword := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPCallKernelNode >> nodeVariables [
 	^ #(#call)
+]
+
+{ #category : #generated }
+ABAPCallKernelNode >> tokenVariables [
+	^ #(#keyword #period)
 ]

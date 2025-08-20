@@ -3,7 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'lineses',
+		'linesSizes',
+		'lineCounts',
 		'leftParens',
 		'reports',
 		'rightParens',
@@ -21,7 +22,7 @@ ABAPReportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReportNode >> compositeNodeVariables [
-	^ #(#lineses #reports #fields #messageClasses)
+	^ #(#linesSizes #lineCounts #reports #fields #messageClasses)
 ]
 
 { #category : #generated }
@@ -45,7 +46,8 @@ ABAPReportNode >> fields: anOrderedCollection [
 ABAPReportNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	lineses := OrderedCollection new: 2.
+	linesSizes := OrderedCollection new: 2.
+	lineCounts := OrderedCollection new: 2.
 	leftParens := OrderedCollection new: 2.
 	reports := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
@@ -74,15 +76,27 @@ ABAPReportNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReportNode >> lineses [
-	^ lineses
+ABAPReportNode >> lineCounts [
+	^ lineCounts
 ]
 
 { #category : #generated }
-ABAPReportNode >> lineses: anOrderedCollection [
-	self setParents: self lineses to: nil.
-	lineses := anOrderedCollection.
-	self setParents: self lineses to: self
+ABAPReportNode >> lineCounts: anOrderedCollection [
+	self setParents: self lineCounts to: nil.
+	lineCounts := anOrderedCollection.
+	self setParents: self lineCounts to: self
+]
+
+{ #category : #generated }
+ABAPReportNode >> linesSizes [
+	^ linesSizes
+]
+
+{ #category : #generated }
+ABAPReportNode >> linesSizes: anOrderedCollection [
+	self setParents: self linesSizes to: nil.
+	linesSizes := anOrderedCollection.
+	self setParents: self linesSizes to: self
 ]
 
 { #category : #generated }

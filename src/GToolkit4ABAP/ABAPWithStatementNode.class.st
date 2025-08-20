@@ -10,26 +10,27 @@ Class {
 		'names',
 		'asNames',
 		'ats',
+		'wheres',
 		'havings',
+		'clients',
 		'ins',
 		'packageSizes',
-		'dynamics',
+		'hints',
+		'databaseTables',
+		'databaseTableNames',
 		'eqs',
 		'fieldChains',
 		'rightParens',
 		'values',
 		'keys',
 		'operators',
-		'upTos',
-		'fieldNames',
 		'targets',
-		'hints',
-		'whens',
-		'thens',
-		'elses',
-		'decs',
-		'functions',
-		'selects'
+		'upTos',
+		'dynamics',
+		'distincts',
+		'fieldNames',
+		'ons',
+		'select'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -62,6 +63,18 @@ ABAPWithStatementNode >> ats: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPWithStatementNode >> clients [
+	^ clients
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> clients: anOrderedCollection [
+	self setParents: self clients to: nil.
+	clients := anOrderedCollection.
+	self setParents: self clients to: self
+]
+
+{ #category : #generated }
 ABAPWithStatementNode >> commas [
 	^ commas
 ]
@@ -73,24 +86,46 @@ ABAPWithStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #names #asNames #havings #ins #packageSizes #dynamics #fieldChains #upTos #fieldNames #targets #selects #hints #thens #elses #decs #functions)
+	^ #(#withNames #names #asNames #wheres #havings #clients #ins #packageSizes #hints #databaseTables #fieldChains #targets #upTos #dynamics #distincts #fieldNames #ons)
 ]
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #commas #ats #eqs #rightParens #keys #operators)
+	^ #(#keywords #leftParens #commas #ats #databaseTableNames #eqs #rightParens #values #keys #operators)
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> decs [
-	^ decs
+ABAPWithStatementNode >> databaseTableNames [
+	^ databaseTableNames
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> decs: anOrderedCollection [
-	self setParents: self decs to: nil.
-	decs := anOrderedCollection.
-	self setParents: self decs to: self
+ABAPWithStatementNode >> databaseTableNames: anOrderedCollection [
+	databaseTableNames := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> databaseTables [
+	^ databaseTables
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> databaseTables: anOrderedCollection [
+	self setParents: self databaseTables to: nil.
+	databaseTables := anOrderedCollection.
+	self setParents: self databaseTables to: self
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> distincts [
+	^ distincts
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> distincts: anOrderedCollection [
+	self setParents: self distincts to: nil.
+	distincts := anOrderedCollection.
+	self setParents: self distincts to: self
 ]
 
 { #category : #generated }
@@ -103,18 +138,6 @@ ABAPWithStatementNode >> dynamics: anOrderedCollection [
 	self setParents: self dynamics to: nil.
 	dynamics := anOrderedCollection.
 	self setParents: self dynamics to: self
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> elses [
-	^ elses
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> elses: anOrderedCollection [
-	self setParents: self elses to: nil.
-	elses := anOrderedCollection.
-	self setParents: self elses to: self
 ]
 
 { #category : #generated }
@@ -164,18 +187,6 @@ ABAPWithStatementNode >> fields: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> functions [
-	^ functions
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> functions: anOrderedCollection [
-	self setParents: self functions to: nil.
-	functions := anOrderedCollection.
-	self setParents: self functions to: self
-]
-
-{ #category : #generated }
 ABAPWithStatementNode >> havings [
 	^ havings
 ]
@@ -210,26 +221,26 @@ ABAPWithStatementNode >> initialize [
 	names := OrderedCollection new: 2.
 	asNames := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
+	wheres := OrderedCollection new: 2.
 	havings := OrderedCollection new: 2.
+	clients := OrderedCollection new: 2.
 	ins := OrderedCollection new: 2.
 	packageSizes := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	hints := OrderedCollection new: 2.
+	databaseTables := OrderedCollection new: 2.
+	databaseTableNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	keys := OrderedCollection new: 2.
 	operators := OrderedCollection new: 2.
-	upTos := OrderedCollection new: 2.
-	fieldNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
-	selects := OrderedCollection new: 2.
-	hints := OrderedCollection new: 2.
-	whens := OrderedCollection new: 2.
-	thens := OrderedCollection new: 2.
-	elses := OrderedCollection new: 2.
-	decs := OrderedCollection new: 2.
-	functions := OrderedCollection new: 2.
+	upTos := OrderedCollection new: 2.
+	dynamics := OrderedCollection new: 2.
+	distincts := OrderedCollection new: 2.
+	fieldNames := OrderedCollection new: 2.
+	ons := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -287,6 +298,23 @@ ABAPWithStatementNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPWithStatementNode >> nodeVariables [
+	^ #(#select)
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> ons [
+	^ ons
+]
+
+{ #category : #generated }
+ABAPWithStatementNode >> ons: anOrderedCollection [
+	self setParents: self ons to: nil.
+	ons := anOrderedCollection.
+	self setParents: self ons to: self
+]
+
+{ #category : #generated }
 ABAPWithStatementNode >> operators [
 	^ operators
 ]
@@ -298,7 +326,7 @@ ABAPWithStatementNode >> operators: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> otherVariables [
-	^ #(#fields #values #whens)
+	^ #(#fields)
 ]
 
 { #category : #generated }
@@ -324,15 +352,15 @@ ABAPWithStatementNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> selects [
-	^ selects
+ABAPWithStatementNode >> select [
+	^ select
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> selects: anOrderedCollection [
-	self setParents: self selects to: nil.
-	selects := anOrderedCollection.
-	self setParents: self selects to: self
+ABAPWithStatementNode >> select: anABAPSQLSelectNode [
+	self select notNil ifTrue: [ self select parent: nil ].
+	select := anABAPSQLSelectNode.
+	self select notNil ifTrue: [ self select parent: self ]
 ]
 
 { #category : #generated }
@@ -345,18 +373,6 @@ ABAPWithStatementNode >> targets: anOrderedCollection [
 	self setParents: self targets to: nil.
 	targets := anOrderedCollection.
 	self setParents: self targets to: self
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> thens [
-	^ thens
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> thens: anOrderedCollection [
-	self setParents: self thens to: nil.
-	thens := anOrderedCollection.
-	self setParents: self thens to: self
 ]
 
 { #category : #generated }
@@ -378,21 +394,19 @@ ABAPWithStatementNode >> values [
 
 { #category : #generated }
 ABAPWithStatementNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+	values := anOrderedCollection
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> whens [
-	^ whens
+ABAPWithStatementNode >> wheres [
+	^ wheres
 ]
 
 { #category : #generated }
-ABAPWithStatementNode >> whens: anOrderedCollection [
-	self setParent: self whens to: nil.
-	whens := anOrderedCollection.
-	self setParent: self whens to: self
+ABAPWithStatementNode >> wheres: anOrderedCollection [
+	self setParents: self wheres to: nil.
+	wheres := anOrderedCollection.
+	self setParents: self wheres to: self
 ]
 
 { #category : #generated }

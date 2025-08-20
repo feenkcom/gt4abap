@@ -3,8 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'name',
-		'value'
+		'connectionName',
+		'connection'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,6 +17,28 @@ ABAPRollbackNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPRollbackNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> connection [
+	^ connection
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPRollbackNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -36,33 +58,11 @@ ABAPRollbackNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPRollbackNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPRollbackNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPRollbackNode >> nodeVariables [
-	^ #(#value)
+	^ #(#connection)
 ]
 
 { #category : #generated }
 ABAPRollbackNode >> tokenVariables [
-	^ #(#name #period)
-]
-
-{ #category : #generated }
-ABAPRollbackNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPRollbackNode >> value: anABAPExpressionNode [
-	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPExpressionNode.
-	self value notNil ifTrue: [ self value parent: self ]
+	^ #(#connectionName #period)
 ]

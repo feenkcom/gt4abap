@@ -7,6 +7,7 @@ Class {
 		'sources',
 		'names',
 		'from',
+		'withTables',
 		'comparings',
 		'fieldLengths',
 		'fieldOffsets',
@@ -35,7 +36,7 @@ ABAPDeleteInternalNode >> comparings: anOrderedCollection [
 
 { #category : #generated }
 ABAPDeleteInternalNode >> compositeNodeVariables [
-	^ #(#sources #names #comparings #fieldLengths #fieldOffsets)
+	^ #(#sources #names #withTables #comparings #fieldLengths #fieldOffsets)
 ]
 
 { #category : #generated }
@@ -85,6 +86,7 @@ ABAPDeleteInternalNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	withTables := OrderedCollection new: 2.
 	comparings := OrderedCollection new: 2.
 	fieldLengths := OrderedCollection new: 2.
 	fieldOffsets := OrderedCollection new: 2.
@@ -163,4 +165,16 @@ ABAPDeleteInternalNode >> where: anABAPExpressionNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := anABAPExpressionNode.
 	self where notNil ifTrue: [ self where parent: self ]
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> withTables [
+	^ withTables
+]
+
+{ #category : #generated }
+ABAPDeleteInternalNode >> withTables: anOrderedCollection [
+	self setParents: self withTables to: nil.
+	withTables := anOrderedCollection.
+	self setParents: self withTables to: self
 ]

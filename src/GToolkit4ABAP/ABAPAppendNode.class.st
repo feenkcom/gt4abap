@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'toSource',
-		'toTarget',
+		'to',
 		'assigning',
 		'intoTarget',
 		'field',
@@ -90,7 +90,19 @@ ABAPAppendNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPAppendNode >> nodeVariables [
-	^ #(#toSource #toTarget #assigning #intoTarget #field #from #value)
+	^ #(#toSource #to #assigning #intoTarget #field #from #value)
+]
+
+{ #category : #generated }
+ABAPAppendNode >> to [
+	^ to
+]
+
+{ #category : #generated }
+ABAPAppendNode >> to: anABAPExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := anABAPExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
 ]
 
 { #category : #generated }
@@ -103,18 +115,6 @@ ABAPAppendNode >> toSource: anABAPExpressionNode [
 	self toSource notNil ifTrue: [ self toSource parent: nil ].
 	toSource := anABAPExpressionNode.
 	self toSource notNil ifTrue: [ self toSource parent: self ]
-]
-
-{ #category : #generated }
-ABAPAppendNode >> toTarget [
-	^ toTarget
-]
-
-{ #category : #generated }
-ABAPAppendNode >> toTarget: anABAPExpressionNode [
-	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPExpressionNode.
-	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]
 
 { #category : #generated }

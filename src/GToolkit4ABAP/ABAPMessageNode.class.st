@@ -6,9 +6,7 @@ Class {
 		'messageSource',
 		'exceptionNames',
 		'sources',
-		'intoTargets',
-		'dashs',
-		'keys'
+		'intoTargets'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -25,17 +23,7 @@ ABAPMessageNode >> compositeNodeVariables [
 
 { #category : #generated }
 ABAPMessageNode >> compositeTokenVariables [
-	^ #(#keywords #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPMessageNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPMessageNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -57,8 +45,6 @@ ABAPMessageNode >> initialize [
 	exceptionNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,16 +57,6 @@ ABAPMessageNode >> intoTargets: anOrderedCollection [
 	self setParents: self intoTargets to: nil.
 	intoTargets := anOrderedCollection.
 	self setParents: self intoTargets to: self
-]
-
-{ #category : #generated }
-ABAPMessageNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPMessageNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }

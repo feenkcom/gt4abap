@@ -7,9 +7,9 @@ Class {
 		'froms',
 		'intoTargets',
 		'fields',
+		'lows',
+		'highs',
 		'wheres',
-		'dashs',
-		'keys',
 		'body'
 	],
 	#category : #GToolkit4ABAP
@@ -34,22 +34,12 @@ ABAPProvideNode >> body: anABAPBodyNode [
 
 { #category : #generated }
 ABAPProvideNode >> compositeNodeVariables [
-	^ #(#fieldNames #froms #intoTargets #fields #wheres)
+	^ #(#fieldNames #froms #intoTargets #fields #lows #highs #wheres)
 ]
 
 { #category : #generated }
 ABAPProvideNode >> compositeTokenVariables [
-	^ #(#keywords #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPProvideNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPProvideNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -88,6 +78,18 @@ ABAPProvideNode >> froms: anOrderedCollection [
 	self setParents: self froms to: self
 ]
 
+{ #category : #generated }
+ABAPProvideNode >> highs [
+	^ highs
+]
+
+{ #category : #generated }
+ABAPProvideNode >> highs: anOrderedCollection [
+	self setParents: self highs to: nil.
+	highs := anOrderedCollection.
+	self setParents: self highs to: self
+]
+
 { #category : #'generated-initialize-release' }
 ABAPProvideNode >> initialize [
 	super initialize.
@@ -96,9 +98,9 @@ ABAPProvideNode >> initialize [
 	froms := OrderedCollection new: 2.
 	intoTargets := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
+	lows := OrderedCollection new: 2.
+	highs := OrderedCollection new: 2.
 	wheres := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -114,16 +116,6 @@ ABAPProvideNode >> intoTargets: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPProvideNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPProvideNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPProvideNode >> keywords [
 	^ keywords
 ]
@@ -131,6 +123,18 @@ ABAPProvideNode >> keywords [
 { #category : #generated }
 ABAPProvideNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPProvideNode >> lows [
+	^ lows
+]
+
+{ #category : #generated }
+ABAPProvideNode >> lows: anOrderedCollection [
+	self setParents: self lows to: nil.
+	lows := anOrderedCollection.
+	self setParents: self lows to: self
 ]
 
 { #category : #generated }

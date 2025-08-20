@@ -10,7 +10,7 @@ Class {
 		'name',
 		'leftParen',
 		'rightParen',
-		'toTargets'
+		'tos'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -22,7 +22,7 @@ ABAPImportNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPImportNode >> compositeNodeVariables [
-	^ #(#imports #values #sources #toTargets)
+	^ #(#imports #values #sources #tos)
 ]
 
 { #category : #generated }
@@ -60,7 +60,7 @@ ABAPImportNode >> initialize [
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	toTargets := OrderedCollection new: 2.
+	tos := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -123,20 +123,20 @@ ABAPImportNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPImportNode >> toTargets [
-	^ toTargets
-]
-
-{ #category : #generated }
-ABAPImportNode >> toTargets: anOrderedCollection [
-	self setParents: self toTargets to: nil.
-	toTargets := anOrderedCollection.
-	self setParents: self toTargets to: self
-]
-
-{ #category : #generated }
 ABAPImportNode >> tokenVariables [
 	^ #(#leftParen #rightParen #period)
+]
+
+{ #category : #generated }
+ABAPImportNode >> tos [
+	^ tos
+]
+
+{ #category : #generated }
+ABAPImportNode >> tos: anOrderedCollection [
+	self setParents: self tos to: nil.
+	tos := anOrderedCollection.
+	self setParents: self tos to: self
 ]
 
 { #category : #generated }

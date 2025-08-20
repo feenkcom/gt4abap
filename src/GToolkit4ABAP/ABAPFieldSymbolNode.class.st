@@ -13,7 +13,8 @@ Class {
 		'keys',
 		'rightParens',
 		'operators',
-		'sizes'
+		'sizes',
+		'table'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -114,7 +115,7 @@ ABAPFieldSymbolNode >> leftParens: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldSymbolNode >> nodeVariables [
-	^ #(#fieldChain #typeName #default #occurs)
+	^ #(#fieldChain #typeName #default #occurs #table)
 ]
 
 { #category : #generated }
@@ -159,6 +160,18 @@ ABAPFieldSymbolNode >> sizes: anOrderedCollection [
 	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
 	self setParents: self sizes to: self
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> table [
+	^ table
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> table: anABAPRootNode [
+	self table notNil ifTrue: [ self table parent: nil ].
+	table := anABAPRootNode.
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

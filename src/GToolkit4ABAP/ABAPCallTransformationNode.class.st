@@ -3,16 +3,12 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'name',
-		'targets',
-		'dynamics',
-		'fields',
-		'eqs',
-		'sources',
+		'transformation',
+		'xmlSources',
+		'xmlResults',
 		'values',
-		'operators',
-		'dashs',
-		'keys'
+		'fields',
+		'eqs'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,34 +20,12 @@ ABAPCallTransformationNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPCallTransformationNode >> compositeNodeVariables [
-	^ #(#targets #dynamics #fields #sources)
+	^ #(#xmlSources #xmlResults #values #fields)
 ]
 
 { #category : #generated }
 ABAPCallTransformationNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #values #operators #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> dynamics [
-	^ dynamics
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+	^ #(#keywords #eqs)
 ]
 
 { #category : #generated }
@@ -80,25 +54,11 @@ ABAPCallTransformationNode >> fields: anOrderedCollection [
 ABAPCallTransformationNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	targets := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
+	xmlSources := OrderedCollection new: 2.
+	xmlResults := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -112,54 +72,20 @@ ABAPCallTransformationNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> name: anABAPNameNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPNameNode.
-	self name notNil ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
 ABAPCallTransformationNode >> nodeVariables [
-	^ #(#name)
+	^ #(#transformation)
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> operators [
-	^ operators
+ABAPCallTransformationNode >> transformation [
+	^ transformation
 ]
 
 { #category : #generated }
-ABAPCallTransformationNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> sources [
-	^ sources
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> targets [
-	^ targets
-]
-
-{ #category : #generated }
-ABAPCallTransformationNode >> targets: anOrderedCollection [
-	self setParents: self targets to: nil.
-	targets := anOrderedCollection.
-	self setParents: self targets to: self
+ABAPCallTransformationNode >> transformation: anABAPExpressionNode [
+	self transformation notNil ifTrue: [ self transformation parent: nil ].
+	transformation := anABAPExpressionNode.
+	self transformation notNil ifTrue: [ self transformation parent: self ]
 ]
 
 { #category : #generated }
@@ -169,5 +95,31 @@ ABAPCallTransformationNode >> values [
 
 { #category : #generated }
 ABAPCallTransformationNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> xmlResults [
+	^ xmlResults
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> xmlResults: anOrderedCollection [
+	self setParents: self xmlResults to: nil.
+	xmlResults := anOrderedCollection.
+	self setParents: self xmlResults to: self
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> xmlSources [
+	^ xmlSources
+]
+
+{ #category : #generated }
+ABAPCallTransformationNode >> xmlSources: anOrderedCollection [
+	self setParents: self xmlSources to: nil.
+	xmlSources := anOrderedCollection.
+	self setParents: self xmlSources to: self
 ]

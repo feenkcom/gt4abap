@@ -3,9 +3,7 @@ Class {
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'keyword',
-		'left',
-		'operator',
-		'right'
+		'condition'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -13,6 +11,18 @@ Class {
 { #category : #generated }
 ABAPBoolExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitBoolExpression: self
+]
+
+{ #category : #generated }
+ABAPBoolExpressionNode >> condition [
+	^ condition
+]
+
+{ #category : #generated }
+ABAPBoolExpressionNode >> condition: anABAPExpressionNode [
+	self condition notNil ifTrue: [ self condition parent: nil ].
+	condition := anABAPExpressionNode.
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -26,45 +36,11 @@ ABAPBoolExpressionNode >> keyword: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPBoolExpressionNode >> left [
-	^ left
-]
-
-{ #category : #generated }
-ABAPBoolExpressionNode >> left: anABAPExpressionNode [
-	self left notNil ifTrue: [ self left parent: nil ].
-	left := anABAPExpressionNode.
-	self left notNil ifTrue: [ self left parent: self ]
-]
-
-{ #category : #generated }
 ABAPBoolExpressionNode >> nodeVariables [
-	^ #(#left #right)
-]
-
-{ #category : #generated }
-ABAPBoolExpressionNode >> operator [
-	^ operator
-]
-
-{ #category : #generated }
-ABAPBoolExpressionNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPBoolExpressionNode >> right [
-	^ right
-]
-
-{ #category : #generated }
-ABAPBoolExpressionNode >> right: anABAPExpressionNode [
-	self right notNil ifTrue: [ self right parent: nil ].
-	right := anABAPExpressionNode.
-	self right notNil ifTrue: [ self right parent: self ]
+	^ #(#condition)
 ]
 
 { #category : #generated }
 ABAPBoolExpressionNode >> tokenVariables [
-	^ #(#keyword #operator)
+	^ #(#keyword)
 ]

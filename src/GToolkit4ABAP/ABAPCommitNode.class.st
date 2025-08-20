@@ -3,8 +3,8 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'name',
-		'value'
+		'connectionName',
+		'connection'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -17,6 +17,28 @@ ABAPCommitNode >> acceptVisitor: aRootVisitor [
 { #category : #generated }
 ABAPCommitNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+ABAPCommitNode >> connection [
+	^ connection
+]
+
+{ #category : #generated }
+ABAPCommitNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPCommitNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPCommitNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -36,33 +58,11 @@ ABAPCommitNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCommitNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPCommitNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPCommitNode >> nodeVariables [
-	^ #(#value)
+	^ #(#connection)
 ]
 
 { #category : #generated }
 ABAPCommitNode >> tokenVariables [
-	^ #(#name #period)
-]
-
-{ #category : #generated }
-ABAPCommitNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPCommitNode >> value: anABAPExpressionNode [
-	self value notNil ifTrue: [ self value parent: nil ].
-	value := anABAPExpressionNode.
-	self value notNil ifTrue: [ self value parent: self ]
+	^ #(#connectionName #period)
 ]

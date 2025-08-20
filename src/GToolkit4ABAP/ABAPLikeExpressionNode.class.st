@@ -62,12 +62,7 @@ ABAPLikeExpressionNode >> like: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPLikeExpressionNode >> nodeVariables [
-	^ #(#like #escape)
-]
-
-{ #category : #generated }
-ABAPLikeExpressionNode >> otherVariables [
-	^ #(#value)
+	^ #(#value #like #escape)
 ]
 
 { #category : #generated }
@@ -76,8 +71,8 @@ ABAPLikeExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPLikeExpressionNode >> value: anOrderedCollection [
-	self setParent: self value to: nil.
-	value := anOrderedCollection.
-	self setParent: self value to: self
+ABAPLikeExpressionNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

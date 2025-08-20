@@ -11,10 +11,7 @@ Class {
 		'typeNames',
 		'defaults',
 		'fieldChains',
-		'lefts',
-		'operators',
-		'rights',
-		'dashs'
+		'structures'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -26,22 +23,12 @@ ABAPFormDefinitionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPFormDefinitionNode >> compositeNodeVariables [
-	^ #(#names #parameterNames #typeNames #defaults #fieldChains #lefts #rights)
+	^ #(#names #parameterNames #typeNames #defaults #fieldChains #structures)
 ]
 
 { #category : #generated }
 ABAPFormDefinitionNode >> compositeTokenVariables [
-	^ #(#keywords #leftParens #rightParens #operators #dashs)
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -91,10 +78,7 @@ ABAPFormDefinitionNode >> initialize [
 	typeNames := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
-	lefts := OrderedCollection new: 2.
-	operators := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
+	structures := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -118,18 +102,6 @@ ABAPFormDefinitionNode >> leftParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
-]
-
-{ #category : #generated }
 ABAPFormDefinitionNode >> names [
 	^ names
 ]
@@ -144,16 +116,6 @@ ABAPFormDefinitionNode >> names: anOrderedCollection [
 { #category : #generated }
 ABAPFormDefinitionNode >> nodeVariables [
 	^ #(#formName)
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> operators [
-	^ operators
-]
-
-{ #category : #generated }
-ABAPFormDefinitionNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -179,15 +141,15 @@ ABAPFormDefinitionNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> rights [
-	^ rights
+ABAPFormDefinitionNode >> structures [
+	^ structures
 ]
 
 { #category : #generated }
-ABAPFormDefinitionNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
+ABAPFormDefinitionNode >> structures: anOrderedCollection [
+	self setParents: self structures to: nil.
+	structures := anOrderedCollection.
+	self setParents: self structures to: self
 ]
 
 { #category : #generated }

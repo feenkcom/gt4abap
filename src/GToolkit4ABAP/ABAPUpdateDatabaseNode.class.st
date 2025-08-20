@@ -3,16 +3,18 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamics',
-		'values',
-		'ats',
-		'leftParens',
-		'rightParens',
+		'databaseTable',
+		'databaseTableName',
+		'from',
 		'fieldNames',
 		'eqs',
+		'values',
 		'commas',
-		'selects',
-		'name'
+		'where',
+		'dynamic',
+		'connectionName',
+		'connection',
+		'client'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,13 +25,15 @@ ABAPUpdateDatabaseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPUpdateDatabaseNode >> ats [
-	^ ats
+ABAPUpdateDatabaseNode >> client [
+	^ client
 ]
 
 { #category : #generated }
-ABAPUpdateDatabaseNode >> ats: anOrderedCollection [
-	ats := anOrderedCollection
+ABAPUpdateDatabaseNode >> client: anABAPExpressionNode [
+	self client notNil ifTrue: [ self client parent: nil ].
+	client := anABAPExpressionNode.
+	self client notNil ifTrue: [ self client parent: self ]
 ]
 
 { #category : #generated }
@@ -44,24 +48,68 @@ ABAPUpdateDatabaseNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeNodeVariables [
-	^ #(#dynamics #fieldNames #selects)
+	^ #(#fieldNames #values)
 ]
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #ats #leftParens #rightParens #eqs #commas)
+	^ #(#keywords #eqs #commas)
 ]
 
 { #category : #generated }
-ABAPUpdateDatabaseNode >> dynamics [
-	^ dynamics
+ABAPUpdateDatabaseNode >> connection [
+	^ connection
 ]
 
 { #category : #generated }
-ABAPUpdateDatabaseNode >> dynamics: anOrderedCollection [
-	self setParents: self dynamics to: nil.
-	dynamics := anOrderedCollection.
-	self setParents: self dynamics to: self
+ABAPUpdateDatabaseNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> databaseTable [
+	^ databaseTable
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> databaseTable: anABAPExpressionNode [
+	self databaseTable notNil ifTrue: [ self databaseTable parent: nil ].
+	databaseTable := anABAPExpressionNode.
+	self databaseTable notNil ifTrue: [ self databaseTable parent: self ]
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> databaseTableName [
+	^ databaseTableName
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> databaseTableName: aSmaCCToken [
+	databaseTableName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> dynamic [
+	^ dynamic
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> dynamic: anABAPExpressionNode [
+	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
+	dynamic := anABAPExpressionNode.
+	self dynamic notNil ifTrue: [ self dynamic parent: self ]
 ]
 
 { #category : #generated }
@@ -86,19 +134,26 @@ ABAPUpdateDatabaseNode >> fieldNames: anOrderedCollection [
 	self setParents: self fieldNames to: self
 ]
 
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> from: anABAPExpressionNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := anABAPExpressionNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPUpdateDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dynamics := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	ats := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
 	fieldNames := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	selects := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -112,55 +167,13 @@ ABAPUpdateDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPUpdateDatabaseNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> selects [
-	^ selects
-]
-
-{ #category : #generated }
-ABAPUpdateDatabaseNode >> selects: anOrderedCollection [
-	self setParents: self selects to: nil.
-	selects := anOrderedCollection.
-	self setParents: self selects to: self
+ABAPUpdateDatabaseNode >> nodeVariables [
+	^ #(#databaseTable #from #where #dynamic #connection #client)
 ]
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> tokenVariables [
-	^ #(#name #period)
+	^ #(#databaseTableName #connectionName #period)
 ]
 
 { #category : #generated }
@@ -170,7 +183,19 @@ ABAPUpdateDatabaseNode >> values [
 
 { #category : #generated }
 ABAPUpdateDatabaseNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> where [
+	^ where
+]
+
+{ #category : #generated }
+ABAPUpdateDatabaseNode >> where: anABAPExpressionNode [
+	self where notNil ifTrue: [ self where parent: nil ].
+	where := anABAPExpressionNode.
+	self where notNil ifTrue: [ self where parent: self ]
 ]

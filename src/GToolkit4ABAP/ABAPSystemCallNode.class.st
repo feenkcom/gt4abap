@@ -3,11 +3,26 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'sources',
-		'toTarget'
+		'_clone',
+		'to',
+		'systemCallNames',
+		'did',
+		'parameters'
 	],
 	#category : #GToolkit4ABAP
 }
+
+{ #category : #generated }
+ABAPSystemCallNode >> _clone [
+	^ _clone
+]
+
+{ #category : #generated }
+ABAPSystemCallNode >> _clone: anABAPExpressionNode [
+	self _clone notNil ifTrue: [ self _clone parent: nil ].
+	_clone := anABAPExpressionNode.
+	self _clone notNil ifTrue: [ self _clone parent: self ]
+]
 
 { #category : #generated }
 ABAPSystemCallNode >> acceptVisitor: aRootVisitor [
@@ -16,19 +31,32 @@ ABAPSystemCallNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSystemCallNode >> compositeNodeVariables [
-	^ #(#sources)
+	^ #(#parameters)
 ]
 
 { #category : #generated }
 ABAPSystemCallNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #systemCallNames)
+]
+
+{ #category : #generated }
+ABAPSystemCallNode >> did [
+	^ did
+]
+
+{ #category : #generated }
+ABAPSystemCallNode >> did: anABAPExpressionNode [
+	self did notNil ifTrue: [ self did parent: nil ].
+	did := anABAPExpressionNode.
+	self did notNil ifTrue: [ self did parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPSystemCallNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	sources := OrderedCollection new: 2.
+	systemCallNames := OrderedCollection new: 2.
+	parameters := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -43,29 +71,39 @@ ABAPSystemCallNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPSystemCallNode >> nodeVariables [
-	^ #(#toTarget)
+	^ #(#_clone #to #did)
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> sources [
-	^ sources
+ABAPSystemCallNode >> parameters [
+	^ parameters
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> sources: anOrderedCollection [
-	self setParents: self sources to: nil.
-	sources := anOrderedCollection.
-	self setParents: self sources to: self
+ABAPSystemCallNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> toTarget [
-	^ toTarget
+ABAPSystemCallNode >> systemCallNames [
+	^ systemCallNames
 ]
 
 { #category : #generated }
-ABAPSystemCallNode >> toTarget: anABAPExpressionNode [
-	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPExpressionNode.
-	self toTarget notNil ifTrue: [ self toTarget parent: self ]
+ABAPSystemCallNode >> systemCallNames: anOrderedCollection [
+	systemCallNames := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSystemCallNode >> to [
+	^ to
+]
+
+{ #category : #generated }
+ABAPSystemCallNode >> to: anABAPExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := anABAPExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
 ]

@@ -47,7 +47,7 @@ ABAPScanner >> BracketLeft [
 
 { #category : #generated }
 ABAPScanner >> BracketLeftWId [
-	^ 2231
+	^ 2223
 ]
 
 { #category : #private }
@@ -80,12 +80,12 @@ ABAPScanner >> BracketRight [
 
 { #category : #generated }
 ABAPScanner >> BracketRightWId [
-	^ 2232
+	^ 2224
 ]
 
 { #category : #generated }
 ABAPScanner >> BreakId [
-	^ 2233
+	^ 2225
 ]
 
 { #category : #private }
@@ -118,7 +118,7 @@ ABAPScanner >> Dash [
 
 { #category : #generated }
 ABAPScanner >> DashWId [
-	^ 2234
+	^ 2226
 ]
 
 { #category : #private }
@@ -171,7 +171,7 @@ ABAPScanner >> ParenLeft [
 
 { #category : #generated }
 ABAPScanner >> ParenLeftWId [
-	^ 2236
+	^ 2228
 ]
 
 { #category : #private }
@@ -204,7 +204,7 @@ ABAPScanner >> ParenRight [
 
 { #category : #generated }
 ABAPScanner >> ParenRightWId [
-	^ 2237
+	^ 2229
 ]
 
 { #category : #private }
@@ -237,72 +237,72 @@ ABAPScanner >> Plus [
 
 { #category : #generated }
 ABAPScanner >> PlusWId [
-	^ 2238
+	^ 2230
 ]
 
 { #category : #generated }
 ABAPScanner >> SystemCallId [
-	^ 2239
+	^ 2231
 ]
 
 { #category : #generated }
 ABAPScanner >> WAtId [
-	^ 2240
+	^ 2232
 ]
 
 { #category : #generated }
 ABAPScanner >> WBracketRightId [
-	^ 2241
+	^ 2233
 ]
 
 { #category : #generated }
 ABAPScanner >> WBracketRightWId [
-	^ 2242
+	^ 2234
 ]
 
 { #category : #generated }
 ABAPScanner >> WDashId [
-	^ 2243
+	^ 2235
 ]
 
 { #category : #generated }
 ABAPScanner >> WDashWId [
-	^ 2244
+	^ 2236
 ]
 
 { #category : #generated }
 ABAPScanner >> WParenLeftId [
-	^ 2245
+	^ 2237
 ]
 
 { #category : #generated }
 ABAPScanner >> WParenLeftWId [
-	^ 2246
+	^ 2238
 ]
 
 { #category : #generated }
 ABAPScanner >> WParenRightId [
-	^ 2247
+	^ 2239
 ]
 
 { #category : #generated }
 ABAPScanner >> WParenRightWId [
-	^ 2248
+	^ 2240
 ]
 
 { #category : #generated }
 ABAPScanner >> WPlusId [
-	^ 2249
+	^ 2241
 ]
 
 { #category : #generated }
 ABAPScanner >> WPlusWId [
-	^ 2250
+	^ 2242
 ]
 
 { #category : #generated }
 ABAPScanner >> chainedId [
-	^ 2251
+	^ 2243
 ]
 
 { #category : #generated }
@@ -317,12 +317,12 @@ ABAPScanner >> commaId [
 
 { #category : #generated }
 ABAPScanner >> emptySymbolTokenId [
-	^ 2254
+	^ 2246
 ]
 
 { #category : #generated }
 ABAPScanner >> errorTokenId [
-	^ 2255
+	^ 2247
 ]
 
 { #category : #generated }

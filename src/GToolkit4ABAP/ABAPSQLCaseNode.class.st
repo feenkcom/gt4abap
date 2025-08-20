@@ -29,7 +29,7 @@ ABAPSQLCaseNode >> ats: anOrderedCollection [
 
 { #category : #generated }
 ABAPSQLCaseNode >> compositeNodeVariables [
-	^ #(#thens)
+	^ #(#whens #thens)
 ]
 
 { #category : #generated }
@@ -86,11 +86,6 @@ ABAPSQLCaseNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPSQLCaseNode >> otherVariables [
-	^ #(#whens)
-]
-
-{ #category : #generated }
 ABAPSQLCaseNode >> thens [
 	^ thens
 ]
@@ -109,7 +104,7 @@ ABAPSQLCaseNode >> whens [
 
 { #category : #generated }
 ABAPSQLCaseNode >> whens: anOrderedCollection [
-	self setParent: self whens to: nil.
+	self setParents: self whens to: nil.
 	whens := anOrderedCollection.
-	self setParent: self whens to: self
+	self setParents: self whens to: self
 ]

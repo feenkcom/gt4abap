@@ -5,14 +5,11 @@ Class {
 		'keywords',
 		'typeNames',
 		'sources',
-		'names',
-		'args',
-		'messageSources',
-		'withs',
-		'parameterNames',
+		'thens',
+		'else',
+		'fields',
 		'eqs',
-		'values',
-		'fields'
+		'values'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -23,25 +20,25 @@ ABAPSwitchExpressionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPSwitchExpressionNode >> args [
-	^ args
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> args: anOrderedCollection [
-	self setParents: self args to: nil.
-	args := anOrderedCollection.
-	self setParents: self args to: self
-]
-
-{ #category : #generated }
 ABAPSwitchExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #sources #names #args #messageSources #parameterNames #values #fields)
+	^ #(#typeNames #sources #thens #fields #values)
 ]
 
 { #category : #generated }
 ABAPSwitchExpressionNode >> compositeTokenVariables [
 	^ #(#keywords #eqs #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> else [
+	^ else
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> else: anABAPRootNode [
+	self else notNil ifTrue: [ self else parent: nil ].
+	else := anABAPRootNode.
+	self else notNil ifTrue: [ self else parent: self ]
 ]
 
 { #category : #generated }
@@ -72,14 +69,10 @@ ABAPSwitchExpressionNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	args := OrderedCollection new: 2.
-	messageSources := OrderedCollection new: 2.
-	withs := OrderedCollection new: 2.
-	parameterNames := OrderedCollection new: 2.
+	thens := OrderedCollection new: 2.
+	fields := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-	fields := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -93,44 +86,8 @@ ABAPSwitchExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSwitchExpressionNode >> messageSources [
-	^ messageSources
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> messageSources: anOrderedCollection [
-	self setParents: self messageSources to: nil.
-	messageSources := anOrderedCollection.
-	self setParents: self messageSources to: self
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> otherVariables [
-	^ #(#withs)
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> parameterNames [
-	^ parameterNames
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> parameterNames: anOrderedCollection [
-	self setParents: self parameterNames to: nil.
-	parameterNames := anOrderedCollection.
-	self setParents: self parameterNames to: self
+ABAPSwitchExpressionNode >> nodeVariables [
+	^ #(#else)
 ]
 
 { #category : #generated }
@@ -143,6 +100,18 @@ ABAPSwitchExpressionNode >> sources: anOrderedCollection [
 	self setParents: self sources to: nil.
 	sources := anOrderedCollection.
 	self setParents: self sources to: self
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> thens [
+	^ thens
+]
+
+{ #category : #generated }
+ABAPSwitchExpressionNode >> thens: anOrderedCollection [
+	self setParents: self thens to: nil.
+	thens := anOrderedCollection.
+	self setParents: self thens to: self
 ]
 
 { #category : #generated }
@@ -167,16 +136,4 @@ ABAPSwitchExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> withs [
-	^ withs
-]
-
-{ #category : #generated }
-ABAPSwitchExpressionNode >> withs: anOrderedCollection [
-	self setParent: self withs to: nil.
-	withs := anOrderedCollection.
-	self setParent: self withs to: self
 ]

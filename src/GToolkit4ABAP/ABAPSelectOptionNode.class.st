@@ -24,12 +24,12 @@ ABAPSelectOptionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeNodeVariables [
-	^ #(#defaults #tos #options #signs #matchcodes)
+	^ #(#defaults #tos #options #signs #memories #matchcodes #modifs)
 ]
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeTokenVariables [
-	^ #(#keywords #modifs)
+	^ #(#keywords)
 ]
 
 { #category : #generated }
@@ -99,9 +99,9 @@ ABAPSelectOptionNode >> memories [
 
 { #category : #generated }
 ABAPSelectOptionNode >> memories: anOrderedCollection [
-	self setParent: self memories to: nil.
+	self setParents: self memories to: nil.
 	memories := anOrderedCollection.
-	self setParent: self memories to: self
+	self setParents: self memories to: self
 ]
 
 { #category : #generated }
@@ -111,7 +111,9 @@ ABAPSelectOptionNode >> modifs [
 
 { #category : #generated }
 ABAPSelectOptionNode >> modifs: anOrderedCollection [
-	modifs := anOrderedCollection
+	self setParents: self modifs to: nil.
+	modifs := anOrderedCollection.
+	self setParents: self modifs to: self
 ]
 
 { #category : #generated }
@@ -133,7 +135,7 @@ ABAPSelectOptionNode >> options: anOrderedCollection [
 
 { #category : #generated }
 ABAPSelectOptionNode >> otherVariables [
-	^ #(#memories #visibles)
+	^ #(#visibles)
 ]
 
 { #category : #generated }

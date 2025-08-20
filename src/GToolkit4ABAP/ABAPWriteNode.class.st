@@ -3,9 +3,10 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'slashs',
 		'write',
 		'sources',
-		'toTargets',
+		'tos',
 		'eqs',
 		'onOffs',
 		'leftParen',
@@ -13,8 +14,7 @@ Class {
 		'rightParen',
 		'atInteger',
 		'star',
-		'selectionScreen',
-		'slash'
+		'selectionScreen'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -48,12 +48,12 @@ ABAPWriteNode >> ats: anOrderedCollection [
 
 { #category : #generated }
 ABAPWriteNode >> compositeNodeVariables [
-	^ #(#sources #toTargets #onOffs #ats)
+	^ #(#sources #tos #onOffs #ats)
 ]
 
 { #category : #generated }
 ABAPWriteNode >> compositeTokenVariables [
-	^ #(#keywords #eqs)
+	^ #(#keywords #slashs #eqs)
 ]
 
 { #category : #generated }
@@ -70,8 +70,9 @@ ABAPWriteNode >> eqs: anOrderedCollection [
 ABAPWriteNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
+	slashs := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	toTargets := OrderedCollection new: 2.
+	tos := OrderedCollection new: 2.
 	eqs := OrderedCollection new: 2.
 	onOffs := OrderedCollection new: 2.
 	ats := OrderedCollection new: 2.
@@ -135,13 +136,13 @@ ABAPWriteNode >> selectionScreen: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> slash [
-	^ slash
+ABAPWriteNode >> slashs [
+	^ slashs
 ]
 
 { #category : #generated }
-ABAPWriteNode >> slash: aSmaCCToken [
-	slash := aSmaCCToken
+ABAPWriteNode >> slashs: anOrderedCollection [
+	slashs := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -167,20 +168,20 @@ ABAPWriteNode >> star: aSmaCCToken [
 ]
 
 { #category : #generated }
-ABAPWriteNode >> toTargets [
-	^ toTargets
-]
-
-{ #category : #generated }
-ABAPWriteNode >> toTargets: anOrderedCollection [
-	self setParents: self toTargets to: nil.
-	toTargets := anOrderedCollection.
-	self setParents: self toTargets to: self
-]
-
-{ #category : #generated }
 ABAPWriteNode >> tokenVariables [
-	^ #(#leftParen #rightParen #atInteger #star #selectionScreen #slash #period)
+	^ #(#leftParen #rightParen #atInteger #star #selectionScreen #period)
+]
+
+{ #category : #generated }
+ABAPWriteNode >> tos [
+	^ tos
+]
+
+{ #category : #generated }
+ABAPWriteNode >> tos: anOrderedCollection [
+	self setParents: self tos to: nil.
+	tos := anOrderedCollection.
+	self setParents: self tos to: self
 ]
 
 { #category : #generated }

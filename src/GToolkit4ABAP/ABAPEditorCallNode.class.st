@@ -4,8 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'dashs',
-		'keys'
+		'titles'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -28,36 +27,20 @@ ABAPEditorCallNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPEditorCallNode >> compositeNodeVariables [
+	^ #(#titles)
+]
+
+{ #category : #generated }
 ABAPEditorCallNode >> compositeTokenVariables [
-	^ #(#keywords #dashs #keys)
-]
-
-{ #category : #generated }
-ABAPEditorCallNode >> dashs [
-	^ dashs
-]
-
-{ #category : #generated }
-ABAPEditorCallNode >> dashs: anOrderedCollection [
-	dashs := anOrderedCollection
+	^ #(#keywords)
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPEditorCallNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	dashs := OrderedCollection new: 2.
-	keys := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-ABAPEditorCallNode >> keys [
-	^ keys
-]
-
-{ #category : #generated }
-ABAPEditorCallNode >> keys: anOrderedCollection [
-	keys := anOrderedCollection
+	titles := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -73,4 +56,16 @@ ABAPEditorCallNode >> keywords: anOrderedCollection [
 { #category : #generated }
 ABAPEditorCallNode >> nodeVariables [
 	^ #(#_source)
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> titles [
+	^ titles
+]
+
+{ #category : #generated }
+ABAPEditorCallNode >> titles: anOrderedCollection [
+	self setParents: self titles to: nil.
+	titles := anOrderedCollection.
+	self setParents: self titles to: self
 ]

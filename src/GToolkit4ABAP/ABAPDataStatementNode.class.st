@@ -3,7 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'names',
+		'name',
 		'fieldChains',
 		'typeNames',
 		'lengths',
@@ -17,22 +17,33 @@ Class {
 		'rightParens',
 		'operators',
 		'sizes',
+		'table',
+		'hierarchy',
 		'eventName',
-		'_source'
+		'create',
+		'_update',
+		'action',
+		'permission',
+		'readLink',
+		'readResult',
+		'failed',
+		'mapped',
+		'reported',
+		'requested'
 	],
 	#category : #GToolkit4ABAP
 }
 
 { #category : #generated }
-ABAPDataStatementNode >> _source [
-	^ _source
+ABAPDataStatementNode >> _update [
+	^ _update
 ]
 
 { #category : #generated }
-ABAPDataStatementNode >> _source: anABAPExpressionNode [
-	self _source notNil ifTrue: [ self _source parent: nil ].
-	_source := anABAPExpressionNode.
-	self _source notNil ifTrue: [ self _source parent: self ]
+ABAPDataStatementNode >> _update: anABAPNameNode [
+	self _update notNil ifTrue: [ self _update parent: nil ].
+	_update := anABAPNameNode.
+	self _update notNil ifTrue: [ self _update parent: self ]
 ]
 
 { #category : #generated }
@@ -41,13 +52,37 @@ ABAPDataStatementNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPDataStatementNode >> action [
+	^ action
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> action: anABAPExpressionNode [
+	self action notNil ifTrue: [ self action parent: nil ].
+	action := anABAPExpressionNode.
+	self action notNil ifTrue: [ self action parent: self ]
+]
+
+{ #category : #generated }
 ABAPDataStatementNode >> compositeNodeVariables [
-	^ #(#names #fieldChains #typeNames #lengths #decimalses #defaults #fields #sizes)
+	^ #(#fieldChains #typeNames #lengths #decimalses #defaults #fields #sizes)
 ]
 
 { #category : #generated }
 ABAPDataStatementNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #keys #rightParens #operators)
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> create [
+	^ create
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> create: anABAPNameNode [
+	self create notNil ifTrue: [ self create parent: nil ].
+	create := anABAPNameNode.
+	self create notNil ifTrue: [ self create parent: self ]
 ]
 
 { #category : #generated }
@@ -87,6 +122,18 @@ ABAPDataStatementNode >> eventName: anABAPNameNode [
 ]
 
 { #category : #generated }
+ABAPDataStatementNode >> failed [
+	^ failed
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> failed: anABAPNameNode [
+	self failed notNil ifTrue: [ self failed parent: nil ].
+	failed := anABAPNameNode.
+	self failed notNil ifTrue: [ self failed parent: self ]
+]
+
+{ #category : #generated }
 ABAPDataStatementNode >> fieldChains [
 	^ fieldChains
 ]
@@ -110,11 +157,22 @@ ABAPDataStatementNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #generated }
+ABAPDataStatementNode >> hierarchy [
+	^ hierarchy
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> hierarchy: anABAPNameNode [
+	self hierarchy notNil ifTrue: [ self hierarchy parent: nil ].
+	hierarchy := anABAPNameNode.
+	self hierarchy notNil ifTrue: [ self hierarchy parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 ABAPDataStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
@@ -172,20 +230,32 @@ ABAPDataStatementNode >> lengths: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPDataStatementNode >> names [
-	^ names
+ABAPDataStatementNode >> mapped [
+	^ mapped
 ]
 
 { #category : #generated }
-ABAPDataStatementNode >> names: anOrderedCollection [
-	self setParents: self names to: nil.
-	names := anOrderedCollection.
-	self setParents: self names to: self
+ABAPDataStatementNode >> mapped: anABAPNameNode [
+	self mapped notNil ifTrue: [ self mapped parent: nil ].
+	mapped := anABAPNameNode.
+	self mapped notNil ifTrue: [ self mapped parent: self ]
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> name: anABAPNameNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := anABAPNameNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 ABAPDataStatementNode >> nodeVariables [
-	^ #(#occurs #eventName #_source)
+	^ #(#name #occurs #table #hierarchy #eventName #create #_update #action #permission #readLink #readResult #failed #mapped #reported #requested)
 ]
 
 { #category : #generated }
@@ -216,6 +286,66 @@ ABAPDataStatementNode >> otherVariables [
 ]
 
 { #category : #generated }
+ABAPDataStatementNode >> permission [
+	^ permission
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> permission: anABAPNameNode [
+	self permission notNil ifTrue: [ self permission parent: nil ].
+	permission := anABAPNameNode.
+	self permission notNil ifTrue: [ self permission parent: self ]
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> readLink [
+	^ readLink
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> readLink: anABAPNameNode [
+	self readLink notNil ifTrue: [ self readLink parent: nil ].
+	readLink := anABAPNameNode.
+	self readLink notNil ifTrue: [ self readLink parent: self ]
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> readResult [
+	^ readResult
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> readResult: anABAPNameNode [
+	self readResult notNil ifTrue: [ self readResult parent: nil ].
+	readResult := anABAPNameNode.
+	self readResult notNil ifTrue: [ self readResult parent: self ]
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> reported [
+	^ reported
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> reported: anABAPNameNode [
+	self reported notNil ifTrue: [ self reported parent: nil ].
+	reported := anABAPNameNode.
+	self reported notNil ifTrue: [ self reported parent: self ]
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> requested [
+	^ requested
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> requested: anABAPNameNode [
+	self requested notNil ifTrue: [ self requested parent: nil ].
+	requested := anABAPNameNode.
+	self requested notNil ifTrue: [ self requested parent: self ]
+]
+
+{ #category : #generated }
 ABAPDataStatementNode >> rightParens [
 	^ rightParens
 ]
@@ -235,6 +365,18 @@ ABAPDataStatementNode >> sizes: anOrderedCollection [
 	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
 	self setParents: self sizes to: self
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> table [
+	^ table
+]
+
+{ #category : #generated }
+ABAPDataStatementNode >> table: anABAPRootNode [
+	self table notNil ifTrue: [ self table parent: nil ].
+	table := anABAPRootNode.
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

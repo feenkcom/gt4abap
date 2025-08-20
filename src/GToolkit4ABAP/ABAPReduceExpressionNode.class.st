@@ -20,10 +20,8 @@ Class {
 		'ofs',
 		'fieldChains',
 		'names',
-		'leftBrackets',
-		'rightBrackets',
-		'fieldOffsets',
-		'fieldLengths'
+		'nextTargets',
+		'nextSources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -35,12 +33,12 @@ ABAPReduceExpressionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReduceExpressionNode >> compositeNodeVariables [
-	^ #(#typeNames #fields #whiles #sources #ins #groups #indexes #usingKeys #froms #toSources #wheres #groupses #ofs #fieldChains #names #fieldOffsets #fieldLengths)
+	^ #(#typeNames #fields #values #whiles #sources #ins #groups #indexes #usingKeys #froms #toSources #wheres #groupses #ofs #fieldChains #names #nextTargets #nextSources)
 ]
 
 { #category : #generated }
 ABAPReduceExpressionNode >> compositeTokenVariables [
-	^ #(#keywords #eqs #leftBrackets #rightBrackets #leftParens #rightParens)
+	^ #(#keywords #eqs #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -63,30 +61,6 @@ ABAPReduceExpressionNode >> fieldChains: anOrderedCollection [
 	self setParents: self fieldChains to: nil.
 	fieldChains := anOrderedCollection.
 	self setParents: self fieldChains to: self
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> fieldLengths [
-	^ fieldLengths
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> fieldLengths: anOrderedCollection [
-	self setParents: self fieldLengths to: nil.
-	fieldLengths := anOrderedCollection.
-	self setParents: self fieldLengths to: self
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> fieldOffsets [
-	^ fieldOffsets
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> fieldOffsets: anOrderedCollection [
-	self setParents: self fieldOffsets to: nil.
-	fieldOffsets := anOrderedCollection.
-	self setParents: self fieldOffsets to: self
 ]
 
 { #category : #generated }
@@ -170,10 +144,8 @@ ABAPReduceExpressionNode >> initialize [
 	ofs := OrderedCollection new: 2.
 	fieldChains := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
-	fieldOffsets := OrderedCollection new: 2.
-	fieldLengths := OrderedCollection new: 2.
+	nextTargets := OrderedCollection new: 2.
+	nextSources := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -199,16 +171,6 @@ ABAPReduceExpressionNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPReduceExpressionNode >> leftBrackets [
-	^ leftBrackets
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> leftBrackets: anOrderedCollection [
-	leftBrackets := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPReduceExpressionNode >> names [
 	^ names
 ]
@@ -221,6 +183,30 @@ ABAPReduceExpressionNode >> names: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPReduceExpressionNode >> nextSources [
+	^ nextSources
+]
+
+{ #category : #generated }
+ABAPReduceExpressionNode >> nextSources: anOrderedCollection [
+	self setParents: self nextSources to: nil.
+	nextSources := anOrderedCollection.
+	self setParents: self nextSources to: self
+]
+
+{ #category : #generated }
+ABAPReduceExpressionNode >> nextTargets [
+	^ nextTargets
+]
+
+{ #category : #generated }
+ABAPReduceExpressionNode >> nextTargets: anOrderedCollection [
+	self setParents: self nextTargets to: nil.
+	nextTargets := anOrderedCollection.
+	self setParents: self nextTargets to: self
+]
+
+{ #category : #generated }
 ABAPReduceExpressionNode >> ofs [
 	^ ofs
 ]
@@ -230,21 +216,6 @@ ABAPReduceExpressionNode >> ofs: anOrderedCollection [
 	self setParents: self ofs to: nil.
 	ofs := anOrderedCollection.
 	self setParents: self ofs to: self
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> rightBrackets [
-	^ rightBrackets
-]
-
-{ #category : #generated }
-ABAPReduceExpressionNode >> rightBrackets: anOrderedCollection [
-	rightBrackets := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -302,9 +273,9 @@ ABAPReduceExpressionNode >> values [
 
 { #category : #generated }
 ABAPReduceExpressionNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]
 
 { #category : #generated }

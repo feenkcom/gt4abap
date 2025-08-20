@@ -4,12 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'_source',
-		'name',
-		'leftBracket',
-		'rightBracket',
-		'value',
-		'fieldOffset',
-		'fieldLength'
+		'to'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -36,30 +31,6 @@ ABAPMoveCorrespondingNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> fieldLength [
-	^ fieldLength
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> fieldLength: anABAPFieldLengthNode [
-	self fieldLength notNil ifTrue: [ self fieldLength parent: nil ].
-	fieldLength := anABAPFieldLengthNode.
-	self fieldLength notNil ifTrue: [ self fieldLength parent: self ]
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> fieldOffset [
-	^ fieldOffset
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> fieldOffset: anABAPFieldOffsetNode [
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: nil ].
-	fieldOffset := anABAPFieldOffsetNode.
-	self fieldOffset notNil ifTrue: [ self fieldOffset parent: self ]
-]
-
 { #category : #'generated-initialize-release' }
 ABAPMoveCorrespondingNode >> initialize [
 	super initialize.
@@ -77,60 +48,18 @@ ABAPMoveCorrespondingNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> leftBracket [
-	^ leftBracket
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> leftBracket: aSmaCCToken [
-	leftBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> name: anABAPExpressionNode [
-	self name notNil ifTrue: [ self name parent: nil ].
-	name := anABAPExpressionNode.
-	self name notNil ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
 ABAPMoveCorrespondingNode >> nodeVariables [
-	^ #(#_source #name #fieldOffset #fieldLength)
+	^ #(#_source #to)
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> otherVariables [
-	^ #(#value)
+ABAPMoveCorrespondingNode >> to [
+	^ to
 ]
 
 { #category : #generated }
-ABAPMoveCorrespondingNode >> rightBracket [
-	^ rightBracket
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> rightBracket: aSmaCCToken [
-	rightBracket := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket #period)
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPMoveCorrespondingNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+ABAPMoveCorrespondingNode >> to: anABAPExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := anABAPExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
 ]

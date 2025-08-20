@@ -9,7 +9,8 @@ Class {
 		'targets',
 		'values',
 		'_source',
-		'name'
+		'connectionName',
+		'connection'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -39,6 +40,28 @@ ABAPCallDatabaseNode >> compositeNodeVariables [
 { #category : #generated }
 ABAPCallDatabaseNode >> compositeTokenVariables [
 	^ #(#keywords #eqs)
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> connection [
+	^ connection
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> connection: anABAPExpressionNode [
+	self connection notNil ifTrue: [ self connection parent: nil ].
+	connection := anABAPExpressionNode.
+	self connection notNil ifTrue: [ self connection parent: self ]
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> connectionName [
+	^ connectionName
+]
+
+{ #category : #generated }
+ABAPCallDatabaseNode >> connectionName: aSmaCCToken [
+	connectionName := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -84,18 +107,8 @@ ABAPCallDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPCallDatabaseNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-ABAPCallDatabaseNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 ABAPCallDatabaseNode >> nodeVariables [
-	^ #(#dynamic #_source)
+	^ #(#dynamic #_source #connection)
 ]
 
 { #category : #generated }
@@ -124,7 +137,7 @@ ABAPCallDatabaseNode >> targets: anOrderedCollection [
 
 { #category : #generated }
 ABAPCallDatabaseNode >> tokenVariables [
-	^ #(#name #period)
+	^ #(#connectionName #period)
 ]
 
 { #category : #generated }

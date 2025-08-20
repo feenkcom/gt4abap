@@ -45,20 +45,13 @@ ABAPFieldLengthNode >> lengthValue [
 ]
 
 { #category : #generated }
-ABAPFieldLengthNode >> lengthValue: anObject [
-	self setParent: self lengthValue to: nil.
-	lengthValue := anObject.
-	self setParent: self lengthValue to: self
+ABAPFieldLengthNode >> lengthValue: aSmaCCToken [
+	lengthValue := aSmaCCToken
 ]
 
 { #category : #generated }
 ABAPFieldLengthNode >> nodeVariables [
 	^ #(#length)
-]
-
-{ #category : #generated }
-ABAPFieldLengthNode >> otherVariables [
-	^ #(#lengthValue)
 ]
 
 { #category : #generated }
@@ -93,5 +86,5 @@ ABAPFieldLengthNode >> star: aSmaCCToken [
 
 { #category : #generated }
 ABAPFieldLengthNode >> tokenVariables [
-	^ #(#leftParen #rightParen #plus #star)
+	^ #(#leftParen #rightParen #lengthValue #plus #star)
 ]

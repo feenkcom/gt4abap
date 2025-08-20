@@ -62,12 +62,7 @@ ABAPBetweenExpressionNode >> low: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPBetweenExpressionNode >> nodeVariables [
-	^ #(#low #high)
-]
-
-{ #category : #generated }
-ABAPBetweenExpressionNode >> otherVariables [
-	^ #(#value)
+	^ #(#value #low #high)
 ]
 
 { #category : #generated }
@@ -76,8 +71,8 @@ ABAPBetweenExpressionNode >> value [
 ]
 
 { #category : #generated }
-ABAPBetweenExpressionNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+ABAPBetweenExpressionNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'sources',
-		'toTarget',
+		'to',
 		'toSources'
 	],
 	#category : #GToolkit4ABAP
@@ -45,7 +45,7 @@ ABAPAddNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPAddNode >> nodeVariables [
-	^ #(#toTarget)
+	^ #(#to)
 ]
 
 { #category : #generated }
@@ -61,6 +61,18 @@ ABAPAddNode >> sources: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPAddNode >> to [
+	^ to
+]
+
+{ #category : #generated }
+ABAPAddNode >> to: anABAPExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := anABAPExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
+]
+
+{ #category : #generated }
 ABAPAddNode >> toSources [
 	^ toSources
 ]
@@ -70,16 +82,4 @@ ABAPAddNode >> toSources: anOrderedCollection [
 	self setParents: self toSources to: nil.
 	toSources := anOrderedCollection.
 	self setParents: self toSources to: self
-]
-
-{ #category : #generated }
-ABAPAddNode >> toTarget [
-	^ toTarget
-]
-
-{ #category : #generated }
-ABAPAddNode >> toTarget: anABAPExpressionNode [
-	self toTarget notNil ifTrue: [ self toTarget parent: nil ].
-	toTarget := anABAPExpressionNode.
-	self toTarget notNil ifTrue: [ self toTarget parent: self ]
 ]

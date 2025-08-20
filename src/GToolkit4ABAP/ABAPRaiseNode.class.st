@@ -36,7 +36,7 @@ ABAPRaiseNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPRaiseNode >> compositeNodeVariables [
-	^ #(#parameterNames #values)
+	^ #(#withs #parameterNames #values)
 ]
 
 { #category : #generated }
@@ -129,7 +129,7 @@ ABAPRaiseNode >> number: anObject [
 
 { #category : #generated }
 ABAPRaiseNode >> otherVariables [
-	^ #(#withs #number)
+	^ #(#number)
 ]
 
 { #category : #generated }
@@ -175,7 +175,7 @@ ABAPRaiseNode >> withs [
 
 { #category : #generated }
 ABAPRaiseNode >> withs: anOrderedCollection [
-	self setParent: self withs to: nil.
+	self setParents: self withs to: nil.
 	withs := anOrderedCollection.
-	self setParent: self withs to: self
+	self setParents: self withs to: self
 ]

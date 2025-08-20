@@ -3,12 +3,12 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'dynamic',
-		'names',
-		'values',
-		'ats',
-		'leftParens',
-		'rightParens'
+		'databaseTable',
+		'databaseTableName',
+		'froms',
+		'connectionNames',
+		'connections',
+		'clients'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -19,41 +19,91 @@ ABAPModifyDatabaseNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> ats [
-	^ ats
+ABAPModifyDatabaseNode >> clients [
+	^ clients
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> ats: anOrderedCollection [
-	ats := anOrderedCollection
+ABAPModifyDatabaseNode >> clients: anOrderedCollection [
+	self setParents: self clients to: nil.
+	clients := anOrderedCollection.
+	self setParents: self clients to: self
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> compositeNodeVariables [
+	^ #(#froms #connections #clients)
 ]
 
 { #category : #generated }
 ABAPModifyDatabaseNode >> compositeTokenVariables [
-	^ #(#keywords #names #ats #leftParens #rightParens)
+	^ #(#keywords #connectionNames)
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> dynamic [
-	^ dynamic
+ABAPModifyDatabaseNode >> connectionNames [
+	^ connectionNames
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> dynamic: anABAPExpressionNode [
-	self dynamic notNil ifTrue: [ self dynamic parent: nil ].
-	dynamic := anABAPExpressionNode.
-	self dynamic notNil ifTrue: [ self dynamic parent: self ]
+ABAPModifyDatabaseNode >> connectionNames: anOrderedCollection [
+	connectionNames := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> connections [
+	^ connections
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> connections: anOrderedCollection [
+	self setParents: self connections to: nil.
+	connections := anOrderedCollection.
+	self setParents: self connections to: self
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> databaseTable [
+	^ databaseTable
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> databaseTable: anABAPExpressionNode [
+	self databaseTable notNil ifTrue: [ self databaseTable parent: nil ].
+	databaseTable := anABAPExpressionNode.
+	self databaseTable notNil ifTrue: [ self databaseTable parent: self ]
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> databaseTableName [
+	^ databaseTableName
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> databaseTableName: aSmaCCToken [
+	databaseTableName := aSmaCCToken
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> froms [
+	^ froms
+]
+
+{ #category : #generated }
+ABAPModifyDatabaseNode >> froms: anOrderedCollection [
+	self setParents: self froms to: nil.
+	froms := anOrderedCollection.
+	self setParents: self froms to: self
 ]
 
 { #category : #'generated-initialize-release' }
 ABAPModifyDatabaseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	values := OrderedCollection new: 2.
-	ats := OrderedCollection new: 2.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+	froms := OrderedCollection new: 2.
+	connectionNames := OrderedCollection new: 2.
+	connections := OrderedCollection new: 2.
+	clients := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -67,53 +117,11 @@ ABAPModifyDatabaseNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> leftParens [
-	^ leftParens
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> names [
-	^ names
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> names: anOrderedCollection [
-	names := anOrderedCollection
-]
-
-{ #category : #generated }
 ABAPModifyDatabaseNode >> nodeVariables [
-	^ #(#dynamic)
+	^ #(#databaseTable)
 ]
 
 { #category : #generated }
-ABAPModifyDatabaseNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> rightParens [
-	^ rightParens
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-ABAPModifyDatabaseNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
-	values := anOrderedCollection.
-	self setParent: self values to: self
+ABAPModifyDatabaseNode >> tokenVariables [
+	^ #(#databaseTableName #period)
 ]

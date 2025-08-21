@@ -26,7 +26,6 @@ Class {
 		'fieldNames',
 		'targets',
 		'hints',
-		'distincts',
 		'ons',
 		'body'
 	],
@@ -96,7 +95,7 @@ ABAPWithNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithNode >> compositeNodeVariables [
-	^ #(#withNames #names #asNames #wheres #havings #clients #ins #packageSizes #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #distincts #ons)
+	^ #(#withNames #fields #names #asNames #wheres #havings #clients #ins #packageSizes #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
 ]
 
 { #category : #generated }
@@ -124,18 +123,6 @@ ABAPWithNode >> databaseTables: anOrderedCollection [
 	self setParents: self databaseTables to: nil.
 	databaseTables := anOrderedCollection.
 	self setParents: self databaseTables to: self
-]
-
-{ #category : #generated }
-ABAPWithNode >> distincts [
-	^ distincts
-]
-
-{ #category : #generated }
-ABAPWithNode >> distincts: anOrderedCollection [
-	self setParents: self distincts to: nil.
-	distincts := anOrderedCollection.
-	self setParents: self distincts to: self
 ]
 
 { #category : #generated }
@@ -191,9 +178,9 @@ ABAPWithNode >> fields [
 
 { #category : #generated }
 ABAPWithNode >> fields: anOrderedCollection [
-	self setParent: self fields to: nil.
+	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
-	self setParent: self fields to: self
+	self setParents: self fields to: self
 ]
 
 { #category : #generated }
@@ -247,7 +234,6 @@ ABAPWithNode >> initialize [
 	fieldNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	hints := OrderedCollection new: 2.
-	distincts := OrderedCollection new: 2.
 	ons := OrderedCollection new: 2.
 ]
 
@@ -310,11 +296,6 @@ ABAPWithNode >> ons: anOrderedCollection [
 	self setParents: self ons to: nil.
 	ons := anOrderedCollection.
 	self setParents: self ons to: self
-]
-
-{ #category : #generated }
-ABAPWithNode >> otherVariables [
-	^ #(#fields)
 ]
 
 { #category : #generated }

@@ -9,9 +9,7 @@ Class {
 		'assignings',
 		'linesOf',
 		'froms',
-		'toSources',
-		'dash',
-		'key'
+		'toSources'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -41,16 +39,6 @@ ABAPInsertInternalNode >> compositeNodeVariables [
 { #category : #generated }
 ABAPInsertInternalNode >> compositeTokenVariables [
 	^ #(#keywords)
-]
-
-{ #category : #generated }
-ABAPInsertInternalNode >> dash [
-	^ dash
-]
-
-{ #category : #generated }
-ABAPInsertInternalNode >> dash: aSmaCCToken [
-	dash := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -86,16 +74,6 @@ ABAPInsertInternalNode >> intoTargets: anOrderedCollection [
 	self setParents: self intoTargets to: nil.
 	intoTargets := anOrderedCollection.
 	self setParents: self intoTargets to: self
-]
-
-{ #category : #generated }
-ABAPInsertInternalNode >> key [
-	^ key
-]
-
-{ #category : #generated }
-ABAPInsertInternalNode >> key: aSmaCCToken [
-	key := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -159,9 +137,4 @@ ABAPInsertInternalNode >> toSources: anOrderedCollection [
 	self setParents: self toSources to: nil.
 	toSources := anOrderedCollection.
 	self setParents: self toSources to: self
-]
-
-{ #category : #generated }
-ABAPInsertInternalNode >> tokenVariables [
-	^ #(#dash #key #period)
 ]

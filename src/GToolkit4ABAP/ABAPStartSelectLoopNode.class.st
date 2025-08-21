@@ -27,7 +27,6 @@ Class {
 		'targets',
 		'hints',
 		'ons',
-		'distinct',
 		'period'
 	],
 	#category : #GToolkit4ABAP
@@ -84,7 +83,7 @@ ABAPStartSelectLoopNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> compositeNodeVariables [
-	^ #(#asNames #wheres #havings #clients #ins #packageSizes #withNames #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
+	^ #(#fields #asNames #wheres #havings #clients #ins #packageSizes #withNames #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
 ]
 
 { #category : #generated }
@@ -112,18 +111,6 @@ ABAPStartSelectLoopNode >> databaseTables: anOrderedCollection [
 	self setParents: self databaseTables to: nil.
 	databaseTables := anOrderedCollection.
 	self setParents: self databaseTables to: self
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> distinct [
-	^ distinct
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> distinct: anABAPExpressionNode [
-	self distinct notNil ifTrue: [ self distinct parent: nil ].
-	distinct := anABAPExpressionNode.
-	self distinct notNil ifTrue: [ self distinct parent: self ]
 ]
 
 { #category : #generated }
@@ -179,9 +166,9 @@ ABAPStartSelectLoopNode >> fields [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> fields: anOrderedCollection [
-	self setParent: self fields to: nil.
+	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
-	self setParent: self fields to: self
+	self setParents: self fields to: self
 ]
 
 { #category : #generated }
@@ -283,7 +270,7 @@ ABAPStartSelectLoopNode >> name: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPStartSelectLoopNode >> nodeVariables [
-	^ #(#name #distinct)
+	^ #(#name)
 ]
 
 { #category : #generated }
@@ -296,11 +283,6 @@ ABAPStartSelectLoopNode >> ons: anOrderedCollection [
 	self setParents: self ons to: nil.
 	ons := anOrderedCollection.
 	self setParents: self ons to: self
-]
-
-{ #category : #generated }
-ABAPStartSelectLoopNode >> otherVariables [
-	^ #(#fields)
 ]
 
 { #category : #generated }

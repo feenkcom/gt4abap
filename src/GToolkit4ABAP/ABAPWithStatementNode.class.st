@@ -26,7 +26,6 @@ Class {
 		'fieldNames',
 		'targets',
 		'hints',
-		'distincts',
 		'ons',
 		'select'
 	],
@@ -84,7 +83,7 @@ ABAPWithStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 ABAPWithStatementNode >> compositeNodeVariables [
-	^ #(#withNames #names #asNames #wheres #havings #clients #ins #packageSizes #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #distincts #ons)
+	^ #(#withNames #fields #names #asNames #wheres #havings #clients #ins #packageSizes #databaseTables #values #fieldChains #upTos #dynamics #fieldNames #targets #hints #ons)
 ]
 
 { #category : #generated }
@@ -112,18 +111,6 @@ ABAPWithStatementNode >> databaseTables: anOrderedCollection [
 	self setParents: self databaseTables to: nil.
 	databaseTables := anOrderedCollection.
 	self setParents: self databaseTables to: self
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> distincts [
-	^ distincts
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> distincts: anOrderedCollection [
-	self setParents: self distincts to: nil.
-	distincts := anOrderedCollection.
-	self setParents: self distincts to: self
 ]
 
 { #category : #generated }
@@ -179,9 +166,9 @@ ABAPWithStatementNode >> fields [
 
 { #category : #generated }
 ABAPWithStatementNode >> fields: anOrderedCollection [
-	self setParent: self fields to: nil.
+	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
-	self setParent: self fields to: self
+	self setParents: self fields to: self
 ]
 
 { #category : #generated }
@@ -235,7 +222,6 @@ ABAPWithStatementNode >> initialize [
 	fieldNames := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	hints := OrderedCollection new: 2.
-	distincts := OrderedCollection new: 2.
 	ons := OrderedCollection new: 2.
 ]
 
@@ -298,11 +284,6 @@ ABAPWithStatementNode >> ons: anOrderedCollection [
 	self setParents: self ons to: nil.
 	ons := anOrderedCollection.
 	self setParents: self ons to: self
-]
-
-{ #category : #generated }
-ABAPWithStatementNode >> otherVariables [
-	^ #(#fields)
 ]
 
 { #category : #generated }

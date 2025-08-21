@@ -317,12 +317,12 @@ ABAPScanner >> commaId [
 
 { #category : #generated }
 ABAPScanner >> emptySymbolTokenId [
-	^ 2239
+	^ 2237
 ]
 
 { #category : #generated }
 ABAPScanner >> errorTokenId [
-	^ 2240
+	^ 2238
 ]
 
 { #category : #generated }

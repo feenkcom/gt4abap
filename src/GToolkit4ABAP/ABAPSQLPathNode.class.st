@@ -3,6 +3,8 @@ Class {
 	#superclass : #ABAPExpressionNode,
 	#instVars : [
 		'name',
+		'dash',
+		'blockName',
 		'leftBracket',
 		'keywords',
 		'where',
@@ -17,8 +19,28 @@ ABAPSQLPathNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
+ABAPSQLPathNode >> blockName [
+	^ blockName
+]
+
+{ #category : #generated }
+ABAPSQLPathNode >> blockName: aSmaCCToken [
+	blockName := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPSQLPathNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
+]
+
+{ #category : #generated }
+ABAPSQLPathNode >> dash [
+	^ dash
+]
+
+{ #category : #generated }
+ABAPSQLPathNode >> dash: aSmaCCToken [
+	dash := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -76,7 +98,7 @@ ABAPSQLPathNode >> rightBracket: aSmaCCToken [
 
 { #category : #generated }
 ABAPSQLPathNode >> tokenVariables [
-	^ #(#leftBracket #rightBracket)
+	^ #(#dash #blockName #leftBracket #rightBracket)
 ]
 
 { #category : #generated }

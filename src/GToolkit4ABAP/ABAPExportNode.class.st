@@ -9,7 +9,9 @@ Class {
 		'target',
 		'name',
 		'leftParen',
-		'rightParen'
+		'importName',
+		'rightParen',
+		'exportName'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -40,6 +42,16 @@ ABAPExportNode >> eqs: anOrderedCollection [
 ]
 
 { #category : #generated }
+ABAPExportNode >> exportName [
+	^ exportName
+]
+
+{ #category : #generated }
+ABAPExportNode >> exportName: aSmaCCToken [
+	exportName := aSmaCCToken
+]
+
+{ #category : #generated }
 ABAPExportNode >> exports [
 	^ exports
 ]
@@ -49,6 +61,16 @@ ABAPExportNode >> exports: anOrderedCollection [
 	self setParents: self exports to: nil.
 	exports := anOrderedCollection.
 	self setParents: self exports to: self
+]
+
+{ #category : #generated }
+ABAPExportNode >> importName [
+	^ importName
+]
+
+{ #category : #generated }
+ABAPExportNode >> importName: aSmaCCToken [
+	importName := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -133,5 +155,5 @@ ABAPExportNode >> target: anABAPExpressionNode [
 
 { #category : #generated }
 ABAPExportNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #importName #rightParen #exportName #period)
 ]

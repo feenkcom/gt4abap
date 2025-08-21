@@ -11,8 +11,8 @@ Class {
 		'signs',
 		'memories',
 		'matchcodes',
-		'visibles',
-		'modifs'
+		'modifs',
+		'lengths'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -24,7 +24,7 @@ ABAPSelectOptionNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPSelectOptionNode >> compositeNodeVariables [
-	^ #(#defaults #tos #options #signs #memories #matchcodes #modifs)
+	^ #(#defaults #tos #options #signs #memories #matchcodes #modifs #lengths)
 ]
 
 { #category : #generated }
@@ -66,8 +66,8 @@ ABAPSelectOptionNode >> initialize [
 	signs := OrderedCollection new: 2.
 	memories := OrderedCollection new: 2.
 	matchcodes := OrderedCollection new: 2.
-	visibles := OrderedCollection new: 2.
 	modifs := OrderedCollection new: 2.
+	lengths := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -78,6 +78,18 @@ ABAPSelectOptionNode >> keywords [
 { #category : #generated }
 ABAPSelectOptionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> lengths [
+	^ lengths
+]
+
+{ #category : #generated }
+ABAPSelectOptionNode >> lengths: anOrderedCollection [
+	self setParents: self lengths to: nil.
+	lengths := anOrderedCollection.
+	self setParents: self lengths to: self
 ]
 
 { #category : #generated }
@@ -134,11 +146,6 @@ ABAPSelectOptionNode >> options: anOrderedCollection [
 ]
 
 { #category : #generated }
-ABAPSelectOptionNode >> otherVariables [
-	^ #(#visibles)
-]
-
-{ #category : #generated }
 ABAPSelectOptionNode >> selectOptions [
 	^ selectOptions
 ]
@@ -172,16 +179,4 @@ ABAPSelectOptionNode >> tos: anOrderedCollection [
 	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> visibles [
-	^ visibles
-]
-
-{ #category : #generated }
-ABAPSelectOptionNode >> visibles: anOrderedCollection [
-	self setParent: self visibles to: nil.
-	visibles := anOrderedCollection.
-	self setParent: self visibles to: self
 ]

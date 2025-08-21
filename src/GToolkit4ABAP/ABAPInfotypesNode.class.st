@@ -3,6 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
+		'infotype',
 		'occurs',
 		'name',
 		'from',
@@ -31,6 +32,16 @@ ABAPInfotypesNode >> from: anABAPExpressionNode [
 	self from notNil ifTrue: [ self from parent: nil ].
 	from := anABAPExpressionNode.
 	self from notNil ifTrue: [ self from parent: self ]
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> infotype [
+	^ infotype
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> infotype: aSmaCCToken [
+	infotype := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
@@ -88,4 +99,9 @@ ABAPInfotypesNode >> toSource: anABAPExpressionNode [
 	self toSource notNil ifTrue: [ self toSource parent: nil ].
 	toSource := anABAPExpressionNode.
 	self toSource notNil ifTrue: [ self toSource parent: self ]
+]
+
+{ #category : #generated }
+ABAPInfotypesNode >> tokenVariables [
+	^ #(#infotype #period)
 ]

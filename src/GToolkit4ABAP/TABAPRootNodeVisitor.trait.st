@@ -1211,6 +1211,11 @@ TABAPRootNodeVisitor >> visitSQLCompareExpression: aSQLCompareExpression [
 ]
 
 { #category : #generated }
+TABAPRootNodeVisitor >> visitSQLField: aSQLField [
+	^ self visitRoot: aSQLField
+]
+
+{ #category : #generated }
 TABAPRootNodeVisitor >> visitSQLFunction: aSQLFunction [
 	^ self visitExpression: aSQLFunction
 ]

@@ -3,7 +3,7 @@ Class {
 	#superclass : #ABAPStatementNode,
 	#instVars : [
 		'keywords',
-		'value',
+		'fieldSymbol',
 		'fieldChain',
 		'typeName',
 		'default',
@@ -55,6 +55,18 @@ ABAPFieldSymbolNode >> fieldChain: anABAPExpressionNode [
 ]
 
 { #category : #generated }
+ABAPFieldSymbolNode >> fieldSymbol [
+	^ fieldSymbol
+]
+
+{ #category : #generated }
+ABAPFieldSymbolNode >> fieldSymbol: anABAPNameNode [
+	self fieldSymbol notNil ifTrue: [ self fieldSymbol parent: nil ].
+	fieldSymbol := anABAPNameNode.
+	self fieldSymbol notNil ifTrue: [ self fieldSymbol parent: self ]
+]
+
+{ #category : #generated }
 ABAPFieldSymbolNode >> fields [
 	^ fields
 ]
@@ -86,7 +98,7 @@ ABAPFieldSymbolNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 ABAPFieldSymbolNode >> nodeVariables [
-	^ #(#fieldChain #typeName #default #occurs #table)
+	^ #(#fieldSymbol #fieldChain #typeName #default #occurs #table)
 ]
 
 { #category : #generated }
@@ -126,11 +138,6 @@ ABAPFieldSymbolNode >> table: anABAPRootNode [
 ]
 
 { #category : #generated }
-ABAPFieldSymbolNode >> tokenVariables [
-	^ #(#value #period)
-]
-
-{ #category : #generated }
 ABAPFieldSymbolNode >> typeName [
 	^ typeName
 ]
@@ -140,14 +147,4 @@ ABAPFieldSymbolNode >> typeName: anABAPTypeNameNode [
 	self typeName notNil ifTrue: [ self typeName parent: nil ].
 	typeName := anABAPTypeNameNode.
 	self typeName notNil ifTrue: [ self typeName parent: self ]
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-ABAPFieldSymbolNode >> value: aSmaCCToken [
-	value := aSmaCCToken
 ]

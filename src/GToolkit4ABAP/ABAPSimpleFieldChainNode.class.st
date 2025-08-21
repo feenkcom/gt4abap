@@ -2,9 +2,7 @@ Class {
 	#name : #ABAPSimpleFieldChainNode,
 	#superclass : #ABAPRootNode,
 	#instVars : [
-		'left',
-		'operator',
-		'right',
+		'value',
 		'dashs',
 		'names'
 	],
@@ -44,18 +42,6 @@ ABAPSimpleFieldChainNode >> initialize [
 ]
 
 { #category : #generated }
-ABAPSimpleFieldChainNode >> left [
-	^ left
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> left: anABAPNameNode [
-	self left notNil ifTrue: [ self left parent: nil ].
-	left := anABAPNameNode.
-	self left notNil ifTrue: [ self left parent: self ]
-]
-
-{ #category : #generated }
 ABAPSimpleFieldChainNode >> names [
 	^ names
 ]
@@ -69,32 +55,17 @@ ABAPSimpleFieldChainNode >> names: anOrderedCollection [
 
 { #category : #generated }
 ABAPSimpleFieldChainNode >> nodeVariables [
-	^ #(#left #right)
+	^ #(#value)
 ]
 
 { #category : #generated }
-ABAPSimpleFieldChainNode >> operator [
-	^ operator
+ABAPSimpleFieldChainNode >> value [
+	^ value
 ]
 
 { #category : #generated }
-ABAPSimpleFieldChainNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> right [
-	^ right
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> right: anABAPNameNode [
-	self right notNil ifTrue: [ self right parent: nil ].
-	right := anABAPNameNode.
-	self right notNil ifTrue: [ self right parent: self ]
-]
-
-{ #category : #generated }
-ABAPSimpleFieldChainNode >> tokenVariables [
-	^ #(#operator)
+ABAPSimpleFieldChainNode >> value: anABAPExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := anABAPExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

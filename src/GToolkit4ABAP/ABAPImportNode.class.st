@@ -10,7 +10,8 @@ Class {
 		'name',
 		'leftParen',
 		'rightParen',
-		'tos'
+		'tos',
+		'importName'
 	],
 	#category : #GToolkit4ABAP
 }
@@ -38,6 +39,16 @@ ABAPImportNode >> eqs [
 { #category : #generated }
 ABAPImportNode >> eqs: anOrderedCollection [
 	eqs := anOrderedCollection
+]
+
+{ #category : #generated }
+ABAPImportNode >> importName [
+	^ importName
+]
+
+{ #category : #generated }
+ABAPImportNode >> importName: aSmaCCToken [
+	importName := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -124,7 +135,7 @@ ABAPImportNode >> sources: anOrderedCollection [
 
 { #category : #generated }
 ABAPImportNode >> tokenVariables [
-	^ #(#leftParen #rightParen #period)
+	^ #(#leftParen #importName #rightParen #period)
 ]
 
 { #category : #generated }

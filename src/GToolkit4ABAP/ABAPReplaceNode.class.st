@@ -18,7 +18,7 @@ ABAPReplaceNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPReplaceNode >> compositeNodeVariables [
-	^ #(#targets #sources #intoTargets #lengths)
+	^ #(#targets #sources #lengths #intoTargets)
 ]
 
 { #category : #generated }
@@ -32,8 +32,8 @@ ABAPReplaceNode >> initialize [
 	keywords := OrderedCollection new: 2.
 	targets := OrderedCollection new: 2.
 	sources := OrderedCollection new: 2.
-	intoTargets := OrderedCollection new: 2.
 	lengths := OrderedCollection new: 2.
+	intoTargets := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

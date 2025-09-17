@@ -16,7 +16,7 @@ ABAPDefineNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPDefineNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #contents)
 ]
 
 { #category : #generated }
@@ -26,9 +26,7 @@ ABAPDefineNode >> contents [
 
 { #category : #generated }
 ABAPDefineNode >> contents: anOrderedCollection [
-	self setParent: self contents to: nil.
-	contents := anOrderedCollection.
-	self setParent: self contents to: self
+	contents := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -63,9 +61,4 @@ ABAPDefineNode >> macroName: anABAPNameNode [
 { #category : #generated }
 ABAPDefineNode >> nodeVariables [
 	^ #(#macroName)
-]
-
-{ #category : #generated }
-ABAPDefineNode >> otherVariables [
-	^ #(#contents)
 ]

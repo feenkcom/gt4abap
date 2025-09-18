@@ -28,6 +28,11 @@ ABAPMethodNode >> body: anABAPBodyNode [
 ]
 
 { #category : #generated }
+ABAPMethodNode >> compositeTokenVariables [
+	^ #(#sqls)
+]
+
+{ #category : #generated }
 ABAPMethodNode >> end [
 	^ end
 ]
@@ -65,18 +70,11 @@ ABAPMethodNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPMethodNode >> otherVariables [
-	^ #(#sqls)
-]
-
-{ #category : #generated }
 ABAPMethodNode >> sqls [
 	^ sqls
 ]
 
 { #category : #generated }
 ABAPMethodNode >> sqls: anOrderedCollection [
-	self setParent: self sqls to: nil.
-	sqls := anOrderedCollection.
-	self setParent: self sqls to: self
+	sqls := anOrderedCollection
 ]

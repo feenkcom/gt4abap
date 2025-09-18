@@ -47,7 +47,7 @@ ABAPScanner >> BracketLeft [
 
 { #category : #generated }
 ABAPScanner >> BracketLeftWId [
-	^ 2215
+	^ 2216
 ]
 
 { #category : #private }
@@ -80,12 +80,12 @@ ABAPScanner >> BracketRight [
 
 { #category : #generated }
 ABAPScanner >> BracketRightWId [
-	^ 2216
+	^ 2217
 ]
 
 { #category : #generated }
 ABAPScanner >> BreakId [
-	^ 2217
+	^ 2218
 ]
 
 { #category : #private }
@@ -118,7 +118,7 @@ ABAPScanner >> Dash [
 
 { #category : #generated }
 ABAPScanner >> DashWId [
-	^ 2218
+	^ 2219
 ]
 
 { #category : #private }
@@ -143,7 +143,12 @@ ABAPScanner >> FieldSub1 [
 
 { #category : #generated }
 ABAPScanner >> MacroContentId [
-	^ 2220
+	^ 2221
+]
+
+{ #category : #generated }
+ABAPScanner >> NativeSQLId [
+	^ 2222
 ]
 
 { #category : #private }
@@ -176,7 +181,7 @@ ABAPScanner >> ParenLeft [
 
 { #category : #generated }
 ABAPScanner >> ParenLeftWId [
-	^ 2221
+	^ 2223
 ]
 
 { #category : #private }
@@ -209,7 +214,7 @@ ABAPScanner >> ParenRight [
 
 { #category : #generated }
 ABAPScanner >> ParenRightWId [
-	^ 2222
+	^ 2224
 ]
 
 { #category : #private }
@@ -242,72 +247,72 @@ ABAPScanner >> Plus [
 
 { #category : #generated }
 ABAPScanner >> PlusWId [
-	^ 2223
-]
-
-{ #category : #generated }
-ABAPScanner >> SystemCallId [
-	^ 2224
-]
-
-{ #category : #generated }
-ABAPScanner >> WAtId [
 	^ 2225
 ]
 
 { #category : #generated }
-ABAPScanner >> WBracketRightId [
+ABAPScanner >> SystemCallId [
 	^ 2226
 ]
 
 { #category : #generated }
-ABAPScanner >> WBracketRightWId [
+ABAPScanner >> WAtId [
 	^ 2227
 ]
 
 { #category : #generated }
-ABAPScanner >> WDashId [
+ABAPScanner >> WBracketRightId [
 	^ 2228
 ]
 
 { #category : #generated }
-ABAPScanner >> WDashWId [
+ABAPScanner >> WBracketRightWId [
 	^ 2229
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenLeftId [
+ABAPScanner >> WDashId [
 	^ 2230
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenLeftWId [
+ABAPScanner >> WDashWId [
 	^ 2231
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenRightId [
+ABAPScanner >> WParenLeftId [
 	^ 2232
 ]
 
 { #category : #generated }
-ABAPScanner >> WParenRightWId [
+ABAPScanner >> WParenLeftWId [
 	^ 2233
 ]
 
 { #category : #generated }
-ABAPScanner >> WPlusId [
+ABAPScanner >> WParenRightId [
 	^ 2234
 ]
 
 { #category : #generated }
-ABAPScanner >> WPlusWId [
+ABAPScanner >> WParenRightWId [
 	^ 2235
 ]
 
 { #category : #generated }
-ABAPScanner >> chainedId [
+ABAPScanner >> WPlusId [
 	^ 2236
+]
+
+{ #category : #generated }
+ABAPScanner >> WPlusWId [
+	^ 2237
+]
+
+{ #category : #generated }
+ABAPScanner >> chainedId [
+	^ 2238
 ]
 
 { #category : #generated }
@@ -322,12 +327,12 @@ ABAPScanner >> commaId [
 
 { #category : #generated }
 ABAPScanner >> emptySymbolTokenId [
-	^ 2237
+	^ 2239
 ]
 
 { #category : #generated }
 ABAPScanner >> errorTokenId [
-	^ 2238
+	^ 2240
 ]
 
 { #category : #generated }
@@ -17882,6 +17887,14 @@ ABAPScanner >> scanForTokenX9X1 [
 		or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ])
 		ifTrue: [ ^ self scan239 ].
 	^ self reportLastMatch
+]
+
+{ #category : #private }
+ABAPScanner >> sourceFrom: startIndex to: endIndex [
+	| position |
+	position := stream position.
+	stream position: startIndex - 1.
+	^ [ stream next: endIndex - startIndex + 1 ] ensure: [ stream position: position ]
 ]
 
 { #category : #private }

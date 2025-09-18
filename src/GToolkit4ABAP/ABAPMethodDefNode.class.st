@@ -26,7 +26,7 @@ ABAPMethodDefNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPMethodDefNode >> compositeNodeVariables [
-	^ #(#names #parameterNames #typeNames #fieldChains #defaults #forCreates)
+	^ #(#names #parameterNames #typeNames #defaults #fieldChains #forCreates)
 ]
 
 { #category : #generated }
@@ -103,8 +103,8 @@ ABAPMethodDefNode >> initialize [
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 	typeNames := OrderedCollection new: 2.
-	fieldChains := OrderedCollection new: 2.
 	defaults := OrderedCollection new: 2.
+	fieldChains := OrderedCollection new: 2.
 	forCreates := OrderedCollection new: 2.
 ]
 

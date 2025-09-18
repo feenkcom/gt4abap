@@ -16,7 +16,7 @@ ABAPExecSQLNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 ABAPExecSQLNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #sqls)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -54,18 +54,11 @@ ABAPExecSQLNode >> nodeVariables [
 ]
 
 { #category : #generated }
-ABAPExecSQLNode >> otherVariables [
-	^ #(#sqls)
-]
-
-{ #category : #generated }
 ABAPExecSQLNode >> sqls [
 	^ sqls
 ]
 
 { #category : #generated }
 ABAPExecSQLNode >> sqls: anOrderedCollection [
-	self setParent: self sqls to: nil.
-	sqls := anOrderedCollection.
-	self setParent: self sqls to: self
+	sqls := anOrderedCollection
 ]

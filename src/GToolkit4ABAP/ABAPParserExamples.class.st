@@ -65,7 +65,7 @@ ENDFUNCTION.
 
 { #category : #'as yet unclassified' }
 ABAPParserExamples >> sample13 [
-	"<gtExample>"
+	<gtExample>
 	^ ABAPParser
 		parse: '
 INCLUDE <obj>.
@@ -76,7 +76,7 @@ DATA:
     notification TYPE qqnum,
     number       TYPE qmnum,
   END OF key.
-end_data obj
+end_data obj.
 '
 ]
 
